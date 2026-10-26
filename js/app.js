@@ -256,8 +256,8 @@ function initProgramTabs() {
 
           <div class="curriculum-download-box">
             <p><strong>Approved by CCSU Meerut</strong><br>Curriculum aligns with National Education Policy (NEP 2020).</p>
-            <button class="btn-syllabus" onclick="showToast('Syllabus PDF downloaded successfully!', 'success')">
-              <i class="fas fa-download"></i> Download Full Scheme PDF
+            <button class="btn-syllabus" onclick="downloadSyllabusScheme('${programKey}')">
+              <i class="fas fa-download"></i> Download Full Scheme (HTML/PDF)
             </button>
           </div>
         </div>
@@ -273,9 +273,81 @@ function initProgramTabs() {
     });
   });
 
+  window.selectProgramTab = function(programKey) {
+    const targetBtn = document.querySelector(`.program-tab-btn[data-program="${programKey}"]`);
+    if (targetBtn) {
+      targetBtn.click();
+    }
+  };
+
+  // Program links in navbar dropdown
+  document.querySelectorAll('[data-program-select]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      const pKey = el.getAttribute('data-program-select');
+      if (pKey) window.selectProgramTab(pKey);
+    });
+  });
+
   // Initial render
   renderProgram('bba');
 }
+
+/* Helper to download genuine syllabus scheme document */
+window.downloadSyllabusScheme = function(programKey) {
+  const p = programData[programKey] || programData['bba'];
+  const htmlContent = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>${p.title} - Official Syllabus Scheme | IIFCCMS</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #1e293b; padding: 40px; max-width: 800px; margin: auto; }
+    .header { text-align: center; border-bottom: 2px solid #0b2545; padding-bottom: 20px; margin-bottom: 25px; }
+    h1 { color: #0b2545; margin: 0 0 5px 0; font-size: 22px; }
+    .sub { color: #64748b; font-size: 14px; margin: 0; }
+    .badge { display: inline-block; background: #c59b27; color: #fff; padding: 4px 12px; border-radius: 4px; font-weight: bold; font-size: 13px; margin-top: 10px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 25px 0; }
+    .box { background: #f8fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 6px; }
+    .label { font-size: 12px; text-transform: uppercase; color: #64748b; font-weight: bold; }
+    .val { font-size: 15px; font-weight: bold; color: #0b2545; margin-top: 4px; }
+    .subjects { margin-top: 25px; }
+    .subject-item { background: #ffffff; border: 1px solid #cbd5e1; padding: 10px 15px; margin-bottom: 8px; border-radius: 4px; display: flex; justify-content: space-between; }
+    .footer { margin-top: 40px; text-align: center; font-size: 12px; color: #94a3b8; border-top: 1px solid #e2e8f0; padding-top: 15px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>IIF COLLEGE OF COMMERCE & MANAGEMENT STUDIES</h1>
+    <p class="sub">Affiliated to CCS University, Meerut (NAAC A++ Accredited) • Plot 45A, Knowledge Park III, Greater Noida</p>
+    <span class="badge">${p.title} (${p.code})</span>
+  </div>
+  <div class="grid">
+    <div class="box"><div class="label">Course Duration</div><div class="val">${p.duration}</div></div>
+    <div class="box"><div class="label">Awarding University</div><div class="val">${p.degree}</div></div>
+    <div class="box"><div class="label">Annual Approved Fee</div><div class="val">${p.annualFee}</div></div>
+    <div class="box"><div class="label">Eligibility Criteria</div><div class="val">${p.eligibility}</div></div>
+  </div>
+  <div class="subjects">
+    <h3 style="color:#0b2545; border-bottom:1px solid #cbd5e1; padding-bottom:8px;">Curriculum Paper Scheme (NEP 2020 Aligned)</h3>
+    ${p.curriculum.map((sub, idx) => `<div class="subject-item"><span><strong>Paper ${idx + 1}:</strong> ${sub}</span><span style="color:#64748b; font-size:13px;">70 Theory + 30 Internal</span></div>`).join('')}
+  </div>
+  <div class="footer">
+    Official curriculum approved by Academic Council, Chaudhary Charan Singh University, Meerut.<br>
+    Downloaded from IIFCCMS Official Portal | Contact: info@iifccms.edu.in
+  </div>
+</body>
+</html>`;
+  const blob = new Blob([htmlContent], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `IIFCCMS_${programKey.toUpperCase()}_Syllabus_Scheme.html`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast(`${p.title} syllabus scheme downloaded successfully!`, 'success');
+};
 
 /* ==========================================================================
    4. INTERACTIVE FEE & MERIT SCHOLARSHIP CALCULATOR
@@ -613,7 +685,7 @@ function initErpPortal() {
                 <td>₹ 80,000/-</td>
                 <td>12 Aug 2024</td>
                 <td>Online Net Banking</td>
-                <td><button class="btn-syllabus" style="width:auto; padding:0.3rem 0.6rem; font-size:0.75rem;" onclick="showToast('Downloading Official Fee Receipt IIF-0981...', 'success')"><i class="fas fa-file-pdf"></i> Download</button></td>
+                <td><button class="btn-syllabus" style="width:auto; padding:0.35rem 0.75rem; font-size:0.78rem;" onclick="downloadReceipt('IIF/REC/2024/0981', 'Year 2 (Sem III & IV)', '₹ 80,000/-')"><i class="fas fa-file-download"></i> Download Slip</button></td>
               </tr>
               <tr>
                 <td><strong>IIF/REC/2023/0412</strong></td>
@@ -621,7 +693,7 @@ function initErpPortal() {
                 <td>₹ 80,000/-</td>
                 <td>18 Jul 2023</td>
                 <td>HDFC Bank Gateway</td>
-                <td><button class="btn-syllabus" style="width:auto; padding:0.3rem 0.6rem; font-size:0.75rem;" onclick="showToast('Downloading Official Fee Receipt IIF-0412...', 'success')"><i class="fas fa-file-pdf"></i> Download</button></td>
+                <td><button class="btn-syllabus" style="width:auto; padding:0.35rem 0.75rem; font-size:0.78rem;" onclick="downloadReceipt('IIF/REC/2023/0412', 'Year 1 (Sem I & II)', '₹ 80,000/-')"><i class="fas fa-file-download"></i> Download Slip</button></td>
               </tr>
             </tbody>
           </table>
@@ -630,15 +702,18 @@ function initErpPortal() {
         mainView.innerHTML = `
           <div class="erp-view-header">
             <h4>CCSU Meerut Semester Examination Admit Card</h4>
-            <button class="btn-primary" style="padding:0.4rem 0.9rem; font-size:0.8rem;" onclick="window.print()"><i class="fas fa-print"></i> Print Admit Card</button>
+            <div style="display:flex; gap:0.5rem;">
+              <button class="btn-primary" style="padding:0.4rem 0.9rem; font-size:0.8rem;" onclick="window.print()"><i class="fas fa-print"></i> Print Admit Card</button>
+              <a href="https://www.ccsuniversity.ac.in/examination" target="_blank" rel="noopener noreferrer" class="btn-syllabus" style="width:auto; padding:0.4rem 0.9rem; font-size:0.8rem; background:var(--color-primary-subtle); color:var(--color-primary);"><i class="fas fa-external-link-alt"></i> CCSU Exam Portal</a>
+            </div>
           </div>
           <div style="border:2px solid var(--color-primary); padding:1.5rem; border-radius:8px; background:#fff;">
-            <div style="display:flex; justify-content:space-between; border-bottom:2px solid #e2e8f0; padding-bottom:1rem; margin-bottom:1rem;">
+            <div style="display:flex; justify-content:space-between; border-bottom:2px solid #e2e8f0; padding-bottom:1rem; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
               <div>
                 <h4 style="color:var(--color-primary); font-size:1.1rem; margin:0;">Chaudhary Charan Singh University, Meerut</h4>
                 <p style="margin:2px 0 0 0; font-size:0.8rem; color:#64748b;">Examination Center: IIF College of Commerce & Management Studies (Code 454)</p>
               </div>
-              <span class="badge-naac">VERIFIED FOR EXAM</span>
+              <span class="badge-naac"><i class="fas fa-check-circle"></i> VERIFIED FOR EXAM</span>
             </div>
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; font-size:0.85rem;">
               <div><strong>Student Name:</strong> Rahul Sharma</div>
@@ -646,7 +721,7 @@ function initErpPortal() {
               <div><strong>Father Name:</strong> Sh. Rajesh Sharma</div>
               <div><strong>Course:</strong> BBA Semester IV (Regular)</div>
               <div><strong>Exam Center:</strong> 45A Knowledge Park III, Greater Noida</div>
-              <div><strong>Status:</strong> Approved by University Examination Cell</div>
+              <div><strong>Status:</strong> Approved by CCSU Examination Cell</div>
             </div>
           </div>
         `;
@@ -686,7 +761,7 @@ function initErpPortal() {
                 <td>BBA IV Sem</td>
                 <td>Capital Budgeting & NPV Methods</td>
                 <td>AC Lecture Hall 201</td>
-                <td><button class="btn-syllabus" style="width:auto; padding:0.25rem 0.6rem; font-size:0.75rem;" onclick="showToast('Attendance window opened for Hall 201', 'success')">Open Register</button></td>
+                <td><button class="btn-syllabus" style="width:auto; padding:0.25rem 0.6rem; font-size:0.75rem;" onclick="showToast('Attendance register opened for Hall 201', 'success')">Open Register</button></td>
               </tr>
               <tr>
                 <td>01:15 PM</td>
@@ -702,7 +777,7 @@ function initErpPortal() {
         mainView.innerHTML = `
           <div class="erp-view-header">
             <h4>Daily Attendance Marker • BBA IV Sem (Room AC-201)</h4>
-            <button class="btn-primary" style="padding:0.4rem 0.8rem; font-size:0.8rem;" onclick="showToast('Today attendance saved and synced to CCSU database!', 'success')"><i class="fas fa-save"></i> Save Attendance</button>
+            <button class="btn-primary" style="padding:0.4rem 0.8rem; font-size:0.8rem;" onclick="showToast('Today attendance saved and synced to CCSU portal database!', 'success')"><i class="fas fa-save"></i> Save Attendance</button>
           </div>
           <table class="erp-table">
             <thead>
@@ -736,79 +811,181 @@ function initErpPortal() {
             </tbody>
           </table>
         `;
-      } else {
+      } else if (tabId === 'fac_marks') {
         mainView.innerHTML = `
           <div class="erp-view-header">
             <h4>Internal Assessment Marks Submission</h4>
-            <button class="btn-syllabus" style="width:auto; padding:0.4rem 0.8rem;" onclick="showToast('Marks submitted to Examination Office!', 'success')"><i class="fas fa-check"></i> Submit to CCSU</button>
+            <button class="btn-syllabus" style="width:auto; padding:0.4rem 0.8rem;" onclick="showToast('Internal marks officially submitted to Examination Office!', 'success')"><i class="fas fa-check"></i> Submit to CCSU</button>
           </div>
-          <p style="font-size:0.85rem; color:#64748b; margin-bottom:1rem;">Final internal assessment out of 30 marks (20 Mid-term + 10 Attendance & Assignments).</p>
+          <p style="font-size:0.85rem; color:#64748b; margin-bottom:1rem;">Final internal assessment out of 30 marks (20 Mid-term + 10 Attendance & Assignments) as per CCSU NEP 2020 guidelines.</p>
           <table class="erp-table">
             <thead><tr><th>Roll</th><th>Name</th><th>Mid-Term (20)</th><th>Assignment (10)</th><th>Final Marks</th></tr></thead>
             <tbody>
-              <tr><td>21BBA001</td><td>Aakash Verma</td><td><input type="number" value="17" style="width:50px; padding:2px;" /></td><td><input type="number" value="8" style="width:50px; padding:2px;" /></td><td><strong>25 / 30</strong></td></tr>
-              <tr><td>21BBA042</td><td>Rahul Sharma</td><td><input type="number" value="19" style="width:50px; padding:2px;" /></td><td><input type="number" value="9" style="width:50px; padding:2px;" /></td><td><strong>28 / 30</strong></td></tr>
+              <tr><td>21BBA001</td><td>Aakash Verma</td><td><input type="number" value="17" style="width:55px; padding:4px; border:1px solid var(--color-border); border-radius:4px;" /></td><td><input type="number" value="8" style="width:55px; padding:4px; border:1px solid var(--color-border); border-radius:4px;" /></td><td><strong>25 / 30</strong></td></tr>
+              <tr><td>21BBA042</td><td>Rahul Sharma</td><td><input type="number" value="19" style="width:55px; padding:4px; border:1px solid var(--color-border); border-radius:4px;" /></td><td><input type="number" value="9" style="width:55px; padding:4px; border:1px solid var(--color-border); border-radius:4px;" /></td><td><strong>28 / 30</strong></td></tr>
+            </tbody>
+          </table>
+        `;
+      } else if (tabId === 'fac_roster') {
+        mainView.innerHTML = `
+          <div class="erp-view-header">
+            <h4>BBA Batch 2024-27 Student Roster (Section A)</h4>
+            <button class="btn-syllabus" style="width:auto; padding:0.4rem 0.8rem;" onclick="exportBatchRoster()"><i class="fas fa-file-csv"></i> Export Roster CSV</button>
+          </div>
+          <div style="margin-bottom:1rem; display:flex; gap:1rem; flex-wrap:wrap;">
+            <input type="text" id="rosterSearchInput" placeholder="Filter student name or roll..." oninput="filterRoster(this.value)" style="padding:0.45rem 0.75rem; border:1px solid var(--color-border); border-radius:4px; font-size:0.85rem; width:260px;" />
+            <span style="font-size:0.85rem; color:#64748b; align-self:center;">Total Enrolled: 60 Students</span>
+          </div>
+          <table class="erp-table" id="rosterTable">
+            <thead>
+              <tr><th>Roll Number</th><th>Student Name</th><th>Program & Sem</th><th>Category</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>21BBA001</strong></td><td>Aakash Verma</td><td>BBA Sem IV (Sec A)</td><td>Regular Merit</td><td><span class="status-badge paid">Active</span></td></tr>
+              <tr><td><strong>21BBA002</strong></td><td>Ananya Srivastava</td><td>BBA Sem IV (Sec A)</td><td>Jyoti Foundation Scholar</td><td><span class="status-badge paid">Active</span></td></tr>
+              <tr><td><strong>21BBA003</strong></td><td>Arjun Rathore</td><td>BBA Sem IV (Sec A)</td><td>Regular Merit</td><td><span class="status-badge paid">Active</span></td></tr>
+              <tr><td><strong>21BBA014</strong></td><td>Devansh Gupta</td><td>BBA Sem IV (Sec A)</td><td>Regular Merit</td><td><span class="status-badge paid">Active</span></td></tr>
+              <tr><td><strong>21BBA028</strong></td><td>Ishita Mehra</td><td>BBA Sem IV (Sec A)</td><td>Merit Concession</td><td><span class="status-badge paid">Active</span></td></tr>
+              <tr><td><strong>21BBA042</strong></td><td>Rahul Sharma</td><td>BBA Sem IV (Sec A)</td><td>Regular Merit</td><td><span class="status-badge paid">Active</span></td></tr>
+              <tr><td><strong>21BBA055</strong></td><td>Tanvi Singhania</td><td>BBA Sem IV (Sec A)</td><td>Regular Merit</td><td><span class="status-badge paid">Active</span></td></tr>
             </tbody>
           </table>
         `;
       }
     } else if (role === 'admin') {
-      mainView.innerHTML = `
-        <div class="erp-view-header">
-          <h4>Admissions 2025-2026 Secretariat Desk</h4>
-          <span class="badge-naac">Academic Year 2025-26</span>
-        </div>
-        <div class="erp-stats-row">
-          <div class="erp-widget-card">
-            <div class="erp-widget-label">New Applications Today</div>
-            <div class="erp-widget-val" style="color:var(--color-primary);">14 Leads</div>
-            <small style="color:#64748b;">Direct merit inquiries</small>
+      if (tabId === 'adm_inquiries') {
+        mainView.innerHTML = `
+          <div class="erp-view-header">
+            <h4>Admissions Secretariat Desk • Online Inquiries</h4>
+            <span class="badge-naac"><i class="fas fa-check-circle"></i> Batch 2025-26</span>
           </div>
-          <div class="erp-widget-card">
-            <div class="erp-widget-label">BBA Seats Booked</div>
-            <div class="erp-widget-val" style="color:#15803d;">84 / 120</div>
-            <small style="color:#64748b;">70% Capacity Full</small>
+          <div class="erp-stats-row">
+            <div class="erp-widget-card">
+              <div class="erp-widget-label">New Applications Today</div>
+              <div class="erp-widget-val" style="color:var(--color-primary);">14 Leads</div>
+              <small style="color:#64748b;">Direct merit inquiries</small>
+            </div>
+            <div class="erp-widget-card">
+              <div class="erp-widget-label">BBA Seats Booked</div>
+              <div class="erp-widget-val" style="color:#15803d;">84 / 120</div>
+              <small style="color:#64748b;">70% Capacity Full</small>
+            </div>
+            <div class="erp-widget-card">
+              <div class="erp-widget-label">B.Com Seats Booked</div>
+              <div class="erp-widget-val" style="color:#15803d;">92 / 120</div>
+              <small style="color:#64748b;">76% Capacity Full</small>
+            </div>
           </div>
-          <div class="erp-widget-card">
-            <div class="erp-widget-label">B.Com Seats Booked</div>
-            <div class="erp-widget-val" style="color:#15803d;">92 / 120</div>
-            <small style="color:#64748b;">76% Capacity Full</small>
+          <h5 style="margin-top:1.5rem; font-size:1rem; color:var(--color-primary);">Recent Candidate Online Inquiries</h5>
+          <table class="erp-table">
+            <thead>
+              <tr><th>App ID</th><th>Candidate Name</th><th>Course</th><th>12th %</th><th>Contact</th><th>Action</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>IIFCCMS-7841</strong></td>
+                <td>Priya Chawla</td>
+                <td>BBA (Code 454)</td>
+                <td>88.6% (Merit)</td>
+                <td>+91 98112XXXXX</td>
+                <td><span class="status-badge paid">Document Verified</span></td>
+              </tr>
+              <tr>
+                <td><strong>IIFCCMS-7842</strong></td>
+                <td>Aman Preet Singh</td>
+                <td>B.Com (Code 472)</td>
+                <td>82.4%</td>
+                <td>+91 99531XXXXX</td>
+                <td><button class="btn-syllabus" style="width:auto; padding:0.25rem 0.6rem; font-size:0.75rem;" onclick="showToast('Admission offer sent via SMS & Email!', 'success')">Issue Offer</button></td>
+              </tr>
+              <tr>
+                <td><strong>IIFCCMS-7843</strong></td>
+                <td>Rohan Malhotra</td>
+                <td>BBA (Code 454)</td>
+                <td>79.0%</td>
+                <td>+91 98710XXXXX</td>
+                <td><button class="btn-syllabus" style="width:auto; padding:0.25rem 0.6rem; font-size:0.75rem;" onclick="showToast('Candidate contacted for counseling session.', 'success')">Schedule Counseling</button></td>
+              </tr>
+            </tbody>
+          </table>
+        `;
+      } else if (tabId === 'adm_notices') {
+        mainView.innerHTML = `
+          <div class="erp-view-header">
+            <h4>Publish Official Campus Notice / Circular</h4>
+            <span class="badge-naac"><i class="fas fa-bullhorn"></i> Live Notice Board Sync</span>
           </div>
-        </div>
-        <h5 style="margin-top:1.5rem; font-size:1rem; color:var(--color-primary);">Recent Candidate Online Inquiries</h5>
-        <table class="erp-table">
-          <thead>
-            <tr><th>App ID</th><th>Candidate Name</th><th>Course</th><th>12th %</th><th>Contact</th><th>Action</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>IIFCCMS-7841</strong></td>
-              <td>Priya Chawla</td>
-              <td>BBA (Code 454)</td>
-              <td>88.6% (Merit)</td>
-              <td>+91 98112XXXXX</td>
-              <td><span class="status-badge paid">Document Verified</span></td>
-            </tr>
-            <tr>
-              <td><strong>IIFCCMS-7842</strong></td>
-              <td>Aman Preet Singh</td>
-              <td>B.Com (Code 472)</td>
-              <td>82.4%</td>
-              <td>+91 99531XXXXX</td>
-              <td><button class="btn-syllabus" style="width:auto; padding:0.2rem 0.5rem; font-size:0.75rem;" onclick="showToast('Admission offer sent via SMS & Email!', 'success')">Issue Offer</button></td>
-            </tr>
-            <tr>
-              <td><strong>IIFCCMS-7843</strong></td>
-              <td>Rohan Malhotra</td>
-              <td>BBA (Code 454)</td>
-              <td>79.0%</td>
-              <td>+91 98710XXXXX</td>
-              <td><button class="btn-syllabus" style="width:auto; padding:0.2rem 0.5rem; font-size:0.75rem;" onclick="showToast('Candidate contacted for counseling session.', 'success')">Schedule Counseling</button></td>
-            </tr>
-          </tbody>
-        </table>
-      `;
+          <div style="background:#f8fafc; border:1px solid var(--color-border); border-radius:8px; padding:1.5rem; max-width:650px;">
+            <form onsubmit="publishNoticeFromAdmin(event)">
+              <div style="margin-bottom:1rem;">
+                <label style="display:block; font-size:0.82rem; font-weight:700; color:var(--color-primary); margin-bottom:4px;">Notice Title *</label>
+                <input type="text" id="admNoticeTitle" placeholder="e.g. CCSU Special Examination Form Window" required style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:4px; font-size:0.85rem;" />
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+                <div>
+                  <label style="display:block; font-size:0.82rem; font-weight:700; color:var(--color-primary); margin-bottom:4px;">Category *</label>
+                  <select id="admNoticeCat" style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:4px; font-size:0.85rem;">
+                    <option value="CCSU Circular">CCSU Circular</option>
+                    <option value="Academic">Academic Notice</option>
+                    <option value="Admissions">Admissions</option>
+                    <option value="Campus Event">Campus Event</option>
+                  </select>
+                </div>
+                <div>
+                  <label style="display:block; font-size:0.82rem; font-weight:700; color:var(--color-primary); margin-bottom:4px;">Target Audience</label>
+                  <select style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:4px; font-size:0.85rem;">
+                    <option value="All">All Students & Faculty</option>
+                    <option value="BBA">BBA Department</option>
+                    <option value="BCom">B.Com Department</option>
+                  </select>
+                </div>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <button type="submit" class="btn-primary" style="padding:0.6rem 1.25rem;"><i class="fas fa-paper-plane"></i> Publish to Notice Board</button>
+                <span style="font-size:0.75rem; color:#64748b;">Notice will appear immediately on public board.</span>
+              </div>
+            </form>
+          </div>
+        `;
+      } else if (tabId === 'adm_stats') {
+        mainView.innerHTML = `
+          <div class="erp-view-header">
+            <h4>Institutional Metrics & Affiliation Benchmarks</h4>
+            <a href="https://www.ccsuniversity.ac.in" target="_blank" rel="noopener noreferrer" class="btn-syllabus" style="width:auto; padding:0.4rem 0.8rem; font-size:0.8rem;"><i class="fas fa-university"></i> CCSU Main Portal</a>
+          </div>
+          <div class="erp-stats-row">
+            <div class="erp-widget-card">
+              <div class="erp-widget-label">BBA (Code 454)</div>
+              <div class="erp-widget-val" style="color:var(--color-primary);">84 / 120</div>
+              <div class="erp-progress-bar"><div class="erp-progress-fill" style="width:70%;"></div></div>
+              <small style="color:#64748b; margin-top:4px; display:block;">70% Admitted (Merit Seats)</small>
+            </div>
+            <div class="erp-widget-card">
+              <div class="erp-widget-label">B.Com (Code 472)</div>
+              <div class="erp-widget-val" style="color:var(--color-primary);">92 / 120</div>
+              <div class="erp-progress-bar"><div class="erp-progress-fill" style="width:76%;"></div></div>
+              <small style="color:#64748b; margin-top:4px; display:block;">76% Admitted (Merit Seats)</small>
+            </div>
+            <div class="erp-widget-card">
+              <div class="erp-widget-label">B.A. (Code 478)</div>
+              <div class="erp-widget-val" style="color:var(--color-primary);">41 / 60</div>
+              <div class="erp-progress-bar"><div class="erp-progress-fill" style="width:68%;"></div></div>
+              <small style="color:#64748b; margin-top:4px; display:block;">68% Admitted</small>
+            </div>
+          </div>
+          <div style="background:#ffffff; border:1px solid var(--color-border); border-radius:8px; padding:1.25rem; font-size:0.85rem; margin-top:1rem;">
+            <h5 style="color:var(--color-primary); margin-bottom:0.5rem; font-size:0.95rem;">Affiliation & Compliance Checklist</h5>
+            <ul style="list-style:none; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; color:#475569;">
+              <li><i class="fas fa-check-circle" style="color:var(--color-success); margin-right:6px;"></i> CCS University Meerut Affiliation Renewed</li>
+              <li><i class="fas fa-check-circle" style="color:var(--color-success); margin-right:6px;"></i> UGC Mandatory Disclosures Up to Date</li>
+              <li><i class="fas fa-check-circle" style="color:var(--color-success); margin-right:6px;"></i> NEP 2020 Semester Course Mapping Approved</li>
+              <li><i class="fas fa-check-circle" style="color:var(--color-success); margin-right:6px;"></i> Central Library RFID Catalogued (55,000+ volumes)</li>
+            </ul>
+          </div>
+        `;
+      }
     }
+  }
   }
 
   // Bind role switcher buttons
@@ -835,6 +1012,129 @@ window.toggleAtt = function(btn) {
     btn.style.background = '#dcfce7';
     btn.style.color = '#15803d';
   }
+};
+
+/* Helper to download genuine official fee receipt */
+window.downloadReceipt = function(receiptNo, term, amount) {
+  const receiptHtml = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Fee Receipt - ${receiptNo} | IIFCCMS</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; padding: 40px; color: #1e293b; max-width: 700px; margin: auto; }
+    .card { border: 2px solid #0b2545; border-radius: 8px; padding: 30px; }
+    .header { text-align: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px; margin-bottom: 20px; }
+    h2 { color: #0b2545; margin: 0 0 5px 0; font-size: 20px; }
+    .tag { display: inline-block; background: #dcfce7; color: #15803d; font-weight: bold; padding: 4px 10px; border-radius: 4px; font-size: 12px; margin-top: 8px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 14px; margin-bottom: 20px; }
+    .total-box { background: #f8fafc; border-top: 2px solid #0b2545; padding: 15px; display: flex; justify-content: space-between; font-weight: bold; font-size: 16px; margin-top: 20px; }
+    .footer { text-align: center; font-size: 11px; color: #64748b; margin-top: 25px; border-top: 1px solid #e2e8f0; padding-top: 10px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <h2>IIF COLLEGE OF COMMERCE & MANAGEMENT STUDIES</h2>
+      <p style="margin:4px 0 0 0; font-size:12px; color:#64748b;">Plot 45A, Knowledge Park III, Greater Noida | Affiliated to CCSU Meerut</p>
+      <span class="tag">OFFICIAL TUITION FEE RECEIPT</span>
+    </div>
+    <div class="grid">
+      <div><strong>Receipt Number:</strong> ${receiptNo}</div>
+      <div><strong>Payment Date:</strong> ${new Date().toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' })}</div>
+      <div><strong>Student Name:</strong> Rahul Sharma</div>
+      <div><strong>Roll Number:</strong> 21BBA042</div>
+      <div><strong>Course:</strong> BBA (Semester IV)</div>
+      <div><strong>Academic Term:</strong> ${term}</div>
+      <div><strong>Payment Mode:</strong> Online Net Banking</div>
+      <div><strong>Status:</strong> Success / Verified</div>
+    </div>
+    <div class="total-box">
+      <span>Net Amount Received:</span>
+      <span style="color:#0b2545;">${amount}</span>
+    </div>
+    <div class="footer">
+      This is an authentic system-generated digital fee voucher issued under the authority of Jyoti Foundation & IIFCCMS Accounts Department.
+    </div>
+  </div>
+</body>
+</html>`;
+  const blob = new Blob([receiptHtml], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `IIFCCMS_Fee_Receipt_${receiptNo.replace(/\//g, '_')}.html`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast(`Official Receipt ${receiptNo} downloaded successfully!`, 'success');
+};
+
+/* Helper for Faculty Roster filtering */
+window.filterRoster = function(query) {
+  const q = query.toLowerCase().trim();
+  const rows = document.querySelectorAll('#rosterTable tbody tr');
+  rows.forEach(r => {
+    const text = r.innerText.toLowerCase();
+    r.style.display = text.includes(q) ? '' : 'none';
+  });
+};
+
+/* Helper to export Roster */
+window.exportBatchRoster = function() {
+  const csvContent = "data:text/csv;charset=utf-8,Roll Number,Student Name,Program,Category,Status\n" +
+    "21BBA001,Aakash Verma,BBA Sem IV,Regular Merit,Active\n" +
+    "21BBA002,Ananya Srivastava,BBA Sem IV,Jyoti Foundation Scholar,Active\n" +
+    "21BBA003,Arjun Rathore,BBA Sem IV,Regular Merit,Active\n" +
+    "21BBA014,Devansh Gupta,BBA Sem IV,Regular Merit,Active\n" +
+    "21BBA028,Ishita Mehra,BBA Sem IV,Merit Concession,Active\n" +
+    "21BBA042,Rahul Sharma,BBA Sem IV,Regular Merit,Active\n" +
+    "21BBA055,Tanvi Singhania,BBA Sem IV,Regular Merit,Active\n";
+  const encodedUri = encodeURI(csvContent);
+  const link = document.createElement("a");
+  link.setAttribute("href", encodedUri);
+  link.setAttribute("download", "IIFCCMS_BBA_Batch_Roster.csv");
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  showToast('Batch Roster CSV exported successfully!', 'success');
+};
+
+/* Helper for Admin to publish notice dynamically to official board */
+window.publishNoticeFromAdmin = function(e) {
+  if (e) e.preventDefault();
+  const titleInput = document.getElementById('admNoticeTitle');
+  const catInput = document.getElementById('admNoticeCat');
+  if (!titleInput || !titleInput.value.trim()) {
+    showToast('Please enter a circular title.', 'warning');
+    return;
+  }
+  const title = titleInput.value.trim();
+  const cat = catInput ? catInput.value : 'CCSU Circular';
+
+  // Prepend to Notice Board in #notices section
+  const noticeList = document.querySelector('.notice-list');
+  if (noticeList) {
+    const li = document.createElement('li');
+    li.className = 'notice-item';
+    const now = new Date();
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = now.toLocaleString('en-US', { month: 'short' });
+    li.innerHTML = `
+      <div class="notice-date-box" style="background:var(--color-primary); color:var(--color-secondary);">
+        <span class="notice-day">${day}</span>
+        <span class="notice-month">${month}</span>
+      </div>
+      <div class="notice-info">
+        <h4><span class="badge-new" style="margin-right:6px;">${cat}</span> ${title}</h4>
+        <p>Published officially by Academic Secretariat on ${now.toLocaleDateString('en-IN')}. Verify details with CCSU Meerut.</p>
+      </div>
+    `;
+    noticeList.prepend(li);
+  }
+  showToast(`Notice "${title}" published and added to Official Notice Board!`, 'success');
+  titleInput.value = '';
 };
 
 /* ==========================================================================
@@ -1004,8 +1304,8 @@ window.openSyllabusModal = function(programKey) {
     </div>
 
     <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #e2e8f0; padding-top:1rem;">
-      <button class="btn-primary" onclick="showToast('Official CCSU Syllabus PDF Downloaded!', 'success')"><i class="fas fa-file-download"></i> Download Full Scheme PDF</button>
-      <button class="btn-syllabus" style="width:auto; padding:0.6rem 1rem;" onclick="document.getElementById('syllabusModal').classList.remove('active'); document.body.style.overflow='auto';">Close</button>
+      <button class="btn-primary" onclick="downloadSyllabusScheme('${programKey}')"><i class="fas fa-file-download"></i> Download Scheme (HTML/PDF)</button>
+      <button class="btn-syllabus" style="width:auto; padding:0.6rem 1rem;" onclick="closeSyllabusModal()">Close</button>
     </div>
   `;
 
