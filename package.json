@@ -1,0 +1,20 @@
+{
+  "name": "iifccms-college-portal",
+  "version": "1.0.0",
+  "description": "IIF College of Commerce and Management Studies (IIFCCMS) - Modern Official Web Portal & Campus ERP",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx -y serve -l 3000 .",
+    "dev": "npx -y serve -l 3000 ."
+  },
+  "keywords": [
+    "iifccms",
+    "college-portal",
+    "bba",
+    "bcom",
+    "ccsu",
+    "greater-noida"
+  ],
+  "author": "IIFCCMS Web Development Cell",
+  "license": "ISC"
+}
