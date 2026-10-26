@@ -460,11 +460,14 @@ function initNoticeBoard() {
         item.style.display = 'flex';
       } else {
         item.style.display = 'none';
+      }
+    });
+  });
 }
 
 /* ==========================================================================
    7. ADMISSION APPLICATION MULTI-STEP MODAL
-   ========================================================================== */================================= */
+   ========================================================================== */
 function initAdmissionModal() {
   const modal = document.getElementById('admissionModal');
   const openBtns = document.querySelectorAll('.trigger-admission-modal');
