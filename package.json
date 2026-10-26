@@ -1,7 +1,7 @@
 {
   "name": "iifccms-college-portal",
   "version": "1.0.0",
-  "description": "IIF College of Commerce and Management Studies (IIFCCMS) - Modern Official Web Portal & Campus ERP",
+  "description": "IIF College of Commerce and Management Studies (IIFCCMS) - Modern Official Institutional Web Portal",
   "main": "index.html",
   "scripts": {
     "start": "npx -y serve -l 3000 .",
