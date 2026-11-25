@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { 
   BookOpen, Users, Clock, CheckCircle2, FileText, 
-  ArrowRight, X, Download, Award 
+  ArrowRight, X, Download, Award, ExternalLink 
 } from 'lucide-react';
+
+const GOOGLE_REGISTRATION_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSddLOq1Hb3lHuFFxbGe1TQpZ_zY9qnxqIp9Nm8sEpegMb_3oQ/viewform";
 
 export default function CoursesSection({ onApplyWithCourse }) {
   const { courses } = useApp();
@@ -91,12 +93,15 @@ export default function CoursesSection({ onApplyWithCourse }) {
                   >
                     <FileText size={15} /> NEP Syllabus
                   </button>
-                  <button 
-                    onClick={() => scrollToAdmissions(course)}
+                  <a 
+                    href={GOOGLE_REGISTRATION_FORM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="btn-apply-course"
+                    style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
                   >
                     Apply Online <ArrowRight size={15} />
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -178,16 +183,16 @@ export default function CoursesSection({ onApplyWithCourse }) {
               >
                 <Download size={15} /> Download PDF Scheme
               </button>
-              <button 
-                onClick={() => {
-                  const c = selectedCourseForSyllabus;
-                  setSelectedCourseForSyllabus(null);
-                  scrollToAdmissions(c);
-                }}
+              <a 
+                href={GOOGLE_REGISTRATION_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setSelectedCourseForSyllabus(null)}
                 className="btn-apply-course"
+                style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
               >
-                Proceed to Apply
-              </button>
+                Proceed to Apply <ArrowRight size={15} />
+              </a>
             </div>
           </div>
         </div>

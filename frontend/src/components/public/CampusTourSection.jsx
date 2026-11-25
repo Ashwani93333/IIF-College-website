@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
   Building2, CheckCircle2, Monitor, BookOpen, 
-  Coffee, ShieldCheck, Bus, Play, Sparkles, ExternalLink 
+  Coffee, ShieldCheck, Bus, Sparkles, ExternalLink, ArrowRight 
 } from 'lucide-react';
 
 export default function CampusTourSection() {
-  const [isPlaying, setIsPlaying] = useState(false);
-
   const campusFeatures = [
     {
       title: "100% Air-Conditioned Smart Lecture Rooms",
@@ -49,7 +47,7 @@ export default function CampusTourSection() {
           </p>
         </div>
 
-        {/* 2-Column Split: Left (Point-wise details) | Right (YouTube Video Player) */}
+        {/* 2-Column Split: Left (Point-wise details) | Right (YouTube Video Embed) */}
         <div className="campus-tour-split-grid">
           {/* Left Column: Point-Wise Campus Facilities */}
           <div className="campus-details-col">
@@ -74,16 +72,16 @@ export default function CampusTourSection() {
 
             <div className="campus-cta-box">
               <a 
-                href="#admissions" 
+                href="/admissions" 
                 className="btn-primary-gold" 
                 style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.65rem 1.4rem' }}
               >
-                Schedule an In-Person Campus Visit
+                Schedule an In-Person Campus Visit <ArrowRight size={15} />
               </a>
             </div>
           </div>
 
-          {/* Right Column: YouTube Video Embed Player */}
+          {/* Right Column: Compact Direct YouTube Video Player */}
           <div className="campus-video-col">
             <div className="video-card-container">
               <div className="video-badge-header">
@@ -91,41 +89,16 @@ export default function CampusTourSection() {
                 <span>OFFICIAL CAMPUS VIDEO WALKTHROUGH</span>
               </div>
 
-              <div className="video-player-frame">
-                {!isPlaying ? (
-                  <div className="video-poster-wrapper" onClick={() => setIsPlaying(true)}>
-                    <img 
-                      src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1000&q=80" 
-                      alt="IIF CCMS Campus Walkthrough" 
-                      className="video-poster-img"
-                    />
-                    <div className="video-poster-overlay">
-                      <div className="play-btn-circle" title="Play Campus Tour Video">
-                        <Play size={32} fill="#ffffff" color="#ffffff" style={{ marginLeft: '4px' }} />
-                      </div>
-                      <div className="poster-caption-tag">
-                        <span>Click to Play Campus 3D Walkthrough</span>
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <iframe 
-                    className="youtube-embedded-iframe"
-                    src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0&modestbranding=1" 
-                    title="IIF CCMS Campus Tour Video"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                )}
-              </div>
-
-              <div className="video-card-meta">
-                <div className="meta-info">
-                  <strong>Location:</strong> Plot 45A, Knowledge Park III, Greater Noida
-                </div>
-                <div className="meta-sub">
-                  Full 3D Campus Infrastructure, Lecture Complexes &amp; Central Library
-                </div>
+              {/* Direct Compact 16:9 YouTube Player fitted tightly to video */}
+              <div className="video-player-frame compact-player-frame">
+                <iframe 
+                  className="youtube-embedded-iframe"
+                  src="https://www.youtube.com/embed/6N7r5WlMhqk?rel=0&modestbranding=1" 
+                  title="IIF CCMS Campus Tour Video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  loading="lazy"
+                ></iframe>
               </div>
             </div>
           </div>

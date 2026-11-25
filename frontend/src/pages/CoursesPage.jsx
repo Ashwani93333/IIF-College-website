@@ -106,13 +106,15 @@ export default function CoursesPage() {
               <div className="sidebar-contact-pill">
                 <div className="pill-title">Admissions 2026-27</div>
                 <p>Register online via official digital desk:</p>
-                <button 
-                  onClick={() => navigate('/admissions?tab=apply')} 
+                <a 
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSddLOq1Hb3lHuFFxbGe1TQpZ_zY9qnxqIp9Nm8sEpegMb_3oQ/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-primary-gold" 
-                  style={{ width: '100%', marginTop: '0.5rem', fontSize: '0.82rem', padding: '0.5rem' }}
+                  style={{ width: '100%', marginTop: '0.5rem', fontSize: '0.82rem', padding: '0.5rem', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}
                 >
                   Apply Online Now
-                </button>
+                </a>
               </div>
             </div>
           </aside>

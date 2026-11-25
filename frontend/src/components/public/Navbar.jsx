@@ -4,8 +4,11 @@ import { useApp } from '../../context/AppContext';
 import { useAuth } from '../../context/AuthContext';
 import { 
   Phone, Mail, Award, BookOpen, ExternalLink, Menu, X, 
-  Lock, User, MessageCircle, ChevronRight, ChevronDown, Share2
+  Lock, User, MessageCircle, ChevronRight, ChevronDown, Share2,
+  Sparkles, CheckCircle2, Building2, Send, FileText, ArrowRight
 } from 'lucide-react';
+
+export const GOOGLE_REGISTRATION_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSddLOq1Hb3lHuFFxbGe1TQpZ_zY9qnxqIp9Nm8sEpegMb_3oQ/viewform";
 
 export default function Navbar() {
   const { settings } = useApp();
@@ -32,9 +35,13 @@ export default function Navbar() {
         { label: "History", tab: "history" },
         { label: "Vision & Mission", tab: "vision-mission" },
         { label: "Chairman & Founder", tab: "chairman" },
+        { label: "Board of Governors", tab: "board-of-governors" },
         { label: "Managing Committee", tab: "managing-committee" },
         { label: "Advisory Council", tab: "advisory-council" },
         { label: "Principal", tab: "principal" },
+        { label: "Approvals & Affiliations", tab: "approvals-affiliations" },
+        { label: "Public Disclosure", tab: "public-disclosure" },
+        { label: "Social Initiatives", tab: "social-initiatives" },
         { label: "Councils & Committees", tab: "committees" },
         { label: "Contact Us", tab: "contact" }
       ]
@@ -56,7 +63,7 @@ export default function Navbar() {
         { label: "Admission Notice", tab: "notice" },
         { label: "Information Brochure", tab: "brochure" },
         { label: "IIFCCMS Presentation", tab: "presentation" },
-        { label: "Application Form", tab: "apply" },
+        { label: "Apply Online (Google Form)", externalUrl: GOOGLE_REGISTRATION_FORM_URL },
         { label: "Fees", tab: "fees" },
         { label: "How to pay fee ?", tab: "fee-payment" },
         { label: "Document Required", tab: "documents" },
@@ -123,11 +130,9 @@ export default function Navbar() {
               COLLEGE CODE - 472
             </span>
             <span className="divider">|</span>
-            <Link to="/about?tab=contact" className="glb-top-link">Alumni</Link>
-            <span className="divider">|</span>
             <Link to="/latest-updates?tab=student-activities" className="glb-top-link">Student Corner</Link>
             <span className="divider">|</span>
-            <Link to="/about?tab=committees" className="glb-top-link">Public Disclosure</Link>
+            <Link to="/about?tab=public-disclosure" className="glb-top-link">Public Disclosure</Link>
             <span className="divider">|</span>
             <Link to="/facilities?tab=campus-tour" className="glb-top-link">Campus Tour</Link>
             <span className="divider">|</span>
@@ -186,13 +191,24 @@ export default function Navbar() {
                 <span className="main">NAAC A++ ACCREDITED</span>
               </div>
             </div>
-            <div className="glb-badge-item">
-              <div className="badge-icon" style={{ background: '#fef3c7', color: '#b45309' }}><BookOpen size={18} /></div>
-              <div className="badge-text">
-                <span className="sup">Knowledge Park III</span>
-                <span className="main">6.47-ACRE CAMPUS</span>
+
+            {/* Direct Google Form Link: Replaced popup modal with direct redirect to official registration form */}
+            <a 
+              href={GOOGLE_REGISTRATION_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glb-admission-highlight-badge"
+              title="Click to Apply Online via Official Google Form"
+            >
+              <div className="admission-pulse-dot" />
+              <div className="badge-icon admission-badge-icon">
+                <Sparkles size={18} />
               </div>
-            </div>
+              <div className="badge-text">
+                <span className="sup-highlight">SESSION 2026-27</span>
+                <span className="main-highlight">ADMISSION OPEN</span>
+              </div>
+            </a>
           </div>
         </div>
       </div>
@@ -200,13 +216,25 @@ export default function Navbar() {
       {/* 3. Primary Navigation Bar with Dynamic Hover Dropdowns */}
       <nav className="glb-navbar">
         <div className="container glb-nav-inner">
-          <button 
-            className="mobile-menu-toggle" 
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle navigation menu"
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <button 
+              className="mobile-menu-toggle" 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle navigation menu"
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+
+            {/* Mobile Admission Open Highlight Link - Direct to Google Form */}
+            <a 
+              href={GOOGLE_REGISTRATION_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glb-mobile-admission-pill"
+            >
+              <Sparkles size={13} /> Admission Open
+            </a>
+          </div>
 
           <ul className={`glb-nav-menu ${mobileMenuOpen ? 'open' : ''}`}>
             {menuConfig.map((item, idx) => (
@@ -228,16 +256,29 @@ export default function Navbar() {
                 <ul className={`nav-dropdown-menu ${activeDropdown === item.label ? 'show' : ''}`}>
                   {item.items.map((sub, sIdx) => (
                     <li key={sIdx} className="nav-dropdown-item">
-                      <button 
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          navigateTo(item.path, sub.tab);
-                        }}
-                        className="dropdown-link-btn"
-                      >
-                        <span className="sub-label">{sub.label}</span>
-                        <ChevronRight size={13} className="sub-arrow" />
-                      </button>
+                      {sub.externalUrl ? (
+                        <a 
+                          href={sub.externalUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="dropdown-link-btn"
+                          style={{ textDecoration: 'none' }}
+                        >
+                          <span className="sub-label">{sub.label}</span>
+                          <ExternalLink size={13} className="sub-arrow" />
+                        </a>
+                      ) : (
+                        <button 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigateTo(item.path, sub.tab);
+                          }}
+                          className="dropdown-link-btn"
+                        >
+                          <span className="sub-label">{sub.label}</span>
+                          <ChevronRight size={13} className="sub-arrow" />
+                        </button>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -246,9 +287,17 @@ export default function Navbar() {
           </ul>
 
           <div className="glb-nav-actions">
-            <button onClick={() => navigateTo('/admissions', 'apply')} className="glb-btn-apply-now">
+            {/* Direct Google Form Link for APPLY ONLINE 2026-27 */}
+            <a 
+              href={GOOGLE_REGISTRATION_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glb-btn-apply-now"
+              style={{ textDecoration: 'none' }}
+            >
               APPLY ONLINE 2026-27
-            </button>
+            </a>
+
             {isAuthenticated ? (
               <Link to="/admin/dashboard" className="glb-btn-admin-link" title="Open Admin Panel">
                 <User size={14} /> Admin
@@ -262,11 +311,18 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* 4. Sticky Vertical Right Side Tab */}
-      <div className="sticky-vertical-enquiry-tab" onClick={() => navigateTo('/admissions', 'apply')}>
+      {/* 4. Sticky Vertical Right Side Tab - Direct to Google Form */}
+      <a 
+        href={GOOGLE_REGISTRATION_FORM_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="sticky-vertical-enquiry-tab"
+        style={{ textDecoration: 'none' }}
+        title="Open Online Registration Google Form"
+      >
         <span>ADMISSION DESK</span>
         <ChevronRight size={14} style={{ display: 'inline', marginLeft: '2px' }} />
-      </div>
+      </a>
 
       {/* 5. Floating WhatsApp Button (Bottom-Left) */}
       <a 

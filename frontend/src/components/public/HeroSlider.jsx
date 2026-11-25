@@ -1,12 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useApp } from '../../context/AppContext';
+import { useNavigate } from 'react-router-dom';
 import { 
-  ChevronLeft, ChevronRight, ArrowRight, Award, 
-  GraduationCap, Building2, Sparkles, CheckCircle2 
+  ChevronLeft, ChevronRight, ArrowRight, ExternalLink, 
+  Sparkles, Compass, GraduationCap 
 } from 'lucide-react';
 
-export default function HeroSlider({ onOpenCourses }) {
-  const { courses, settings } = useApp();
+import banner1 from '../../assets/front-banners/IIF1.jpeg';
+import banner2 from '../../assets/front-banners/IIF2.jpg';
+import banner3 from '../../assets/front-banners/IIF3.jpg';
+import banner4 from '../../assets/front-banners/IIF4.jpg';
+
+export default function HeroSlider() {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const touchStartX = useRef(null);
@@ -14,71 +19,27 @@ export default function HeroSlider({ onOpenCourses }) {
   const slides = [
     {
       id: 1,
-      badge: "IIFians BORN TO LEAD • ESTD. 1987",
-      titlePrefix: "IIFian at",
-      titleMain: "GLOBAL INVESTMENT BANKING MISSION",
-      alumniName: "KUSHAGRA SRIVASTAVA",
-      alumniRole: "Senior Financial Consultant",
-      alumniCompany: "DHR International, Toronto (Canada)",
-      alumniProgram: "BBA Alumnus (College Code: 454)",
-      desc: "Empowering visionary corporate leaders and finance consultants with 35+ years of distinguished institutional legacy in Knowledge Park III, Greater Noida.",
-      bgImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1920&q=80",
-      ctaPrimaryText: "Apply for Admission 2026-27",
-      ctaPrimaryAction: "admissions",
-      ctaSecondaryText: "Explore Courses & Syllabi",
-      ctaSecondaryAction: "programs",
-      accentTag: "GLOBAL PLACEMENT EXCELLENCE"
+      bgImage: banner1,
+      tag: "CAMPUS OVERVIEW",
+      caption: "IIF College of Commerce & Management Studies • Greater Noida (Code: 472)"
     },
     {
       id: 2,
-      badge: "MERIT RECOGNITION • INSTITUTIONAL SCHOLARSHIPS",
-      titlePrefix: "Up to",
-      titleMain: "25% TUITION SCHOLARSHIP SLABS",
-      alumniName: "MERIT SCHOLARSHIP SCHEME",
-      alumniRole: "Tuition Concession for 85%+ Board Achievers",
-      alumniCompany: "Indian Institute of Finance Academic Secretariat (Estd. 1987)",
-      alumniProgram: "Applicable for BBA, B.Com, and B.A.",
-      desc: "Transparent academic fee structure with zero capitation charges. Direct merit assistance recognizing high achievers in CBSE, ICSE, and State boards.",
-      bgImage: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80",
-      ctaPrimaryText: "Calculate Your Scholarship",
-      ctaPrimaryAction: "fee-calculator",
-      ctaSecondaryText: "View Fee Breakdown",
-      ctaSecondaryAction: "programs",
-      accentTag: "TRANSPARENT EDUCATION"
+      bgImage: banner2,
+      tag: "SMART INFRASTRUCTURE",
+      caption: "Expansive 6.47-Acre Lush Green Campus & Modern Academic Blocks"
     },
     {
       id: 3,
-      badge: "KNOWLEDGE PARK III • GREATER NOIDA",
-      titlePrefix: "Expansive",
-      titleMain: "6.47-ACRE WORLD CLASS CAMPUS",
-      alumniName: "100% AIR-CONDITIONED SMART LECTURE THEATRES",
-      alumniRole: "IIF Central Library with 55,000+ Volumes",
-      alumniCompany: "High-Speed Gigabit Computer & Accounting Labs",
-      alumniProgram: "Lush Green Institutional Corridor in Delhi NCR",
-      desc: "State-of-the-art amphitheatre classrooms, high-speed fiber connectivity, DELNET research databases, and sports arenas built for holistic excellence.",
-      bgImage: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1920&q=80",
-      ctaPrimaryText: "Campus Infrastructure Tour",
-      ctaPrimaryAction: "gallery",
-      ctaSecondaryText: "Contact Secretariat",
-      ctaSecondaryAction: "contact",
-      accentTag: "MODERN INFRASTRUCTURE"
+      bgImage: banner3,
+      tag: "ACADEMIC OFFERINGS",
+      caption: "Undergraduate Degree Programs • B.Com | B.B.A | B.A (NEP 2020)"
     },
     {
       id: 4,
-      badge: "CCSU MEERUT AFFILIATED • NAAC A++ GRADE",
-      titlePrefix: "NEP 2020 Aligned",
-      titleMain: "UNDERGRADUATE DEGREE EXCELLENCE",
-      alumniName: "BBA (454) | B.COM (472) | B.A. (478)",
-      alumniRole: "Corporate Internship & Skill Development Curriculum",
-      alumniCompany: "Direct Chaudhary Charan Singh University Degree",
-      alumniProgram: "Regular Full-Time 3-Year Degree Programs",
-      desc: "Rigorous commerce and management fundamentals integrated with modern business analytics, live internships, and expert faculty mentorship.",
-      bgImage: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1920&q=80",
-      ctaPrimaryText: "Apply Online Now",
-      ctaPrimaryAction: "admissions",
-      ctaSecondaryText: "Download Course Scheme",
-      ctaSecondaryAction: "programs",
-      accentTag: "ACADEMIC PRESTIGE"
+      bgImage: banner4,
+      tag: "CAREER LAUNCHPAD",
+      caption: "Corporate Resource Centre & Marquee Industry Recruitment Partnerships"
     }
   ];
 
@@ -99,12 +60,6 @@ export default function HeroSlider({ onOpenCourses }) {
     setCurrentSlide(prev => (prev + 1) % slides.length);
   };
 
-  const scrollTo = (id) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  // Touch gesture support for mobile swiping
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
   };
@@ -113,104 +68,106 @@ export default function HeroSlider({ onOpenCourses }) {
     if (touchStartX.current === null) return;
     const touchEndX = e.changedTouches[0].clientX;
     const diff = touchStartX.current - touchEndX;
-    if (diff > 50) {
-      handleNext();
-    } else if (diff < -50) {
-      handlePrev();
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) handleNext();
+      else handlePrev();
     }
     touchStartX.current = null;
   };
 
   return (
     <div 
-      className="hero-fullscreen-slider"
+      className="hero-fullscreen-slider clear-view"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       id="hero"
     >
-      {/* Slides Container */}
+      {/* Slides Container - 100% Clear Pictures Without Heavy Text Overlays */}
       <div className="slider-track" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
-        {slides.map((slide, index) => (
-          <div key={slide.id} className="slider-slide" style={{ backgroundImage: `url(${slide.bgImage})` }}>
-            <div className="slider-gradient-overlay" />
-            
-            <div className="container slider-content-container">
-              <div className="slider-text-wrapper">
-                {/* Top Badge */}
-                <div className="slider-pre-badge">
-                  <Sparkles size={14} />
-                  <span>{slide.badge}</span>
-                </div>
-
-                {/* Big Heading */}
-                <h2 className="slider-heading">
-                  <span className="prefix-text">{slide.titlePrefix} </span>
-                  <span className="main-highlight">{slide.titleMain}</span>
-                </h2>
-
-                {/* Alumni / Feature Card Spotlight (Matching Screenshot style) */}
-                <div className="slider-spotlight-card">
-                  <div className="spotlight-header">
-                    <span className="spotlight-tag">{slide.accentTag}</span>
-                    <span className="spotlight-program">{slide.alumniProgram}</span>
-                  </div>
-                  <h3 className="spotlight-name">{slide.alumniName}</h3>
-                  <div className="spotlight-role">{slide.alumniRole}</div>
-                  <div className="spotlight-company">{slide.alumniCompany}</div>
-                </div>
-
-                <p className="slider-lead-desc">{slide.desc}</p>
-
-                {/* Navigation CTA Buttons */}
-                <div className="slider-cta-row">
-                  <button 
-                    onClick={() => scrollTo(slide.ctaPrimaryAction)} 
-                    className="btn-slider-primary"
-                  >
-                    {slide.ctaPrimaryText} <ArrowRight size={18} />
-                  </button>
-                  <button 
-                    onClick={() => scrollTo(slide.ctaSecondaryAction)} 
-                    className="btn-slider-secondary"
-                  >
-                    {slide.ctaSecondaryText}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Vertical Dots Navigation (Matching Screenshot layout on Left) */}
-      <div className="slider-dots-vertical">
-        {slides.map((_, idx) => (
-          <button
-            key={idx}
-            className={`slider-dot-btn ${currentSlide === idx ? 'active' : ''}`}
-            onClick={() => setCurrentSlide(idx)}
-            aria-label={`Go to slide ${idx + 1}`}
+        {slides.map((slide) => (
+          <div 
+            key={slide.id} 
+            className="slider-slide clear-photo-slide" 
+            style={{ backgroundImage: `url(${slide.bgImage})` }}
           />
         ))}
       </div>
 
-      {/* Arrow Controls */}
+      {/* Navigation Arrows */}
       <button 
         className="slider-nav-arrow prev" 
         onClick={handlePrev}
         aria-label="Previous Slide"
       >
-        <ChevronLeft size={28} />
+        <ChevronLeft size={26} />
       </button>
       <button 
         className="slider-nav-arrow next" 
         onClick={handleNext}
         aria-label="Next Slide"
       >
-        <ChevronRight size={28} />
+        <ChevronRight size={26} />
       </button>
+
+      {/* Minimal Footer Strip with Clean Picture Caption & Redirect Links */}
+      <div className="slider-minimal-bottom-bar">
+        <div className="container slider-footer-inner">
+          {/* Left: Minimal Caption */}
+          <div className="slider-minimal-info">
+            <span className="slider-minimal-tag">
+              {slides[currentSlide].tag}
+            </span>
+            <span className="slider-minimal-divider">|</span>
+            <span className="slider-minimal-caption">
+              {slides[currentSlide].caption}
+            </span>
+          </div>
+
+          {/* Center: Slide Indicators */}
+          <div className="slider-dots-horizontal">
+            {slides.map((_, idx) => (
+              <button
+                key={idx}
+                className={`slider-dot-btn ${currentSlide === idx ? 'active' : ''}`}
+                onClick={() => setCurrentSlide(idx)}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Right: Minimal Redirect Links */}
+          <div className="slider-minimal-redirects">
+            <a 
+              href="https://docs.google.com/forms/d/e/1FAIpQLSddLOq1Hb3lHuFFxbGe1TQpZ_zY9qnxqIp9Nm8sEpegMb_3oQ/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-slider-apply"
+              style={{ textDecoration: 'none' }}
+            >
+              <Sparkles size={14} />
+              <span>Apply Online 2026-27</span>
+            </a>
+
+            <button 
+              onClick={() => navigate('/courses')}
+              className="btn-slider-link"
+            >
+              <GraduationCap size={15} />
+              <span>Courses</span>
+            </button>
+
+            <button 
+              onClick={() => navigate('/facilities?tab=campus-tour')}
+              className="btn-slider-link"
+            >
+              <Compass size={15} />
+              <span>Campus Tour</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
