@@ -2,7 +2,7 @@
 
 **Project:** Modern Official Web Portal & Digital Academic Secretariat  
 **Client Institution:** IIF College of Commerce and Management Studies (IIFCCMS)  
-**Governing Body:** Jyoti Foundation (Regd. U/S 12 of Income Tax Act 1961)  
+**Governing Body:** IIF Trust (Regd. U/S 12 of Income Tax Act 1961)  
 **Affiliated University:** Chaudhary Charan Singh University, Meerut (NAAC A++ Accredited)  
 **Campus Location:** Plot No. 45A, Knowledge Park III, Greater Noida, Delhi NCR - 201310  
 **Prepared By:** Technical Lead / Web Development Team  
@@ -21,7 +21,7 @@ The proposed web portal has been engineered from the ground up to replace legacy
 ## 2. Institutional Alignment & Core Values
 
 The portal is tailor-made to highlight IIFCCMS’s genuine pedigree and legal accreditations:
-1. **35+ Years Group Heritage**: Highlighting the legacy of the **Indian Institute of Finance (Estd. 1987)** and the charitable educational vision of **Jyoti Foundation**.
+1. **35+ Years Group Heritage**: Highlighting the legacy of the **Indian Institute of Finance (Estd. 1987)** and the charitable educational vision of the **IIF Trust**.
 2. **University Affiliation Compliance**: Prominent display of Chaudhary Charan Singh University (CCSU) Meerut degree awarding status, College Codes (**BBA: 454**, **B.Com: 472**, **B.A.: 478**), and NAAC A++ accreditation.
 3. **Regulatory Mandates**: Integrated 24x7 Anti-Ragging helpline compliance, NEP 2020 semester-aligned curricula, and transparent fee structures.
 4. **Physical Campus Prestige**: Authentic showcase of the expansive **6.47-acre campus** at Knowledge Park III, featuring 100% air-conditioned lecture theatres, high-speed IT labs, and the 55,000+ volume IIF Central Library.
@@ -36,7 +36,7 @@ The portal is tailor-made to highlight IIFCCMS’s genuine pedigree and legal ac
 - **Syllabus Modal**: Clean semester breakdown of theory vs. internal evaluation papers.
 
 ### B. Transparent Fee & Merit Scholarship Calculator
-- **Dynamic Scholarship Estimator**: Recognizes 10+2 marksheet scores to calculate tuition concessions under Jyoti Foundation merit schemes (Tier 1: 25%, Tier 2: 15%, Tier 3: 10%).
+- **Dynamic Scholarship Estimator**: Recognizes 10+2 marksheet scores to calculate tuition concessions under Institutional Merit schemes (Tier 1: 25%, Tier 2: 15%, Tier 3: 10%).
 - **Transparent Installments**: Clearly indicates semester fee splits with zero hidden capitation charges.
 
 ### C. Automated Online Admissions Desk
