@@ -120,6 +120,15 @@ export default function Navbar() {
     }
   ];
 
+  const handleDropdownToggle = (e, item) => {
+    e.stopPropagation();
+    if (mobileMenuOpen || window.innerWidth <= 1024) {
+      setActiveDropdown(prev => prev === item.label ? null : item.label);
+    } else {
+      navigateTo(item.path, item.items[0]?.tab);
+    }
+  };
+
   return (
     <header className="header-master-wrapper">
       {/* 1. Top Utility Bar */}
@@ -246,7 +255,7 @@ export default function Navbar() {
               >
                 <div 
                   className="glb-nav-link dropdown-parent"
-                  onClick={() => navigateTo(item.path, item.items[0]?.tab)}
+                  onClick={(e) => handleDropdownToggle(e, item)}
                 >
                   <span>{item.label}</span>
                   <ChevronDown size={14} className="dropdown-caret" />
@@ -261,6 +270,10 @@ export default function Navbar() {
                           href={sub.externalUrl}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={() => {
+                            setMobileMenuOpen(false);
+                            setActiveDropdown(null);
+                          }}
                           className="dropdown-link-btn"
                           style={{ textDecoration: 'none' }}
                         >

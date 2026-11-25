@@ -2461,17 +2461,11 @@ button {
   .slider-nav-arrow.prev { left: 1rem; }
   .slider-nav-arrow.next { right: 1rem; }
   .slider-dots-vertical { display: none; }
-}
-
-@media (max-width: 768px) {
   .glb-top-utility-bar { display: none; }
-  .glb-brand-title { font-size: 1.15rem; }
   .glb-header-right-badges { display: none; }
-  .hero-fullscreen-slider { height: 75vh; min-height: 520px; }
-  .slider-heading { font-size: 1.9rem; line-height: 1.2; }
-  .spotlight-name { font-size: 1.15rem; }
-  .slider-lead-desc { display: none; }
-  .slider-bottom-strip { display: none; }
+  .mobile-menu-toggle { display: inline-flex; }
+  .glb-mobile-admission-pill { display: inline-flex; }
+  .glb-nav-actions { display: none; }
   .glb-nav-menu {
     display: none;
     position: absolute;
@@ -2480,13 +2474,66 @@ button {
     right: 0;
     background: #062a36;
     flex-direction: column;
-    padding: 1rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    padding: 0.75rem 1rem 1.5rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    max-height: 80vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: 9999;
+    border-bottom: 3px solid #dfb235;
   }
   .glb-nav-menu.open { display: flex; }
-  .glb-nav-link { width: 100%; text-align: left; padding: 0.65rem 0.5rem; }
+  .nav-item-has-dropdown {
+    width: 100%;
+    position: static;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .glb-nav-link {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0.5rem;
+    font-size: 0.92rem;
+  }
+  .nav-dropdown-menu {
+    position: static;
+    transform: none !important;
+    min-width: 100%;
+    box-shadow: none;
+    background: rgba(13, 92, 117, 0.35);
+    border-top: none;
+    border-left: 3px solid #dfb235;
+    border-radius: 4px;
+    padding: 0.25rem 0;
+    margin: 0.25rem 0 0.5rem 0.5rem;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transition: max-height 0.3s ease, opacity 0.25s ease;
+  }
+  .nav-dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    max-height: 600px;
+  }
+  .dropdown-link-btn {
+    padding: 0.55rem 0.85rem;
+    font-size: 0.85rem;
+    color: #f1f5f9;
+  }
+}
+
+@media (max-width: 768px) {
+  .glb-brand-title { font-size: 1.15rem; }
+  .hero-fullscreen-slider { height: 75vh; min-height: 520px; }
+  .slider-heading { font-size: 1.9rem; line-height: 1.2; }
+  .spotlight-name { font-size: 1.15rem; }
+  .slider-lead-desc { display: none; }
+  .slider-bottom-strip { display: none; }
   .floating-counselor-bubble { display: none; }
-  .sticky-vertical-enquiry-tab { top: 60%; }
+  .sticky-vertical-enquiry-tab { display: none; }
 }
 
 /* ==========================================================================
@@ -2500,10 +2547,9 @@ button {
 }
 
 .placement-grid-layout {
-  display: grid;
-  grid-templateColumns: 1fr;
   display: flex;
-  gap: 2.5rem;
+  flex-direction: column;
+  gap: 2rem;
   align-items: stretch;
 }
 
@@ -2979,6 +3025,27 @@ button {
   .possibilities-mosaic-grid {
     grid-template-columns: 1.05fr 1fr 1.35fr;
     min-height: 480px;
+  }
+}
+
+@media (max-width: 768px) {
+  .possibilities-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+  .brand-titles .brand-main-headline {
+    font-size: 1.85rem;
+  }
+  .stat-big-num {
+    font-size: 2.85rem;
+  }
+  .left-fest-card,
+  .col3-alumni-card {
+    min-height: 360px;
+  }
+  .center-udyami-card {
+    height: 220px;
   }
 }
 
@@ -6803,6 +6870,44 @@ button {
   font-weight: 600;
   line-height: 1.5;
   margin: 0;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+  .location-main-title {
+    font-size: 1.85rem;
+  }
+  .secretariat-desk-card {
+    padding: 1.5rem 1.25rem;
+  }
+  .contact-info-row {
+    gap: 0.85rem;
+  }
+  .info-icon-pill {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 600px) {
+  .campus-location-unified-section {
+    padding: 3rem 0;
+  }
+  .location-section-header {
+    margin-bottom: 1.75rem;
+  }
+  .campus-map-card,
+  .google-map-iframe {
+    min-height: 380px;
+  }
+  .map-floating-overlay-card {
+    top: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    max-width: none;
+    padding: 0.85rem;
+  }
 }
 
 .info-main-val a {
@@ -7628,11 +7733,13 @@ button {
   border: 1px solid #e2e8f0;
   border-radius: 6px;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   margin-top: 1rem;
 }
 
 .ref-disclosure-table {
   width: 100%;
+  min-width: 520px;
   border-collapse: collapse;
   text-align: left;
   font-size: 0.9rem;
@@ -7811,6 +7918,12 @@ button {
   border-bottom: 1px solid #e2e8f0;
   background: #ffffff;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.announcements-tabs-bar::-webkit-scrollbar {
+  display: none;
 }
 
 .announcement-tab-btn {
@@ -8007,6 +8120,32 @@ button {
   color: #64748b;
   white-space: nowrap;
   font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .announcement-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+  .announcements-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+  }
+  .filter-input-container {
+    max-width: none;
+  }
+  .announcements-scroll-area {
+    padding: 0.85rem;
+    max-height: 420px;
+  }
+  .announcement-item-card {
+    padding: 0.85rem 1rem;
+  }
+  .announcements-top-heading {
+    font-size: 1.35rem;
+  }
 }
 
 .announcement-sub-items-stack {
@@ -8261,7 +8400,90 @@ button {
     height: 65vh;
     min-height: 440px;
   }
+  .slider-nav-arrow {
+    width: 36px;
+    height: 36px;
+  }
+  .slider-nav-arrow.prev { left: 0.5rem; }
+  .slider-nav-arrow.next { right: 0.5rem; }
   .slider-minimal-redirects .btn-slider-link {
     display: none;
+  }
+  .slider-minimal-bottom-bar {
+    padding: 0.5rem 0;
+  }
+  .btn-slider-apply {
+    font-size: 0.78rem;
+    padding: 0.4rem 0.75rem;
+  }
+  .slider-dots-horizontal {
+    gap: 0.4rem;
+  }
+}
+
+/* ==========================================================================
+   Inner Pages Sidebar & Responsive Mobile Utilities
+   ========================================================================== */
+@media (max-width: 991px) {
+  .sidebar-menu-card {
+    position: static;
+    margin-bottom: 1.5rem;
+    padding: 0.85rem;
+  }
+  .sidebar-title {
+    margin-bottom: 0.65rem;
+    font-size: 0.72rem;
+  }
+  .sidebar-tab-list {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 0.5rem;
+    padding-bottom: 0.4rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .sidebar-tab-list::-webkit-scrollbar {
+    display: none;
+  }
+  .sidebar-tab-btn {
+    width: auto;
+    white-space: nowrap;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.82rem;
+    flex-shrink: 0;
+  }
+  .sidebar-tab-btn .tab-chevron {
+    display: none;
+  }
+  .sidebar-contact-pill {
+    display: none;
+  }
+  .page-hero-banner {
+    padding: 2.25rem 0;
+  }
+  .page-main-heading {
+    font-size: 1.75rem;
+  }
+  .page-sub-lead {
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .floating-whatsapp-widget {
+    bottom: 1rem;
+    left: 1rem;
+    padding: 0.55rem;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    justify-content: center;
+  }
+  .floating-whatsapp-widget .whatsapp-text {
+    display: none;
+  }
+  .container {
+    padding: 0 1rem;
   }
 }
