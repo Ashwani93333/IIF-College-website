@@ -1,6 +1,5 @@
 import React from 'react';
 import Navbar from '../components/public/Navbar';
-import MarqueeAlert from '../components/public/MarqueeAlert';
 import HeroSlider from '../components/public/HeroSlider';
 import CoursesSection from '../components/public/CoursesSection';
 import WhyChooseSection from '../components/public/WhyChooseSection';
@@ -17,9 +16,8 @@ export default function HomePage() {
     <div className="public-portal-root">
       {/* 1. Header & Navigation */}
       <Navbar />
-      <MarqueeAlert />
 
-      {/* 2. Hero Visual Slider (Auto-sliding Front Banners with Detailed Descriptions) */}
+      {/* 2. Hero Visual Slider (Auto-sliding Front Banners with Footer Marquee Alert) */}
       <HeroSlider />
 
       {/* 3. Academic Programs & Courses Offering (B.Com, BBA, B.A. with In-Depth Fee Details) */}

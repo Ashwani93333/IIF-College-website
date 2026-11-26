@@ -12,7 +12,7 @@ export const INITIAL_SETTINGS = {
   emailAdmissions: "admission@iifccms.edu.in",
   antiRaggingHelpline: "1800-180-5522 / +91 98119 71002",
   ccsuPortalUrl: "https://www.ccsuniversity.ac.in",
-  announcementTicker: "📢 Admissions Open for Academic Session 2026-27 (BBA / B.Com / B.A.) | Up to 25% Institutional Merit Scholarships | 100% Air-Conditioned Knowledge Park III Campus | Direct Helpline: +91 98119 71002",
+  announcementTicker: "📢 Admissions Open for Current Academic Session (BBA / B.Com / B.A.) | Up to 25% Institutional Merit Scholarships | 100% Air-Conditioned Knowledge Park III Campus | Direct Helpline: +91 98119 71002",
   collegeCodes: {
     bba: "454",
     bcom: "472",
@@ -152,8 +152,8 @@ export const INITIAL_NOTICES = [
   },
   {
     id: 2,
-    title: "Admissions Open for Academic Session 2026-27 under Institutional Merit Scholarships",
-    slug: "admissions-open-2026-27-scholarships",
+    title: "Admissions Open for Current Academic Session under Institutional Merit Scholarships",
+    slug: "admissions-open-merit-scholarships",
     category: "Admission",
     publishDate: "2026-11-18",
     content: "Provisional admissions for BBA (Code 454), B.Com (Code 472), and B.A. (Code 478) are now open. Merit scholarship concessions up to 25% on annual tuition fees are available for meritorious candidates securing above 85% in Class 12th board examinations.",
@@ -188,7 +188,7 @@ export const INITIAL_NOTICES = [
   },
   {
     id: 5,
-    title: "Mandatory Anti-Ragging Affidavit & 24x7 Helpline Protocol 2026-27",
+    title: "Mandatory Anti-Ragging Affidavit & 24x7 Helpline Protocol",
     slug: "anti-ragging-affidavit-protocol-2026",
     category: "General",
     publishDate: "2026-10-30",

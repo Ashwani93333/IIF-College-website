@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useApp } from '../../context/AppContext';
 import { 
-  ChevronLeft, ChevronRight, ArrowRight, ExternalLink, 
-  Sparkles, Compass, GraduationCap 
+  ChevronLeft, ChevronRight, Bell
 } from 'lucide-react';
 
 import banner1 from '../../assets/front-banners/IIF1.jpeg';
@@ -11,6 +11,7 @@ import banner3 from '../../assets/front-banners/IIF3.jpg';
 import banner4 from '../../assets/front-banners/IIF4.jpg';
 
 export default function HeroSlider() {
+  const { settings } = useApp();
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -111,60 +112,15 @@ export default function HeroSlider() {
         <ChevronRight size={26} />
       </button>
 
-      {/* Minimal Footer Strip with Clean Picture Caption & Redirect Links */}
-      <div className="slider-minimal-bottom-bar">
-        <div className="container slider-footer-inner">
-          {/* Left: Minimal Caption */}
-          <div className="slider-minimal-info">
-            <span className="slider-minimal-tag">
-              {slides[currentSlide].tag}
-            </span>
-            <span className="slider-minimal-divider">|</span>
-            <span className="slider-minimal-caption">
-              {slides[currentSlide].caption}
-            </span>
+      {/* Running Latest Alert Marquee Bar Docked at Footer of Banner Photos */}
+      <div className="announcement-marquee-wrapper slider-marquee-docked">
+        <div className="container" style={{ display: 'flex', alignItems: 'center' }}>
+          <div className="marquee-badge">
+            <Bell size={13} style={{ display: 'inline', marginRight: '4px' }} />
+            LATEST ALERTS
           </div>
-
-          {/* Center: Slide Indicators */}
-          <div className="slider-dots-horizontal">
-            {slides.map((_, idx) => (
-              <button
-                key={idx}
-                className={`slider-dot-btn ${currentSlide === idx ? 'active' : ''}`}
-                onClick={() => setCurrentSlide(idx)}
-                aria-label={`Go to slide ${idx + 1}`}
-              />
-            ))}
-          </div>
-
-          {/* Right: Minimal Redirect Links */}
-          <div className="slider-minimal-redirects">
-            <a 
-              href="https://docs.google.com/forms/d/e/1FAIpQLSddLOq1Hb3lHuFFxbGe1TQpZ_zY9qnxqIp9Nm8sEpegMb_3oQ/viewform"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-slider-apply"
-              style={{ textDecoration: 'none' }}
-            >
-              <Sparkles size={14} />
-              <span>Apply Online</span>
-            </a>
-
-            <button 
-              onClick={() => navigate('/courses')}
-              className="btn-slider-link"
-            >
-              <GraduationCap size={15} />
-              <span>Courses</span>
-            </button>
-
-            <button 
-              onClick={() => navigate('/facilities?tab=campus-tour')}
-              className="btn-slider-link"
-            >
-              <Compass size={15} />
-              <span>Campus Tour</span>
-            </button>
+          <div className="marquee-scroller">
+            <span className="marquee-text">{settings.announcementTicker}</span>
           </div>
         </div>
       </div>

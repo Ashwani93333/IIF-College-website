@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
 import { useAuth } from '../../context/AuthContext';
-import AdminLoginModal from './AdminLoginModal';
 import {
   Phone, Mail, Award, BookOpen, ExternalLink, Menu, X,
   Lock, User, MessageCircle, ChevronRight, ChevronDown, Share2,
@@ -17,7 +16,6 @@ export default function Navbar() {
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const [showAdminModal, setShowAdminModal] = useState(false);
 
   const navigateTo = (path, tab) => {
     setMobileMenuOpen(false);
@@ -148,16 +146,6 @@ export default function Navbar() {
             <Link to="/facilities?tab=campus-tour" className="glb-top-link">Campus Tour</Link>
             <span className="divider">|</span>
             <Link to="/latest-updates?tab=media-presence" className="glb-top-link">Media</Link>
-            <span className="divider">|</span>
-            <button
-              type="button"
-              onClick={() => setShowAdminModal(true)}
-              className="glb-top-admin-badge-btn"
-              title="Official Administrative Secretariat Portal"
-            >
-              <Lock size={12} className="top-admin-lock-icon" />
-              <span>{isAuthenticated ? 'Admin Panel' : 'Admin Login'}</span>
-            </button>
           </div>
 
           <div className="glb-top-right">
@@ -352,12 +340,6 @@ export default function Navbar() {
         </div>
         <span className="whatsapp-text">Send Via WhatsApp</span>
       </a>
-
-      {/* 6. Admin Login Pop-up Modal */}
-      <AdminLoginModal
-        isOpen={showAdminModal}
-        onClose={() => setShowAdminModal(false)}
-      />
     </header>
   );
 }

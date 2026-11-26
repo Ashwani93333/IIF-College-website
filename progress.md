@@ -148,6 +148,25 @@ Following the latest user specifications and reference screenshots, a comprehens
   * Direct redirect to `/admin/dashboard` upon successful authentication.
   * Shows authenticated user profile status and sign-out controls if already logged in.
 
+#### 7. Auto-Sliding Faculty Section (Matching Reference UI)
+* **Visual & Layout Alignment:** Implemented `FacultySection.jsx` matching the user's reference UI with header `Faculty` and a pill-shaped `View All [↗]` button linking to `/faculty`.
+* **Continuous Right-to-Left Auto-Scroll:** Integrated smooth 60fps `requestAnimationFrame` auto-scrolling with duplicate looping arrays, smoothly moving cards from right to left.
+* **Interactive Tap / Selection Color Transformation:**
+  * Clicking or tapping any card turns that card into the signature dark navy theme (`#062a36`), exactly as shown with Card 4 in the reference screenshot.
+  * Text shifts to crisp white, roles turn golden (`#dfb235`), credential tags adopt glowing amber borders, and box shadows elevate.
+  * Pauses auto-sliding on mouse hover or touch interaction.
+* **Pagination Dots:** Dynamic bottom dots row with the active item highlighted as an elongated pill badge.
+
+#### 8. Marquee Alert Repositioned to Footer of Hero Banners
+* **Removed Upper Alert Line:** Removed `<MarqueeAlert />` from the top of the hero banner (between the navbar and hero slider), eliminating visual obstruction above the hero imagery.
+* **Docked Running Ticker at Banner Footer:** Relocated the live `LATEST ALERTS` running marquee ticker (`.slider-marquee-docked`) into the footer of the banner photos, replacing the previous static caption/link details.
+* **Sanitized Ticker Content:** Standardized the ticker text to refer to the *"Current Academic Session"* and *"Institutional Merit Scholarships"*, completely eliminating outdated foundation or year references.
+
+#### 9. Auto-Sliding Testimonials Section (Matching Faculty Card Design)
+* **Moving Sliding Style:** Upgraded `TestimonialsSection.jsx` to the same continuous right-to-left 60fps auto-sliding carousel as the Faculty section with seamless duplicate array loops.
+* **Faculty Card Geometry & Anatomy:** Refactored testimonial cards to adopt the exact dimensions (250px width), rounded corners (14px), inner photo gradient backdrop (200px height), typography, and bottom credential badge row.
+* **Color Transformation on Hover (Not on Click):** Configured card hover states in both the Faculty and Testimonial sections to transform the background into deep navy (`#062a36`), borders into gold (`#c59b27`), typography into crisp white, roles into gold (`#dfb235`), and category tags into amber, pausing the auto-sliding ticker while hovering for effortless reading. Eliminates persistent click states so cards revert cleanly when unhovered.
+
 ---
 
 ## 3. Component Architecture & File Directory
@@ -191,6 +210,26 @@ Following the latest user specifications and reference screenshots, a comprehens
 * **Screen Edge Floating Elements Protection:**
   * Screen-edge sticky enquiry tab automatically hides on screens `<= 768px` where the glowing golden header pill already provides continuous Google Form access, completely preventing the tab from obscuring body text on phone screens.
   * Floating WhatsApp button morphs into a compact circular touch button (`44px x 44px`) on mobile viewports (`<= 600px`).
+
+---
+
+### Phase 5: Undergraduate Degree Programs & Campus Highlights Updates
+* **Campus Highlights 3x3 Photo Matrix Overhaul:**
+  * Replaced all generic stock photo placeholders with all 20 authentic institutional photographs from the `assets/campus-highlights` directory in [HighlightsSection.jsx](file:///d:/Personal%20Projects/clg-website/frontend/src/components/public/HighlightsSection.jsx).
+  * Distributed the photos across 4 dynamic auto-sliding cells and 5 static zoom cells showcasing academic seminars, convocations, corporate conclaves, student workshops, and campus architecture.
+  * Added an interactive lightbox modal allowing visitors to click and inspect any photograph in full resolution with institutional captions and category tags.
+* **Streamlined Interactive Split-Card Showcase:**
+  * Cleanly removed all course codes (`Code: 454`, `Code: 472`, `Code: 478`, and `College Code: ...`) from both the top program navigation tabs and the card header pill row in [CoursesSection.jsx](file:///d:/Personal%20Projects/clg-website/frontend/src/components/public/CoursesSection.jsx).
+  * Removed `View Syllabus Structure`, `Affiliated to CCSU Meerut / Curriculum aligns with National Education Policy (NEP 2020)`, and `Download Full Scheme (HTML/PDF)` from [CoursesSection.jsx](file:///d:/Personal%20Projects/clg-website/frontend/src/components/public/CoursesSection.jsx).
+  * Significantly compacted vertical spacing, paddings, and card length in [index.css](file:///d:/Personal%20Projects/clg-website/frontend/src/index.css), eliminating unused empty space and harmonizing both left and right columns.
+* **Why IIFCCMS Section Refinements:**
+  * Removed the `35+ Years Group Pedigree & Academic Eminence` stat block from the header row of the **WHY IIFCCMS ?** section in [WhyChooseSection.jsx](file:///d:/Personal%20Projects/clg-website/frontend/src/components/public/WhyChooseSection.jsx).
+* **Admin Login Repositioned to Footer:**
+  * Completely removed the admin button and divider from the top utility navbar in [Navbar.jsx](file:///d:/Personal%20Projects/clg-website/frontend/src/components/public/Navbar.jsx).
+  * Created a dedicated, highlighted **Administrative Secretariat & Governance Panel** card in [Footer.jsx](file:///d:/Personal%20Projects/clg-website/frontend/src/components/public/Footer.jsx) with gold glassmorphism styling in [index.css](file:///d:/Personal%20Projects/clg-website/frontend/src/index.css), opening the interactive `AdminLoginModal` or routing to `/admin/dashboard` when authenticated.
+* **Institutional Verification & Quality Control:**
+  * Zero prohibited terms or academic year violations (`Violations: 0`).
+  * Production build passed cleanly in 732ms via Vite.
 
 ---
 

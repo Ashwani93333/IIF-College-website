@@ -1,201 +1,240 @@
 import React, { useState } from 'react';
-import { useApp } from '../../context/AppContext';
 import { 
-  BookOpen, Users, Clock, CheckCircle2, FileText, 
-  ArrowRight, X, Download, Award, ExternalLink 
+  CheckCircle2, ArrowRight, TrendingUp, Calculator, 
+  BookOpen, Clock, Sparkles, GraduationCap 
 } from 'lucide-react';
 
 const GOOGLE_REGISTRATION_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSddLOq1Hb3lHuFFxbGe1TQpZ_zY9qnxqIp9Nm8sEpegMb_3oQ/viewform";
 
-export default function CoursesSection({ onApplyWithCourse }) {
-  const { courses } = useApp();
-  const [selectedCourseForSyllabus, setSelectedCourseForSyllabus] = useState(null);
+const COURSES_DATA = [
+  {
+    id: 1,
+    key: "bba",
+    code: "454",
+    shortName: "BBA",
+    title: "Bachelor of Business Administration (BBA)",
+    tabLabel: "Bachelor of Business Administration",
+    icon: TrendingUp,
+    badgeMeta: "3 Years Full-Time • CCSU Affiliated",
+    acClassroom: "100% AC Classrooms",
+    description: "An intensive, industry-centric undergraduate degree designed to develop managerial acumen, strategic decision-making, and entrepreneurial leadership. Equipped with modern case studies, financial analysis, marketing simulations, and guest sessions by corporate veterans.",
+    duration: "3 Years (6 Semesters)",
+    annualFee: 80000,
+    eligibility: "10+2 with min 45% (40% for SC/ST)",
+    university: "Ch. Charan Singh University (CCSU Meerut)",
+    subjects: [
+      "Principles of Management",
+      "Financial & Cost Accounting",
+      "Business Economics",
+      "Marketing Management",
+      "Human Resource Management",
+      "Financial Management",
+      "Business Law & Ethics",
+      "Production & Operations",
+      "Digital Business Analytics",
+      "Entrepreneurship & Project Viva"
+    ],
+    whyPoints: [
+      "Mentored by faculty from SRCC, FMS, IIT Delhi & Columbia University.",
+      "Direct access to IIF Central Library with 55,000+ volumes & global journals.",
+      "Guaranteed Government University Degree from NAAC A++ CCS University.",
+      "Dedicated Corporate Training, Resume Building & Campus Placement drives.",
+      "Regular Personality Development & Civil Services mentorship cells."
+    ]
+  },
+  {
+    id: 2,
+    key: "bcom",
+    code: "472",
+    shortName: "B.Com",
+    title: "Bachelor of Commerce (B.Com)",
+    tabLabel: "Bachelor of Commerce",
+    icon: Calculator,
+    badgeMeta: "3 Years Full-Time • CCSU Affiliated",
+    acClassroom: "100% AC Classrooms",
+    description: "The B.Com curriculum blends core accounting principles, GST and corporate taxation laws, auditing standards, and modern banking methodologies. Designed for students aspiring for CA, CS, Banking, and Corporate Financial Secretariat careers.",
+    duration: "3 Years (6 Semesters)",
+    annualFee: 45000,
+    eligibility: "10+2 with min 40% aggregate (Commerce / Arts / Science)",
+    university: "Ch. Charan Singh University (CCSU Meerut)",
+    subjects: [
+      "Financial Accounting & Tally",
+      "Business Regulatory Framework",
+      "Microeconomics for Business",
+      "Business Mathematics",
+      "Corporate Accounting",
+      "Company Law & Secretarial Practice",
+      "Income Tax Law & Accounts",
+      "Business Statistics",
+      "Auditing & Corporate Governance",
+      "Goods & Services Tax (GST)"
+    ],
+    whyPoints: [
+      "CA / CS foundation integrated mentorship by practicing Chartered Accountants.",
+      "Specialized hands-on corporate taxation & GST training laboratory.",
+      "Direct access to IIF Central Library with 55,000+ volumes & financial databases.",
+      "Internship opportunities with premier accounting & consulting firms.",
+      "Seminars on stock markets, financial modeling, and corporate valuation."
+    ]
+  },
+  {
+    id: 3,
+    key: "ba",
+    code: "478",
+    shortName: "B.A.",
+    title: "Bachelor of Arts (B.A.)",
+    tabLabel: "Bachelor of Arts",
+    icon: BookOpen,
+    badgeMeta: "3 Years Full-Time • CCSU Affiliated",
+    acClassroom: "100% AC Classrooms",
+    description: "B.A. at IIFCCMS provides versatile choices in Economics, Political Science, English Literature, and History under CCSU guidelines, fostering critical analysis, civil services preparation, and intellectual breadth.",
+    duration: "3 Years (6 Semesters)",
+    annualFee: 35000,
+    eligibility: "10+2 from recognized board in any stream with passing marks",
+    university: "Ch. Charan Singh University (CCSU Meerut)",
+    subjects: [
+      "English Language & Communication",
+      "Principles of Microeconomics",
+      "Political Theory & Institutions",
+      "History of Modern India",
+      "Macroeconomic Analysis",
+      "Public Administration",
+      "Indian Government & Politics",
+      "World History & Civilization",
+      "Social Research Methods",
+      "Environmental Ethics & Society"
+    ],
+    whyPoints: [
+      "Dedicated Civil Services (UPSC / State PSC) foundation mentorship cell.",
+      "Interactive seminars on public policy, international relations, and economic history.",
+      "Focus on creative writing, debate, analytical thinking, and presentation skills.",
+      "Renowned faculty mentors from Delhi University and central research institutes.",
+      "Comprehensive library access with research archives and competitive exam resources."
+    ]
+  }
+];
 
-  const scrollToAdmissions = (course) => {
-    if (onApplyWithCourse) {
-      onApplyWithCourse(course);
-    }
-    const el = document.getElementById('admissions');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+export default function CoursesSection() {
+  const [activeCourseKey, setActiveCourseKey] = useState("bba");
+
+  const currentCourse = COURSES_DATA.find(c => c.key === activeCourseKey) || COURSES_DATA[0];
 
   return (
-    <section className="section" id="programs" style={{ background: 'var(--bg-beige, #f7f3ec)' }}>
+    <section className="section course-split-section" id="programs">
       <div className="container">
-        <div className="section-header">
-          <span className="section-tag">Academic Offerings • Current Session</span>
-          <h2>Undergraduate Degree Programs (NEP 2020)</h2>
-          <p>
-            Offered by IIFCCMS, affiliated with Chaudhary Charan Singh University, Meerut (NAAC A++), combining academic rigor, skill-based electives, and hands-on corporate internships.
+        {/* Section Header */}
+        <div className="section-header course-section-header">
+          <h2 className="course-section-main-heading">Undergraduate Degree Programs (NEP 2020)</h2>
+          <p className="course-section-sub-heading">
+            Affiliated with Chaudhary Charan Singh University, Meerut (NAAC A++ Accredited)
           </p>
         </div>
 
-        <div className="course-grid">
-          {courses.map(course => (
-            <div key={course.id} className="course-card">
-              <div className="course-card-top">
-                <div className="course-badge-row">
-                  <span className="course-code-badge">IIFCCMS Code: {course.collegeCode}</span>
-                  {course.isAdmissionsOpen ? (
-                    <span className="admissions-open-badge">
-                      <CheckCircle2 size={12} /> Admissions Open
-                    </span>
-                  ) : (
-                    <span style={{ background: '#ef4444', color: '#fff', fontSize: '0.72rem', fontWeight: '700', padding: '0.2rem 0.5rem', borderRadius: 'var(--radius-sm)' }}>
-                      Seats Full
-                    </span>
-                  )}
-                </div>
-                <h3>{course.title}</h3>
-                <div className="course-degree-meta">{course.degree}</div>
-              </div>
-
-              <div className="course-card-body">
-                <p className="course-description">{course.description}</p>
-
-                <ul className="course-specs-list">
-                  <li>
-                    <span className="spec-label"><Clock size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Duration:</span>
-                    <span className="spec-value">3 Years (6 Semesters)</span>
-                  </li>
-                  <li>
-                    <span className="spec-label"><Users size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Seat Capacity:</span>
-                    <span className="spec-value">{course.seatIntake} Seats</span>
-                  </li>
-                  <li>
-                    <span className="spec-label"><Award size={14} style={{ display: 'inline', verticalAlign: 'middle', marginRight: '4px' }} /> Eligibility:</span>
-                    <span className="spec-value" style={{ maxWidth: '60%', textAlign: 'right', fontSize: '0.8rem' }}>
-                      {course.eligibility.split('(')[0]}
-                    </span>
-                  </li>
-                </ul>
-
-                <div className="fee-highlight-box">
-                  <div>
-                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: '600' }}>
-                      Annual Tuition Fee
-                    </div>
-                    <div className="fee-amount">₹{course.annualFee.toLocaleString()}</div>
-                  </div>
-                  <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Per Semester</div>
-                    <div style={{ fontWeight: '700', color: 'var(--primary-navy)' }}>
-                      ₹{course.perSemesterFee.toLocaleString()}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="course-card-actions">
-                  <button 
-                    onClick={() => setSelectedCourseForSyllabus(course)}
-                    className="btn-view-syllabus"
-                  >
-                    <FileText size={15} /> NEP Syllabus
-                  </button>
-                  <a 
-                    href={GOOGLE_REGISTRATION_FORM_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-apply-course"
-                    style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
-                  >
-                    Apply Online <ArrowRight size={15} />
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
+        {/* Top Program Navigation Tabs */}
+        <div className="course-nav-tabs-wrapper">
+          <div className="course-nav-tabs">
+            {COURSES_DATA.map(course => {
+              const IconComp = course.icon;
+              const isActive = course.key === activeCourseKey;
+              return (
+                <button
+                  key={course.key}
+                  type="button"
+                  onClick={() => setActiveCourseKey(course.key)}
+                  className={`course-nav-tab-btn ${isActive ? 'active' : ''}`}
+                >
+                  <span className="tab-btn-icon"><IconComp size={16} /></span>
+                  <span className="tab-btn-title">{course.tabLabel}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
-      </div>
 
-      {/* Syllabus Modal */}
-      {selectedCourseForSyllabus && (
-        <div className="modal-overlay" onClick={() => setSelectedCourseForSyllabus(null)}>
-          <div className="modal-dialog" onClick={e => e.stopPropagation()}>
-            <div className="modal-header">
-              <div>
-                <h3 style={{ fontSize: '1.25rem', color: 'var(--primary-navy)' }}>
-                  {selectedCourseForSyllabus.title}
-                </h3>
-                <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
-                  Affiliated with CCSU Meerut | College Code: {selectedCourseForSyllabus.collegeCode}
-                </div>
-              </div>
-              <button 
-                onClick={() => setSelectedCourseForSyllabus(null)}
-                style={{ fontSize: '1.5rem', color: 'var(--text-muted)' }}
-              >
-                &times;
-              </button>
+        {/* Master Course Showcase Split Card */}
+        <div className="course-showcase-card">
+          {/* Left Column: Academic Specs, Description & Subjects */}
+          <div className="course-showcase-left">
+            {/* Top Pill Badges */}
+            <div className="course-showcase-pill-row">
+              <span className="course-showcase-pill meta-pill">
+                <Clock size={13} /> {currentCourse.badgeMeta}
+              </span>
+              <span className="course-showcase-pill ac-pill">
+                <Sparkles size={13} /> {currentCourse.acClassroom}
+              </span>
             </div>
 
-            <div className="modal-body">
-              <div style={{ background: '#f1f5f9', padding: '1rem', borderRadius: 'var(--radius-md)', marginBottom: '1.25rem' }}>
-                <h4 style={{ fontSize: '0.95rem', marginBottom: '0.35rem', color: 'var(--primary-navy)' }}>
-                  Eligibility & Qualification Criteria
-                </h4>
-                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                  {selectedCourseForSyllabus.eligibility}
-                </p>
+            {/* Course Heading */}
+            <h3 className="course-showcase-title">{currentCourse.title}</h3>
+
+            {/* Lead Description */}
+            <p className="course-showcase-desc">{currentCourse.description}</p>
+
+            {/* Key Academic Specs 2x2 Box */}
+            <div className="course-specs-grid-box">
+              <div className="spec-grid-item">
+                <span className="spec-grid-label">COURSE DURATION</span>
+                <span className="spec-grid-val">{currentCourse.duration}</span>
               </div>
-
-              <h4 style={{ fontSize: '1.05rem', color: 'var(--primary-navy)', marginBottom: '0.75rem' }}>
-                NEP 2020 Aligned Semester Breakdown
-              </h4>
-
-              {selectedCourseForSyllabus.semesters && selectedCourseForSyllabus.semesters.map(sem => (
-                <div key={sem.sem} style={{ marginBottom: '1.25rem' }}>
-                  <h5 style={{ background: 'var(--primary-navy)', color: '#fff', padding: '0.4rem 0.8rem', borderRadius: 'var(--radius-sm)', fontSize: '0.88rem', marginBottom: '0.5rem' }}>
-                    Semester {sem.sem} Papers
-                  </h5>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
-                    {sem.subjects.map((sub, i) => (
-                      <div key={i} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.4rem 0.6rem', background: '#f8fafc', borderRadius: 'var(--radius-sm)', fontSize: '0.82rem' }}>
-                        <span><strong>{sub.code}:</strong> {sub.name}</span>
-                        <span style={{ color: 'var(--text-muted)', fontStyle: 'italic' }}>{sub.type}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-
-              <div style={{ marginTop: '1.5rem' }}>
-                <h4 style={{ fontSize: '0.95rem', marginBottom: '0.5rem', color: 'var(--primary-navy)' }}>
-                  Career & Industry Pathways
-                </h4>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
-                  {selectedCourseForSyllabus.careerScope?.map((career, i) => (
-                    <span key={i} style={{ background: '#e0f2fe', color: '#0369a1', fontSize: '0.78rem', padding: '0.25rem 0.6rem', borderRadius: 'var(--radius-full)', fontWeight: '600' }}>
-                      {career}
-                    </span>
-                  ))}
-                </div>
+              <div className="spec-grid-item">
+                <span className="spec-grid-label">ANNUAL TUITION FEE</span>
+                <span className="spec-grid-val fee-val">
+                  ₹ {currentCourse.annualFee.toLocaleString()}/- per year
+                </span>
+              </div>
+              <div className="spec-grid-item">
+                <span className="spec-grid-label">ELIGIBILITY CRITERIA</span>
+                <span className="spec-grid-val">{currentCourse.eligibility}</span>
+              </div>
+              <div className="spec-grid-item">
+                <span className="spec-grid-label">AWARDING UNIVERSITY</span>
+                <span className="spec-grid-val">{currentCourse.university}</span>
               </div>
             </div>
 
-            <div className="modal-footer">
-              <button 
-                onClick={() => {
-                  alert(`Downloading official NEP 2020 syllabus PDF for ${selectedCourseForSyllabus.title}...`);
-                }}
-                className="btn-view-syllabus"
-              >
-                <Download size={15} /> Download PDF Scheme
-              </button>
+            {/* Curriculum Subjects Cloud */}
+            <div className="course-curriculum-block">
+              <h4 className="curriculum-heading">Key Curriculum Subjects &amp; Modules</h4>
+              <div className="curriculum-tag-cloud">
+                {currentCourse.subjects.map((sub, i) => (
+                  <span key={i} className="curriculum-tag">
+                    <GraduationCap size={13} className="tag-ico" /> {sub}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Interactive CTAs */}
+            <div className="course-showcase-actions">
               <a 
                 href={GOOGLE_REGISTRATION_FORM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => setSelectedCourseForSyllabus(null)}
-                className="btn-apply-course"
-                style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+                className="btn-course-apply"
               >
-                Proceed to Apply <ArrowRight size={15} />
+                <GraduationCap size={16} /> Apply for {currentCourse.shortName}
               </a>
             </div>
           </div>
+
+          {/* Right Column: Why Study at IIFCCMS */}
+          <div className="course-showcase-right">
+            <h4 className="why-study-heading">
+              Why Study {currentCourse.shortName} at IIFCCMS?
+            </h4>
+
+            <ul className="why-study-list">
+              {currentCourse.whyPoints.map((pt, i) => (
+                <li key={i}>
+                  <CheckCircle2 size={18} className="why-check-ico" />
+                  <span>{pt}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      )}
+      </div>
     </section>
   );
 }

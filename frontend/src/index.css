@@ -800,6 +800,516 @@ button {
 }
 
 /* ==========================================================================
+   AUTO-SLIDING ACCOMPLISHED FACULTY SECTION (MATCHING REFERENCE UI)
+   ========================================================================== */
+
+.faculty-auto-slider-section {
+  padding: 4.5rem 0 3.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.faculty-slider-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.faculty-header-title-block {
+  flex: 1;
+  min-width: 280px;
+}
+
+.faculty-main-heading {
+  font-size: 1.95rem;
+  font-weight: 700;
+  color: #1e293b;
+  font-family: 'Playfair Display', Georgia, serif;
+  letter-spacing: -0.3px;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.faculty-heading-accent {
+  font-style: italic;
+  color: #b91c1c;
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* View All Pill Button */
+.faculty-view-all-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.4rem 0.5rem 0.4rem 1.15rem;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #0f172a;
+  transition: all 0.22s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.faculty-view-all-pill:hover {
+  border-color: #dc2626;
+  color: #dc2626;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15);
+  transform: translateY(-1px);
+}
+
+.view-all-circle-arrow {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #dc2626;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.22s ease;
+}
+
+.faculty-view-all-pill:hover .view-all-circle-arrow {
+  transform: translate(2px, -2px);
+}
+
+/* Auto-sliding Carousel Viewport */
+.faculty-carousel-viewport {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 0.75rem 0.25rem 1.25rem;
+  cursor: grab;
+}
+
+.faculty-carousel-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.faculty-carousel-viewport:active {
+  cursor: grabbing;
+}
+
+.faculty-cards-sliding-track {
+  display: flex;
+  gap: 1.35rem;
+  width: max-content;
+}
+
+/* Individual Faculty Card */
+.faculty-auto-card {
+  width: 245px;
+  min-width: 245px;
+  max-width: 245px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 0.9rem;
+  cursor: pointer;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  user-select: none;
+  outline: none;
+}
+
+/* Card Hover Color Change (Matching Testimonial Section Behavior) */
+.faculty-auto-card:hover {
+  background: #062a36 !important;
+  border-color: #c59b27 !important;
+  box-shadow: 0 16px 36px rgba(6, 42, 54, 0.35) !important;
+  transform: translateY(-5px);
+}
+
+.faculty-auto-card:hover .faculty-card-name {
+  color: #ffffff !important;
+}
+
+.faculty-auto-card:hover .faculty-card-role {
+  color: #dfb235 !important;
+}
+
+.faculty-auto-card:hover .faculty-card-badge-row {
+  border-top-color: rgba(255, 255, 255, 0.15);
+}
+
+.faculty-auto-card:hover .faculty-card-cred-badge {
+  background: rgba(223, 178, 53, 0.16) !important;
+  color: #fde047 !important;
+  border-color: rgba(223, 178, 53, 0.4) !important;
+}
+
+/* Photo Box */
+.faculty-card-photo-box {
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #163647 0%, #1f556d 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.faculty-card-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.3s ease;
+}
+
+.faculty-auto-card:hover .faculty-card-photo-img {
+  transform: scale(1.03);
+}
+
+/* Info Box */
+.faculty-card-info {
+  margin-top: 0.85rem;
+  flex-grow: 1;
+}
+
+.faculty-card-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #062a36;
+  margin: 0 0 0.25rem 0;
+  line-height: 1.3;
+  transition: color 0.2s ease;
+}
+
+.faculty-auto-card:hover .faculty-card-name {
+  color: #ffffff !important;
+}
+
+.faculty-card-role {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.35;
+  transition: color 0.2s ease;
+}
+
+.faculty-auto-card:hover .faculty-card-role {
+  color: #dfb235 !important;
+}
+
+/* Credential Badge at Card Bottom */
+.faculty-card-badge-row {
+  margin-top: auto;
+  padding-top: 0.65rem;
+  border-top: 1px dashed #e2e8f0;
+}
+
+.faculty-auto-card:hover .faculty-card-badge-row {
+  border-top-color: rgba(255, 255, 255, 0.15);
+}
+
+.faculty-card-cred-badge {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #0d5c75;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 0.35rem 0.55rem;
+  border-radius: 6px;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.faculty-auto-card:hover .faculty-card-cred-badge {
+  background: rgba(223, 178, 53, 0.16) !important;
+  color: #fde047 !important;
+  border-color: rgba(223, 178, 53, 0.4) !important;
+}
+
+/* Bottom Pagination Dots */
+.faculty-dots-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1.5rem;
+}
+
+.faculty-slider-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.faculty-slider-dot:hover {
+  background: #94a3b8;
+}
+
+.faculty-slider-dot.active-pill {
+  width: 22px;
+  height: 7px;
+  border-radius: 999px;
+  background: #dc2626;
+}
+
+@media (max-width: 768px) {
+  .faculty-main-heading {
+    font-size: 1.55rem;
+  }
+  .faculty-auto-card {
+    width: 215px;
+    min-width: 215px;
+    max-width: 215px;
+    padding: 0.75rem;
+  }
+  .faculty-card-photo-box {
+    height: 180px;
+  }
+}
+
+/* Docked Marquee Alert at Footer of Banner Photos */
+.announcement-marquee-wrapper.slider-marquee-docked {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 25;
+  background: #fef3c7;
+  border-top: 1.5px solid #dfb235;
+  border-bottom: none;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.22);
+  padding: 0.65rem 0;
+}
+
+/* ==========================================================================
+   AUTO-SLIDING TESTIMONIALS SECTION (MATCHING FACULTY SECTION CARD DESIGN)
+   ========================================================================== */
+
+.testimonials-auto-slider-section {
+  padding: 4.5rem 0 3.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.testimonials-slider-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.testimonials-header-title-block {
+  flex: 1;
+  min-width: 280px;
+}
+
+.testimonials-main-heading {
+  font-size: 1.95rem;
+  font-weight: 700;
+  color: #1e293b;
+  font-family: 'Playfair Display', Georgia, serif;
+  letter-spacing: -0.3px;
+  margin: 0;
+  line-height: 1.25;
+}
+
+/* Auto-sliding Carousel Viewport */
+.testimonials-carousel-viewport {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 0.75rem 0.25rem 1.25rem;
+  cursor: grab;
+}
+
+.testimonials-carousel-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonials-carousel-viewport:active {
+  cursor: grabbing;
+}
+
+.testimonials-cards-sliding-track {
+  display: flex;
+  gap: 1.35rem;
+  width: max-content;
+}
+
+/* Individual Testimonial Card (Matches Faculty Card Geometry) */
+.testimonial-auto-card {
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 0.9rem;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  user-select: none;
+  cursor: default;
+}
+
+/* Hover Color Transformation (Purely on Hover - Not on Click) */
+.testimonial-auto-card:hover {
+  background: #062a36 !important;
+  border-color: #c59b27 !important;
+  box-shadow: 0 16px 36px rgba(6, 42, 54, 0.35) !important;
+  transform: translateY(-5px);
+}
+
+.testimonial-auto-card:hover .testimonial-card-name {
+  color: #ffffff !important;
+}
+
+.testimonial-auto-card:hover .testimonial-card-role {
+  color: #dfb235 !important;
+}
+
+.testimonial-auto-card:hover .testimonial-quote-text {
+  color: #e2e8f0 !important;
+}
+
+.testimonial-auto-card:hover .testimonial-card-badge-row {
+  border-top-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.testimonial-auto-card:hover .testimonial-card-cred-badge {
+  background: rgba(223, 178, 53, 0.16) !important;
+  color: #fde047 !important;
+  border-color: rgba(223, 178, 53, 0.4) !important;
+}
+
+.testimonial-auto-card:hover .testimonial-card-photo-img {
+  transform: scale(1.03);
+}
+
+/* Photo Box */
+.testimonial-card-photo-box {
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #163647 0%, #1f556d 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.testimonial-card-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.3s ease;
+}
+
+/* Info Box */
+.testimonial-card-info {
+  margin-top: 0.85rem;
+}
+
+.testimonial-card-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #062a36;
+  margin: 0 0 0.2rem 0;
+  line-height: 1.3;
+  transition: color 0.2s ease;
+}
+
+.testimonial-card-role {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin: 0 0 0.65rem 0;
+  line-height: 1.35;
+  transition: color 0.2s ease;
+}
+
+/* Quote Snippet */
+.testimonial-card-quote-box {
+  margin-bottom: 0.75rem;
+  flex-grow: 1;
+}
+
+.testimonial-quote-text {
+  font-size: 0.78rem;
+  line-height: 1.48;
+  color: #475569;
+  margin: 0;
+  font-style: italic;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.2s ease;
+}
+
+/* Credential Badge at Card Bottom */
+.testimonial-card-badge-row {
+  margin-top: auto;
+  padding-top: 0.65rem;
+  border-top: 1px dashed #e2e8f0;
+  transition: border-color 0.2s ease;
+}
+
+.testimonial-card-cred-badge {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #0d5c75;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 0.35rem 0.55rem;
+  border-radius: 6px;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .testimonials-main-heading {
+    font-size: 1.55rem;
+  }
+  .testimonial-auto-card {
+    width: 220px;
+    min-width: 220px;
+    max-width: 220px;
+    padding: 0.75rem;
+  }
+  .testimonial-card-photo-box {
+    height: 180px;
+  }
+}
+
+
+/* ==========================================================================
    Global Toast Notification
    ========================================================================== */
 .global-toast-notification {
@@ -1417,6 +1927,24 @@ button {
   border-radius: var(--radius-sm);
 }
 
+.course-program-code-badge {
+  color: var(--accent-gold-light, #dfb235);
+  background: rgba(197, 155, 39, 0.12);
+  border: 1px solid var(--accent-gold, #c59b27);
+  font-weight: 800;
+  font-size: 0.88rem;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+}
+
+.course-card-top h3 .course-acronym-gold {
+  color: var(--accent-gold-light, #dfb235);
+  font-weight: 800;
+}
+
 .admissions-open-badge {
   background: #059669;
   color: #fff;
@@ -1430,9 +1958,11 @@ button {
 }
 
 .course-card-top h3 {
-  color: #ffffff;
+  color: var(--accent-gold-light, #dfb235);
   font-size: 1.35rem;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  line-height: 1.35;
 }
 
 .course-degree-meta {
@@ -1538,6 +2068,369 @@ button {
 
 .btn-apply-course:hover {
   background: var(--primary-navy-light);
+}
+
+/* ==========================================================================
+   New Undergraduate Degree Programs Showcase (Matching Reference UI)
+   ========================================================================== */
+.course-split-section {
+  background: #f8fafc;
+  padding: 3rem 0 3.5rem;
+}
+
+.course-section-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.course-section-main-heading {
+  font-size: 2.05rem;
+  font-weight: 800;
+  color: #062a36;
+  margin: 0 0 0.35rem 0;
+  letter-spacing: -0.5px;
+  font-family: var(--font-sans, system-ui, sans-serif);
+}
+
+.course-section-sub-heading {
+  color: #64748b;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin: 0 auto;
+  max-width: 650px;
+}
+
+/* Top Program Navigation Tabs */
+.course-nav-tabs-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.course-nav-tabs {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #ffffff;
+  padding: 0.4rem;
+  border-radius: 999px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e2e8f0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.course-nav-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 1.15rem;
+  border-radius: 999px;
+  border: 1.5px solid #e2e8f0;
+  background: #ffffff;
+  color: #1e293b;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.course-nav-tab-btn:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+}
+
+.course-nav-tab-btn.active {
+  background: #062a36;
+  border-color: #062a36;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(6, 42, 54, 0.25);
+}
+
+.tab-btn-icon {
+  display: flex;
+  align-items: center;
+  color: inherit;
+}
+
+.tab-btn-title {
+  letter-spacing: -0.1px;
+}
+
+.tab-btn-code-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #64748b;
+  transition: all 0.22s ease;
+}
+
+.tab-btn-code-pill.active {
+  background: #dfb235;
+  color: #062a36;
+  font-weight: 800;
+}
+
+/* Master Split Showcase Card */
+.course-showcase-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  overflow: hidden;
+}
+
+/* Left Column: Specs, Description & Curriculum */
+.course-showcase-left {
+  padding: 1.75rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.course-showcase-pill-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.85rem;
+}
+
+.course-showcase-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+}
+
+.course-showcase-pill.code-pill {
+  background: #f1f5f9;
+  color: #062a36;
+  border: 1px solid #e2e8f0;
+}
+
+.course-showcase-pill.meta-pill {
+  background: #eff6ff;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+}
+
+.course-showcase-pill.ac-pill {
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+
+.course-showcase-title {
+  color: #062a36;
+  font-size: 1.65rem;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.25;
+}
+
+.course-showcase-desc {
+  color: #475569;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  margin: 0 0 1.15rem 0;
+}
+
+/* 2x2 Specs Grid Box */
+.course-specs-grid-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+  margin-bottom: 1.15rem;
+}
+
+.spec-grid-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.spec-grid-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #64748b;
+  letter-spacing: 0.06em;
+}
+
+.spec-grid-val {
+  font-size: 0.94rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.spec-grid-val.fee-val {
+  color: #059669;
+  font-size: 1.12rem;
+  font-weight: 800;
+}
+
+/* Curriculum Cloud */
+.course-curriculum-block {
+  margin-bottom: 1.25rem;
+}
+
+.curriculum-heading {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 0.5rem 0;
+}
+
+.curriculum-tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.curriculum-tag {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.32rem 0.6rem;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.18s ease;
+}
+
+.curriculum-tag:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+.curriculum-tag .tag-ico {
+  color: #b45309;
+}
+
+/* Interactive CTAs */
+.course-showcase-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.btn-course-apply {
+  background: linear-gradient(135deg, #dfb235 0%, #c59b27 100%);
+  color: #062a36;
+  font-size: 0.9rem;
+  font-weight: 800;
+  padding: 0.7rem 1.4rem;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 12px rgba(197, 155, 39, 0.3);
+  transition: all 0.22s ease;
+}
+
+.btn-course-apply:hover {
+  background: linear-gradient(135deg, #fde047 0%, #dfb235 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(197, 155, 39, 0.45);
+}
+
+/* Right Column: Why Study at IIFCCMS */
+.course-showcase-right {
+  background: #062a36;
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.why-study-heading {
+  color: #dfb235;
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0 0 1.15rem 0;
+  letter-spacing: -0.2px;
+}
+
+.why-study-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.why-study-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: #e2e8f0;
+}
+
+.why-check-ico {
+  color: #dfb235;
+  min-width: 18px;
+  margin-top: 2px;
+}
+
+@media (max-width: 992px) {
+  .course-showcase-card {
+    grid-template-columns: 1fr;
+  }
+  .course-showcase-left {
+    padding: 1.5rem;
+  }
+  .course-showcase-right {
+    padding: 1.5rem;
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+}
+
+@media (max-width: 640px) {
+  .course-specs-grid-box {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+  .course-showcase-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .btn-course-apply {
+    width: 100%;
+    justify-content: center;
+  }
+  .course-nav-tabs {
+    border-radius: 12px;
+    width: 100%;
+  }
+  .course-nav-tab-btn {
+    width: 100%;
+    justify-content: space-between;
+  }
 }
 
 /* ==========================================================================
@@ -2400,6 +3293,120 @@ button {
 
 .footer-staff-login:hover {
   opacity: 0.85;
+}
+
+/* ==========================================================================
+   Footer Highlighted Admin Login Card
+   ========================================================================== */
+.footer-admin-card-wrapper {
+  margin-bottom: 2.75rem;
+}
+
+.footer-admin-card {
+  background: linear-gradient(135deg, rgba(13, 92, 117, 0.45) 0%, rgba(6, 42, 54, 0.92) 100%);
+  border: 1.5px solid var(--accent-gold, #c59b27);
+  border-radius: var(--radius-lg, 12px);
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
+  transition: all 0.25s ease;
+}
+
+.footer-admin-card:hover {
+  border-color: var(--accent-gold-light, #dfb235);
+  box-shadow: 0 12px 30px rgba(197, 155, 39, 0.2);
+}
+
+.footer-admin-card-main {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex: 1;
+}
+
+.footer-admin-icon-box {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: 12px;
+  background: rgba(197, 155, 39, 0.15);
+  border: 1.5px solid var(--accent-gold, #c59b27);
+  color: var(--accent-gold-light, #dfb235);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-admin-card-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--accent-gold-light, #dfb235);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+.footer-admin-card-title {
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 0.3rem 0;
+  letter-spacing: 0.2px;
+}
+
+.footer-admin-card-desc {
+  color: #cbd5e1;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 650px;
+}
+
+.footer-admin-card-btn-wrap {
+  flex-shrink: 0;
+}
+
+.footer-admin-login-cta-btn {
+  background: linear-gradient(135deg, var(--accent-gold, #c59b27) 0%, var(--accent-gold-light, #dfb235) 100%);
+  color: #062a36;
+  font-weight: 800;
+  font-size: 0.92rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 14px rgba(197, 155, 39, 0.35);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.footer-admin-login-cta-btn:hover {
+  background: linear-gradient(135deg, var(--accent-gold-light, #dfb235) 0%, #fde047 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(197, 155, 39, 0.5);
+}
+
+@media (max-width: 900px) {
+  .footer-admin-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.25rem;
+    gap: 1.25rem;
+  }
+  .footer-admin-card-btn-wrap {
+    width: 100%;
+  }
+  .footer-admin-login-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 .footer-bottom {
@@ -9923,3 +10930,513 @@ button {
 .btn-outline-signout:hover {
   background: #fef2f2;
 }
+
+/* ==========================================================================
+   AUTO-SLIDING ACCOMPLISHED FACULTY SECTION (MATCHING REFERENCE UI)
+   ========================================================================== */
+
+.faculty-auto-slider-section {
+  padding: 4.5rem 0 3.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.faculty-slider-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.faculty-header-title-block {
+  flex: 1;
+  min-width: 280px;
+}
+
+.faculty-main-heading {
+  font-size: 1.95rem;
+  font-weight: 700;
+  color: #1e293b;
+  font-family: 'Playfair Display', Georgia, serif;
+  letter-spacing: -0.3px;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.faculty-heading-accent {
+  font-style: italic;
+  color: #b91c1c;
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* View All Pill Button */
+.faculty-view-all-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.4rem 0.5rem 0.4rem 1.15rem;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #0f172a;
+  transition: all 0.22s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.faculty-view-all-pill:hover {
+  border-color: #dc2626;
+  color: #dc2626;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15);
+  transform: translateY(-1px);
+}
+
+.view-all-circle-arrow {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #dc2626;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.22s ease;
+}
+
+.faculty-view-all-pill:hover .view-all-circle-arrow {
+  transform: translate(2px, -2px);
+}
+
+/* Auto-sliding Carousel Viewport */
+.faculty-carousel-viewport {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 0.75rem 0.25rem 1.25rem;
+  cursor: grab;
+}
+
+.faculty-carousel-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.faculty-carousel-viewport:active {
+  cursor: grabbing;
+}
+
+.faculty-cards-sliding-track {
+  display: flex;
+  gap: 1.35rem;
+  width: max-content;
+}
+
+/* Individual Faculty Card */
+.faculty-auto-card {
+  width: 245px;
+  min-width: 245px;
+  max-width: 245px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 0.9rem;
+  cursor: pointer;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  user-select: none;
+  outline: none;
+}
+
+/* Card Hover Color Change (Matching Testimonial Section Behavior) */
+.faculty-auto-card:hover {
+  background: #062a36 !important;
+  border-color: #c59b27 !important;
+  box-shadow: 0 16px 36px rgba(6, 42, 54, 0.35) !important;
+  transform: translateY(-5px);
+}
+
+.faculty-auto-card:hover .faculty-card-name {
+  color: #ffffff !important;
+}
+
+.faculty-auto-card:hover .faculty-card-role {
+  color: #dfb235 !important;
+}
+
+.faculty-auto-card:hover .faculty-card-badge-row {
+  border-top-color: rgba(255, 255, 255, 0.15);
+}
+
+.faculty-auto-card:hover .faculty-card-cred-badge {
+  background: rgba(223, 178, 53, 0.16) !important;
+  color: #fde047 !important;
+  border-color: rgba(223, 178, 53, 0.4) !important;
+}
+
+/* Photo Box */
+.faculty-card-photo-box {
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #163647 0%, #1f556d 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.faculty-card-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.3s ease;
+}
+
+.faculty-auto-card:hover .faculty-card-photo-img {
+  transform: scale(1.03);
+}
+
+/* Info Box */
+.faculty-card-info {
+  margin-top: 0.85rem;
+  flex-grow: 1;
+}
+
+.faculty-card-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #062a36;
+  margin: 0 0 0.25rem 0;
+  line-height: 1.3;
+  transition: color 0.2s ease;
+}
+
+.faculty-auto-card:hover .faculty-card-name {
+  color: #ffffff !important;
+}
+
+.faculty-card-role {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.35;
+  transition: color 0.2s ease;
+}
+
+.faculty-auto-card:hover .faculty-card-role {
+  color: #dfb235 !important;
+}
+
+/* Credential Badge at Card Bottom */
+.faculty-card-badge-row {
+  margin-top: auto;
+  padding-top: 0.65rem;
+  border-top: 1px dashed #e2e8f0;
+}
+
+.faculty-auto-card:hover .faculty-card-badge-row {
+  border-top-color: rgba(255, 255, 255, 0.15);
+}
+
+.faculty-card-cred-badge {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #0d5c75;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 0.35rem 0.55rem;
+  border-radius: 6px;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.faculty-auto-card:hover .faculty-card-cred-badge {
+  background: rgba(223, 178, 53, 0.16) !important;
+  color: #fde047 !important;
+  border-color: rgba(223, 178, 53, 0.4) !important;
+}
+
+/* Bottom Pagination Dots */
+.faculty-dots-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1.5rem;
+}
+
+.faculty-slider-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.faculty-slider-dot:hover {
+  background: #94a3b8;
+}
+
+.faculty-slider-dot.active-pill {
+  width: 22px;
+  height: 7px;
+  border-radius: 999px;
+  background: #dc2626;
+}
+
+@media (max-width: 768px) {
+  .faculty-main-heading {
+    font-size: 1.55rem;
+  }
+  .faculty-auto-card {
+    width: 215px;
+    min-width: 215px;
+    max-width: 215px;
+    padding: 0.75rem;
+  }
+  .faculty-card-photo-box {
+    height: 180px;
+  }
+}
+
+/* Docked Marquee Alert at Footer of Banner Photos */
+.announcement-marquee-wrapper.slider-marquee-docked {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 25;
+  background: #fef3c7;
+  border-top: 1.5px solid #dfb235;
+  border-bottom: none;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.22);
+  padding: 0.65rem 0;
+}
+
+/* ==========================================================================
+   AUTO-SLIDING TESTIMONIALS SECTION (MATCHING FACULTY SECTION CARD DESIGN)
+   ========================================================================== */
+
+.testimonials-auto-slider-section {
+  padding: 4.5rem 0 3.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.testimonials-slider-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.testimonials-header-title-block {
+  flex: 1;
+  min-width: 280px;
+}
+
+.testimonials-main-heading {
+  font-size: 1.95rem;
+  font-weight: 700;
+  color: #1e293b;
+  font-family: 'Playfair Display', Georgia, serif;
+  letter-spacing: -0.3px;
+  margin: 0;
+  line-height: 1.25;
+}
+
+/* Auto-sliding Carousel Viewport */
+.testimonials-carousel-viewport {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 0.75rem 0.25rem 1.25rem;
+  cursor: grab;
+}
+
+.testimonials-carousel-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonials-carousel-viewport:active {
+  cursor: grabbing;
+}
+
+.testimonials-cards-sliding-track {
+  display: flex;
+  gap: 1.35rem;
+  width: max-content;
+}
+
+/* Individual Testimonial Card (Matches Faculty Card Geometry) */
+.testimonial-auto-card {
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 0.9rem;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  user-select: none;
+  cursor: default;
+}
+
+/* Hover Color Transformation (Purely on Hover - Not on Click) */
+.testimonial-auto-card:hover {
+  background: #062a36 !important;
+  border-color: #c59b27 !important;
+  box-shadow: 0 16px 36px rgba(6, 42, 54, 0.35) !important;
+  transform: translateY(-5px);
+}
+
+.testimonial-auto-card:hover .testimonial-card-name {
+  color: #ffffff !important;
+}
+
+.testimonial-auto-card:hover .testimonial-card-role {
+  color: #dfb235 !important;
+}
+
+.testimonial-auto-card:hover .testimonial-quote-text {
+  color: #e2e8f0 !important;
+}
+
+.testimonial-auto-card:hover .testimonial-card-badge-row {
+  border-top-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.testimonial-auto-card:hover .testimonial-card-cred-badge {
+  background: rgba(223, 178, 53, 0.16) !important;
+  color: #fde047 !important;
+  border-color: rgba(223, 178, 53, 0.4) !important;
+}
+
+.testimonial-auto-card:hover .testimonial-card-photo-img {
+  transform: scale(1.03);
+}
+
+/* Photo Box */
+.testimonial-card-photo-box {
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #163647 0%, #1f556d 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.testimonial-card-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.3s ease;
+}
+
+/* Info Box */
+.testimonial-card-info {
+  margin-top: 0.85rem;
+}
+
+.testimonial-card-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #062a36;
+  margin: 0 0 0.2rem 0;
+  line-height: 1.3;
+  transition: color 0.2s ease;
+}
+
+.testimonial-card-role {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin: 0 0 0.65rem 0;
+  line-height: 1.35;
+  transition: color 0.2s ease;
+}
+
+/* Quote Snippet */
+.testimonial-card-quote-box {
+  margin-bottom: 0.75rem;
+  flex-grow: 1;
+}
+
+.testimonial-quote-text {
+  font-size: 0.78rem;
+  line-height: 1.48;
+  color: #475569;
+  margin: 0;
+  font-style: italic;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.2s ease;
+}
+
+/* Credential Badge at Card Bottom */
+.testimonial-card-badge-row {
+  margin-top: auto;
+  padding-top: 0.65rem;
+  border-top: 1px dashed #e2e8f0;
+  transition: border-color 0.2s ease;
+}
+
+.testimonial-card-cred-badge {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #0d5c75;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 0.35rem 0.55rem;
+  border-radius: 6px;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .testimonials-main-heading {
+    font-size: 1.55rem;
+  }
+  .testimonial-auto-card {
+    width: 220px;
+    min-width: 220px;
+    max-width: 220px;
+    padding: 0.75rem;
+  }
+  .testimonial-card-photo-box {
+    height: 180px;
+  }
+}
+

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
+import { useAuth } from '../../context/AuthContext';
+import AdminLoginModal from './AdminLoginModal';
 import { 
   MapPin, Phone, Mail, Award, Lock, ExternalLink, 
   ChevronRight, ShieldCheck, GraduationCap, Building2, BookOpen
@@ -8,7 +10,9 @@ import {
 
 export default function Footer() {
   const { settings } = useApp();
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
+  const [showAdminModal, setShowAdminModal] = useState(false);
 
   const handleAnchorClick = (id) => {
     if (window.location.pathname === '/') {
@@ -190,7 +194,7 @@ export default function Footer() {
               <li style={{ marginTop: '0.4rem', paddingTop: '0.4rem', borderTop: '1px dashed rgba(255,255,255,0.1)' }}>
                 <Link to="/admissions?tab=registration">
                   <ChevronRight size={13} className="footer-link-arrow" />
-                  <span style={{ color: '#fde047', fontWeight: '600' }}>Admissions 2026-27 Desk</span>
+                  <span style={{ color: '#fde047', fontWeight: '600' }}>Admissions • Current Session Desk</span>
                 </Link>
               </li>
               <li>
@@ -331,10 +335,57 @@ export default function Footer() {
 
               {/* Staff Login */}
               <div style={{ marginTop: '0.65rem' }}>
-                <Link to="/admin/login" className="footer-staff-login">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (isAuthenticated) {
+                      navigate('/admin/dashboard');
+                    } else {
+                      setShowAdminModal(true);
+                    }
+                  }}
+                  className="footer-staff-login"
+                  style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, textAlign: 'left' }}
+                >
                   <Lock size={12} /> Administrative Portal Login (Staff Only)
-                </Link>
+                </button>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Highlighted Admin Panel Card in Footer */}
+        <div className="footer-admin-card-wrapper">
+          <div className="footer-admin-card">
+            <div className="footer-admin-card-main">
+              <div className="footer-admin-icon-box">
+                <Lock size={22} />
+              </div>
+              <div>
+                <div className="footer-admin-card-tag">OFFICIAL ADMINISTRATIVE PORTAL</div>
+                <h4 className="footer-admin-card-title">IIFCCMS Administrative Secretariat &amp; Governance Panel</h4>
+                <p className="footer-admin-card-desc">
+                  Authorized portal for administrators, department heads, and faculty staff. Manage admissions, academic circulars, student inquiries, and institutional records.
+                </p>
+              </div>
+            </div>
+            <div className="footer-admin-card-btn-wrap">
+              <button
+                type="button"
+                onClick={() => {
+                  if (isAuthenticated) {
+                    navigate('/admin/dashboard');
+                  } else {
+                    setShowAdminModal(true);
+                  }
+                }}
+                className="footer-admin-login-cta-btn"
+                title="Open Administrative Login Portal"
+              >
+                <Lock size={15} />
+                <span>{isAuthenticated ? 'Admin Panel Dashboard' : 'Admin Login'}</span>
+                <ChevronRight size={16} />
+              </button>
             </div>
           </div>
         </div>
@@ -363,6 +414,12 @@ export default function Footer() {
           </div>
         </div>
       </div>
+
+      {/* Admin Login Pop-up Modal */}
+      <AdminLoginModal
+        isOpen={showAdminModal}
+        onClose={() => setShowAdminModal(false)}
+      />
     </footer>
   );
 }

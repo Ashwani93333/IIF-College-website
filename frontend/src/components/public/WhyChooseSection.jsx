@@ -48,14 +48,6 @@ export default function WhyChooseSection() {
               <h2 className="brand-main-headline">WHY IIFCCMS ?</h2>
             </div>
           </div>
-
-          <div className="header-right-stat">
-            <div className="stat-big-num">35<span className="stat-plus">+</span></div>
-            <div className="stat-text-label">
-              <span>Years Group Pedigree</span>
-              <span>&amp; Academic Eminence</span>
-            </div>
-          </div>
         </div>
 
         {/* 2-Column Split: Left 3 Pure Photo Cards | Right Formatted Description Points */}
