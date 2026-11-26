@@ -1,71 +1,482 @@
-import React, { useState } from 'react';
-import { useApp } from '../../context/AppContext';
+import React, { useState, useEffect } from 'react';
+import { 
+  Camera, Image, Sparkles, ZoomIn, X, ChevronRight, 
+  Building2, Users, Award, BookOpen, Layers 
+} from 'lucide-react';
+
+// Import all 27 authentic institutional photos from assets/photo-gallery
+import img01 from '../../assets/photo-gallery/20170504_185443.jpg';
+import img02 from '../../assets/photo-gallery/20170504_194730.jpg';
+import img03 from '../../assets/photo-gallery/20170506_183215 - Copy.jpg';
+import img04 from '../../assets/photo-gallery/20171008_131215.jpg';
+import img05 from '../../assets/photo-gallery/20171109_203301.jpg';
+import img06 from '../../assets/photo-gallery/20180211_204946.jpg';
+import img07 from '../../assets/photo-gallery/AA with President Vietnam-DSC_0282_1219x1200.JPG';
+import img08 from '../../assets/photo-gallery/AIMA Fellow awardees with HRD mminister-1994IMAG0534.jpg';
+import img09 from '../../assets/photo-gallery/AJ1.jpg';
+import img10 from '../../assets/photo-gallery/Army Institute Seminar -_DSC0066.JPG';
+import img11 from '../../assets/photo-gallery/Award of D.Litt. to JDA by SIAU-Hungary 2008.jpg';
+import img12 from '../../assets/photo-gallery/Baku Meeting with Nakao- President ADB- 20150503_195718.jpg';
+import img13 from '../../assets/photo-gallery/Baku, Azerbaijan on 4th May, 2015 IIF 00035.jpg';
+import img14 from '../../assets/photo-gallery/Baku, Azerbaijan on 5th May, 2015 IIF 00024.jpg';
+import img15 from '../../assets/photo-gallery/CIMG0489.JPG';
+import img16 from '../../assets/photo-gallery/CIMG0529.JPG';
+import img17 from '../../assets/photo-gallery/CIMG0651.JPG';
+import img18 from '../../assets/photo-gallery/CIMG0653.JPG';
+import img19 from '../../assets/photo-gallery/CIMG0883.JPG';
+import img20 from '../../assets/photo-gallery/DSC01317.JPG';
+import img21 from '../../assets/photo-gallery/DSC01672.JPG';
+import img22 from '../../assets/photo-gallery/DSC01751.JPG';
+import img23 from '../../assets/photo-gallery/DSC_0061-With Vice PM mauritius.JPG';
+import img24 from '../../assets/photo-gallery/DSC_0108.JPG';
+import img25 from '../../assets/photo-gallery/DSC_7816.JPG';
+import img26 from '../../assets/photo-gallery/DSC_7830.JPG';
+import img27 from '../../assets/photo-gallery/DSC_7837.JPG';
+
+const GALLERY_ITEMS = [
+  // 1. Global Dignitaries & Academic Convocations
+  {
+    id: 1,
+    title: "Bilateral Academic Dialogue with President of Vietnam",
+    category: "Global Dignitaries",
+    caption: "High-level bilateral academic exchange and institutional cooperation with the President of Vietnam.",
+    imageUrl: img07
+  },
+  {
+    id: 2,
+    title: "AIMA Fellow Awardees with Union HRD Minister",
+    category: "Global Dignitaries",
+    caption: "Prestigious AIMA Fellowship felicitation ceremony graced by the Union HRD Minister.",
+    imageUrl: img08
+  },
+  {
+    id: 3,
+    title: "Conferment of Honorary D.Litt. by SIAU Hungary",
+    category: "Global Dignitaries",
+    caption: "Academic honor and honorary doctorate conferment by State Institute of Public Administration (SIAU), Hungary.",
+    imageUrl: img11
+  },
+  {
+    id: 4,
+    title: "Global Economic Delegation with President of Asian Development Bank",
+    category: "Global Dignitaries",
+    caption: "Strategic international economic dialogue with Takehiko Nakao, President of Asian Development Bank (ADB).",
+    imageUrl: img12
+  },
+  {
+    id: 5,
+    title: "High-Level Conclave with Vice Prime Minister of Mauritius",
+    category: "Global Dignitaries",
+    caption: "Executive international academic and educational partnership conference with the Vice Prime Minister of Mauritius.",
+    imageUrl: img23
+  },
+  {
+    id: 6,
+    title: "International Financial Assembly in Baku, Azerbaijan",
+    category: "Global Dignitaries",
+    caption: "Plenary session participation at the global financial and economic governance assembly.",
+    imageUrl: img13
+  },
+  {
+    id: 7,
+    title: "World Economic & Academic Forum Assembly",
+    category: "Global Dignitaries",
+    caption: "Institutional presentation on financial development and commerce education at the World Forum.",
+    imageUrl: img14
+  },
+
+  // 2. Seminars & Conclaves
+  {
+    id: 8,
+    title: "National Seminar with Army Institute of Management",
+    category: "Seminars & Conclaves",
+    caption: "Collaborative national defense and management strategy symposium.",
+    imageUrl: img10
+  },
+  {
+    id: 9,
+    title: "National Commerce & Management Symposia",
+    category: "Seminars & Conclaves",
+    caption: "Scholarly keynote addresses and panel deliberations on financial markets.",
+    imageUrl: img01
+  },
+  {
+    id: 10,
+    title: "Distinguished Corporate Leadership Roundtable",
+    category: "Seminars & Conclaves",
+    caption: "Industry CXOs and senior economists discussing corporate financial governance.",
+    imageUrl: img02
+  },
+  {
+    id: 11,
+    title: "Executive Academic Assembly & Faculty Dialogue",
+    category: "Seminars & Conclaves",
+    caption: "Curricular excellence meeting on NEP guidelines and multidisciplinary learning.",
+    imageUrl: img03
+  },
+  {
+    id: 12,
+    title: "Industry-Academia Panel on Financial Economics",
+    category: "Seminars & Conclaves",
+    caption: "Interactive forum bridging corporate finance requirements with classroom instruction.",
+    imageUrl: img04
+  },
+  {
+    id: 13,
+    title: "Corporate Networking & Alumni Conclave",
+    category: "Seminars & Conclaves",
+    caption: "Alumni leadership interaction with current undergraduate scholars.",
+    imageUrl: img05
+  },
+  {
+    id: 14,
+    title: "Management Scholars & Researchers Conclave",
+    category: "Seminars & Conclaves",
+    caption: "Presentation of research working papers on economic modeling and management science.",
+    imageUrl: img06
+  },
+  {
+    id: 15,
+    title: "Academic Leadership & Strategic Planning Forum",
+    category: "Seminars & Conclaves",
+    caption: "Senior faculty and directors deliberating on academic quality benchmarks.",
+    imageUrl: img09
+  },
+
+  // 3. Campus & Architecture
+  {
+    id: 16,
+    title: "Greater Noida Knowledge Park III Academic Block",
+    category: "Campus & Architecture",
+    caption: "Front elevation of the sprawling academic block situated in the institutional hub.",
+    imageUrl: img15
+  },
+  {
+    id: 17,
+    title: "Landscaped Campus Courtyard & Architectural Grounds",
+    category: "Campus & Architecture",
+    caption: "Pollution-free green environment fostering serene academic concentration.",
+    imageUrl: img16
+  },
+  {
+    id: 18,
+    title: "Main Entrance Facade & Green Lawns",
+    category: "Campus & Architecture",
+    caption: "Well-maintained 6.47-acre campus grounds with modern educational architecture.",
+    imageUrl: img24
+  },
+  {
+    id: 19,
+    title: "Campus Walkway & Lush Greenery Environment",
+    category: "Campus & Architecture",
+    caption: "Pedestrian corridors lined with foliage promoting a healthy collegiate lifestyle.",
+    imageUrl: img26
+  },
+  {
+    id: 20,
+    title: "Evening Vista of IIFCCMS Greater Noida Campus",
+    category: "Campus & Architecture",
+    caption: "Illuminated institutional complex under evening lights.",
+    imageUrl: img27
+  },
+
+  // 4. Academic Facilities & Infrastructure
+  {
+    id: 21,
+    title: "Air-Conditioned Smart Lecture Theatre Complex",
+    category: "Academic Facilities",
+    caption: "Tiered lecture halls equipped with multimedia audio-visual projectors and acoustic treatment.",
+    imageUrl: img17
+  },
+  {
+    id: 22,
+    title: "Central Library Reference & Periodical Archives",
+    category: "Academic Facilities",
+    caption: "Over 55,000 volumes, international finance journals, and digital research terminals.",
+    imageUrl: img18
+  },
+  {
+    id: 23,
+    title: "Executive Seminar Hall & Multimedia Facility",
+    category: "Academic Facilities",
+    caption: "Dedicated venue for guest lectures, MDP programs, and corporate seminars.",
+    imageUrl: img19
+  },
+  {
+    id: 24,
+    title: "Computing Laboratory & Business Analytics Infrastructure",
+    category: "Academic Facilities",
+    caption: "High-speed internet workstations with financial modeling and business analytics software.",
+    imageUrl: img20
+  },
+  {
+    id: 25,
+    title: "Student Collaborative Study Rooms & Learning Spaces",
+    category: "Academic Facilities",
+    caption: "Group discussion suites fostering teamwork, presentation preparation, and case study debates.",
+    imageUrl: img21
+  },
+  {
+    id: 26,
+    title: "Central Administrative Secretariat & Faculty Chambers",
+    category: "Academic Facilities",
+    caption: "Administrative offices and faculty cabins providing personalized academic guidance.",
+    imageUrl: img22
+  },
+  {
+    id: 27,
+    title: "Student Recreation Arena & Outdoor Sports Grounds",
+    category: "Academic Facilities",
+    caption: "Dedicated spaces for badminton, volleyball, table tennis, and student cultural activities.",
+    imageUrl: img25
+  }
+];
 
 export default function GallerySection() {
-  const { gallery } = useApp();
   const [activeCategory, setActiveCategory] = useState("All");
+  const [selectedImage, setSelectedImage] = useState(null);
 
-  const categories = ["All", "Campus", "Library", "Labs", "Sports", "Cultural"];
+  const categories = [
+    "All",
+    "Global Dignitaries",
+    "Seminars & Conclaves",
+    "Campus & Architecture",
+    "Academic Facilities"
+  ];
 
-  const filteredGallery = gallery.filter(item => {
-    if (!item.isActive) return false;
-    return activeCategory === "All" || item.category.toLowerCase() === activeCategory.toLowerCase();
+  // Close modal on Escape
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setSelectedImage(null);
+    };
+    if (selectedImage) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedImage]);
+
+  const filteredGallery = GALLERY_ITEMS.filter(item => {
+    if (activeCategory === "All") return true;
+    return item.category === activeCategory;
   });
 
   return (
-    <section className="section section-bg-white" id="gallery">
-      <div className="container">
-        <div className="section-header">
-          <span className="section-tag">Campus Life & Spaces</span>
-          <h2>Campus Infrastructure Showcase</h2>
-          <p>
-            Experience our 6.47-acre environment built for holistic learning, intellectual discovery, 
-            and vibrant student life.
+    <div className="tab-content-card" style={{ padding: '2rem' }}>
+      {/* Header Info */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.75rem', borderBottom: '1px solid #e2e8f0', paddingBottom: '1.25rem' }}>
+        <div>
+          <div className="content-badge" style={{ marginBottom: '0.4rem' }}>INSTITUTIONAL PHOTO ARCHIVES</div>
+          <h2 className="content-heading" style={{ margin: 0 }}>Infrastructure &amp; Campus Life Photo Gallery</h2>
+          <p style={{ color: '#64748b', fontSize: '0.9rem', margin: '0.4rem 0 0', maxWidth: '750px', lineHeight: 1.55 }}>
+            A curated photographic showcase of our 6.47-acre Greater Noida campus, smart lecture halls, central library, high-level dignitary convocations, and academic seminars.
           </p>
         </div>
-
-        {/* Filter Pills */}
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
-          {categories.map(cat => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`pill-filter-btn ${activeCategory === cat ? 'active' : ''}`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
-        {/* Gallery Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
-          {filteredGallery.map(photo => (
-            <div 
-              key={photo.id}
-              style={{ borderRadius: 'var(--radius-lg)', overflow: 'hidden', position: 'relative', boxShadow: 'var(--shadow-md)', height: '260px' }}
-            >
-              <img 
-                src={photo.imageUrl} 
-                alt={photo.title}
-                style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s' }}
-                onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
-                onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-              />
-              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(transparent, rgba(11,37,69,0.95))', padding: '1.25rem', color: '#fff' }}>
-                <span style={{ background: 'var(--accent-gold)', color: 'var(--primary-navy)', fontSize: '0.7rem', fontWeight: '800', padding: '0.15rem 0.5rem', borderRadius: 'var(--radius-sm)', textTransform: 'uppercase' }}>
-                  {photo.category}
-                </span>
-                <h4 style={{ color: '#fff', fontSize: '1rem', marginTop: '0.4rem', marginBottom: '0.2rem' }}>
-                  {photo.title}
-                </h4>
-                <p style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.8)' }}>
-                  {photo.caption}
-                </p>
-              </div>
-            </div>
-          ))}
+        <div style={{ background: '#f1f5f9', border: '1px solid #cbd5e1', padding: '0.4rem 0.85rem', borderRadius: '8px', fontSize: '0.82rem', fontWeight: '700', color: '#062a36', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}>
+          <Image size={15} color="#c59b27" />
+          <span>{filteredGallery.length} {filteredGallery.length === 1 ? 'Photograph' : 'Photographs'}</span>
         </div>
       </div>
-    </section>
+
+      {/* Filter Category Pills */}
+      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
+        {categories.map(cat => {
+          const count = cat === "All" ? GALLERY_ITEMS.length : GALLERY_ITEMS.filter(i => i.category === cat).length;
+          const isActive = activeCategory === cat;
+          return (
+            <button
+              key={cat}
+              type="button"
+              onClick={() => setActiveCategory(cat)}
+              style={{
+                padding: '0.45rem 1rem',
+                borderRadius: '999px',
+                fontSize: '0.82rem',
+                fontWeight: '700',
+                border: '1.5px solid',
+                borderColor: isActive ? '#062a36' : '#e2e8f0',
+                background: isActive ? '#062a36' : '#ffffff',
+                color: isActive ? '#ffffff' : '#334155',
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                boxShadow: isActive ? '0 4px 12px rgba(6, 42, 54, 0.2)' : '0 1px 3px rgba(0,0,0,0.02)',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              <span>{cat}</span>
+              <span style={{
+                fontSize: '0.72rem',
+                padding: '0.1rem 0.45rem',
+                borderRadius: '999px',
+                background: isActive ? '#dfb235' : '#f1f5f9',
+                color: '#062a36',
+                fontWeight: '800'
+              }}>
+                {count}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Gallery Grid */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(290px, 1fr))',
+        gap: '1.25rem'
+      }}>
+        {filteredGallery.map(photo => (
+          <div 
+            key={photo.id}
+            onClick={() => setSelectedImage(photo)}
+            style={{
+              borderRadius: '12px',
+              overflow: 'hidden',
+              position: 'relative',
+              boxShadow: '0 4px 14px rgba(0, 0, 0, 0.06)',
+              height: '240px',
+              cursor: 'pointer',
+              background: '#062a36',
+              border: '1px solid #e2e8f0'
+            }}
+          >
+            <img 
+              src={photo.imageUrl} 
+              alt={photo.title}
+              loading="lazy"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                transition: 'transform 0.35s ease'
+              }}
+              onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.06)'}
+              onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+            />
+            {/* Top Right Zoom Indicator */}
+            <div style={{
+              position: 'absolute',
+              top: '0.75rem',
+              right: '0.75rem',
+              background: 'rgba(6, 42, 54, 0.75)',
+              color: '#ffffff',
+              borderRadius: '999px',
+              padding: '0.25rem 0.55rem',
+              fontSize: '0.7rem',
+              fontWeight: '700',
+              backdropFilter: 'blur(4px)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.25rem',
+              border: '1px solid rgba(255, 255, 255, 0.15)'
+            }}>
+              <ZoomIn size={12} color="#dfb235" />
+              <span>Inspect</span>
+            </div>
+
+            {/* Bottom Caption Overlay */}
+            <div style={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              right: 0,
+              background: 'linear-gradient(180deg, transparent 0%, rgba(6, 42, 54, 0.95) 45%, #062a36 100%)',
+              padding: '1.25rem 1rem 0.85rem',
+              color: '#ffffff'
+            }}>
+              <span style={{
+                background: '#dfb235',
+                color: '#062a36',
+                fontSize: '0.68rem',
+                fontWeight: '800',
+                padding: '0.15rem 0.5rem',
+                borderRadius: '4px',
+                textTransform: 'uppercase',
+                letterSpacing: '0.04em'
+              }}>
+                {photo.category}
+              </span>
+              <h4 style={{
+                color: '#ffffff',
+                fontSize: '0.92rem',
+                fontWeight: '700',
+                marginTop: '0.35rem',
+                marginBottom: '0.2rem',
+                lineHeight: 1.3,
+                textOverflow: 'ellipsis',
+                overflow: 'hidden',
+                whiteSpace: 'nowrap'
+              }}>
+                {photo.title}
+              </h4>
+              <p style={{
+                fontSize: '0.75rem',
+                color: '#cbd5e1',
+                margin: 0,
+                lineHeight: 1.4,
+                display: '-webkit-box',
+                WebkitLineClamp: 1,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden'
+              }}>
+                {photo.caption}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <div 
+          className="modal-overlay" 
+          onClick={() => setSelectedImage(null)}
+          style={{ background: 'rgba(6, 42, 54, 0.94)', zIndex: 99999 }}
+        >
+          <div 
+            className="modal-dialog" 
+            onClick={e => e.stopPropagation()}
+            style={{ maxWidth: '900px', width: '92%', padding: '1.25rem', background: '#062a36', border: '1.5px solid #c59b27', borderRadius: '14px' }}
+          >
+            {/* Modal Header */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.85rem', paddingBottom: '0.65rem', borderBottom: '1px solid rgba(255,255,255,0.12)' }}>
+              <div>
+                <span style={{ fontSize: '0.75rem', color: '#dfb235', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                  {selectedImage.category}
+                </span>
+                <h3 style={{ margin: '0.25rem 0 0.2rem', color: '#ffffff', fontSize: '1.25rem', fontWeight: '800' }}>
+                  {selectedImage.title}
+                </h3>
+                <p style={{ margin: 0, color: '#cbd5e1', fontSize: '0.82rem', lineHeight: 1.45 }}>
+                  {selectedImage.caption}
+                </p>
+              </div>
+              <button 
+                type="button" 
+                onClick={() => setSelectedImage(null)}
+                style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#ffffff', fontSize: '1.4rem', cursor: 'pointer', borderRadius: '50%', width: '34px', height: '34px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                aria-label="Close Lightbox"
+              >
+                &times;
+              </button>
+            </div>
+
+            {/* Modal Image Box */}
+            <div style={{ maxHeight: '72vh', overflow: 'hidden', borderRadius: '8px', background: '#021820', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <img 
+                src={selectedImage.imageUrl} 
+                alt={selectedImage.title} 
+                style={{ maxWidth: '100%', maxHeight: '70vh', objectFit: 'contain', borderRadius: '6px' }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }

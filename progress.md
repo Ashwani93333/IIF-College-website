@@ -213,7 +213,15 @@ Following the latest user specifications and reference screenshots, a comprehens
 
 ---
 
-### Phase 5: Undergraduate Degree Programs & Campus Highlights Updates
+### Phase 5: Undergraduate Degree Programs, Campus Highlights & Infrastructure Gallery Updates
+* **Infrastructure & Facilities Photo Gallery Integration:**
+  * Imported all 27 authentic institutional photographs from the `assets/photo-gallery` folder into [GallerySection.jsx](file:///d:/Personal%20Projects/clg-website/frontend/src/components/public/GallerySection.jsx) rendered under the **INFRASTRUCTURE & FACILITIES -> Photo Gallery** tab (`/facilities?tab=photo-gallery`).
+  * Organized photos into four intuitive categories with dynamic pill badges and counts:
+    * *Global Dignitaries (7 Photos):* Bilateral exchanges with the President of Vietnam, Union HRD Minister, President of Asian Development Bank (ADB), Vice Prime Minister of Mauritius, SIAU Hungary D.Litt., and international assemblies in Baku.
+    * *Seminars & Conclaves (8 Photos):* National symposia with Army Institute of Management, corporate leadership roundtables, academic excellence dialogues, and researchers conclaves.
+    * *Campus & Architecture (5 Photos):* Greater Noida Knowledge Park III academic block, landscaped courtyard, green walkways, and illuminated evening vistas.
+    * *Academic Facilities (7 Photos):* Air-conditioned lecture theatre complex, central library archives, computing laboratories, and student collaborative study suites.
+  * Added responsive image cards with hover-zoom, category tags, and an interactive full-screen Lightbox modal to inspect any photo in high resolution with captions.
 * **Campus Highlights 3x3 Photo Matrix Overhaul:**
   * Replaced all generic stock photo placeholders with all 20 authentic institutional photographs from the `assets/campus-highlights` directory in [HighlightsSection.jsx](file:///d:/Personal%20Projects/clg-website/frontend/src/components/public/HighlightsSection.jsx).
   * Distributed the photos across 4 dynamic auto-sliding cells and 5 static zoom cells showcasing academic seminars, convocations, corporate conclaves, student workshops, and campus architecture.
@@ -229,7 +237,7 @@ Following the latest user specifications and reference screenshots, a comprehens
   * Created a dedicated, highlighted **Administrative Secretariat & Governance Panel** card in [Footer.jsx](file:///d:/Personal%20Projects/clg-website/frontend/src/components/public/Footer.jsx) with gold glassmorphism styling in [index.css](file:///d:/Personal%20Projects/clg-website/frontend/src/index.css), opening the interactive `AdminLoginModal` or routing to `/admin/dashboard` when authenticated.
 * **Institutional Verification & Quality Control:**
   * Zero prohibited terms or academic year violations (`Violations: 0`).
-  * Production build passed cleanly in 732ms via Vite.
+  * Production build passed cleanly in 791ms via Vite.
 
 ---
 
