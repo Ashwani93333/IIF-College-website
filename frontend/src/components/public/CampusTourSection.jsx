@@ -1,14 +1,14 @@
 import React from 'react';
 import { 
   Building2, CheckCircle2, Monitor, BookOpen, 
-  Coffee, ShieldCheck, Bus, Sparkles, ExternalLink, ArrowRight 
+  Sparkles, ExternalLink 
 } from 'lucide-react';
 
 export default function CampusTourSection() {
   const campusFeatures = [
     {
       title: "100% Air-Conditioned Smart Lecture Rooms",
-      desc: "Tiered seating, ultra-short throw interactive projectors, digital podiums, and acoustic wall panels enabling collaborative case discussions."
+      desc: "Tiered seating, ultra-short throw interactive projectors, digital podiums, and acoustic wall panels enabling collaborative case discussions and high-engagement learning."
     },
     {
       title: "Advanced Financial Analytics & Computing Labs",
@@ -17,23 +17,11 @@ export default function CampusTourSection() {
     {
       title: "Central Knowledge Resource Center (55,000+ Volumes)",
       desc: "Expansive library housing over 55,000 reference volumes, international economics journals, national research periodicals, DELNET, and EBSCO e-databases."
-    },
-    {
-      title: "Executive Seminar & Corporate Conclave Auditoriums",
-      desc: "State-of-the-art conference facilities for national seminars, industry CXO guest lectures, annual inductions, and academic symposia."
-    },
-    {
-      title: "Sports Arena & Student Wellness Gymnasium",
-      desc: "Dedicated facilities for badminton, table tennis, basketball, cricket practice nets, indoor chess, and an active physical wellness center."
-    },
-    {
-      title: "Hygienic Student Cafeteria & Fleet Transport",
-      desc: "Nutritious multi-cuisine food court adhering to strict hygiene standards, alongside dedicated daily AC bus connectivity across Delhi, Noida, and Greater Noida."
     }
   ];
 
   return (
-    <section className="section section-bg-white campus-tour-section" id="facilities">
+    <section className="section campus-tour-section" id="facilities" style={{ background: 'var(--bg-beige, #f7f3ec)' }}>
       <div className="container">
         {/* Section Header */}
         <div className="section-header" style={{ marginBottom: '2.5rem' }}>
@@ -52,7 +40,10 @@ export default function CampusTourSection() {
           {/* Left Column: Point-Wise Campus Facilities */}
           <div className="campus-details-col">
             <div className="campus-details-header">
-              <span className="facilities-accent-pill">CAMPUS HIGHLIGHTS</span>
+              <span className="facilities-accent-pill highlighted-pill">
+                <Sparkles size={13} style={{ display: 'inline', marginRight: '4px', verticalAlign: 'middle' }} />
+                CAMPUS HIGHLIGHTS
+              </span>
               <h3>Architected for Modern Higher Education</h3>
             </div>
 
@@ -69,16 +60,6 @@ export default function CampusTourSection() {
                 </div>
               ))}
             </div>
-
-            <div className="campus-cta-box">
-              <a 
-                href="/admissions" 
-                className="btn-primary-gold" 
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.65rem 1.4rem' }}
-              >
-                Schedule an In-Person Campus Visit <ArrowRight size={15} />
-              </a>
-            </div>
           </div>
 
           {/* Right Column: Compact Direct YouTube Video Player */}
@@ -94,7 +75,7 @@ export default function CampusTourSection() {
                 <iframe 
                   className="youtube-embedded-iframe"
                   src="https://www.youtube.com/embed/6N7r5WlMhqk?rel=0&modestbranding=1" 
-                  title="IIF CCMS Campus Tour Video"
+                  title="IIFCCMS Campus Tour Video"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                   loading="lazy"

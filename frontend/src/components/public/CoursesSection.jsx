@@ -20,14 +20,13 @@ export default function CoursesSection({ onApplyWithCourse }) {
   };
 
   return (
-    <section className="section" id="programs" style={{ background: '#f8fafc' }}>
+    <section className="section" id="programs" style={{ background: 'var(--bg-beige, #f7f3ec)' }}>
       <div className="container">
         <div className="section-header">
-          <span className="section-tag">Academic Offerings</span>
+          <span className="section-tag">Academic Offerings • Current Session</span>
           <h2>Undergraduate Degree Programs (NEP 2020)</h2>
           <p>
-            Affiliated with CCS University Meerut, combining academic rigor, skill-based electives, 
-            and hands-on industry internships.
+            Offered by IIFCCMS, affiliated with Chaudhary Charan Singh University, Meerut (NAAC A++), combining academic rigor, skill-based electives, and hands-on corporate internships.
           </p>
         </div>
 
@@ -36,7 +35,7 @@ export default function CoursesSection({ onApplyWithCourse }) {
             <div key={course.id} className="course-card">
               <div className="course-card-top">
                 <div className="course-badge-row">
-                  <span className="course-code-badge">College Code: {course.collegeCode}</span>
+                  <span className="course-code-badge">IIFCCMS Code: {course.collegeCode}</span>
                   {course.isAdmissionsOpen ? (
                     <span className="admissions-open-badge">
                       <CheckCircle2 size={12} /> Admissions Open

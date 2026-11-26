@@ -21,7 +21,7 @@ export default function HeroSlider() {
       id: 1,
       bgImage: banner1,
       tag: "CAMPUS OVERVIEW",
-      caption: "IIF College of Commerce & Management Studies • Greater Noida (Code: 472)"
+      caption: "IIFCCMS • Greater Noida (College Code: 472)"
     },
     {
       id: 2,
@@ -147,7 +147,7 @@ export default function HeroSlider() {
               style={{ textDecoration: 'none' }}
             >
               <Sparkles size={14} />
-              <span>Apply Online 2026-27</span>
+              <span>Apply Online</span>
             </a>
 
             <button 

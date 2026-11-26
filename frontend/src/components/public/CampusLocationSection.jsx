@@ -9,7 +9,7 @@ export default function CampusLocationSection() {
   const googleDirectionsUrl = "https://www.google.com/maps/dir/?api=1&destination=Indian+Institute+of+Finance+45A+Knowledge+Park+III+Greater+Noida";
 
   return (
-    <section className="section campus-location-unified-section" id="location">
+    <section className="section campus-location-unified-section" id="location" style={{ background: 'var(--bg-beige-card, #fdfbf7)' }}>
       <div className="container">
         {/* Section Header */}
         <div className="location-section-header">
@@ -85,7 +85,7 @@ export default function CampusLocationSection() {
               </div>
             </div>
 
-            {/* Quick Navigation Buttons */}
+            {/* Quick Navigation Button */}
             <div className="secretariat-quick-bar">
               <a 
                 href={googleDirectionsUrl} 
@@ -96,14 +96,6 @@ export default function CampusLocationSection() {
                 <Navigation size={15} />
                 <span>Get Driving Directions</span>
               </a>
-
-              <a 
-                href="tel:+919811971002" 
-                className="btn-secretariat-cta secondary"
-              >
-                <Phone size={15} />
-                <span>Call Admissions Desk</span>
-              </a>
             </div>
           </div>
 
@@ -113,7 +105,7 @@ export default function CampusLocationSection() {
             <iframe 
               className="google-map-iframe"
               src="https://maps.google.com/maps?q=Indian+Institute+of+Finance,+45A,+Knowledge+Park+III,+Greater+Noida,+Uttar+Pradesh+201310&t=&z=15&ie=UTF8&iwloc=&output=embed"
-              title="IIF CCMS Campus Location Map"
+              title="IIFCCMS Campus Location Map"
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -121,9 +113,9 @@ export default function CampusLocationSection() {
 
             {/* Top-Left Floating Google Maps Badge */}
             <div className="map-floating-overlay-card">
-              <h4 className="overlay-inst-title">Indian Institute Of Finance</h4>
+              <h4 className="overlay-inst-title">IIFCCMS - Greater Noida Campus</h4>
               <p className="overlay-inst-address">
-                Indian Institute Of Finance, 45A, Knowledge Park III, Greater Noida, Ruhallapur, Uttar Pradesh 201310, India
+                IIFCCMS, Plot No. 45A, Knowledge Park III, Greater Noida, Delhi NCR – 201310, Uttar Pradesh, India
               </p>
               <div className="overlay-actions-row">
                 <a 

@@ -18,7 +18,6 @@ export default function CombinedNoticesCcsuSection() {
   const tabsConfig = [
     { id: "notice-board", label: "Notice Board", icon: <Pin size={15} /> },
     { id: "press-releases", label: "Press Releases", icon: <Newspaper size={15} /> },
-    { id: "tenders", label: "Tenders", icon: <FileText size={15} /> },
     { id: "recruitment", label: "Recruitment", icon: <Users size={15} /> }
   ];
 
@@ -26,7 +25,7 @@ export default function CombinedNoticesCcsuSection() {
     "notice-board": [
       {
         id: 1,
-        title: "Special Advertisement for Admission to Undergraduate Programs (B.Com / B.B.A / B.A) 2026-27",
+        title: "Special Advertisement for Admission to Undergraduate Programs (B.Com / B.B.A / B.A) - Current Session",
         badge: "New +1",
         releaseDate: "18/11/2026",
         subItems: [
@@ -177,48 +176,6 @@ export default function CombinedNoticesCcsuSection() {
       }
     ],
 
-    "tenders": [
-      {
-        id: 201,
-        title: "Notice Inviting Tender (NIT) for Advanced Computer Hardware & High-Speed Networking Upgrade",
-        badge: "New",
-        releaseDate: "04/11/2026",
-        subItems: [
-          {
-            name: "Tender Document No.: IIFCCMS/TEND/IT/2026/02",
-            badge: "New",
-            date: "04/11/2026"
-          }
-        ]
-      },
-      {
-        id: 202,
-        title: "Tender for Annual Campus Facility Maintenance & Green Landscaping Services",
-        badge: null,
-        releaseDate: "18/09/2026",
-        subItems: [
-          {
-            name: "Bid Submission Guidelines & Vendor Eligibility Criteria",
-            badge: null,
-            date: "18/09/2026"
-          }
-        ]
-      },
-      {
-        id: 203,
-        title: "Expression of Interest (EOI) for Campus Cafeteria & Food Court Services",
-        badge: null,
-        releaseDate: "10/08/2026",
-        subItems: [
-          {
-            name: "Technical Specification & Terms of Contract",
-            badge: null,
-            date: "10/08/2026"
-          }
-        ]
-      }
-    ],
-
     "recruitment": [
       {
         id: 301,
@@ -290,7 +247,7 @@ export default function CombinedNoticesCcsuSection() {
   });
 
   return (
-    <section className="section combined-notices-ccsu-section" id="notices">
+    <section className="section combined-notices-ccsu-section" id="notices" style={{ background: 'var(--bg-beige, #f7f3ec)' }}>
       {/* Anchor for CCSU weblinks navigation */}
       <div id="ccsu-weblinks" style={{ position: 'relative', top: '-80px' }} />
 
@@ -409,8 +366,9 @@ export default function CombinedNoticesCcsuSection() {
             </div>
           </div>
 
-          {/* Right Column: CCSU Weblinks + Anti-Ragging Card */}
+          {/* Right Column: CCSU Weblinks + Anti-Ragging Card (Horizontally Aligned) */}
           <div className="right-stacked-column">
+            <h2 className="announcements-top-heading">UNIVERSITY PORTALS &amp; COMPLIANCE</h2>
             {/* Top Card: CCS University Weblinks (Dark Navy/Teal Card) */}
             <div className="ccsu-weblinks-dark-card">
               <div className="ccsu-card-header">

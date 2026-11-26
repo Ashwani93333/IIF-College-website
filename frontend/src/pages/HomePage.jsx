@@ -2,8 +2,9 @@ import React from 'react';
 import Navbar from '../components/public/Navbar';
 import MarqueeAlert from '../components/public/MarqueeAlert';
 import HeroSlider from '../components/public/HeroSlider';
-import PlacementSection from '../components/public/PlacementSection';
+import CoursesSection from '../components/public/CoursesSection';
 import WhyChooseSection from '../components/public/WhyChooseSection';
+import FacultySection from '../components/public/FacultySection';
 import TestimonialsSection from '../components/public/TestimonialsSection';
 import CampusTourSection from '../components/public/CampusTourSection';
 import HighlightsSection from '../components/public/HighlightsSection';
@@ -21,28 +22,31 @@ export default function HomePage() {
       {/* 2. Hero Visual Slider (Auto-sliding Front Banners with Detailed Descriptions) */}
       <HeroSlider />
 
-      {/* 3. Placement Highlights (Auto-Scrolling Corporate Logos + Metrics Bar) */}
-      <PlacementSection />
+      {/* 3. Academic Programs & Courses Offering (B.Com, BBA, B.A. with In-Depth Fee Details) */}
+      <CoursesSection />
 
-      {/* 4. WHY IIFCCMS ? (A Community of Possibilities Mosaic with Dynamic Hover Photo Slide) */}
+      {/* 4. WHY IIFCCMS ? (A Community of Possibilities with Campus Photos & Formatted Key Points) */}
       <WhyChooseSection />
 
-      {/* 5. TESTIMONIALS (Positioned directly below WHY IIFCCMS ?) */}
+      {/* 5. FACULTY MENTORSHIP & LEADERSHIP (Positioned Directly Below Why IIFCCMS) */}
+      <FacultySection />
+
+      {/* 6. TESTIMONIALS (Positioned Directly Below Faculty Section) */}
       <TestimonialsSection />
 
-      {/* 6. Campus Tour & World-Class Infrastructure (Direct Compact YouTube Walkthrough) */}
+      {/* 7. Campus Tour & World-Class Infrastructure (Horizontally Aligned Walkthrough & Highlights) */}
       <CampusTourSection />
 
-      {/* 7. Campus Highlights (Continuous Photo Slider Matrix) */}
+      {/* 8. Campus Highlights (Continuous Photo Slider Matrix) */}
       <HighlightsSection />
 
-      {/* 8. Official Notice Board & CCSU Weblinks (Combined per Screenshot) */}
+      {/* 9. Official Notice Board & CCSU Weblinks (Horizontally Aligned Columns) */}
       <CombinedNoticesCcsuSection />
 
-      {/* 9. Campus Location (Visit Our Greater Noida Campus) */}
+      {/* 10. Campus Location (Visit Our Greater Noida Campus) */}
       <CampusLocationSection />
 
-      {/* 10. Clean Footer */}
+      {/* 11. Clean Footer */}
       <Footer />
     </div>
   );

@@ -29,7 +29,9 @@ export default function Footer() {
           <div className="footer-col footer-col-brand">
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.85rem' }}>
               <div style={{
-                width: '36px',
+                width: 'auto',
+                minWidth: '42px',
+                padding: '0 0.4rem',
                 height: '36px',
                 borderRadius: '8px',
                 background: 'linear-gradient(135deg, #0d5c75 0%, #062a36 100%)',
@@ -39,9 +41,9 @@ export default function Footer() {
                 justifyContent: 'center',
                 color: '#dfb235',
                 fontWeight: '800',
-                fontSize: '0.95rem'
+                fontSize: '0.82rem'
               }}>
-                IIF
+                IIFCCMS
               </div>
               <div>
                 <h4 style={{ margin: 0, padding: 0, fontSize: '1.1rem', color: '#ffffff', letterSpacing: '0.3px' }}>

@@ -77,7 +77,7 @@ During the latest sessions, intensive UI/UX enhancements and user feedback itera
 * **Board of Governors:** Comprehensive roster detailing academic mentors, industry stalwarts, and institutional trustees.
 
 #### 5. Official Notice Board & Announcements UI (`CombinedNoticesCcsuSection.jsx`)
-* **Categorized Tabbed Interface:** Four filter tabs for browsing notices: `Notice Board`, `Press Releases`, `Tenders`, and `Recruitment`.
+* **Categorized Tabbed Interface:** Filter tabs for browsing notices: `Notice Board`, `Press Releases`, and `Recruitment` (Tenders tab removed per request).
 * **In-Section Scroll Area:** Implemented a constrained scrolling viewport (`max-height: 480px`) with custom slim scrollbars, allowing users to scroll through announcements without stretching the page vertically.
 * **Visual Release Tags:** Release dates, PDF download icons, and animated "New" badges highlighting recent notifications.
 
@@ -92,6 +92,61 @@ During the latest sessions, intensive UI/UX enhancements and user feedback itera
 * **High Contrast & Readability:** Resolved text contrast issues using light typography on dark navy backgrounds (`#062a36`).
 * **Active Routing:** Replaced dead links with live navigational routes across About, Programs, Admissions, Governance, Compliance, and Contact.
 * **Social Media & Affiliations:** Integrated official social media icon links, contact information, and affiliation badges for CCS University Meerut (College Code: 472).
+
+---
+
+### Phase 4: Institutional Rebranding, Color Palette Overhaul & Advanced Layout Enhancements (November 26, 2026)
+Following the latest user specifications and reference screenshots, a comprehensive front-end modernization pass was executed:
+
+#### 1. Universal Academic Beige Palette Overhaul
+* Transformed the stark white background across the entire portal into a warm, distinguished academic beige palette:
+  * `--bg-light: #f7f4ee` (Primary page background)
+  * `--bg-white: #faf8f5` (Card background)
+  * `--bg-beige: #f5f0e6` (Warm section container background)
+  * `--bg-beige-card: #fdfbf7` (Elevated card background)
+* All sections (`CombinedNoticesCcsuSection`, `CampusLocationSection`, `WhyChooseSection`, `CoursesSection`, `CampusTourSection`, `FacultySection`) seamlessly adopt this warm tone.
+
+#### 2. Large Desktop Screens Responsiveness (Wide Viewport Optimization)
+* Fixed issue where content was constrained into a narrow 1280px central column with large whitespace gaps on left/right on large desktop monitors.
+* Updated `.container` to `max-width: 1680px; padding: 0 2rem;` (and at `1920px` to `1820px; padding: 0 3rem;`).
+* Content now comfortably and proportionally fills the full screen width from left to right on 1080p, 1440p, and 4K displays.
+
+#### 3. Global Year & Institutional Branding Standardization
+* **Removal of Specific Years in Badges:** Replaced all occurrences of `2026-27` / `2026 7` in admission open badges and application buttons with **"CURRENT SESSION"** or **"ADMISSION OPEN"**.
+* **Global Name Uniformity:** Replaced standalone `IIF` with **`IIFCCMS`** across all titles, descriptions, footer links, and section badges.
+* Affiliation consistently referenced as **Chaudhary Charan Singh University, Meerut (CCSU, College Code: 472)**.
+
+#### 4. Landing Page Structural Reorganization
+* **Courses Section Placement:** Repositioned `CoursesSection` immediately after `HeroSlider` so visitors instantly explore course offerings (B.Com, BBA, B.A.), fee breakdowns, and NEP 2020 curriculums.
+* **Placement Section Removal:** Completely removed `PlacementSection` from the landing page as instructed.
+* **Why IIFCCMS Section Refactor:**
+  * **Left Column:** 3 pure photo cards without text overlays (`photo-card-main` + 2 `photo-card-sub`).
+  * **Right Column:** Clean structured text points detailing 35+ years legacy, CCSU affiliation, Knowledge Park III location, air-conditioned campus, and faculty mentorship.
+* **New Faculty Section:** Introduced a multi-card horizontal slider (`FacultySection.jsx`) immediately below `WhyChooseSection`, matching the exact card UI, arrow navigation (`← / →`), and auto-scroll behavior of `TestimonialsSection.jsx`, followed by Testimonials.
+
+#### 5. Section Alignment & Element Cleanup
+* **Campus Tour Section (`CampusTourSection.jsx`):**
+  * Retained only the top 3 essential infrastructure points (Smart Lecture Rooms, Financial Analytics Labs, Central Knowledge Resource Center).
+  * Removed "Schedule an In-Person Campus Visit" card.
+  * Highlighted `CAMPUS HIGHLIGHTS` badge with `<Sparkles />` and a warm golden pill design.
+  * Horizontally aligned the left description block with the right video player for equal height.
+* **Announcements & CCSU Cards Alignment (`CombinedNoticesCcsuSection.jsx`):**
+  * Vertically and horizontally aligned the left Announcements card and right CCSU Weblinks / Anti-Ragging cards.
+  * Completely removed the "Tenders" tab from tabs and data structures.
+* **Campus Location Section (`CampusLocationSection.jsx`):**
+  * Removed the "Call Admissions Desk" button from the quick action bar.
+* **Navbar Single-Line (No Wrapping):**
+  * Enforced `white-space: nowrap; flex-wrap: nowrap;` across navbar menu links, dropdown parents, and application CTA buttons so items never break onto two lines.
+
+#### 6. Header Admin Navigation & Modal Overhaul
+* **Completely Removed Admin from Primary Navbar:** Entirely eliminated any Admin button, link, or "Admin Panel Dashboard" item from the primary navigation bar. The primary navbar strictly presents institutional academic links and the `APPLY ONLINE` CTA button.
+* **Top Utility Bar Admin Card Badge:** Positioned the Admin Login trigger exclusively in the top utility bar (`.glb-top-utility-bar`) at the end of the top utility links (`COLLEGE CODE - 472 | Student Corner | Public Disclosure | Campus Tour | Media | Admin Login`), styled as a distinguished navy/gold badge button (`.glb-top-admin-badge-btn`).
+* **Interactive Admin Login Pop-up Modal (`AdminLoginModal.jsx`):**
+  * High-end modal overlay with glassmorphism backdrop blur.
+  * Form inputs for official staff email and password with show/hide password toggle.
+  * 1-Click fast access demo credentials for testing (`Super Administrator`, `Academic Administrator`, `Admission Officer`).
+  * Direct redirect to `/admin/dashboard` upon successful authentication.
+  * Shows authenticated user profile status and sign-out controls if already logged in.
 
 ---
 

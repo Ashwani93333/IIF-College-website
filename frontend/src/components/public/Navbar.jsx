@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
 import { useAuth } from '../../context/AuthContext';
-import { 
-  Phone, Mail, Award, BookOpen, ExternalLink, Menu, X, 
+import AdminLoginModal from './AdminLoginModal';
+import {
+  Phone, Mail, Award, BookOpen, ExternalLink, Menu, X,
   Lock, User, MessageCircle, ChevronRight, ChevronDown, Share2,
   Sparkles, CheckCircle2, Building2, Send, FileText, ArrowRight
 } from 'lucide-react';
@@ -16,6 +17,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [showAdminModal, setShowAdminModal] = useState(false);
 
   const navigateTo = (path, tab) => {
     setMobileMenuOpen(false);
@@ -146,6 +148,16 @@ export default function Navbar() {
             <Link to="/facilities?tab=campus-tour" className="glb-top-link">Campus Tour</Link>
             <span className="divider">|</span>
             <Link to="/latest-updates?tab=media-presence" className="glb-top-link">Media</Link>
+            <span className="divider">|</span>
+            <button
+              type="button"
+              onClick={() => setShowAdminModal(true)}
+              className="glb-top-admin-badge-btn"
+              title="Official Administrative Secretariat Portal"
+            >
+              <Lock size={12} className="top-admin-lock-icon" />
+              <span>{isAuthenticated ? 'Admin Panel' : 'Admin Login'}</span>
+            </button>
           </div>
 
           <div className="glb-top-right">
@@ -158,9 +170,9 @@ export default function Navbar() {
             </div>
 
             {/* Social Share Link */}
-            <a 
-              href="#contact" 
-              className="glb-top-link" 
+            <a
+              href="#contact"
+              className="glb-top-link"
               style={{ display: 'inline-flex', alignItems: 'center', gap: '3px' }}
             >
               <Share2 size={12} /> Follow Us
@@ -174,15 +186,15 @@ export default function Navbar() {
         <div className="container glb-brand-container">
           <Link to="/" className="brand-identity">
             <svg className="brand-crest-svg" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="46" fill="#0d5c75" stroke="#c59b27" strokeWidth="3.5"/>
-              <path d="M26 62 Q 50 56 50 36 Q 50 56 74 62 L 74 66 Q 50 60 50 40 Q 50 60 26 66 Z" fill="#ffffff"/>
-              <path d="M50 20 Q 54 28 50 34 Q 46 28 50 20 Z" fill="#dfb235"/>
-              <circle cx="50" cy="30" r="2.5" fill="#ef4444"/>
-              <path d="M20 50 A 30 30 0 0 0 50 80 A 30 30 0 0 0 80 50" fill="none" stroke="#dfb235" strokeWidth="2.5" strokeDasharray="4,2"/>
+              <circle cx="50" cy="50" r="46" fill="#0d5c75" stroke="#c59b27" strokeWidth="3.5" />
+              <path d="M26 62 Q 50 56 50 36 Q 50 56 74 62 L 74 66 Q 50 60 50 40 Q 50 60 26 66 Z" fill="#ffffff" />
+              <path d="M50 20 Q 54 28 50 34 Q 46 28 50 20 Z" fill="#dfb235" />
+              <circle cx="50" cy="30" r="2.5" fill="#ef4444" />
+              <path d="M20 50 A 30 30 0 0 0 50 80 A 30 30 0 0 0 80 50" fill="none" stroke="#dfb235" strokeWidth="2.5" strokeDasharray="4,2" />
               <text x="50" y="90" fontFamily="'Plus Jakarta Sans', sans-serif" fontSize="6.5" fontWeight="bold" fill="#ffffff" textAnchor="middle">ESTD. 1987</text>
             </svg>
             <div className="brand-title-group">
-              <h1 className="glb-brand-title">{settings.collegeName}</h1>
+              <h1 className="glb-brand-title">IIFCCMS - College of Commerce &amp; Management Studies</h1>
               <div className="brand-motto-ribbon">
                 <span>FOUNDATION OF LEADERSHIP &amp; COMMERCE EXCELLENCE</span>
               </div>
@@ -202,7 +214,7 @@ export default function Navbar() {
             </div>
 
             {/* Direct Google Form Link: Replaced popup modal with direct redirect to official registration form */}
-            <a 
+            <a
               href={GOOGLE_REGISTRATION_FORM_URL}
               target="_blank"
               rel="noopener noreferrer"
@@ -214,7 +226,7 @@ export default function Navbar() {
                 <Sparkles size={18} />
               </div>
               <div className="badge-text">
-                <span className="sup-highlight">SESSION 2026-27</span>
+                <span className="sup-highlight">CURRENT SESSION</span>
                 <span className="main-highlight">ADMISSION OPEN</span>
               </div>
             </a>
@@ -226,8 +238,8 @@ export default function Navbar() {
       <nav className="glb-navbar">
         <div className="container glb-nav-inner">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <button 
-              className="mobile-menu-toggle" 
+            <button
+              className="mobile-menu-toggle"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle navigation menu"
             >
@@ -235,7 +247,7 @@ export default function Navbar() {
             </button>
 
             {/* Mobile Admission Open Highlight Link - Direct to Google Form */}
-            <a 
+            <a
               href={GOOGLE_REGISTRATION_FORM_URL}
               target="_blank"
               rel="noopener noreferrer"
@@ -247,13 +259,13 @@ export default function Navbar() {
 
           <ul className={`glb-nav-menu ${mobileMenuOpen ? 'open' : ''}`}>
             {menuConfig.map((item, idx) => (
-              <li 
-                key={idx} 
+              <li
+                key={idx}
                 className="nav-item-has-dropdown"
                 onMouseEnter={() => setActiveDropdown(item.label)}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <div 
+                <div
                   className="glb-nav-link dropdown-parent"
                   onClick={(e) => handleDropdownToggle(e, item)}
                 >
@@ -266,7 +278,7 @@ export default function Navbar() {
                   {item.items.map((sub, sIdx) => (
                     <li key={sIdx} className="nav-dropdown-item">
                       {sub.externalUrl ? (
-                        <a 
+                        <a
                           href={sub.externalUrl}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -281,7 +293,7 @@ export default function Navbar() {
                           <ExternalLink size={13} className="sub-arrow" />
                         </a>
                       ) : (
-                        <button 
+                        <button
                           onClick={(e) => {
                             e.stopPropagation();
                             navigateTo(item.path, sub.tab);
@@ -300,32 +312,22 @@ export default function Navbar() {
           </ul>
 
           <div className="glb-nav-actions">
-            {/* Direct Google Form Link for APPLY ONLINE 2026-27 */}
-            <a 
+            {/* Direct Google Form Link for APPLY ONLINE */}
+            <a
               href={GOOGLE_REGISTRATION_FORM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="glb-btn-apply-now"
               style={{ textDecoration: 'none' }}
             >
-              APPLY ONLINE 2026-27
+              APPLY ONLINE
             </a>
-
-            {isAuthenticated ? (
-              <Link to="/admin/dashboard" className="glb-btn-admin-link" title="Open Admin Panel">
-                <User size={14} /> Admin
-              </Link>
-            ) : (
-              <Link to="/admin/login" className="glb-btn-admin-link" title="Staff Login">
-                <Lock size={13} /> Admin
-              </Link>
-            )}
           </div>
         </div>
       </nav>
 
       {/* 4. Sticky Vertical Right Side Tab - Direct to Google Form */}
-      <a 
+      <a
         href={GOOGLE_REGISTRATION_FORM_URL}
         target="_blank"
         rel="noopener noreferrer"
@@ -338,7 +340,7 @@ export default function Navbar() {
       </a>
 
       {/* 5. Floating WhatsApp Button (Bottom-Left) */}
-      <a 
+      <a
         href="https://wa.me/919811971002?text=Hello%20IIFCCMS%20Admissions%20Desk%2C%20I%20would%20like%20details%20regarding%20courses%20and%20admissions."
         target="_blank"
         rel="noopener noreferrer"
@@ -350,6 +352,12 @@ export default function Navbar() {
         </div>
         <span className="whatsapp-text">Send Via WhatsApp</span>
       </a>
+
+      {/* 6. Admin Login Pop-up Modal */}
+      <AdminLoginModal
+        isOpen={showAdminModal}
+        onClose={() => setShowAdminModal(false)}
+      />
     </header>
   );
 }
