@@ -7,8 +7,9 @@ import {
   Lock, User, MessageCircle, ChevronRight, ChevronDown, Share2,
   Sparkles, CheckCircle2, Building2, Send, FileText, ArrowRight
 } from 'lucide-react';
+import { iifccmsLogo, ccsuLogo } from '../../assets/assetImages';
 
-export const GOOGLE_REGISTRATION_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSddLOq1Hb3lHuFFxbGe1TQpZ_zY9qnxqIp9Nm8sEpegMb_3oQ/viewform";
+export const GOOGLE_REGISTRATION_FORM_URL = "/application-form";
 
 export default function Navbar() {
   const { settings } = useApp();
@@ -63,7 +64,7 @@ export default function Navbar() {
         { label: "Admission Notice", tab: "notice" },
         { label: "Information Brochure", tab: "brochure" },
         { label: "IIFCCMS Presentation", tab: "presentation" },
-        { label: "Apply Online (Google Form)", externalUrl: GOOGLE_REGISTRATION_FORM_URL },
+        { label: "Apply Online (Application Form)", path: "/application-form" },
         { label: "Fees", tab: "fees" },
         { label: "How to pay fee ?", tab: "fee-payment" },
         { label: "Document Required", tab: "documents" },
@@ -173,51 +174,66 @@ export default function Navbar() {
       <div className="glb-main-brand-header">
         <div className="container glb-brand-container">
           <Link to="/" className="brand-identity">
-            <svg className="brand-crest-svg" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="46" fill="#0d5c75" stroke="#c59b27" strokeWidth="3.5" />
-              <path d="M26 62 Q 50 56 50 36 Q 50 56 74 62 L 74 66 Q 50 60 50 40 Q 50 60 26 66 Z" fill="#ffffff" />
-              <path d="M50 20 Q 54 28 50 34 Q 46 28 50 20 Z" fill="#dfb235" />
-              <circle cx="50" cy="30" r="2.5" fill="#ef4444" />
-              <path d="M20 50 A 30 30 0 0 0 50 80 A 30 30 0 0 0 80 50" fill="none" stroke="#dfb235" strokeWidth="2.5" strokeDasharray="4,2" />
-              <text x="50" y="90" fontFamily="'Plus Jakarta Sans', sans-serif" fontSize="6.5" fontWeight="bold" fill="#ffffff" textAnchor="middle">ESTD. 1987</text>
-            </svg>
+            <img 
+              src={iifccmsLogo} 
+              alt="IIFCCMS Official College Logo" 
+              className="brand-crest-img"
+              style={{
+                width: '68px',
+                height: '68px',
+                objectFit: 'contain',
+                borderRadius: '50%',
+                background: '#ffffff',
+                padding: '2px',
+                border: '2.5px solid #dfb235',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                flexShrink: 0
+              }} 
+            />
             <div className="brand-title-group">
-              <h1 className="glb-brand-title">IIFCCMS - College of Commerce &amp; Management Studies</h1>
+              <h1 className="glb-brand-title">IIF College of Commerce &amp; Management Studies</h1>
               <div className="brand-motto-ribbon">
                 <span>FOUNDATION OF LEADERSHIP &amp; COMMERCE EXCELLENCE</span>
               </div>
               <div className="brand-trust-meta">
-                Affiliated to Chaudhary Charan Singh University, Meerut (NAAC A++ Grade)
+                Affiliated to Chaudhary Charan Singh University, Meerut (UGC Category-1 NACC A++)
               </div>
             </div>
           </Link>
 
           <div className="glb-header-right-badges">
-            <div className="glb-badge-item">
-              <div className="badge-icon"><Award size={18} /></div>
+            <div className="glb-badge-item" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+              <img 
+                src={ccsuLogo} 
+                alt="Chaudhary Charan Singh University Meerut Official Logo" 
+                style={{
+                  width: '46px',
+                  height: '46px',
+                  objectFit: 'contain',
+                  filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.15))'
+                }} 
+              />
               <div className="badge-text">
                 <span className="sup">Govt. University Degree</span>
-                <span className="main">NAAC A++ ACCREDITED</span>
+                <span className="main">CCSU MEERUT • NAAC A++</span>
               </div>
             </div>
 
-            {/* Direct Google Form Link: Replaced popup modal with direct redirect to official registration form */}
-            <a
-              href={GOOGLE_REGISTRATION_FORM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            {/* Direct Application Link */}
+            <Link
+              to="/application-form"
               className="glb-admission-highlight-badge"
-              title="Click to Apply Online via Official Google Form"
+              title="Click to Apply Online via Official Application Form"
             >
               <div className="admission-pulse-dot" />
               <div className="badge-icon admission-badge-icon">
                 <Sparkles size={18} />
               </div>
               <div className="badge-text">
-                <span className="sup-highlight">CURRENT SESSION</span>
+                <span className="sup-highlight">APPLY ONLINE</span>
                 <span className="main-highlight">ADMISSION OPEN</span>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -234,15 +250,13 @@ export default function Navbar() {
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
 
-            {/* Mobile Admission Open Highlight Link - Direct to Google Form */}
-            <a
-              href={GOOGLE_REGISTRATION_FORM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            {/* Mobile Admission Open Highlight Link */}
+            <Link
+              to="/application-form"
               className="glb-mobile-admission-pill"
             >
               <Sparkles size={13} /> Admission Open
-            </a>
+            </Link>
           </div>
 
           <ul className={`glb-nav-menu ${mobileMenuOpen ? 'open' : ''}`}>
@@ -280,6 +294,19 @@ export default function Navbar() {
                           <span className="sub-label">{sub.label}</span>
                           <ExternalLink size={13} className="sub-arrow" />
                         </a>
+                      ) : sub.path ? (
+                        <Link
+                          to={sub.path}
+                          onClick={() => {
+                            setMobileMenuOpen(false);
+                            setActiveDropdown(null);
+                          }}
+                          className="dropdown-link-btn"
+                          style={{ textDecoration: 'none' }}
+                        >
+                          <span className="sub-label">{sub.label}</span>
+                          <ChevronRight size={13} className="sub-arrow" />
+                        </Link>
                       ) : (
                         <button
                           onClick={(e) => {
@@ -300,32 +327,28 @@ export default function Navbar() {
           </ul>
 
           <div className="glb-nav-actions">
-            {/* Direct Google Form Link for APPLY ONLINE */}
-            <a
-              href={GOOGLE_REGISTRATION_FORM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            {/* Direct Link for APPLY ONLINE */}
+            <Link
+              to="/application-form"
               className="glb-btn-apply-now"
               style={{ textDecoration: 'none' }}
             >
               APPLY ONLINE
-            </a>
+            </Link>
           </div>
         </div>
       </nav>
 
-      {/* 4. Sticky Vertical Right Side Tab - Direct to Google Form */}
-      <a
-        href={GOOGLE_REGISTRATION_FORM_URL}
-        target="_blank"
-        rel="noopener noreferrer"
+      {/* 4. Sticky Vertical Right Side Tab */}
+      <Link
+        to="/application-form"
         className="sticky-vertical-enquiry-tab"
         style={{ textDecoration: 'none' }}
-        title="Open Online Registration Google Form"
+        title="Open Online Application Form"
       >
         <span>ADMISSION DESK</span>
         <ChevronRight size={14} style={{ display: 'inline', marginLeft: '2px' }} />
-      </a>
+      </Link>
 
       {/* 5. Floating WhatsApp Button (Bottom-Left) */}
       <a

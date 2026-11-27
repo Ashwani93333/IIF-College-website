@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { 
   Pin, Newspaper, FileText, Users, Download, 
   Search, ExternalLink, Landmark, ShieldCheck, 
-  ChevronRight, Sparkles
+  ChevronRight, Sparkles, Globe
 } from 'lucide-react';
+import { ccsuLogo } from '../../assets/assetImages';
 
 export default function CombinedNoticesCcsuSection() {
   const [activeTab, setActiveTab] = useState("notice-board");
@@ -18,21 +19,25 @@ export default function CombinedNoticesCcsuSection() {
   const tabsConfig = [
     { id: "notice-board", label: "Notice Board", icon: <Pin size={15} /> },
     { id: "press-releases", label: "Press Releases", icon: <Newspaper size={15} /> },
-    { id: "recruitment", label: "Recruitment", icon: <Users size={15} /> }
+    { id: "government-schemes", label: "Government Schemes", icon: <Landmark size={15} /> }
   ];
 
   const announcementsData = {
     "notice-board": [
       {
         id: 1,
-        title: "Special Advertisement for Admission to Undergraduate Programs (B.Com / B.B.A / B.A) - Current Session",
+        title: "Special Advertisement for Admission to Undergraduate Programs (B.Com / B.B.A / B.A)",
         badge: "New +1",
         releaseDate: "18/11/2026",
+        portalName: "CCSU Online Admission & Merit Registration Portal",
+        portalUrl: "https://www.ccsuniversity.ac.in",
         subItems: [
           {
             name: "Special Notification for Direct Merit Quota Registration under NEP 2020",
             badge: "New",
-            date: "18/11/2026"
+            date: "18/11/2026",
+            portalName: "CCSU NEP 2020 Curriculum & Admission Desk",
+            portalUrl: "https://www.ccsuniversity.ac.in"
           }
         ]
       },
@@ -41,16 +46,22 @@ export default function CombinedNoticesCcsuSection() {
         title: "CCSU Odd Semester Examination Form Submission Circular",
         badge: "New +2",
         releaseDate: "28/10/2026",
+        portalName: "Chaudhary Charan Singh University Examination Portal",
+        portalUrl: "https://www.ccsuniversity.ac.in",
         subItems: [
           {
             name: "Corrigendum for Elective Paper Selection on CCSU University Examination Portal",
             badge: "New",
-            date: "02/11/2026"
+            date: "02/11/2026",
+            portalName: "CCSU Online Semester Examination Forms",
+            portalUrl: "https://www.ccsuniversity.ac.in"
           },
           {
-            name: "Circular No.: IIFCCMS/CCSU/EXAM/2026-27/04",
+            name: "Circular No.: IIFCCMS/CCSU/EXAM/2026/04",
             badge: "New",
-            date: "28/10/2026"
+            date: "28/10/2026",
+            portalName: "CCSU Examination Cell & Internal Circulars",
+            portalUrl: "https://www.ccsuniversity.ac.in"
           }
         ]
       },
@@ -59,11 +70,15 @@ export default function CombinedNoticesCcsuSection() {
         title: "National Workshop on Financial Modeling & FinTech Innovations",
         badge: "New +1",
         releaseDate: "15/10/2026",
+        portalName: "IIFCCMS Academic & Research Programs Secretariat",
+        portalUrl: "https://www.iif.edu",
         subItems: [
           {
             name: "Two-Day Executive Skill Workshop at Knowledge Park III Campus",
             badge: "New",
-            date: "15/10/2026"
+            date: "15/10/2026",
+            portalName: "IIF CCMS Executive Education Cell",
+            portalUrl: "https://www.iif.edu"
           }
         ]
       },
@@ -72,11 +87,15 @@ export default function CombinedNoticesCcsuSection() {
         title: "Orientation Programme & Leadership Address by Prof. Aman Agarwal",
         badge: "New",
         releaseDate: "05/10/2026",
+        portalName: "IIF Academic Orientation & Induction Gateway",
+        portalUrl: "https://www.iif.edu",
         subItems: [
           {
             name: "Induction Ceremony Schedule & Academic Code of Conduct for Fresh Batch",
             badge: null,
-            date: "05/10/2026"
+            date: "05/10/2026",
+            portalName: "Student Affairs & Code of Conduct Secretariat",
+            portalUrl: "https://www.iif.edu"
           }
         ]
       },
@@ -85,11 +104,15 @@ export default function CombinedNoticesCcsuSection() {
         title: "RFID Smart Library Card Issuance & DELNET Database Access",
         badge: null,
         releaseDate: "22/09/2026",
+        portalName: "DELNET Developing Library Network Official Portal",
+        portalUrl: "https://www.delnet.in",
         subItems: [
           {
             name: "Collection of Smart Circulation Cards from CCMS Central Library Circulation Desk",
             badge: null,
-            date: "22/09/2026"
+            date: "22/09/2026",
+            portalName: "DELNET Consortium & Digital E-Resources",
+            portalUrl: "https://www.delnet.in"
           }
         ]
       },
@@ -98,11 +121,15 @@ export default function CombinedNoticesCcsuSection() {
         title: "Sports Council Inter-College Cricket & Badminton Trials",
         badge: null,
         releaseDate: "10/09/2026",
+        portalName: "CCSU Sports Council & Inter-College Championship Desk",
+        portalUrl: "https://www.ccsuniversity.ac.in",
         subItems: [
           {
             name: "Selection Trials Schedule at Campus Sports Complex & Gymnasium",
             badge: null,
-            date: "10/09/2026"
+            date: "10/09/2026",
+            portalName: "University Sports Federation Registration",
+            portalUrl: "https://www.ccsuniversity.ac.in"
           }
         ]
       },
@@ -111,11 +138,15 @@ export default function CombinedNoticesCcsuSection() {
         title: "Internal Assessment Test Schedule for Commerce & Management Faculties",
         badge: null,
         releaseDate: "01/09/2026",
+        portalName: "CCSU Examination Standards & Continuous Internal Evaluation",
+        portalUrl: "https://www.ccsuniversity.ac.in",
         subItems: [
           {
             name: "Detailed Datesheet & Seating Matrix for B.Com and BBA Candidates",
             badge: null,
-            date: "01/09/2026"
+            date: "01/09/2026",
+            portalName: "Examination Control Board CCSU",
+            portalUrl: "https://www.ccsuniversity.ac.in"
           }
         ]
       },
@@ -124,11 +155,15 @@ export default function CombinedNoticesCcsuSection() {
         title: "Fee Concession & Merit Scholarship Verification Desk Notification",
         badge: null,
         releaseDate: "24/08/2026",
+        portalName: "Institutional Merit & Welfare Scholarship Desk",
+        portalUrl: "https://www.ccsuniversity.ac.in",
         subItems: [
           {
             name: "Document Verification Schedule for Eligible Merit Quota Scholars",
             badge: null,
-            date: "24/08/2026"
+            date: "24/08/2026",
+            portalName: "Student Welfare & Financial Aid Portal",
+            portalUrl: "https://www.ccsuniversity.ac.in"
           }
         ]
       }
@@ -140,11 +175,15 @@ export default function CombinedNoticesCcsuSection() {
         title: "IIFCCMS Students Secure Top Ranks in CCS University Commerce Honors Examinations",
         badge: "New",
         releaseDate: "08/11/2026",
+        portalName: "Press Information & Academic Collaborative Network",
+        portalUrl: "https://www.ccsuniversity.ac.in",
         subItems: [
           {
             name: "Official Press Statement & Principal's Felicitation Message",
             badge: "New",
-            date: "08/11/2026"
+            date: "08/11/2026",
+            portalName: "University Press Information Bureau",
+            portalUrl: "https://www.ccsuniversity.ac.in"
           }
         ]
       },
@@ -153,11 +192,15 @@ export default function CombinedNoticesCcsuSection() {
         title: "Annual Corporate Placement Drive Witnesses 100+ Leading Recruiters at Knowledge Park III",
         badge: null,
         releaseDate: "20/10/2026",
+        portalName: "Corporate Resource & Industry Relations Portal",
+        portalUrl: "https://www.iif.edu",
         subItems: [
           {
             name: "Placement Statistics & Media Bulletin Release",
             badge: null,
-            date: "20/10/2026"
+            date: "20/10/2026",
+            portalName: "CRC Placement & Media Release Desk",
+            portalUrl: "https://www.iif.edu"
           }
         ]
       },
@@ -166,53 +209,110 @@ export default function CombinedNoticesCcsuSection() {
         title: "IIF Group Commemorates 35+ Years of Academic Pedigree & Research Excellence",
         badge: null,
         releaseDate: "12/09/2026",
+        portalName: "IIF 35+ Years Research & Academic Foundation",
+        portalUrl: "https://www.iif.edu",
         subItems: [
           {
             name: "Institutional Foundation Day Commemorative Monograph",
             badge: null,
-            date: "12/09/2026"
+            date: "12/09/2026",
+            portalName: "Finance India & IIF Publications",
+            portalUrl: "https://www.iif.edu"
           }
         ]
       }
     ],
 
-    "recruitment": [
+    "government-schemes": [
       {
         id: 301,
-        title: "Faculty Recruitment Notification: Assistant Professors in Commerce, Management & Economics",
-        badge: "New +1",
-        releaseDate: "10/11/2026",
+        title: "UP Post-Matric Scholarship & Fee Reimbursement Online Scheme (Saksham Portal)",
+        badge: "Active",
+        releaseDate: "15/11/2026",
+        portalName: "UP Government Saksham Scholarship Portal (scholarship.up.gov.in)",
+        portalUrl: "https://scholarship.up.gov.in",
         subItems: [
           {
-            name: "Detailed Eligibility, UGC Norms & Application Form 2026-27",
+            name: "Detailed Guidelines for SC/ST/OBC/Minority/General Merit-cum-Means Verification",
             badge: "New",
-            date: "10/11/2026"
+            date: "15/11/2026",
+            portalName: "Uttar Pradesh Social Welfare & Scholarship Portal",
+            portalUrl: "https://scholarship.up.gov.in"
+          },
+          {
+            name: "Official State Portal: scholarship.up.gov.in Institutional Submission Desk",
+            badge: null,
+            date: "10/11/2026",
+            portalName: "UP State Government Direct Benefit Transfer",
+            portalUrl: "https://scholarship.up.gov.in"
           }
         ]
       },
       {
         id: 302,
-        title: "Walk-in Interviews for Computer Lab Instructors & Placement Officers",
-        badge: null,
-        releaseDate: "25/10/2026",
+        title: "National Scholarship Portal (NSP) - Central Sector Scheme for College & University Enrollees",
+        badge: "New +1",
+        releaseDate: "04/11/2026",
+        portalName: "National Scholarship Portal - Government of India (scholarships.gov.in)",
+        portalUrl: "https://scholarships.gov.in",
         subItems: [
           {
-            name: "Interview Schedule & Document Checklist for Candidates",
-            badge: null,
-            date: "25/10/2026"
+            name: "Ministry of Education (MoE) Direct Benefit Transfer (DBT) Online Application Protocol",
+            badge: "New",
+            date: "04/11/2026",
+            portalName: "Ministry of Education (MoE) NSP Portal",
+            portalUrl: "https://scholarships.gov.in"
           }
         ]
       },
       {
         id: 303,
-        title: "Appointment of Senior Librarian & Digital Information Manager",
-        badge: null,
-        releaseDate: "02/09/2026",
+        title: "DigiShakti Scheme: Free Smartphone / Tablet Distribution for Eligible Undergraduate Students",
+        badge: "Active",
+        releaseDate: "22/10/2026",
+        portalName: "DigiShakti Portal - Government of Uttar Pradesh (digishakti.up.gov.in)",
+        portalUrl: "https://digishakti.up.gov.in",
         subItems: [
           {
-            name: "Recruitment Qualifications & Compensation Framework",
+            name: "Swami Vivekananda Youth Empowerment Scheme Student Master Database Verification",
             badge: null,
-            date: "02/09/2026"
+            date: "22/10/2026",
+            portalName: "DigiShakti Student Verification Portal",
+            portalUrl: "https://digishakti.up.gov.in"
+          }
+        ]
+      },
+      {
+        id: 304,
+        title: "Vidya Lakshmi Portal - Government of India Education Loan & Interest Subsidy Scheme",
+        badge: null,
+        releaseDate: "05/10/2026",
+        portalName: "Vidya Lakshmi Education Loan Portal - Govt of India (vidyalakshmi.co.in)",
+        portalUrl: "https://www.vidyalakshmi.co.in",
+        subItems: [
+          {
+            name: "Single-window Collateral-free Education Loan Facilitation at College Accounts Desk",
+            badge: null,
+            date: "05/10/2026",
+            portalName: "Vidya Lakshmi Single Window Portal",
+            portalUrl: "https://www.vidyalakshmi.co.in"
+          }
+        ]
+      },
+      {
+        id: 305,
+        title: "Skill India Digital & National Apprenticeship Training Scheme (NATS 2.0)",
+        badge: null,
+        releaseDate: "18/09/2026",
+        portalName: "National Apprenticeship Training Scheme Portal (nats.education.gov.in)",
+        portalUrl: "https://nats.education.gov.in",
+        subItems: [
+          {
+            name: "Government Stipendiary On-the-Job Apprenticeship Enrollment for Commerce & Management",
+            badge: null,
+            date: "18/09/2026",
+            portalName: "NATS 2.0 Ministry of Education Portal",
+            portalUrl: "https://nats.education.gov.in"
           }
         ]
       }
@@ -225,15 +325,11 @@ export default function CombinedNoticesCcsuSection() {
       url: "https://www.ccsuniversity.ac.in"
     },
     {
-      title: "Semester Examination & Form Desk",
-      url: "https://www.ccsuniversity.ac.in"
+      title: "Direct admission form CCSU",
+      url: "https://www.ccsuniversity.ac.in/admission"
     },
     {
       title: "Online University Results Portal",
-      url: "https://www.ccsuniversity.ac.in"
-    },
-    {
-      title: "Dean of Students Welfare & Grievances",
       url: "https://www.ccsuniversity.ac.in"
     }
   ];
@@ -247,11 +343,18 @@ export default function CombinedNoticesCcsuSection() {
   });
 
   return (
-    <section className="section combined-notices-ccsu-section" id="notices" style={{ background: 'var(--bg-beige, #f7f3ec)' }}>
+    <section className="section combined-notices-ccsu-section" id="notices" style={{ background: '#C1E1C1' }}>
       {/* Anchor for CCSU weblinks navigation */}
       <div id="ccsu-weblinks" style={{ position: 'relative', top: '-80px' }} />
 
       <div className="container">
+        {/* Centered Main Section Title */}
+        <div className="section-header" style={{ textAlign: 'center', margin: '0 auto 2.5rem' }}>
+          <h2 className="content-heading" style={{ textAlign: 'center', margin: 0 }}>
+            Official Notices &amp; University Portals
+          </h2>
+        </div>
+
         <div className="combined-two-col-grid">
           {/* Left Column: ANNOUNCEMENTS Box matching Reference Screenshot 1:1 */}
           <div className="announcements-main-wrapper">
@@ -308,7 +411,7 @@ export default function CombinedNoticesCcsuSection() {
                 ) : (
                   currentNotices.map(item => (
                     <div key={item.id} className="announcement-item-card">
-                      {/* Top Row: Title + New Badge + Release Date */}
+                      {/* Top Row: Title + New Badge + Release Date + Portal Link Button */}
                       <div className="announcement-header-row">
                         <div className="announcement-title-cluster">
                           <h4 className="announcement-primary-title">
@@ -320,8 +423,23 @@ export default function CombinedNoticesCcsuSection() {
                             </span>
                           )}
                         </div>
-                        <div className="announcement-release-date">
-                          Release Date: {item.releaseDate}
+                        <div className="announcement-header-controls">
+                          <div className="announcement-release-date">
+                            Release Date: {item.releaseDate}
+                          </div>
+                          {item.portalUrl && (
+                            <a
+                              href={item.portalUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="announcement-portal-link-btn"
+                              title={`Direct Link to ${item.portalName || 'Website'}`}
+                            >
+                              <Globe size={13} />
+                              <span>Visit Website</span>
+                              <ExternalLink size={12} />
+                            </a>
+                          )}
                         </div>
                       </div>
 
@@ -347,7 +465,7 @@ export default function CombinedNoticesCcsuSection() {
                                 title="Download Document Attachment"
                                 aria-label="Download attachment"
                               >
-                                <Download size={18} />
+                                <Download size={17} />
                               </button>
                             </div>
                           ))}
@@ -372,8 +490,17 @@ export default function CombinedNoticesCcsuSection() {
             {/* Top Card: CCS University Weblinks (Dark Navy/Teal Card) */}
             <div className="ccsu-weblinks-dark-card">
               <div className="ccsu-card-header">
-                <div className="ccsu-header-title">
-                  <Landmark size={22} className="ccsu-landmark-icon" />
+                <div className="ccsu-header-title" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+                  <img 
+                    src={ccsuLogo} 
+                    alt="CCS University Official Logo" 
+                    style={{ 
+                      width: '36px', 
+                      height: '36px', 
+                      objectFit: 'contain',
+                      filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.25))' 
+                    }} 
+                  />
                   <h4>CCS University Weblinks</h4>
                 </div>
                 <p className="ccsu-header-sub">

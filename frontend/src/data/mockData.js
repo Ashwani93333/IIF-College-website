@@ -1,4 +1,17 @@
 // Mock Initial Data for IIFCCMS College Portal & Admin Panel
+import {
+  facChairman,
+  facRkAgarwal,
+  facDeepakBansal,
+  facManjuAgarwal,
+  facPadmaMishra,
+  infraMainBuilding,
+  library1,
+  infraClassroom,
+  infraComputerCentre,
+  imgPgCulturalEvents,
+  imgPgGraduates
+} from '../assets/assetImages';
 
 export const INITIAL_SETTINGS = {
   collegeName: "IIF College of Commerce and Management Studies",
@@ -12,21 +25,16 @@ export const INITIAL_SETTINGS = {
   emailAdmissions: "admission@iifccms.edu.in",
   antiRaggingHelpline: "1800-180-5522 / +91 98119 71002",
   ccsuPortalUrl: "https://www.ccsuniversity.ac.in",
-  announcementTicker: "📢 Admissions Open for Current Academic Session (BBA / B.Com / B.A.) | Up to 25% Institutional Merit Scholarships | 100% Air-Conditioned Knowledge Park III Campus | Direct Helpline: +91 98119 71002",
-  collegeCodes: {
-    bba: "454",
-    bcom: "472",
-    ba: "478"
-  }
+  announcementTicker: "📢 Admissions Open (BBA / B.Com / B.A.) | Up to 25% Institutional Merit Scholarships | 100% Air-Conditioned Knowledge Park III Campus | Direct Helpline: +91 98119 71002"
 };
 
 export const INITIAL_COURSES = [
   {
     id: 1,
-    code: "BBA-454",
+    code: "BBA",
     title: "Bachelor of Business Administration (BBA)",
     degree: "Undergraduate (3 Years / 6 Semesters)",
-    collegeCode: "454",
+    collegeCode: "",
     eligibility: "10+2 from recognized board (CBSE / ICSE / UP Board / Other) with minimum 45% aggregate (40% for SC/ST).",
     seatIntake: 60,
     annualFee: 65000,
@@ -72,10 +80,10 @@ export const INITIAL_COURSES = [
   },
   {
     id: 2,
-    code: "BCOM-472",
+    code: "B.Com",
     title: "Bachelor of Commerce (B.Com)",
     degree: "Undergraduate (3 Years / 6 Semesters)",
-    collegeCode: "472",
+    collegeCode: "",
     eligibility: "10+2 with Commerce or Science/Arts with Mathematics/Economics with minimum 40% aggregate.",
     seatIntake: 80,
     annualFee: 45000,
@@ -109,10 +117,10 @@ export const INITIAL_COURSES = [
   },
   {
     id: 3,
-    code: "BA-478",
+    code: "B.A.",
     title: "Bachelor of Arts (B.A.)",
     degree: "Undergraduate (3 Years / 6 Semesters)",
-    collegeCode: "478",
+    collegeCode: "",
     eligibility: "10+2 from recognized secondary board in any stream with passing marks.",
     seatIntake: 120,
     annualFee: 35000,
@@ -152,11 +160,11 @@ export const INITIAL_NOTICES = [
   },
   {
     id: 2,
-    title: "Admissions Open for Current Academic Session under Institutional Merit Scholarships",
+    title: "Admissions Open under Institutional Merit Scholarships",
     slug: "admissions-open-merit-scholarships",
     category: "Admission",
     publishDate: "2026-11-18",
-    content: "Provisional admissions for BBA (Code 454), B.Com (Code 472), and B.A. (Code 478) are now open. Merit scholarship concessions up to 25% on annual tuition fees are available for meritorious candidates securing above 85% in Class 12th board examinations.",
+    content: "Provisional admissions for BBA, B.Com, and B.A. are now open. Merit scholarship concessions up to 25% on annual tuition fees are available for meritorious candidates securing above 85% in Class 12th board examinations.",
     isPinned: true,
     isActive: true,
     attachmentUrl: "#admissions",
@@ -205,7 +213,7 @@ export const INITIAL_APPLICATIONS = [
     id: 1,
     applicationId: "IIFCCMS-2026-7841",
     courseId: 1,
-    courseCode: "BBA-454",
+    courseCode: "BBA",
     courseTitle: "Bachelor of Business Administration (BBA)",
     fullName: "Aarav Sharma",
     gender: "Male",
@@ -234,7 +242,7 @@ export const INITIAL_APPLICATIONS = [
     id: 2,
     applicationId: "IIFCCMS-2026-7842",
     courseId: 2,
-    courseCode: "BCOM-472",
+    courseCode: "B.Com",
     courseTitle: "Bachelor of Commerce (B.Com)",
     fullName: "Sneha Patel",
     gender: "Female",
@@ -263,7 +271,7 @@ export const INITIAL_APPLICATIONS = [
     id: 3,
     applicationId: "IIFCCMS-2026-7843",
     courseId: 1,
-    courseCode: "BBA-454",
+    courseCode: "BBA",
     courseTitle: "Bachelor of Business Administration (BBA)",
     fullName: "Rohan Varma",
     gender: "Male",
@@ -292,7 +300,7 @@ export const INITIAL_APPLICATIONS = [
     id: 4,
     applicationId: "IIFCCMS-2026-7844",
     courseId: 3,
-    courseCode: "BA-478",
+    courseCode: "B.A.",
     courseTitle: "Bachelor of Arts (B.A.)",
     fullName: "Ananya Dixit",
     gender: "Female",
@@ -327,7 +335,7 @@ export const INITIAL_FACULTY = [
     qualifications: "Ph.D. (Economics), Eminent Economist & Author",
     experience: "45+ Years",
     email: "chairman@iifccms.edu.in",
-    photoUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80",
+    photoUrl: facChairman,
     bio: "Pioneer in financial education in India. Founder of Indian Institute of Finance (Estd. 1987). Consulted for global bodies and central government ministries."
   },
   {
@@ -338,7 +346,7 @@ export const INITIAL_FACULTY = [
     qualifications: "Ph.D. in Finance, M.S. (USA)",
     experience: "25+ Years",
     email: "aman@iifccms.edu.in",
-    photoUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+    photoUrl: facRkAgarwal,
     bio: "Renowned scholar in macro-finance and corporate strategy with extensive research publications in international journals of repute."
   },
   {
@@ -349,7 +357,7 @@ export const INITIAL_FACULTY = [
     qualifications: "Ph.D. (Commerce), M.Com, UGC-NET",
     experience: "16+ Years",
     email: "ritu.saxena@iifccms.edu.in",
-    photoUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
+    photoUrl: facManjuAgarwal,
     bio: "Expertise in Corporate Accounting, Auditing Standards, and GST Framework. Actively mentors students for competitive commerce examinations."
   },
   {
@@ -360,7 +368,7 @@ export const INITIAL_FACULTY = [
     qualifications: "MBA (Marketing), UGC-NET",
     experience: "9+ Years",
     email: "sandeep.sharma@iifccms.edu.in",
-    photoUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+    photoUrl: facDeepakBansal,
     bio: "Specializes in Consumer Behavior, Brand Strategy, and Digital Business Channels. Leads the campus corporate placement and internship cell."
   },
   {
@@ -371,7 +379,7 @@ export const INITIAL_FACULTY = [
     qualifications: "Ph.D. (Economics), M.A. Economics",
     experience: "7+ Years",
     email: "priya.verma@iifccms.edu.in",
-    photoUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80",
+    photoUrl: facPadmaMishra,
     bio: "Focused on Development Economics, Public Finance, and NEP 2020 multidisciplinary curriculum implementation."
   }
 ];
@@ -381,42 +389,42 @@ export const INITIAL_GALLERY = [
     id: 1,
     title: "Expansive 6.47-Acre Green Academic Campus",
     category: "Campus",
-    imageUrl: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80",
+    imageUrl: infraMainBuilding,
     caption: "Lush green campus located strategically in Knowledge Park III, Greater Noida."
   },
   {
     id: 2,
     title: "IIF Central Library (55,000+ Volumes)",
     category: "Library",
-    imageUrl: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80",
+    imageUrl: library1,
     caption: "State-of-the-art academic library with DELNET, EBSCO research databases, and reading hall."
   },
   {
     id: 3,
     title: "100% Air-Conditioned Smart Lecture Hall",
     category: "Campus",
-    imageUrl: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80",
+    imageUrl: infraClassroom,
     caption: "Amphitheatre-style air-conditioned classrooms equipped with audio-visual smart projectors."
   },
   {
     id: 4,
     title: "Advanced Computer & Financial Analytics Lab",
     category: "Labs",
-    imageUrl: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
+    imageUrl: infraComputerCentre,
     caption: "Gigabit fiber connected high-speed computer terminals for statistical and accounting training."
   },
   {
     id: 5,
-    title: "Annual Sports Meet & Athletic Ground",
+    title: "Annual Sports Meet & Cultural Celebrations",
     category: "Sports",
-    imageUrl: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80",
-    caption: "Full-sized playground for cricket, football, basketball, badminton, and track athletics."
+    imageUrl: imgPgCulturalEvents,
+    caption: "Vibrant extracurricular celebrations, athletic meets, and student talent showcases."
   },
   {
     id: 6,
     title: "Annual Convocation & Degree Distribution",
     category: "Cultural",
-    imageUrl: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80",
+    imageUrl: imgPgGraduates,
     caption: "Celebrating student milestones in the presence of distinguished dignitaries and economists."
   }
 ];
@@ -427,7 +435,7 @@ export const INITIAL_INQUIRIES = [
     name: "Vikram Malhotra",
     email: "vikram.m@gmail.com",
     phone: "9820011223",
-    course: "BBA-454",
+    course: "BBA",
     subject: "Hostel facility and bus transport from Delhi",
     message: "Does the college provide daily bus pick and drop from Akshardham / Mayur Vihar metro station? Also please confirm hostel charges.",
     status: "NEW",
@@ -438,7 +446,7 @@ export const INITIAL_INQUIRIES = [
     name: "Meenakshi Gupta",
     email: "meenakshi.g@yahoo.com",
     phone: "9899001122",
-    course: "BCOM-472",
+    course: "B.Com",
     subject: "12th mark criterion for Institutional Merit scholarship",
     message: "I scored 87% in Class 12 CBSE Commerce. Am I eligible for 25% tuition fee waiver in all 3 years?",
     status: "CONTACTED",

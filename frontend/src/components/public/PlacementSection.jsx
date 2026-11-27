@@ -206,7 +206,7 @@ export default function PlacementSection() {
         <div className="placement-metrics-banner" style={{ marginTop: '3rem' }}>
           <div className="metrics-left-intro">
             <span className="our-recruiters-pill">OUR RECRUITERS</span>
-            <h3>Placement Highlights 2026-27</h3>
+            <h3>Placement Highlights</h3>
             <p>
               Corporate linkages with 600+ recruitment partners across banking, financial services, consulting, and technology.
             </p>

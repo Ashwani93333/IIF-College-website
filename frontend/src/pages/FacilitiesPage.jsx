@@ -10,6 +10,13 @@ import {
   Image, CheckCircle2, ChevronRight, Award, Globe, Building 
 } from 'lucide-react';
 
+import {
+  imgChClassroom, imgCh1,
+  imgPgLectureHall, imgPgComputerCentre,
+  infraClassroom, infraComputerCentre,
+  library1, library2, library3
+} from '../assets/assetImages';
+
 export default function FacilitiesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentTab = searchParams.get('tab') || 'campus-tour';
@@ -88,6 +95,7 @@ export default function FacilitiesPage() {
               <div className="tab-content-card">
                 <div className="content-badge">LEARNING SPACES</div>
                 <h2 className="content-heading">100% Air-Conditioned Smart Classrooms</h2>
+
                 <p className="tab-lead-desc">
                   Designed for collaborative and interactive pedagogies, our lecture rooms offer ergonomic seating, high-lumen digital projectors, and acoustic wall paneling.
                 </p>
@@ -95,8 +103,8 @@ export default function FacilitiesPage() {
                 <div className="facility-highlight-grid">
                   <div className="fac-card">
                     <img 
-                      src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=700&q=80" 
-                      alt="Smart Classroom" 
+                      src={infraClassroom} 
+                      alt="Smart Air-Conditioned Classrooms" 
                       className="fac-img"
                     />
                     <div className="fac-body">
@@ -107,7 +115,7 @@ export default function FacilitiesPage() {
 
                   <div className="fac-card">
                     <img 
-                      src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=700&q=80" 
+                      src={imgPgLectureHall} 
                       alt="Tiered Seminar Room" 
                       className="fac-img"
                     />
@@ -124,7 +132,7 @@ export default function FacilitiesPage() {
             {currentTab === 'library' && (
               <div className="tab-content-card">
                 <div className="content-badge">KNOWLEDGE RESOURCE CENTER</div>
-                <h2 className="content-heading">Library</h2>
+                <h2 className="content-heading">Central Library &amp; Archives</h2>
                 
                 <div className="rich-text-content">
                   <p>
@@ -160,6 +168,19 @@ export default function FacilitiesPage() {
                   <p style={{ marginTop: '1.5rem' }}>
                     <strong>IIF CCMS Library</strong> has <strong>354 books</strong> dedicated to the core subjects of the B.Com. and BBA degree programs.
                   </p>
+
+                  {/* Authentic Library Photo Gallery */}
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem', marginTop: '1.5rem' }}>
+                    <div style={{ borderRadius: '10px', overflow: 'hidden', height: '170px', border: '1px solid #cbd5e1' }}>
+                      <img src={library1} alt="IIF Library Stacks" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    </div>
+                    <div style={{ borderRadius: '10px', overflow: 'hidden', height: '170px', border: '1px solid #cbd5e1' }}>
+                      <img src={library2} alt="IIF Library Reading Area" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    </div>
+                    <div style={{ borderRadius: '10px', overflow: 'hidden', height: '170px', border: '1px solid #cbd5e1' }}>
+                      <img src={library3} alt="IIF Library Resource Section" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
@@ -182,7 +203,7 @@ export default function FacilitiesPage() {
                   <div className="facility-highlight-grid" style={{ marginTop: '2rem' }}>
                     <div className="fac-card">
                       <img 
-                        src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=700&q=80" 
+                        src={infraComputerCentre} 
                         alt="Computer Lab Workstations" 
                         className="fac-img"
                       />
@@ -194,7 +215,7 @@ export default function FacilitiesPage() {
 
                     <div className="fac-card">
                       <img 
-                        src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=700&q=80" 
+                        src={imgCh1} 
                         alt="24 Hours Leased Line" 
                         className="fac-img"
                       />

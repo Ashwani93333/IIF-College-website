@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { 
   CheckCircle2, ArrowRight, TrendingUp, Calculator, 
   BookOpen, Clock, Sparkles, GraduationCap 
 } from 'lucide-react';
 
-const GOOGLE_REGISTRATION_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSddLOq1Hb3lHuFFxbGe1TQpZ_zY9qnxqIp9Nm8sEpegMb_3oQ/viewform";
+import { postCardBba, postCardBcom, postCardBa } from '../../assets/assetImages';
+
+const COURSE_PHOTOS = {
+  bba: postCardBba,
+  bcom: postCardBcom,
+  ba: postCardBa
+};
 
 const COURSES_DATA = [
   {
     id: 1,
     key: "bba",
-    code: "454",
     shortName: "BBA",
     title: "Bachelor of Business Administration (BBA)",
     tabLabel: "Bachelor of Business Administration",
@@ -45,7 +51,6 @@ const COURSES_DATA = [
   {
     id: 2,
     key: "bcom",
-    code: "472",
     shortName: "B.Com",
     title: "Bachelor of Commerce (B.Com)",
     tabLabel: "Bachelor of Commerce",
@@ -80,7 +85,6 @@ const COURSES_DATA = [
   {
     id: 3,
     key: "ba",
-    code: "478",
     shortName: "B.A.",
     title: "Bachelor of Arts (B.A.)",
     tabLabel: "Bachelor of Arts",
@@ -126,7 +130,9 @@ export default function CoursesSection() {
         <div className="section-header course-section-header">
           <h2 className="course-section-main-heading">Undergraduate Degree Programs (NEP 2020)</h2>
           <p className="course-section-sub-heading">
-            Affiliated with Chaudhary Charan Singh University, Meerut (NAAC A++ Accredited)
+            <span className="affiliation-highlight-badge">
+              Affiliated to Chaudhary Charan Singh University, Meerut (UGC Category-1 NACC A++)
+            </span>
           </p>
         </div>
 
@@ -207,14 +213,12 @@ export default function CoursesSection() {
 
             {/* Interactive CTAs */}
             <div className="course-showcase-actions">
-              <a 
-                href={GOOGLE_REGISTRATION_FORM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link 
+                to="/application-form"
                 className="btn-course-apply"
               >
-                <GraduationCap size={16} /> Apply for {currentCourse.shortName}
-              </a>
+                <GraduationCap size={16} /> Apply Online
+              </Link>
             </div>
           </div>
 
@@ -232,6 +236,15 @@ export default function CoursesSection() {
                 </li>
               ))}
             </ul>
+
+            {/* Course Template Full-Stretch Photo */}
+            <div className="course-template-photo-wrapper">
+              <img 
+                src={COURSE_PHOTOS[currentCourse.key]} 
+                alt={`${currentCourse.title} Information Template`}
+                className="course-template-full-img"
+              />
+            </div>
           </div>
         </div>
       </div>

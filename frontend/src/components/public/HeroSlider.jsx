@@ -5,10 +5,9 @@ import {
   ChevronLeft, ChevronRight, Bell
 } from 'lucide-react';
 
-import banner1 from '../../assets/front-banners/IIF1.jpeg';
-import banner2 from '../../assets/front-banners/IIF2.jpg';
-import banner3 from '../../assets/front-banners/IIF3.jpg';
-import banner4 from '../../assets/front-banners/IIF4.jpg';
+import { 
+  bannerBuilding, bannerMainBuilding, bannerInst1, bannerInst2, bannerBldg1 
+} from '../../assets/assetImages';
 
 export default function HeroSlider() {
   const { settings } = useApp();
@@ -20,27 +19,33 @@ export default function HeroSlider() {
   const slides = [
     {
       id: 1,
-      bgImage: banner1,
+      bgImage: bannerBuilding,
       tag: "CAMPUS OVERVIEW",
       caption: "IIFCCMS • Greater Noida (College Code: 472)"
     },
     {
       id: 2,
-      bgImage: banner2,
+      bgImage: bannerMainBuilding,
       tag: "SMART INFRASTRUCTURE",
       caption: "Expansive 6.47-Acre Lush Green Campus & Modern Academic Blocks"
     },
     {
       id: 3,
-      bgImage: banner3,
+      bgImage: bannerInst1,
       tag: "ACADEMIC OFFERINGS",
       caption: "Undergraduate Degree Programs • B.Com | B.B.A | B.A (NEP 2020)"
     },
     {
       id: 4,
-      bgImage: banner4,
+      bgImage: bannerInst2,
       tag: "CAREER LAUNCHPAD",
       caption: "Corporate Resource Centre & Marquee Industry Recruitment Partnerships"
+    },
+    {
+      id: 5,
+      bgImage: bannerBldg1,
+      tag: "INSTITUTIONAL PEDIGREE",
+      caption: "Over 35+ Years Legacy of Academic Excellence & Corporate Governance"
     }
   ];
 

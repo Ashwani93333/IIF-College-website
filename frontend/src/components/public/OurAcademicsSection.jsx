@@ -3,6 +3,13 @@ import {
   Calendar, FileText, BookOpen, Building, 
   Lightbulb, ArrowRight, X, ExternalLink, Award 
 } from 'lucide-react';
+import { 
+  infraClassroom, 
+  infraMainBuilding, 
+  infraComputerCentre, 
+  mcPhoto, 
+  imgPgConclaveStage 
+} from '../../assets/assetImages';
 
 export default function OurAcademicsSection() {
   const [selectedAcademicItem, setSelectedAcademicItem] = useState(null);
@@ -11,8 +18,8 @@ export default function OurAcademicsSection() {
     {
       id: 1,
       title: "Academic Calendar",
-      tag: "Top Institute List 2023",
-      image: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=700&q=80",
+      tag: "Academic Framework",
+      image: infraClassroom,
       icon: <Calendar size={20} />,
       brief: "Comprehensive semester roadmaps, internal sessional timelines, lecture plans, and university examination schedules.",
       details: [
@@ -26,8 +33,8 @@ export default function OurAcademicsSection() {
     {
       id: 2,
       title: "NIRF DCS & Quality",
-      tag: "Top College List 2023",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=700&q=80",
+      tag: "Institutional Quality",
+      image: infraMainBuilding,
       icon: <FileText size={20} />,
       brief: "Official Data Capturing System (DCS) institutional disclosures, NAAC quality assurance metrics, and annual statutory compliance.",
       details: [
@@ -41,14 +48,14 @@ export default function OurAcademicsSection() {
     {
       id: 3,
       title: "Departments",
-      tag: "College List 2023",
-      image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=700&q=80",
+      tag: "Academic Departments",
+      image: infraComputerCentre,
       icon: <BookOpen size={20} />,
       brief: "Department of Commerce, Department of Management Studies, and Department of Humanities offering specialized undergraduate degrees.",
       details: [
-        "Department of Commerce (B.Com - College Code 472)",
-        "Department of Management Studies (BBA - College Code 454)",
-        "Department of Humanities & Applied Economics (B.A. - College Code 478)",
+        "Department of Commerce (B.Com)",
+        "Department of Management Studies (BBA)",
+        "Department of Humanities & Applied Economics (B.A.)",
         "Dedicated Research Colloquiums & Specialized Faculty Councils",
         "Advanced Electives in Fintech, Digital Marketing, and Corporate Law"
       ]
@@ -56,8 +63,8 @@ export default function OurAcademicsSection() {
     {
       id: 4,
       title: "Industry-Academy",
-      tag: "Institute List 2023",
-      image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=700&q=80",
+      tag: "Corporate Interface",
+      image: mcPhoto,
       icon: <Building size={20} />,
       brief: "Dynamic corporate interface bridging classroom theory with live corporate case studies, CXO masterclasses, and industrial tours.",
       details: [
@@ -71,8 +78,8 @@ export default function OurAcademicsSection() {
     {
       id: 5,
       title: "STUDENT Projects at IIF CCMS",
-      tag: "Student Innovation 2023",
-      image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=700&q=80",
+      tag: "Student Innovation",
+      image: imgPgConclaveStage,
       icon: <Lightbulb size={20} />,
       brief: "Empowering students through applied financial research, live marketing ventures, hackathon business prototypes, and community consults.",
       details: [

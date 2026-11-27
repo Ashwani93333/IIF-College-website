@@ -10,9 +10,18 @@ import {
   Building2, FileText, HeartHandshake, ShieldCheck, Download
 } from 'lucide-react';
 
-import iifImg1 from '../assets/front-banners/IIF1.jpeg';
-import iifImg2 from '../assets/front-banners/IIF2.jpg';
-import iifImg3 from '../assets/front-banners/IIF3.jpg';
+import {
+  iif1, iif2, iif3, iif4,
+  imgChHistory, imgChClassroom, imgChHeritage2,
+  imgPgVision, imgPgMission, imgPgChairmanHonor,
+  imgPgChairmanAIMA, imgPgAJ1, imgPgADBPresident, imgPgMauritiusVP,
+  imgPgPrincipalDesk, imgPgCampusFoyer, imgPgCulturalEvents,
+  imgPgBoardroom, imgPgAdminSecretariat, imgPgCounseling,
+  imgPgDignitaryMeeting, imgPgFacultyCouncil, imgPgConclaveStage,
+  imgPgMediaBriefing, imgPgAcademicHall,
+  mcPhoto, facManjuAgarwal, facChairman,
+  infraMainBuilding, infraBuilding1, infraBuilding2
+} from '../assets/assetImages';
 
 // Authentic PDF Download Badge matching reference screenshots
 function PdfDownloadBadge({ label }) {
@@ -122,9 +131,18 @@ export default function AboutPage() {
                 <div className="content-badge">GENESIS &amp; HERITAGE</div>
                 <h2 className="content-heading">Institutional History</h2>
                 
+                {/* Top Golden/Amber Establishment Callout matching reference design */}
+                <div className="history-gold-callout">
+                  IIF College of Commerce &amp; Management Studies (IIF CCMS) is affiliated to Chaudhary Charan Singh (CCS) University, Meerut. IIF College of Commerce &amp; Management Studies is founded under a Public Charitable Trust duly registered U/S 12 of Income Tax Act 1961. It is a part of prestigious Indian Institute of Finance Group.
+                </div>
+
                 <div className="rich-text-content">
                   <p>
-                    <strong>IIF College of Commerce &amp; Management Studies (IIF CCMS)</strong> is affiliated to Chaudhary Charan Singh (CCS) University, Meerut. IIF College of Commerce &amp; Management Studies is founded under a Public Charitable Trust duly registered U/S 12 of Income Tax Act 1961. It is a part of prestigious Indian Institute of Finance Group.
+                    IIF College of Commerce &amp; Management Studies is one of the premier quality-driven educational institutes in the Greater Noida/Delhi-NCR region. Renowned for its academic excellence and pedigree, IIFCCMS consistently ranks among the top commerce and management colleges in Uttar Pradesh. The institute&apos;s commitment to holistic student development ensures that graduates are not only academically sound but also equipped with the skills and confidence to build successful futures.
+                  </p>
+
+                  <p>
+                    The institute offers undergraduate programs including B.Com, B.B.A., and B.A., fostering a robust academic and professional environment with curricula structured as per the National Education Policy (NEP 2020).
                   </p>
 
                   <p>
@@ -132,98 +150,102 @@ export default function AboutPage() {
                   </p>
 
                   <p>
-                    IIFCCMS affiliated to CCSU Meerut is bestowed with distinguished faculty educated or taught in some of the Ivy institutions like <strong>SRCC, FMS, Delhi University, IIT Delhi, Columbia University (USA), Cleveland State University</strong>; excellent infrastructure, Wi-Fi campus, large library, sports and cultural facilities and has a focus on total personality development. IIFCCMS would provide ample opportunities to seek admission to MBA of Leading institutes in India and abroad, to pursue CAs, CS and other post graduate courses like M.Com and/or get good placement in Industry, Banks, and financial institutions and motivate to prepare for civil services.
+                    IIFCCMS affiliated to CCSU Meerut is bestowed with distinguished faculty educated or taught in some of the Ivy institutions like <strong>SRCC, FMS, Delhi University, IIT Delhi, Columbia University (USA), Cleveland State University</strong>; excellent infrastructure, Wi-Fi campus, large library, sports and cultural facilities and has a focus on total personality development. IIFCCMS provides ample opportunities to seek admission to MBA of leading institutes in India and abroad, to pursue CA, CS and other post graduate courses like M.Com and/or get good placement in Industry, Banks, and financial institutions and motivate to prepare for civil services.
                   </p>
 
-                  <p>
-                    IIFCCMS has a strong base in research and publications with over three and a half decades of experience through its sister concern - Indian Institute of Finance, which has published more than 150 volumes of <em>Finance India</em>, a quarterly journal of finance and more than 40 books and organized more than 150 seminars and conferences.
-                  </p>
+                  {/* Official Affiliation Letter Links */}
+                  <div className="history-letter-links">
+                    <Link to="/about?tab=affiliation" className="history-letter-link">
+                      CCSU Affiliation Letter &amp; University Code 454
+                    </Link>
+                    <Link to="/about?tab=charter" className="history-letter-link">
+                      Institutional Trust Registration &amp; Charter
+                    </Link>
+                  </div>
 
-                  <p>
-                    The college is dedicated to the sacred memory of Late Shri K.B.L. Agarwal, an upright person, who stood for values and principles in life, was a great philanthropist and a social worker.
-                  </p>
+                  {/* Further Enhancing Academic Credentials Section */}
+                  <div className="history-credentials-block">
+                    <h4 className="history-credentials-title">Further enhancing its academic credentials:</h4>
+                    <ul className="history-credentials-list">
+                      <li>IIFCCMS has a strong base in research and publications with over three and a half decades of experience through its sister concern - Indian Institute of Finance.</li>
+                      <li>Published more than 150 volumes of <em>Finance India</em>, a prestigious quarterly journal of finance, more than 40 books, and organized over 150 seminars and conferences.</li>
+                      <li>Curricula fully structured as per the National Education Policy (NEP 2020) and affiliated to Chaudhary Charan Singh University, Meerut.</li>
+                      <li>The college is dedicated to the sacred memory of Late Shri K.B.L. Agarwal, an upright person, who stood for values and principles in life, was a great philanthropist and a social worker.</li>
+                      <li>Focus on Total Personality Development with corporate internships, industry seminar exposure, and comprehensive career mentorship.</li>
+                    </ul>
 
-                  <h3 className="section-sub-title">Founding Guiding Principles</h3>
-                  <div className="bullet-points-grid">
-                    <div className="bullet-item">
-                      <span className="bullet-num">01</span>
-                      <p>Foster intellectual curiosity, critical thinking, and financial acumen among young undergraduate minds.</p>
+                    <p className="history-concluding-p">
+                      IIFCCMS has received multiple accolades recognizing it as one of the top commerce and management institutes in North India and Uttar Pradesh, underscoring its reputation for academic quality, faculty pedigree, and infrastructure.
+                    </p>
+                  </div>
+
+                  {/* 3-Photo Campus Gallery Row matching reference screenshot */}
+                  <div className="history-gallery-row">
+                    <div className="history-photo-card">
+                      <img src={infraMainBuilding} alt="IIFCCMS Main Building" />
                     </div>
-                    <div className="bullet-item">
-                      <span className="bullet-num">02</span>
-                      <p>Maintain exemplary academic rigor aligned with the National Education Policy (NEP 2020) and CCS University guidelines.</p>
+                    <div className="history-photo-card">
+                      <img src={infraBuilding1} alt="IIFCCMS Campus Grounds" />
                     </div>
-                    <div className="bullet-item">
-                      <span className="bullet-num">03</span>
-                      <p>Promote inclusive higher education with affordable merit tuition frameworks and holistic personality grooming.</p>
-                    </div>
-                    <div className="bullet-item">
-                      <span className="bullet-num">04</span>
-                      <p>Bridge classroom theories with industry-grade corporate internships, live project simulations, and executive mentorship.</p>
+                    <div className="history-photo-card">
+                      <img src={infraBuilding2} alt="IIFCCMS Academic Block" />
                     </div>
                   </div>
                 </div>
               </div>
             )}
 
-            {/* 2. Vision & Mission */}
+            {/* 2. Vision & Mission (Designed Exact as Uploaded Screenshot) */}
             {currentTab === 'vision-mission' && (
               <div className="tab-content-card">
                 <div className="content-badge">INSTITUTIONAL CHARTER</div>
-                <h2 className="content-heading">Vision and Mission</h2>
+                <h2 className="content-heading">Vision &amp; Mission</h2>
 
-                <div className="vision-mission-cards">
-                  <div className="vm-card vision-card">
-                    <div className="vm-icon"><Target size={28} /></div>
-                    <div className="vm-body">
-                      <h3>Our Institutional Vision</h3>
+                {/* Split Row 1: Vision Photo + Vision Text matching screenshot */}
+                <div className="tab-photo-split-block">
+                  <div className="tab-photo-frame">
+                    <img src={imgPgVision} alt="IIFCCMS Institutional Vision" />
+                    <div className="tab-photo-badge">VISION &amp; PURPOSE</div>
+                  </div>
+                  <div className="tab-split-content">
+                    <h3 className="tab-split-subheading">Vision</h3>
+                    <div className="tab-vision-quote">
                       <p>
-                        To be a premier institution of higher learning in Commerce, Management, and Humanities, renowned for academic excellence, ethical stewardship, and nurturing industry-ready global leaders grounded in human values and social responsibility.
+                        &ldquo; To be an institute of repute, providing globally competent and socially sensitive professionals. &rdquo;
                       </p>
                     </div>
-                  </div>
-
-                  <div className="vm-card mission-card">
-                    <div className="vm-icon"><Shield size={28} /></div>
-                    <div className="vm-body">
-                      <h3>Our Institutional Mission</h3>
-                      <ul className="vm-list">
-                        <li>
-                          <strong>Academic Rigor:</strong> Deliver high-standard undergraduate education under NEP 2020 framework affiliated with Chaudhary Charan Singh University, Meerut.
-                        </li>
-                        <li>
-                          <strong>Industry Synergy:</strong> Foster corporate linkages, executive mentoring, and live internships to ensure high graduate employability.
-                        </li>
-                        <li>
-                          <strong>Research &amp; Critical Inquiry:</strong> Instill analytical decision-making and scientific temper through case studies and empirical projects.
-                        </li>
-                        <li>
-                          <strong>Holistic Grooming:</strong> Cultivate ethical integrity, environmental consciousness, sportsmanship, and civic responsibility among all students.
-                        </li>
-                      </ul>
-                    </div>
+                    <p style={{ marginTop: '0.85rem', fontSize: '0.96rem', color: '#475569', fontWeight: 600 }}>
+                      To emerge as a premier center of commerce, managerial acumen, and human values, nurturing ethically responsible global citizens.
+                    </p>
                   </div>
                 </div>
 
-                <div className="core-values-section">
-                  <h3 className="section-sub-title">Core Institutional Values</h3>
-                  <div className="values-grid">
-                    <div className="value-chip">
-                      <strong>Excellence</strong>
-                      <span>Uncompromising commitment to curricular depth and instructional standards.</span>
-                    </div>
-                    <div className="value-chip">
-                      <strong>Integrity</strong>
-                      <span>Ethical transparency in administrative governance and academic conduct.</span>
-                    </div>
-                    <div className="value-chip">
-                      <strong>Inclusivity</strong>
-                      <span>Equal educational access irrespective of socio-economic background.</span>
-                    </div>
-                    <div className="value-chip">
-                      <strong>Innovation</strong>
-                      <span>Continuous integration of digital tools, case studies, and business simulations.</span>
-                    </div>
+                {/* Split Row 2: Mission Photo + Mission Text matching screenshot */}
+                <div className="tab-photo-split-block">
+                  <div className="tab-photo-frame">
+                    <img src={imgPgMission} alt="IIFCCMS Institutional Mission" />
+                    <div className="tab-photo-badge">MISSION GOALS</div>
+                  </div>
+                  <div className="tab-split-content">
+                    <h3 className="tab-split-subheading">Mission</h3>
+                    <ul className="tab-mission-list">
+                      <li>
+                        <span className="mission-num-badge">M1</span>
+                        <span><strong>To provide state-of-the-art infrastructure</strong>, processes, Centers of excellence and Human resources.</span>
+                      </li>
+                      <li>
+                        <span className="mission-num-badge">M2</span>
+                        <span><strong>To inculcate qualities of leadership</strong>, professionalism, corporate understanding and executive competence.</span>
+                      </li>
+                      <li>
+                        <span className="mission-num-badge">M3</span>
+                        <span><strong>To imbibe and enhance human values</strong>, ethics and morals amongst students.</span>
+                      </li>
+                      <li>
+                        <span className="mission-num-badge">M4</span>
+                        <span><strong>To foster research, analytical inquiry</strong>, and industry-academia synergy under the National Education Policy (NEP 2020).</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -235,37 +257,51 @@ export default function AboutPage() {
                 <div className="content-badge">FOUNDING LEADERSHIP</div>
                 <h2 className="content-heading">Chairman &amp; Founder</h2>
 
-                <div className="leadership-profile-header">
-                  <div className="profile-text">
-                    <h3 className="profile-name">Prof. (Dr.) J.D. Agarwal</h3>
-                    <p className="profile-designation">
-                      Founder Chairman &amp; Chief Patron, IIF CCMS<br />
-                      Renowned Financial Economist &amp; Senior Academician
+                {/* Photo Split Layout with Yellow Background Card */}
+                <div className="tab-photo-split-block" style={{ alignItems: 'stretch', marginBottom: '2rem' }}>
+                  <div className="tab-photo-frame" style={{ minHeight: '280px' }}>
+                    <img src={facChairman} alt="Prof. (Dr.) J.D. Agarwal, Founder Chairman" />
+                    <div className="tab-photo-badge">FOUNDER &amp; CHIEF PATRON</div>
+                  </div>
+                  <div className="tab-split-content" style={{
+                    background: '#f4b638',
+                    padding: '1.75rem',
+                    borderRadius: '8px',
+                    boxShadow: '0 4px 12px rgba(244, 182, 56, 0.25)',
+                    border: '1px solid #e0a328',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center'
+                  }}>
+                    <div className="leadership-profile-header" style={{ marginBottom: '1rem', borderBottom: '2px solid rgba(0, 0, 0, 0.15)', paddingBottom: '0.85rem' }}>
+                      <div className="profile-text">
+                        <h3 className="profile-name" style={{ color: '#000000', fontWeight: 900, fontSize: '1.5rem', margin: '0 0 0.4rem' }}>
+                          Prof. (Dr.) J.D. Agarwal
+                        </h3>
+                        <p className="profile-designation" style={{ color: '#000000', fontWeight: 800, fontSize: '1.08rem', margin: 0, lineHeight: 1.55 }}>
+                          Founder Chairman &amp; Chief Patron, IIF CCMS<br />
+                          Renowned Financial Economist &amp; Senior Academician
+                        </p>
+                      </div>
+                    </div>
+                    <p style={{ fontSize: '1.12rem', color: '#000000', fontWeight: 700, lineHeight: 1.75, margin: 0 }}>
+                      Dr. J.D. Agarwal is the founder Chairman &amp; Director of Indian Institute of Finance &amp; Chief Editor of <em>Finance India</em>. He is a leading economist and financial expert whose pioneering research shaped national policies.
                     </p>
                   </div>
                 </div>
 
                 <div className="rich-text-content">
                   <p>
-                    Dr. J.D. Agarwal, presently Professor of Finance, is the founder Chairman &amp; Director of Indian Institute of Finance &amp; Chief Editor of Finance India. He is a leading economist and financial expert.
-                  </p>
-                  <p>
                     In the past he has taught at Shri Ram College of Commerce (University of Delhi), Indian Institute of Technology Delhi, Ahmadu Bello University (Nigeria), and Cleveland State University (U.S.A.), and has served as a visitor's Nominee on University of Delhi and Pondicherry University.
                   </p>
                   <p>
-                    He has written over <strong>18 books (authored over 5,500 pages)</strong>, edited over 100 volumes of Finance India (edited more than 30,000 pages), published more than 200 research papers, and authored more than 500 case studies and working papers. He has been supervisor of several Ph.Ds, M.Tech (systems &amp; management) dissertations, MBA &amp; M.Sc. (Finance) dissertations, and research projects by senior government officials sponsored by GOI on study leave at IIF.
+                    He has written over <strong>18 books (authored over 5,500 pages)</strong>, edited over 100 volumes of Finance India (edited more than 30,000 pages), published more than 200 research papers, and authored more than 500 case studies and working papers. He has been supervisor of several Ph.Ds, M.Tech (systems &amp; management) dissertations, MBA &amp; M.Sc. (Finance) dissertations, and research projects by senior government officials.
                   </p>
                   <p>
-                    He has lectured in more than 800 MDPs and trained more than 10,000 senior executives from government and industry; delivered more than 700 Radio/TV talks and interviews on economic issues. He has organized and participated in more than 1,500 seminars and conferences world over, either as a keynote speaker, chairman of sessions, or participant. He has assisted more than 100 Institutes/Universities globally and was invited to address conferences, sign MoUs, and deliver lectures in more than 50 countries.
+                    He has lectured in more than 800 MDPs and trained more than 10,000 senior executives from government and industry; delivered more than 700 Radio/TV talks and interviews on economic issues. He has organized and participated in more than 1,500 seminars and conferences world over, either as a keynote speaker, chairman of sessions, or participant. He has assisted more than 100 Institutes/Universities globally and was invited to address conferences in more than 50 countries.
                   </p>
                   <p>
-                    His research, writings, speeches, talks, and interviews on AIR and TV have had an important bearing on government policies, including the monumental change in the Union Budget presentation timing from 5 pm to forenoon.
-                  </p>
-                  <p>
-                    His students hold and have held ministerial positions in the Government of India, State Governments, politics, judiciary, bureaucracy, legal, media, accounting, economics, business and industry, the World Bank, and senior academic positions as professors and deans internationally.
-                  </p>
-                  <p>
-                    He founded the prestigious Indian Institute of Finance in 1987 without government aid. The institute has become a center of excellence and a base for scholarship for over three decades, accompanied by the acclaimed quarterly research journal <em>Finance India</em>.
+                    His students hold ministerial positions in the Government of India, State Governments, politics, judiciary, bureaucracy, the World Bank, and senior academic positions as professors and deans internationally.
                   </p>
                 </div>
               </div>
@@ -276,51 +312,106 @@ export default function AboutPage() {
               <div className="tab-content-card">
                 <div className="content-badge">APEX GOVERNANCE &amp; STEWARDSHIP</div>
                 <h2 className="content-heading">Board of Governors</h2>
+
                 <p className="tab-lead-desc">
                   The apex governing body responsible for setting strategic direction, institutional standards, and ensuring academic autonomy and ethical governance at IIFCCMS.
                 </p>
 
-                <div className="committee-officers-grid">
-                  <div className="officer-card officer-card-primary">
-                    <span className="role-tag">Chief Patron &amp; Founder</span>
-                    <h3>Prof. (Dr.) J.D. Agarwal</h3>
-                    <p className="inst">Senior Financial Economist</p>
-                    <p className="trust">Former Faculty: SRCC, IIT Delhi, Cleveland State Univ (USA)</p>
+                <div className="member-profile-photo-grid">
+                  <div className="member-photo-card primary-lead">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={imgPgChairmanHonor} alt="Prof. (Dr.) J.D. Agarwal" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">Chief Patron &amp; Founder</span>
+                        <h3 className="member-name">Prof. (Dr.) J.D. Agarwal</h3>
+                        <p className="member-subtitle">Senior Financial Economist | Former Faculty: SRCC, IIT Delhi, Cleveland State Univ (USA)</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      Renowned authority in Finance and Economics, recipient of SIAU-Hungary D.Litt. and Lifetime Achievement awards, guiding academic excellence, research culture, and strategic institutional autonomy.
+                    </p>
                   </div>
 
-                  <div className="officer-card">
-                    <span className="role-tag">President / Chairperson</span>
-                    <h3>Prof. Manju Agarwal</h3>
-                    <p className="inst">Founding Trustee</p>
-                    <p className="trust">IIF College of Commerce &amp; Management Studies</p>
+                  <div className="member-photo-card">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={imgPgAdminSecretariat} alt="Prof. Manju Agarwal" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">President / Chairperson</span>
+                        <h3 className="member-name">Prof. Manju Agarwal</h3>
+                        <p className="member-subtitle">Founding Trustee, IIFCCMS</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      Co-founder and trustee steering administrative policies, student welfare schemes, campus community initiatives, and values-based holistic education.
+                    </p>
                   </div>
 
-                  <div className="officer-card">
-                    <span className="role-tag">Director &amp; Secretary</span>
-                    <h3>Prof. Aman Agarwal</h3>
-                    <p className="inst">Director &amp; Professor of Finance</p>
-                    <p className="trust">International Economic Consultant &amp; Researcher</p>
+                  <div className="member-photo-card">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={imgPgAJ1} alt="Prof. Aman Agarwal" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">Director &amp; Secretary</span>
+                        <h3 className="member-name">Prof. Aman Agarwal</h3>
+                        <p className="member-subtitle">Director &amp; Professor of Finance | International Economic Consultant</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      Global economic researcher, editor of Finance India, advising national and international trade and economic councils, spearheading global partnerships and curriculum modernization.
+                    </p>
                   </div>
 
-                  <div className="officer-card">
-                    <span className="role-tag">Vice Chairman</span>
-                    <h3>Dr. B. P. Dhaka</h3>
-                    <p className="inst">Former Secretary General</p>
-                    <p className="trust">PHD Chamber of Commerce and Industry (PHDCCI)</p>
+                  <div className="member-photo-card">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={imgPgMauritiusVP} alt="Dr. B. P. Dhaka" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">Vice Chairman</span>
+                        <h3 className="member-name">Dr. B. P. Dhaka</h3>
+                        <p className="member-subtitle">Former Secretary General, PHD Chamber of Commerce &amp; Industry (PHDCCI)</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      Seasoned industry administrator aligning academic pedagogy with corporate expectations, MSME development, and national industry consortiums.
+                    </p>
                   </div>
 
-                  <div className="officer-card">
-                    <span className="role-tag">Senior Academic Governor</span>
-                    <h3>Prof. (Dr.) Sudhir K. Jain</h3>
-                    <p className="inst">Former Professor &amp; Head</p>
-                    <p className="trust">Department of Management Studies, IIT Delhi</p>
+                  <div className="member-photo-card">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={imgPgADBPresident} alt="Prof. (Dr.) Sudhir K. Jain" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">Senior Academic Governor</span>
+                        <h3 className="member-name">Prof. (Dr.) Sudhir K. Jain</h3>
+                        <p className="member-subtitle">Former Professor &amp; Head, Dept. of Management Studies, IIT Delhi</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      Veteran academician in intellectual property rights, technology management, and entrepreneurial development, fostering high-impact research standards.
+                    </p>
                   </div>
 
-                  <div className="officer-card">
-                    <span className="role-tag">Principal &amp; Member Secretary</span>
-                    <h3>Prof. (Dr.) Saurabh Agarwal</h3>
-                    <p className="inst">Principal, IIFCCMS</p>
-                    <p className="trust">Professor of Management &amp; Decision Sciences</p>
+                  <div className="member-photo-card">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={imgPgPrincipalDesk} alt="Prof. (Dr.) Saurabh Agarwal" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">Principal &amp; Member Secretary</span>
+                        <h3 className="member-name">Prof. (Dr.) Saurabh Agarwal</h3>
+                        <p className="member-subtitle">Principal &amp; Professor of Management, IIFCCMS</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      Doctorate in Management with expertise in decision sciences, business analytics, and NEP 2020 pedagogical integration, leading day-to-day academic and operational governance.
+                    </p>
                   </div>
                 </div>
 
@@ -351,76 +442,194 @@ export default function AboutPage() {
               <div className="tab-content-card">
                 <div className="content-badge">GOVERNANCE &amp; SECRETARIAT</div>
                 <h2 className="content-heading">Managing Committee</h2>
+
                 <p className="tab-lead-desc">
                   The executive governing body guiding institutional policies, statutory compliance, and developmental planning.
                 </p>
 
-                <div className="committee-officers-grid">
-                  <div className="officer-card officer-card-primary">
-                    <span className="role-tag">Chairman</span>
-                    <h3>Professor Manju Agarwal</h3>
-                    <p className="inst">IIF College of Commerce &amp; Management Studies</p>
-                    <p className="trust">Founding Trustee</p>
-                    <p className="loc">Plot No. 45A, Knowledge Park III, Greater Noida, UP - 201310</p>
-                  </div>
-
-                  <div className="officer-card">
-                    <span className="role-tag">Vice Chairman</span>
-                    <h3>Dr. B. P. Dhaka</h3>
-                    <p className="inst">Former Secretary General</p>
-                    <p className="trust">PHD Chamber of Commerce and Industry (PHDCCI)</p>
-                  </div>
-
-                  <div className="officer-card">
-                    <span className="role-tag">Secretary</span>
-                    <h3>Prof. Aman Agarwal</h3>
-                    <p className="inst">Director &amp; Professor</p>
-                    <p className="trust">Indian Institute of Finance</p>
-                  </div>
-
-                  <div className="officer-card">
-                    <span className="role-tag">Treasurer</span>
-                    <h3>Prof. Deepak Bansal</h3>
-                    <p className="inst">Assistant Professor</p>
-                    <p className="trust">Indian Institute of Finance</p>
-                  </div>
-
-                  <div className="officer-card">
-                    <span className="role-tag">Jt. Secretary</span>
-                    <h3>Mr. Saurabh Sharma</h3>
-                    <p className="inst">Senior Manager</p>
-                    <p className="trust">EXL Service.com (India) Pvt Ltd</p>
-                  </div>
-
-                  <div className="officer-card">
-                    <span className="role-tag">Principal &amp; Member Secretary</span>
-                    <h3>Prof. (Dr.) Saurabh Agarwal</h3>
-                    <p className="inst">Professor &amp; Principal</p>
-                    <p className="trust">IIF College of Commerce &amp; Management Studies</p>
+                {/* Official Managing Committee Group Photo */}
+                <div style={{ marginBottom: '2.5rem', borderRadius: '14px', overflow: 'hidden', border: '2px solid #cbd5e1', boxShadow: '0 6px 22px rgba(0,0,0,0.08)' }}>
+                  <img src={mcPhoto} alt="IIFCCMS Official Managing Committee" style={{ width: '100%', height: 'auto', display: 'block' }} />
+                  <div style={{ background: '#062a36', color: '#fde047', padding: '0.65rem 1.25rem', fontSize: '0.85rem', fontWeight: 800 }}>
+                    Official Managing Committee &amp; Governing Secretariat of IIFCCMS
                   </div>
                 </div>
 
-                <h3 className="section-sub-title" style={{ marginTop: '2.5rem' }}>Distinguished Members</h3>
-                <div className="members-simple-grid">
-                  <div className="member-item">
-                    <strong>Prof. K. K. Panda</strong>
-                    <span>Former Registrar, University of Delhi</span>
+                <div className="member-profile-photo-grid">
+                  <div className="member-photo-card primary-lead">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={facManjuAgarwal} alt="Professor Manju Agarwal" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">Chairman</span>
+                        <h3 className="member-name">Professor Manju Agarwal</h3>
+                        <p className="member-subtitle">Founding Trustee, IIFCCMS</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      Guiding institutional governance, financial planning, statutory compliance, and infrastructure stewardship at the Greater Noida campus.
+                    </p>
                   </div>
-                  <div className="member-item">
-                    <strong>Shri Ajay Bhargava</strong>
-                    <span>Architect, Bhargavajay Delhi</span>
+
+                  <div className="member-photo-card">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={imgPgMauritiusVP} alt="Dr. B. P. Dhaka" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">Vice Chairman</span>
+                        <h3 className="member-name">Dr. B. P. Dhaka</h3>
+                        <p className="member-subtitle">Former Secretary General, PHDCCI</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      Driving industry-academia interfaces, corporate internships, executive mentorship, and trade body collaborations.
+                    </p>
                   </div>
-                  <div className="member-item">
-                    <strong>Prof. (Dr.) Sudhir K. Jain</strong>
-                    <span>Former Professor, IIT Delhi</span>
+
+                  <div className="member-photo-card">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={imgPgAJ1} alt="Prof. Aman Agarwal" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">Secretary</span>
+                        <h3 className="member-name">Prof. Aman Agarwal</h3>
+                        <p className="member-subtitle">Director &amp; Professor, Indian Institute of Finance</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      Managing academic coordination, international symposiums, research publications, and corporate liaison cells.
+                    </p>
                   </div>
-                  <div className="member-item">
-                    <strong>Prof. (Dr.) J. P. Sharma</strong>
-                    <span>Former Professor &amp; Dean, Dept. of Commerce, DSE, Delhi University</span>
+
+                  <div className="member-photo-card">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={imgChClassroom} alt="Prof. Deepak Bansal" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">Treasurer</span>
+                        <h3 className="member-name">Prof. Deepak Bansal</h3>
+                        <p className="member-subtitle">Assistant Professor, Indian Institute of Finance</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      Overseeing fiscal management, internal audit procedures, student scholarship funds, and academic budget allocations.
+                    </p>
                   </div>
-                  <div className="member-item">
-                    <strong>Mr. Sunil Goel</strong>
-                    <span>Advocate</span>
+
+                  <div className="member-photo-card">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={imgPgCounseling} alt="Mr. Saurabh Sharma" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">Jt. Secretary</span>
+                        <h3 className="member-name">Mr. Saurabh Sharma</h3>
+                        <p className="member-subtitle">Senior Manager, EXL Service.com (India) Pvt Ltd</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      Corporate executive contributing industry best practices in data analytics, operational efficiency, and graduate campus placements.
+                    </p>
+                  </div>
+
+                  <div className="member-photo-card">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={imgPgPrincipalDesk} alt="Prof. (Dr.) Saurabh Agarwal" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">Principal &amp; Member Secretary</span>
+                        <h3 className="member-name">Prof. (Dr.) Saurabh Agarwal</h3>
+                        <p className="member-subtitle">Professor &amp; Principal, IIFCCMS</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      Supervising university examination procedures, faculty development, curriculum delivery, and student code of conduct.
+                    </p>
+                  </div>
+
+                  <div className="member-photo-card">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={imgPgDignitaryMeeting} alt="Prof. K. K. Panda" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">Member</span>
+                        <h3 className="member-name">Prof. K. K. Panda</h3>
+                        <p className="member-subtitle">Former Registrar, University of Delhi</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      Renowned university administrator advising on higher education statutes, academic governance, and institutional accreditations.
+                    </p>
+                  </div>
+
+                  <div className="member-photo-card">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={imgPgCampusFoyer} alt="Shri Ajay Bhargava" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">Member</span>
+                        <h3 className="member-name">Shri Ajay Bhargava</h3>
+                        <p className="member-subtitle">Architect, Bhargavajay Delhi</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      Eminent infrastructure and architectural consultant guiding eco-friendly campus master planning and modern learning space design.
+                    </p>
+                  </div>
+
+                  <div className="member-photo-card">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={imgPgADBPresident} alt="Prof. (Dr.) Sudhir K. Jain" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">Member</span>
+                        <h3 className="member-name">Prof. (Dr.) Sudhir K. Jain</h3>
+                        <p className="member-subtitle">Former Professor &amp; Head, DMS, IIT Delhi</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      Guiding technology management, business incubators, intellectual property systems, and student innovation ecosystems.
+                    </p>
+                  </div>
+
+                  <div className="member-photo-card">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={imgPgBoardroom} alt="Prof. (Dr.) J. P. Sharma" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">Member</span>
+                        <h3 className="member-name">Prof. (Dr.) J. P. Sharma</h3>
+                        <p className="member-subtitle">Former Professor &amp; Dean, Dept. of Commerce, DSE, Delhi University</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      Corporate governance expert mentoring commerce faculty, research projects, and university syllabus alignment.
+                    </p>
+                  </div>
+
+                  <div className="member-photo-card">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={imgPgFacultyCouncil} alt="Mr. Sunil Goel" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">Member</span>
+                        <h3 className="member-name">Mr. Sunil Goel</h3>
+                        <p className="member-subtitle">Advocate &amp; Legal Counsel</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      Providing legal counsel on statutory regulatory norms, higher education compliance, and institutional integrity frameworks.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -431,34 +640,106 @@ export default function AboutPage() {
               <div className="tab-content-card">
                 <div className="content-badge">STRATEGIC COUNSEL</div>
                 <h2 className="content-heading">Advisory Council</h2>
+
                 <p className="tab-lead-desc">
                   Comprising distinguished leaders from industry, public governance, and international academia providing continuous strategic advice on curriculum modernization and pedagogy.
                 </p>
 
-                <div className="members-simple-grid">
-                  <div className="member-item">
-                    <strong>Prof. V. K. Bhalla</strong>
-                    <span>Former Professor, Faculty of Management Studies (FMS), University of Delhi</span>
+                <div className="member-profile-photo-grid">
+                  <div className="member-photo-card">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={imgPgConclaveStage} alt="Prof. V. K. Bhalla" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">Senior Advisor</span>
+                        <h3 className="member-name">Prof. V. K. Bhalla</h3>
+                        <p className="member-subtitle">Former Professor, Faculty of Management Studies (FMS), University of Delhi</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      Renowned scholar in international financial management and investment strategy advising on high-level academic standards and management pedagogy.
+                    </p>
                   </div>
-                  <div className="member-item">
-                    <strong>Dr. Ashok K. Chauhan</strong>
-                    <span>Eminent Educationist &amp; Corporate Strategist</span>
+
+                  <div className="member-photo-card">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={imgPgChairmanAIMA} alt="Dr. Ashok K. Chauhan" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">Eminent Educationist</span>
+                        <h3 className="member-name">Dr. Ashok K. Chauhan</h3>
+                        <p className="member-subtitle">Educationist &amp; Corporate Strategist</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      Visionary institution builder providing strategic perspectives on modern educational ecosystems, youth empowerment, and international pedagogy.
+                    </p>
                   </div>
-                  <div className="member-item">
-                    <strong>Mr. R. C. Bhargava</strong>
-                    <span>Senior Industry Leader &amp; Corporate Advisor</span>
+
+                  <div className="member-photo-card">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={imgPgMediaBriefing} alt="Mr. R. C. Bhargava" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">Corporate Advisor</span>
+                        <h3 className="member-name">Mr. R. C. Bhargava</h3>
+                        <p className="member-subtitle">Senior Industry Leader &amp; Corporate Advisor</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      National industry doyen mentoring students and management on industrial resilience, corporate ethics, and visionary leadership.
+                    </p>
                   </div>
-                  <div className="member-item">
-                    <strong>Prof. Shyam S. Lodha</strong>
-                    <span>Professor of Marketing, Southern Connecticut State University, USA</span>
+
+                  <div className="member-photo-card">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={imgPgAcademicHall} alt="Prof. Shyam S. Lodha" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">International Advisor</span>
+                        <h3 className="member-name">Prof. Shyam S. Lodha</h3>
+                        <p className="member-subtitle">Professor of Marketing, Southern Connecticut State University, USA</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      International marketing strategist guiding global curriculum benchmarking, exchange programs, and overseas research networks.
+                    </p>
                   </div>
-                  <div className="member-item">
-                    <strong>Prof. M. C. Kapoor</strong>
-                    <span>Former Dean, Faculty of Commerce &amp; Business, University of Delhi</span>
+
+                  <div className="member-photo-card">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={imgChHeritage2} alt="Prof. M. C. Kapoor" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">Commerce Mentor</span>
+                        <h3 className="member-name">Prof. M. C. Kapoor</h3>
+                        <p className="member-subtitle">Former Dean, Faculty of Commerce &amp; Business, University of Delhi</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      Senior pioneer in commerce education guiding undergraduate accounting, commerce research, and pedagogical rigor.
+                    </p>
                   </div>
-                  <div className="member-item">
-                    <strong>Dr. R. S. Nigam</strong>
-                    <span>Former Director, Delhi School of Economics (DSE), University of Delhi</span>
+
+                  <div className="member-photo-card">
+                    <div className="member-card-header">
+                      <div className="member-avatar-frame">
+                        <img src={imgChHistory} alt="Dr. R. S. Nigam" />
+                      </div>
+                      <div className="member-meta-block">
+                        <span className="member-role-badge">Economics Advisor</span>
+                        <h3 className="member-name">Dr. R. S. Nigam</h3>
+                        <p className="member-subtitle">Former Director, Delhi School of Economics (DSE), University of Delhi</p>
+                      </div>
+                    </div>
+                    <p className="member-desc">
+                      Celebrated economist steering macroeconomic analysis, public finance foundations, and doctoral level academic excellence.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -470,19 +751,42 @@ export default function AboutPage() {
                 <div className="content-badge">ACADEMIC &amp; INSTITUTIONAL LEADERSHIP</div>
                 <h2 className="content-heading">Principal's Desk</h2>
 
-                <div className="leadership-profile-header">
-                  <div className="profile-text">
-                    <h3 className="profile-name">Prof. (Dr.) Saurabh Agarwal</h3>
-                    <p className="profile-designation">
-                      Principal &amp; Professor of Management, IIF CCMS<br />
-                      Ph.D., M.Com, MBA (Finance)
+                {/* Photo Split Layout with Yellow Background Card */}
+                <div className="tab-photo-split-block" style={{ alignItems: 'stretch', marginBottom: '2rem' }}>
+                  <div className="tab-photo-frame" style={{ minHeight: '280px' }}>
+                    <img src={imgPgPrincipalDesk} alt="Prof. (Dr.) Saurabh Agarwal, Principal IIFCCMS" />
+                    <div className="tab-photo-badge">PRINCIPAL &amp; PROFESSOR</div>
+                  </div>
+                  <div className="tab-split-content" style={{
+                    background: '#f4b638',
+                    padding: '1.75rem',
+                    borderRadius: '8px',
+                    boxShadow: '0 4px 12px rgba(244, 182, 56, 0.25)',
+                    border: '1px solid #e0a328',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center'
+                  }}>
+                    <div className="leadership-profile-header" style={{ marginBottom: '1rem', borderBottom: '2px solid rgba(0, 0, 0, 0.15)', paddingBottom: '0.85rem' }}>
+                      <div className="profile-text">
+                        <h3 className="profile-name" style={{ color: '#000000', fontWeight: 900, fontSize: '1.5rem', margin: '0 0 0.4rem' }}>
+                          Prof. (Dr.) Saurabh Agarwal
+                        </h3>
+                        <p className="profile-designation" style={{ color: '#000000', fontWeight: 800, fontSize: '1.08rem', margin: 0, lineHeight: 1.55 }}>
+                          Principal &amp; Professor of Management, IIF CCMS<br />
+                          Ph.D., M.Com, MBA (Finance)
+                        </p>
+                      </div>
+                    </div>
+                    <p style={{ fontSize: '1.12rem', color: '#000000', fontWeight: 700, lineHeight: 1.75, margin: 0 }}>
+                      &ldquo; Welcome to IIF College of Commerce and Management Studies (IIF CCMS), Greater Noida. Our institution stands on the bedrock of academic integrity, intellectual curiosity, and professional readiness. &rdquo;
                     </p>
                   </div>
                 </div>
 
                 <div className="rich-text-content">
                   <p>
-                    Welcome to IIF College of Commerce and Management Studies (IIF CCMS), Greater Noida. Our institution stands on the bedrock of academic integrity, intellectual curiosity, and professional readiness. Affiliated to Chaudhary Charan Singh University, Meerut (accredited NAAC A++), our programs in Commerce, Management, and Arts are structured to equip students with both theoretical depth and functional expertise.
+                    Affiliated to Chaudhary Charan Singh University, Meerut (accredited NAAC A++), our programs in Commerce, Management, and Arts are structured to equip students with both theoretical depth and functional expertise.
                   </p>
                   <p>
                     Under the visionary guidelines of the National Education Policy (NEP 2020), we emphasize interdisciplinary learning, continuous internal assessment, research exposure, and active personality development. Our sprawling 6.47-acre campus provides students with state-of-the-art computer labs, an expansive 55,000+ volume library, sports fields, and seminar auditoriums.
@@ -498,7 +802,7 @@ export default function AboutPage() {
               </div>
             )}
 
-            {/* 8. Approvals & Affiliations (Format Matching Reference Screenshot) */}
+            {/* 8. Approvals & Affiliations */}
             {currentTab === 'approvals-affiliations' && (
               <div className="tab-content-card">
                 <h2 className="ref-tab-title">Approvals &amp; Affiliations</h2>
@@ -506,27 +810,27 @@ export default function AboutPage() {
                 <div className="ref-download-grid-container">
                   {/* Column 1: Downloads Regulatory Approvals (IIFCCMS) */}
                   <div className="ref-download-col">
-                    <h3 className="ref-col-heading">Downloads AICTE / Statutory Approvals</h3>
+                    <h3 className="ref-col-heading">Downloads Statutory Sanctions</h3>
 
                     <div className="ref-doc-list">
                       <div className="ref-doc-row shaded">
-                        <span className="ref-doc-title">IIFCCMS EOA 2026-27</span>
+                        <span className="ref-doc-title">IIFCCMS Extension of Approval (EOA)</span>
                         <PdfDownloadBadge label="" />
                       </div>
                       <div className="ref-doc-row white">
-                        <span className="ref-doc-title">IIFCCMS EOA 2025-26</span>
+                        <span className="ref-doc-title">IIFCCMS EOA Sanction Notification</span>
                         <PdfDownloadBadge label="" />
                       </div>
                       <div className="ref-doc-row shaded">
-                        <span className="ref-doc-title">IIFCCMS EOA 2024-25</span>
+                        <span className="ref-doc-title">IIFCCMS EOA Institutional Approval</span>
                         <PdfDownloadBadge label="" />
                       </div>
                       <div className="ref-doc-row white">
-                        <span className="ref-doc-title">IIFCCMS EOA 2023-24</span>
+                        <span className="ref-doc-title">IIFCCMS Statutory Sanction Order</span>
                         <PdfDownloadBadge label="" />
                       </div>
                       <div className="ref-doc-row shaded">
-                        <span className="ref-doc-title">IIFCCMS EOA 2022-23</span>
+                        <span className="ref-doc-title">IIFCCMS Regulatory Compliance Record</span>
                         <PdfDownloadBadge label="" />
                       </div>
                     </div>
@@ -538,36 +842,36 @@ export default function AboutPage() {
 
                     <div className="ref-doc-list">
                       <div className="ref-doc-row shaded">
-                        <span className="ref-doc-title">IIFCCMS CCSU Affiliation Letter 2025-26</span>
+                        <span className="ref-doc-title">IIFCCMS CCSU Affiliation Letter</span>
                         <PdfDownloadBadge label="" />
                       </div>
                       <div className="ref-doc-row white">
-                        <span className="ref-doc-title">IIFCCMS CCSU Affiliation Letter 2024-25</span>
+                        <span className="ref-doc-title">IIFCCMS CCSU University Notification</span>
                         <PdfDownloadBadge label="" />
                       </div>
                       <div className="ref-doc-row shaded">
-                        <span className="ref-doc-title">IIFCCMS CCSU Affiliation Letter 2023-24</span>
+                        <span className="ref-doc-title">IIFCCMS CCSU Regulatory Endorsement</span>
                         <PdfDownloadBadge label="" />
                       </div>
                       <div className="ref-doc-row white">
-                        <span className="ref-doc-title">IIFCCMS CCSU Affiliation Letter 2022-23</span>
+                        <span className="ref-doc-title">IIFCCMS CCSU Institutional Governance Order</span>
                         <PdfDownloadBadge label="" />
                       </div>
                       <div className="ref-doc-row shaded">
-                        <span className="ref-doc-title">IIFCCMS CCSU Permanent College Code 472 Notification</span>
+                        <span className="ref-doc-title">IIFCCMS CCSU Permanent Affiliation Notification</span>
                         <PdfDownloadBadge label="" />
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div style={{ marginTop: '2rem', padding: '1rem 1.25rem', background: '#f8fafc', borderRadius: '8px', borderLeft: '4px solid #0d5c75', fontSize: '0.86rem', color: '#475569' }}>
-                  <strong>Statutory Note:</strong> IIF College of Commerce and Management Studies (IIFCCMS) is affiliated to Chaudhary Charan Singh University, Meerut (Accredited NAAC A++ Grade, College Code: 472). All academic circulars, enrollment codes, and semester exam rosters conform directly to CCSU regulations.
+                <div style={{ marginTop: '2rem', padding: '1rem 1.25rem', background: '#f8fafc', borderRadius: '8px', borderLeft: '4px solid #0d5c75', fontSize: '1.08rem', color: '#000000', fontWeight: 700, lineHeight: 1.7 }}>
+                  <strong>Statutory Note:</strong> IIF College of Commerce and Management Studies (IIFCCMS) is affiliated to Chaudhary Charan Singh University, Meerut (Accredited NAAC A++ Grade). All academic circulars, enrollment records, and semester exam rosters conform directly to CCSU regulations.
                 </div>
               </div>
             )}
 
-            {/* 9. Public Disclosure (Format Matching Reference Screenshot - No Year on Balance Sheet) */}
+            {/* 9. Public Disclosure */}
             {currentTab === 'public-disclosure' && (
               <div className="tab-content-card">
                 <h2 className="ref-tab-title">Public Disclosure</h2>
@@ -590,7 +894,7 @@ export default function AboutPage() {
                         </td>
                       </tr>
 
-                      {/* Row 2: Balance Sheet - Strictly NO YEAR mentioned as requested by user */}
+                      {/* Row 2: Balance Sheet - Strictly NO YEAR mentioned */}
                       <tr>
                         <td className="sr-no">2</td>
                         <td className="doc-name">Balance Sheet</td>
@@ -668,18 +972,18 @@ export default function AboutPage() {
                   </table>
                 </div>
 
-                <div style={{ marginTop: '1.5rem', background: '#f8fafc', padding: '1rem 1.25rem', borderRadius: '8px', borderLeft: '4px solid #0d5c75', fontSize: '0.86rem', color: '#475569' }}>
+                <div style={{ marginTop: '1.5rem', background: '#f8fafc', padding: '1rem 1.25rem', borderRadius: '8px', borderLeft: '4px solid #0d5c75', fontSize: '1.08rem', color: '#000000', fontWeight: 700, lineHeight: 1.7 }}>
                   <strong>Transparency Compliance:</strong> Disclosed documents are maintained by the IIFCCMS Registrar and Academic Secretariat under CCS University statutory oversight and UGC disclosure directives.
                 </div>
               </div>
             )}
 
-            {/* 10. Social Initiatives (Exact Format & Text Matching Reference Screenshot with IIFCCMS Data) */}
+            {/* 10. Social Initiatives */}
             {currentTab === 'social-initiatives' && (
               <div className="tab-content-card">
                 <h2 className="ref-tab-title">Social Initiatives</h2>
 
-                {/* Top Rich Brown Lead Banner matching user's photo */}
+                {/* Top Rich Brown Lead Banner */}
                 <div className="ref-social-lead-banner">
                   <p>
                     At IIF College of Commerce and Management Studies (IIFCCMS) the culture of giving back originates from the deep desire of working for the betterment of the society. The thought to serve the society is a critical mission that is at the heart of everything that it does, how it meditates and what it is. Social initiatives of the institute aim to be relevant to local, national and global contexts. Key to this approach is the faculty members and students of the institute who generously give of their time, energy, experience and talent to serve society.
@@ -697,7 +1001,7 @@ export default function AboutPage() {
                   <div className="ref-photo-cards-grid">
                     <div className="ref-photo-card">
                       <div className="ref-photo-wrapper">
-                        <img src={iifImg1} alt="IIFCCMS Tree Plantation Drive" />
+                        <img src={iif1} alt="IIFCCMS Tree Plantation Drive" />
                         <div className="ref-crest-badge">
                           <span className="crest-title">IIFCCMS</span>
                           <span className="crest-sub">GREATER NOIDA</span>
@@ -710,7 +1014,7 @@ export default function AboutPage() {
 
                     <div className="ref-photo-card">
                       <div className="ref-photo-wrapper">
-                        <img src={iifImg2} alt="IIFCCMS Campus Greening Project" />
+                        <img src={iif2} alt="IIFCCMS Campus Greening Project" />
                         <div className="ref-crest-badge">
                           <span className="crest-title">IIFCCMS</span>
                           <span className="crest-sub">GREATER NOIDA</span>
@@ -723,7 +1027,7 @@ export default function AboutPage() {
 
                     <div className="ref-photo-card">
                       <div className="ref-photo-wrapper">
-                        <img src={iifImg3} alt="IIFCCMS Faculty & Student Volunteers" />
+                        <img src={iif3} alt="IIFCCMS Faculty &amp; Student Volunteers" />
                         <div className="ref-crest-badge">
                           <span className="crest-title">IIFCCMS</span>
                           <span className="crest-sub">GREATER NOIDA</span>
@@ -759,6 +1063,7 @@ export default function AboutPage() {
               <div className="tab-content-card">
                 <div className="content-badge">STATUTORY CELLS</div>
                 <h2 className="content-heading">Councils and Committees</h2>
+
                 <p className="tab-lead-desc">
                   IIF CCMS has established dedicated statutory councils, academic bodies, and student development cells ensuring disciplined governance and holistic campus life:
                 </p>
@@ -855,7 +1160,7 @@ export default function AboutPage() {
                     <div className="box-info">
                       <h4>Official Web URL</h4>
                       <p>www.iifccms.edu.in</p>
-                      <p style={{ fontSize: '0.8rem', color: '#64748b' }}>Affiliated to CCS University, Meerut (Code 472)</p>
+                      <p style={{ fontSize: '0.85rem', color: '#64748b', fontWeight: 600 }}>Affiliated to CCS University, Meerut</p>
                     </div>
                   </div>
                 </div>

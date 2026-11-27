@@ -91,10 +91,10 @@ export default function AdmissionsSection({ prefillData }) {
   };
 
   return (
-    <section className="section" id="admissions" style={{ background: '#f8fafc' }}>
+    <section className="section" id="admissions" style={{ background: '#C1E1C1' }}>
       <div className="container">
         <div className="section-header">
-          <span className="section-tag">Admissions Desk 2026-27</span>
+          <span className="section-tag">Admissions Desk</span>
           <h2>Digital Provisional Application Form</h2>
           <p>
             Complete your online enrollment in 3 quick steps to receive an instant Provisional Registration Slip with unique Application ID.
@@ -444,9 +444,9 @@ export default function AdmissionsSection({ prefillData }) {
                       <div className="value">{submittedApp.parentName}</div>
                     </div>
                     <div className="slip-detail-cell">
-                      <div className="label">Academic Session</div>
+                      <div className="label">Status</div>
                       <div className="value" style={{ color: '#0369a1' }}>
-                        2026-27 (ENROLLMENT ACTIVE)
+                        ENROLLMENT ACTIVE
                       </div>
                     </div>
                   </div>

@@ -7,8 +7,10 @@ import FeeCalculator from '../components/public/FeeCalculator';
 import { 
   FileCheck, Bell, Download, MonitorPlay, FileEdit, 
   CreditCard, HelpCircle, FileText, MessageSquareQuote, 
-  ChevronRight, CheckCircle2, ArrowRight, ExternalLink, Mail, Phone 
+  ChevronRight, CheckCircle2, ArrowRight, ExternalLink, Mail, Phone, QrCode
 } from 'lucide-react';
+import { bankQr } from '../assets/assetImages';
+
 
 export default function AdmissionsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -54,9 +56,9 @@ export default function AdmissionsPage() {
           <div className="hero-breadcrumbs">
             <Link to="/">Home</Link> <span>/</span> <span>Admissions</span> <span>/</span> <span className="active">{tabs.find(t => t.key === currentTab)?.label || 'Overview'}</span>
           </div>
-          <h1 className="page-main-heading">Admissions Secretariat 2026-27</h1>
+          <h1 className="page-main-heading">Admissions Secretariat</h1>
           <p className="page-sub-lead">
-            Official admission guidelines, online Google application portal, banking fee instructions, and document verification checklist.
+            Official admission guidelines, online application portal, banking fee instructions, and document verification checklist.
           </p>
         </div>
       </div>
@@ -97,6 +99,7 @@ export default function AdmissionsPage() {
               <div className="tab-content-card">
                 <div className="content-badge">STEP-BY-STEP ADMISSION</div>
                 <h2 className="content-heading">Registration Process</h2>
+
                 <p className="tab-lead-desc">
                   Admission to B.Com, BBA, and B.A. programs at IIF CCMS is conducted based on 10+2 merit scores and CCS University admission guidelines.
                 </p>
@@ -122,7 +125,7 @@ export default function AdmissionsPage() {
                     <div className="step-badge">Step 3</div>
                     <div className="step-info">
                       <h4>CCSU Portal Enrollment &amp; Seat Allotment</h4>
-                      <p>Candidates complete official Chaudhary Charan Singh University enrollment under College Code 472 (B.Com) / 454 (BBA) / 478 (B.A.).</p>
+                      <p>Candidates complete official Chaudhary Charan Singh University enrollment under B.Com, BBA, and B.A. programs.</p>
                     </div>
                   </div>
 
@@ -136,7 +139,7 @@ export default function AdmissionsPage() {
                 </div>
 
                 <div style={{ marginTop: '2rem' }}>
-                  <button onClick={() => setTab('apply')} className="btn-primary-gold">
+                  <button onClick={() => setTab('apply')} className="btn-primary-gold" style={{ fontSize: '0.9rem', fontWeight: 800 }}>
                     Proceed to Application Form <ArrowRight size={16} />
                   </button>
                 </div>
@@ -147,13 +150,13 @@ export default function AdmissionsPage() {
             {currentTab === 'notice' && (
               <div className="tab-content-card">
                 <div className="content-badge">LATEST CIRCULARS</div>
-                <h2 className="content-heading">Admission Notice (Session 2026-27)</h2>
+                <h2 className="content-heading">Admission Notice</h2>
                 
                 <div className="notice-box-highlight">
-                  <div className="notice-date-pill">Session 2026-27 Active</div>
+                  <div className="notice-date-pill">Enrollment Active</div>
                   <h3>Admissions Open for Undergraduate Degrees</h3>
                   <p>
-                    Applications are invited for admission to the first year of <strong>B.Com (Code 472), BBA (Code 454), and B.A. (Code 478)</strong> programs for the academic session 2026-27 affiliated to Chaudhary Charan Singh University, Meerut.
+                    Applications are invited for admission to the first year of <strong>B.Com, BBA, and B.A.</strong> programs affiliated to Chaudhary Charan Singh University, Meerut.
                   </p>
                   <ul className="notice-points">
                     <li>Early-bird merit scholarship registrations are now active.</li>
@@ -172,7 +175,8 @@ export default function AdmissionsPage() {
             {currentTab === 'brochure' && (
               <div className="tab-content-card">
                 <div className="content-badge">DIGITAL PROSPECTUS</div>
-                <h2 className="content-heading">Information Brochure 2026-27</h2>
+                <h2 className="content-heading">Information Brochure</h2>
+
                 <p className="tab-lead-desc">
                   Download the comprehensive institutional brochure containing full course details, faculty profiles, campus facilities, and placement track record.
                 </p>
@@ -182,7 +186,7 @@ export default function AdmissionsPage() {
                     <FileText size={48} />
                   </div>
                   <div className="brochure-meta">
-                    <h3>IIFCCMS Information Prospectus (2026-27)</h3>
+                    <h3>IIFCCMS Information Prospectus</h3>
                     <p>Format: PDF Document • Size: 4.8 MB • Language: English</p>
                     <ul className="brochure-highlights">
                       <li>Complete course structure for B.Com, BBA &amp; B.A.</li>
@@ -191,8 +195,9 @@ export default function AdmissionsPage() {
                     </ul>
                     <a 
                       href="#download" 
-                      onClick={(e) => { e.preventDefault(); alert("IIFCCMS Prospectus 2026-27 downloaded successfully."); }}
+                      onClick={(e) => { e.preventDefault(); alert("IIFCCMS Prospectus downloaded successfully."); }}
                       className="btn-primary-gold"
+                      style={{ fontSize: '0.85rem', fontWeight: 800 }}
                     >
                       <Download size={16} /> Download Full Brochure (PDF)
                     </a>
@@ -206,6 +211,7 @@ export default function AdmissionsPage() {
               <div className="tab-content-card">
                 <div className="content-badge">CAMPUS SLIDE DECK</div>
                 <h2 className="content-heading">IIFCCMS Institutional Presentation</h2>
+
                 <p className="tab-lead-desc">
                   Explore our corporate overview presentation detailing 35+ years group pedigree, distinguished faculty, and academic infrastructure.
                 </p>
@@ -219,7 +225,7 @@ export default function AdmissionsPage() {
                       <button 
                         onClick={() => alert("Launching institutional slide deck presentation.")} 
                         className="btn-primary-gold"
-                        style={{ marginTop: '1rem' }}
+                        style={{ marginTop: '1rem', fontSize: '0.85rem', fontWeight: 800 }}
                       >
                         Launch Interactive Presentation
                       </button>
@@ -234,6 +240,7 @@ export default function AdmissionsPage() {
               <div className="tab-content-card">
                 <div className="content-badge">ONLINE &amp; OFFLINE APPLICATION</div>
                 <h2 className="content-heading">Application Form Submission</h2>
+
                 <p className="tab-lead-desc">
                   Candidates have three flexible modes to submit their admission application form:
                 </p>
@@ -251,17 +258,15 @@ export default function AdmissionsPage() {
                     </div>
                     <div className="mode-body">
                       <p>
-                        Candidate may submit the application form to the college <strong>ONLINE</strong> through the official Google Forms enrollment desk.
+                        Candidate may submit the application form to the college <strong>ONLINE</strong> through our official institutional application portal.
                       </p>
-                      <a 
-                        href="https://docs.google.com/forms/d/e/1FAIpQLSddLOq1Hb3lHuFFxbGe1TQpZ_zY9qnxqIp9Nm8sEpegMb_3oQ/viewform" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
+                      <Link 
+                        to="/application-form" 
                         className="btn-primary-gold btn-large-cta"
-                        style={{ marginTop: '0.75rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
+                        style={{ marginTop: '0.75rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, textDecoration: 'none' }}
                       >
-                        Open Online Application Form <ExternalLink size={18} />
-                      </a>
+                        Fill Online Application Form <ArrowRight size={18} />
+                      </Link>
                     </div>
                   </div>
 
@@ -284,7 +289,7 @@ export default function AdmissionsPage() {
                       <button 
                         onClick={() => alert("Downloading IIFCCMS Application Form (PDF).")} 
                         className="btn-outline-teal"
-                        style={{ marginTop: '0.75rem' }}
+                        style={{ marginTop: '0.75rem', fontWeight: 700 }}
                       >
                         <Download size={16} /> Download Application Form (PDF)
                       </button>
@@ -308,12 +313,14 @@ export default function AdmissionsPage() {
                         <button 
                           onClick={() => alert("Downloading IIFCCMS Application Template (Excel).")} 
                           className="btn-outline-teal"
+                          style={{ fontWeight: 700 }}
                         >
                           <Download size={16} /> Download Form (Excel)
                         </button>
                         <a 
                           href="mailto:iifccms@gmail.com?subject=Completed%20Admission%20Application%20Form" 
                           className="btn-email-cta"
+                          style={{ fontWeight: 700 }}
                         >
                           <Mail size={16} /> Email to iifccms@gmail.com
                         </a>
@@ -336,6 +343,7 @@ export default function AdmissionsPage() {
               <div className="tab-content-card">
                 <div className="content-badge">BANKING &amp; REMITTANCE</div>
                 <h2 className="content-heading">How to Pay Fees?</h2>
+
                 <p className="tab-lead-desc">
                   Deposit your admission and semester fees securely through State Bank of India bank transfer or Paytm digital payments:
                 </p>
@@ -395,6 +403,26 @@ export default function AdmissionsPage() {
                       </p>
                     </div>
                   </div>
+
+                  {/* Mode 3: Official Bank UPI QR Code */}
+                  <div className="bank-account-card" style={{ textAlign: 'center', background: '#f8fafc', border: '2px solid #0284c7' }}>
+                    <div className="card-top-head" style={{ justifyContent: 'center' }}>
+                      <span className="mode-tag" style={{ background: '#0284c7' }}>MODE 3: INSTANT UPI QR SCAN</span>
+                    </div>
+                    <h3 style={{ margin: '0.5rem 0 1rem', fontSize: '1.05rem', color: '#062a36' }}>
+                      Scan Official Bank QR to Deposit Fees
+                    </h3>
+                    <div style={{ display: 'inline-block', padding: '12px', background: '#ffffff', borderRadius: '12px', border: '1px solid #cbd5e1', boxShadow: '0 4px 14px rgba(0,0,0,0.08)' }}>
+                      <img 
+                        src={bankQr} 
+                        alt="IIFCCMS Official Bank UPI QR Code" 
+                        style={{ width: '220px', height: 'auto', display: 'block', borderRadius: '6px' }} 
+                      />
+                    </div>
+                    <p style={{ fontSize: '0.82rem', color: '#64748b', marginTop: '0.75rem' }}>
+                      Scan via GPay, PhonePe, Paytm, BHIM, or any Banking UPI app. Please note down the 12-digit UTR/Ref No.
+                    </p>
+                  </div>
                 </div>
               </div>
             )}
@@ -404,6 +432,7 @@ export default function AdmissionsPage() {
               <div className="tab-content-card">
                 <div className="content-badge">VERIFICATION CHECKLIST</div>
                 <h2 className="content-heading">List of Documents Required for Admission</h2>
+
                 <p className="tab-lead-desc">
                   Candidates are required to produce original certificates along with self-attested photocopies during enrollment verification:
                 </p>
@@ -438,6 +467,7 @@ export default function AdmissionsPage() {
               <div className="tab-content-card">
                 <div className="content-badge">STUDENT VOICES</div>
                 <h2 className="content-heading">Student Speak</h2>
+
                 <p className="tab-lead-desc">
                   Read firsthand experiences from our enrolled students and recent alumni across commerce and management streams.
                 </p>

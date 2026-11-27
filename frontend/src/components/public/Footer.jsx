@@ -7,6 +7,7 @@ import {
   MapPin, Phone, Mail, Award, Lock, ExternalLink, 
   ChevronRight, ShieldCheck, GraduationCap, Building2, BookOpen
 } from 'lucide-react';
+import { iifccmsLogo, ccsuLogo } from '../../assets/assetImages';
 
 export default function Footer() {
   const { settings } = useApp();
@@ -31,30 +32,36 @@ export default function Footer() {
         <div className="footer-grid">
           {/* Col 1: Institutional Identity & Social Media */}
           <div className="footer-col footer-col-brand">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.85rem' }}>
-              <div style={{
-                width: 'auto',
-                minWidth: '42px',
-                padding: '0 0.4rem',
-                height: '36px',
-                borderRadius: '8px',
-                background: 'linear-gradient(135deg, #0d5c75 0%, #062a36 100%)',
-                border: '1px solid #dfb235',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#dfb235',
-                fontWeight: '800',
-                fontSize: '0.82rem'
-              }}>
-                IIFCCMS
-              </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', marginBottom: '1rem' }}>
+              <img
+                src={iifccmsLogo}
+                alt="IIFCCMS Official Emblem"
+                style={{
+                  width: '48px',
+                  height: '48px',
+                  objectFit: 'contain',
+                  borderRadius: '50%',
+                  background: '#ffffff',
+                  padding: '2px',
+                  border: '1.5px solid #dfb235'
+                }}
+              />
+              <img
+                src={ccsuLogo}
+                alt="CCS University Official Logo"
+                style={{
+                  width: '42px',
+                  height: '42px',
+                  objectFit: 'contain',
+                  filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))'
+                }}
+              />
               <div>
-                <h4 style={{ margin: 0, padding: 0, fontSize: '1.1rem', color: '#ffffff', letterSpacing: '0.3px' }}>
+                <h4 style={{ margin: 0, padding: 0, fontSize: '1.05rem', color: '#ffffff', letterSpacing: '0.3px' }}>
                   IIFCCMS Greater Noida
                 </h4>
-                <span style={{ fontSize: '0.72rem', color: '#dfb235', fontWeight: '600', letterSpacing: '0.5px' }}>
-                  COLLEGE CODE - 472
+                <span style={{ fontSize: '0.72rem', color: '#dfb235', fontWeight: '700', letterSpacing: '0.5px' }}>
+                  COLLEGE CODE - 472 • AFFILIATED TO CCSU
                 </span>
               </div>
             </div>
@@ -194,7 +201,7 @@ export default function Footer() {
               <li style={{ marginTop: '0.4rem', paddingTop: '0.4rem', borderTop: '1px dashed rgba(255,255,255,0.1)' }}>
                 <Link to="/admissions?tab=registration">
                   <ChevronRight size={13} className="footer-link-arrow" />
-                  <span style={{ color: '#fde047', fontWeight: '600' }}>Admissions • Current Session Desk</span>
+                  <span style={{ color: '#fde047', fontWeight: '600' }}>Admissions Desk</span>
                 </Link>
               </li>
               <li>
@@ -354,61 +361,11 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Highlighted Admin Panel Card in Footer */}
-        <div className="footer-admin-card-wrapper">
-          <div className="footer-admin-card">
-            <div className="footer-admin-card-main">
-              <div className="footer-admin-icon-box">
-                <Lock size={22} />
-              </div>
-              <div>
-                <div className="footer-admin-card-tag">OFFICIAL ADMINISTRATIVE PORTAL</div>
-                <h4 className="footer-admin-card-title">IIFCCMS Administrative Secretariat &amp; Governance Panel</h4>
-                <p className="footer-admin-card-desc">
-                  Authorized portal for administrators, department heads, and faculty staff. Manage admissions, academic circulars, student inquiries, and institutional records.
-                </p>
-              </div>
-            </div>
-            <div className="footer-admin-card-btn-wrap">
-              <button
-                type="button"
-                onClick={() => {
-                  if (isAuthenticated) {
-                    navigate('/admin/dashboard');
-                  } else {
-                    setShowAdminModal(true);
-                  }
-                }}
-                className="footer-admin-login-cta-btn"
-                title="Open Administrative Login Portal"
-              >
-                <Lock size={15} />
-                <span>{isAuthenticated ? 'Admin Panel Dashboard' : 'Admin Login'}</span>
-                <ChevronRight size={16} />
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Bar with Regulatory Disclosures */}
-        <div className="footer-bottom">
-          <div className="footer-bottom-links">
-            <Link to="/about?tab=committees">Regulatory Disclosures</Link>
-            <span className="footer-divider">•</span>
-            <Link to="/admissions?tab=notice">Terms of Admission</Link>
-            <span className="footer-divider">•</span>
-            <Link to="/about?tab=contact">Feedback &amp; Grievances</Link>
-            <span className="footer-divider">•</span>
-            <button type="button" onClick={() => handleAnchorClick('location')} className="footer-bottom-btn">
-              Campus Location Map
-            </button>
-            <span className="footer-divider">•</span>
-            <Link to="/about?tab=vision-mission">Institutional Charter</Link>
-          </div>
-
-          <div className="footer-bottom-copy">
+        {/* Bottom Bar */}
+        <div className="footer-bottom" style={{ justifyContent: 'center', textAlign: 'center' }}>
+          <div className="footer-bottom-copy" style={{ textAlign: 'center' }}>
             <div>© 2026 IIFCCMS Greater Noida. All Rights Reserved.</div>
-            <div style={{ fontSize: '0.78rem', color: '#94a3b8' }}>
+            <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '0.25rem' }}>
               Affiliated to CCS University, Meerut (College Code: 472)
             </div>
           </div>

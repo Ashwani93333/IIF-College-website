@@ -4,6 +4,8 @@ import Navbar from '../components/public/Navbar';
 import MarqueeAlert from '../components/public/MarqueeAlert';
 import Footer from '../components/public/Footer';
 import { ExternalLink, Award, FileText, ChevronRight, CheckCircle2, Globe } from 'lucide-react';
+import { ccsuLogo } from '../assets/assetImages';
+
 
 export default function CcsuWeblinksPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -100,7 +102,18 @@ export default function CcsuWeblinksPage() {
             {currentTab === 'about-ccsu' && (
               <div className="tab-content-card">
                 <div className="content-badge">STATUTORY AFFILIATION</div>
-                <h2 className="content-heading">About Chaudhary Charan Singh University</h2>
+                
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', margin: '0.5rem 0 1.5rem', flexWrap: 'wrap' }}>
+                  <img 
+                    src={ccsuLogo} 
+                    alt="Chaudhary Charan Singh University Logo" 
+                    style={{ width: '70px', height: '70px', objectFit: 'contain', filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.12))' }} 
+                  />
+                  <div>
+                    <h2 className="content-heading" style={{ margin: 0 }}>About Chaudhary Charan Singh University</h2>
+                    <span style={{ fontSize: '0.85rem', color: '#0d5c75', fontWeight: 800 }}>ESTD. 1965 • MEERUT, UTTAR PRADESH • NAAC A++ ACCREDITED</span>
+                  </div>
+                </div>
                 
                 <div className="rich-text-content">
                   <p>
@@ -116,11 +129,11 @@ export default function CcsuWeblinksPage() {
                   </p>
 
                   <div className="highlight-callout-box" style={{ marginTop: '2rem' }}>
-                    <h3 className="callout-title">IIF CCMS Affiliation Codes</h3>
+                    <h3 className="callout-title">IIF CCMS Affiliated Programs</h3>
                     <ul className="salient-list">
-                      <li><CheckCircle2 size={18} className="check-ico" /> <span><strong>COLLEGE CODE - 472:</strong> Bachelor of Commerce (B.Com)</span></li>
-                      <li><CheckCircle2 size={18} className="check-ico" /> <span><strong>COLLEGE CODE - 454:</strong> Bachelor of Business Administration (BBA)</span></li>
-                      <li><CheckCircle2 size={18} className="check-ico" /> <span><strong>COLLEGE CODE - 478:</strong> Bachelor of Arts (B.A.)</span></li>
+                      <li><CheckCircle2 size={18} className="check-ico" /> <span>Bachelor of Commerce (B.Com)</span></li>
+                      <li><CheckCircle2 size={18} className="check-ico" /> <span>Bachelor of Business Administration (BBA)</span></li>
+                      <li><CheckCircle2 size={18} className="check-ico" /> <span>Bachelor of Arts (B.A.)</span></li>
                     </ul>
                   </div>
                 </div>
@@ -132,6 +145,7 @@ export default function CcsuWeblinksPage() {
               <div className="tab-content-card">
                 <div className="content-badge">OFFICIAL WEB DIRECTORY</div>
                 <h2 className="content-heading">CCS University Weblinks</h2>
+
                 <p className="tab-lead-desc">
                   Direct access to Chaudhary Charan Singh University, Meerut online examination, admission, and results desks:
                 </p>

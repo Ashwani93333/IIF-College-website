@@ -1,10 +1,14 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { 
+  student1, student3, student5, student7, 
+  student10, student12, student15, student20 
+} from '../../assets/assetImages';
 
 export default function TestimonialsSection() {
   const scrollRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
 
-  // 7 Authentic Testimonials with IIFCCMS Branding
+  // 7 Authentic Testimonials with IIFCCMS Branding & Student Photographs
   const testimonials = [
     {
       id: 1,
@@ -12,7 +16,7 @@ export default function TestimonialsSection() {
       name: "Yashi",
       designation: "B.Com Honors Scholar",
       tag: "Student • Academic Excellence",
-      photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80",
+      photo: student1,
       quote: "The personalized mentorship, smart finance labs, and dedicated faculty have exceeded all my academic expectations."
     },
     {
@@ -21,7 +25,7 @@ export default function TestimonialsSection() {
       name: "Hemant Katyal",
       designation: "Founder Dhangaurd, Dubai",
       tag: "Alumni • FinTech Entrepreneur",
-      photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80",
+      photo: student3,
       quote: "IIFCCMS provides an exceptional learning ecosystem that instills corporate leadership and global financial acumen."
     },
     {
@@ -30,7 +34,7 @@ export default function TestimonialsSection() {
       name: "D. Sankaran",
       designation: "Head HR – Grindwell Norton (Saint-Gobain)",
       tag: "Corporate Recruiter Partner",
-      photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=500&q=80",
+      photo: student5,
       quote: "We deeply appreciate the high caliber, disciplined professional conduct, and analytical rigor of IIFCCMS scholars."
     },
     {
@@ -39,7 +43,7 @@ export default function TestimonialsSection() {
       name: "Reshmi Menon",
       designation: "Early Talent Lead – Palo Alto",
       tag: "Corporate Talent Lead",
-      photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80",
+      photo: student7,
       quote: "Students are trained in the latest accounting and management methodologies, making them immediate industry contributors."
     },
     {
@@ -48,7 +52,7 @@ export default function TestimonialsSection() {
       name: "Nitin Sharma",
       designation: "Sr. Director & Solutions Architect, USA",
       tag: "Alumni • Tech & Strategy",
-      photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80",
+      photo: student10,
       quote: "I attribute much of my international career trajectory to the sound fundamentals and research-oriented pedagogy here."
     },
     {
@@ -57,7 +61,7 @@ export default function TestimonialsSection() {
       name: "Padmashri Late Dr. Pritam Singh",
       designation: "Former Dean of IIM Bangalore",
       tag: "Distinguished Academician",
-      photo: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80",
+      photo: student12,
       quote: "An esteemed institution that sculpts future financial leaders, ethical managers, and visionary corporate contributors."
     },
     {
@@ -66,7 +70,7 @@ export default function TestimonialsSection() {
       name: "Shipra Pandit",
       designation: "Director - HR at JUSPAY",
       tag: "FinTech Industry Leader",
-      photo: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=500&q=80",
+      photo: student15,
       quote: "Recruiting from IIFCCMS has always been rewarding due to their solid domain knowledge, integrity, and disciplined conduct."
     }
   ];
@@ -95,7 +99,7 @@ export default function TestimonialsSection() {
   }, [isPaused]);
 
   return (
-    <section className="section testimonials-auto-slider-section" id="testimonials" style={{ background: 'var(--bg-white, #faf8f5)' }}>
+    <section className="section testimonials-auto-slider-section" id="testimonials" style={{ background: '#C1E1C1' }}>
       <div className="container">
         {/* Section Heading matching Faculty styling */}
         <div className="testimonials-slider-header-row">

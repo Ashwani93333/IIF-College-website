@@ -13,6 +13,7 @@ import FacultyPage from './pages/FacultyPage';
 import CcsuWeblinksPage from './pages/CcsuWeblinksPage';
 import PlacementsPage from './pages/PlacementsPage';
 import LatestUpdatesPage from './pages/LatestUpdatesPage';
+import ApplicationFormPage from './pages/ApplicationFormPage';
 
 // Admin Components & Pages
 import ProtectedRoute from './components/admin/ProtectedRoute';
@@ -42,6 +43,8 @@ export default function App() {
             <Route path="/ccsu-weblinks" element={<CcsuWeblinksPage />} />
             <Route path="/placements" element={<PlacementsPage />} />
             <Route path="/latest-updates" element={<LatestUpdatesPage />} />
+            <Route path="/application-form" element={<ApplicationFormPage />} />
+            <Route path="/apply" element={<ApplicationFormPage />} />
 
             {/* Admin Authentication */}
             <Route path="/admin/login" element={<AdminLoginPage />} />

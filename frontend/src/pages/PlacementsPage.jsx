@@ -6,6 +6,10 @@ import Footer from '../components/public/Footer';
 import PlacementSection from '../components/public/PlacementSection';
 import { Briefcase, Building, TrendingUp, ChevronRight, Award, CheckCircle2 } from 'lucide-react';
 
+import {
+  imgChAuditorium, imgPgGraduates
+} from '../assets/assetImages';
+
 export default function PlacementsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -62,16 +66,14 @@ export default function PlacementsPage() {
 
               <div className="sidebar-contact-pill">
                 <div className="pill-title">Corporate Cell</div>
-                <p>Campus Placement Drives 2026-27</p>
-                <a 
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSddLOq1Hb3lHuFFxbGe1TQpZ_zY9qnxqIp9Nm8sEpegMb_3oQ/viewform"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <p>Campus Placement Drives</p>
+                <Link 
+                  to="/application-form"
                   className="btn-primary-gold" 
-                  style={{ width: '100%', marginTop: '0.5rem', fontSize: '0.82rem', padding: '0.5rem', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}
+                  style={{ width: '100%', marginTop: '0.5rem', fontSize: '0.85rem', fontWeight: 800, padding: '0.5rem', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}
                 >
                   Apply Online
-                </a>
+                </Link>
               </div>
             </div>
           </aside>
@@ -94,6 +96,16 @@ export default function PlacementsPage() {
               <div className="tab-content-card">
                 <div className="content-badge">SKILL ACCELERATION</div>
                 <h2 className="content-heading">Corporate Readiness &amp; Grooming Modules</h2>
+
+                {/* Photo Banner */}
+                <div className="tab-lead-photo-banner">
+                  <img src={imgChAuditorium} alt="Corporate Readiness Modules" />
+                  <div className="tab-lead-photo-caption">
+                    <Briefcase size={16} />
+                    <span>Executive Personality Grooming, Financial Modeling &amp; Interview Simulation Sessions</span>
+                  </div>
+                </div>
+
                 <p className="tab-lead-desc">
                   Structured multi-tier training designed to transform undergraduate students into confident corporate professionals:
                 </p>

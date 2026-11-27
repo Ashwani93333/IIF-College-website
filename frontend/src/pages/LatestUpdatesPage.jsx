@@ -7,6 +7,12 @@ import NoticeBoard from '../components/public/NoticeBoard';
 import EventsSection from '../components/public/EventsSection';
 import { Calendar, Users, Tv, Bell, ChevronRight, CheckCircle2 } from 'lucide-react';
 
+import {
+  imgChConference, imgPgStudentFest, imgPgMediaBriefing,
+  imgPgVietnamPresident, imgPgAcademicMOU,
+  media1, media2, media3, media4, media5, media7
+} from '../assets/assetImages';
+
 export default function LatestUpdatesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentTab = searchParams.get('tab') || 'conference-2022';
@@ -17,7 +23,7 @@ export default function LatestUpdatesPage() {
   };
 
   const tabs = [
-    { key: 'conference-2022', label: 'Conference 2022', icon: <Calendar size={17} /> },
+    { key: 'conference', label: 'Conference', icon: <Calendar size={17} /> },
     { key: 'student-activities', label: 'Student Activities', icon: <Users size={17} /> },
     { key: 'media-presence', label: 'Media Presence', icon: <Tv size={17} /> },
     { key: 'news-notifications', label: 'News & Notifications', icon: <Bell size={17} /> }
@@ -76,6 +82,16 @@ export default function LatestUpdatesPage() {
               <div className="tab-content-card">
                 <div className="content-badge">ACADEMIC SUMMITS</div>
                 <h2 className="content-heading">International Conference 2022 Proceedings</h2>
+
+                {/* Photo Banner */}
+                <div className="tab-lead-photo-banner">
+                  <img src={imgChConference} alt="International Conference 2022" />
+                  <div className="tab-lead-photo-caption">
+                    <Calendar size={16} />
+                    <span>International Research Conference on Financial Sector Reforms &amp; Sustainable Growth</span>
+                  </div>
+                </div>
+
                 <div className="rich-text-content">
                   <p>
                     IIF College of Commerce and Management Studies convened the landmark <strong>International Research Conference 2022 on "Financial Sector Reforms, Corporate Governance &amp; Sustainable Economic Growth"</strong>.
@@ -107,6 +123,13 @@ export default function LatestUpdatesPage() {
             {/* 2. Student Activities */}
             {currentTab === 'student-activities' && (
               <div>
+                <div className="tab-lead-photo-banner">
+                  <img src={imgPgStudentFest} alt="Student Activities and Annual Fest" />
+                  <div className="tab-lead-photo-caption">
+                    <Users size={16} />
+                    <span>Vibrant Campus Life — Cultural Fests, Debates &amp; Inter-Collegiate Competitions</span>
+                  </div>
+                </div>
                 <EventsSection />
               </div>
             )}
@@ -116,34 +139,63 @@ export default function LatestUpdatesPage() {
               <div className="tab-content-card">
                 <div className="content-badge">PRESS &amp; BROADCAST COVERAGE</div>
                 <h2 className="content-heading">Media Presence &amp; Public Coverage</h2>
+
+                {/* Photo Banner */}
+                <div className="tab-lead-photo-banner">
+                  <img src={imgPgMediaBriefing} alt="Media Press Coverage" />
+                  <div className="tab-lead-photo-caption">
+                    <Tv size={16} />
+                    <span>Faculty Economic Commentary on National Broadcasts &amp; Press Conclaves</span>
+                  </div>
+                </div>
+
                 <p className="tab-lead-desc">
                   Highlights of IIF CCMS intellectual contributions, faculty interviews on national television, and press coverage:
                 </p>
 
-                <div className="facility-highlight-grid">
-                  <div className="fac-card">
-                    <img 
-                      src="https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=700&q=80" 
-                      alt="National Daily Press" 
-                      className="fac-img"
-                    />
-                    <div className="fac-body">
-                      <h4>National Daily Press Features</h4>
-                      <p>Faculty analyses published in Economic Times, Financial Express, Business Standard, and Dainik Jagran on annual budget analysis.</p>
+                {/* Authentic Media Press Clippings Grid */}
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                  gap: '1.25rem',
+                  marginTop: '1.5rem',
+                  marginBottom: '2rem'
+                }}>
+                  {[
+                    { img: media1, title: "Economic Policy Press Coverage", caption: "Faculty views in premier financial dailies" },
+                    { img: media2, title: "Union Budget Analysis", caption: "Televised panel discussions and newspaper reviews" },
+                    { img: media3, title: "National Education Conclave", caption: "Press reports on higher education leadership" },
+                    { img: media4, title: "Commerce & Management Features", caption: "Media spotlight on institutional excellence" },
+                    { img: media5, title: "Economic Times & Financial Express", caption: "Faculty op-ed columns on fiscal governance" },
+                    { img: media7, title: "Broadcast & Doordarshan Briefings", caption: "National media dialogues on trade and markets" }
+                  ].map((m, mIdx) => (
+                    <div 
+                      key={mIdx}
+                      style={{
+                        background: '#ffffff',
+                        border: '1.5px solid #e2e8f0',
+                        borderRadius: '12px',
+                        overflow: 'hidden',
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.06)'
+                      }}
+                    >
+                      <div style={{ height: '200px', overflow: 'hidden', background: '#062a36' }}>
+                        <img 
+                          src={m.img} 
+                          alt={m.title} 
+                          style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                        />
+                      </div>
+                      <div style={{ padding: '0.85rem 1rem' }}>
+                        <h4 style={{ margin: '0 0 0.25rem', fontSize: '0.92rem', fontWeight: 800, color: '#062a36' }}>
+                          {m.title}
+                        </h4>
+                        <p style={{ margin: 0, fontSize: '0.78rem', color: '#64748b' }}>
+                          {m.caption}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-
-                  <div className="fac-card">
-                    <img 
-                      src="https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=700&q=80" 
-                      alt="Television & Radio Debates" 
-                      className="fac-img"
-                    />
-                    <div className="fac-body">
-                      <h4>National Television &amp; AIR Broadcasts</h4>
-                      <p>Over 700 radio and TV talks on All India Radio, Doordarshan, and leading news networks on economic policies and inflation.</p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             )}
@@ -151,6 +203,13 @@ export default function LatestUpdatesPage() {
             {/* 4. News and Notification */}
             {currentTab === 'news-notifications' && (
               <div>
+                <div className="tab-lead-photo-banner">
+                  <img src={imgPgAcademicMOU} alt="Official Academic Circulars" />
+                  <div className="tab-lead-photo-caption">
+                    <Bell size={16} />
+                    <span>Administrative Notices, Examination Rosters &amp; University Circulars</span>
+                  </div>
+                </div>
                 <NoticeBoard />
               </div>
             )}

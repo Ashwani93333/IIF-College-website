@@ -31,7 +31,7 @@ export default function HeroSection({ onOpenSyllabus }) {
 
           <div className="hero-cta-group">
             <button onClick={() => scrollTo('admissions')} className="btn-primary-gold">
-              Apply for Admission 2026-27 <ArrowRight size={18} />
+              Apply for Admission <ArrowRight size={18} />
             </button>
             <button onClick={() => scrollTo('fee-calculator')} className="btn-outline-white">
               Calculate Scholarship Slabs

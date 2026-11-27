@@ -9,7 +9,7 @@ export default function CampusLocationSection() {
   const googleDirectionsUrl = "https://www.google.com/maps/dir/?api=1&destination=Indian+Institute+of+Finance+45A+Knowledge+Park+III+Greater+Noida";
 
   return (
-    <section className="section campus-location-unified-section" id="location" style={{ background: 'var(--bg-beige-card, #fdfbf7)' }}>
+    <section className="section campus-location-unified-section" id="location" style={{ background: '#C1E1C1' }}>
       <div className="container">
         {/* Section Header */}
         <div className="location-section-header">
@@ -117,7 +117,7 @@ export default function CampusLocationSection() {
               <p className="overlay-inst-address">
                 IIFCCMS, Plot No. 45A, Knowledge Park III, Greater Noida, Delhi NCR – 201310, Uttar Pradesh, India
               </p>
-              <div className="overlay-actions-row">
+              <div className="overlay-btns-row">
                 <a 
                   href={googleMapsUrl}
                   target="_blank" 

@@ -51,7 +51,7 @@ export default function EventsSection() {
       title: "Undergraduate Orientation & Induction Programme — 'PARICHAY 2026'",
       venue: "Central Amphitheatre",
       desc: "Welcoming the incoming batch of BBA, B.Com, and B.A. scholars with academic briefings, faculty introductions, and student kit distribution.",
-      tag: "BATCH 2026-27"
+      tag: "NEW BATCH"
     },
     {
       id: 5,
@@ -82,7 +82,7 @@ export default function EventsSection() {
   const filteredEvents = activeTab === "all" ? events : events.filter(e => e.category.toLowerCase() === activeTab.toLowerCase());
 
   return (
-    <section className="section" id="events" style={{ background: '#f8fafc' }}>
+    <section className="section" id="events" style={{ background: '#C1E1C1' }}>
       <div className="container">
         <div className="section-header">
           <span className="section-tag">Campus Vitality</span>

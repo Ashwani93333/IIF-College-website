@@ -1,12 +1,21 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, Award, GraduationCap } from 'lucide-react';
+import {
+  facChairman,
+  facManjuAgarwal,
+  facRkAgarwal,
+  facDeepakBansal,
+  facPadmaMishra,
+  facUmangGupta,
+  facGouthamSandilya
+} from '../../assets/assetImages';
 
 export default function FacultySection() {
   const scrollRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
 
-  // 8 Distinguished Faculty Members matching the reference UI cards
+  // Core Faculty Members with authentic photos from web photographs
   const facultyList = [
     {
       id: 1,
@@ -14,63 +23,55 @@ export default function FacultySection() {
       designation: "Founder Chairman & Chief Mentor",
       department: "Executive Academic Council",
       credential: "Ph.D. Economics • Eminent Economist",
-      photoUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80"
+      photoUrl: facChairman
     },
     {
       id: 2,
-      name: "Prof. Aman Agarwal",
-      designation: "Director & Professor of Finance",
-      department: "Department of Management Studies",
-      credential: "Ph.D. in Finance • M.S. (USA)",
-      photoUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80"
+      name: "Prof. (Dr.) Manju Agarwal",
+      designation: "Professor of Economics & Senior Mentor",
+      department: "Department of Commerce",
+      credential: "Ph.D. (DSE), ITP (London Business School)",
+      photoUrl: facManjuAgarwal
     },
     {
       id: 3,
-      name: "Dr. Ritu Saxena",
-      designation: "Associate Professor & HOD Commerce",
+      name: "Prof. R. K. Agarwal",
+      designation: "Professor of Accounting & Taxation",
       department: "Department of Commerce",
-      credential: "Ph.D. Commerce • UGC-NET",
-      photoUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80"
+      credential: "M.Com. (DU), CA (FCA), FCS",
+      photoUrl: facRkAgarwal
     },
     {
       id: 4,
-      name: "Abhishek Anand",
-      designation: "Assistant Professor - Business Analytics",
-      department: "Department of Management Studies",
-      credential: "MBA (FinTech) • UGC-NET",
-      photoUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80"
+      name: "Prof. Deepak Bansal",
+      designation: "Assistant Professor - IT & Analytics",
+      department: "Department of Commerce",
+      credential: "M.Sc. CS, M.Com., ADSM (NIIT)",
+      photoUrl: facDeepakBansal
     },
     {
       id: 5,
-      name: "Dr. Priya Verma",
-      designation: "Assistant Professor - Economics",
-      department: "Department of Arts & Humanities",
-      credential: "Ph.D. Economics • NET-JRF",
-      photoUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=500&q=80"
+      name: "Mr. Padma Kanta Mishra",
+      designation: "Faculty in Accounting & Finance",
+      department: "Department of Commerce",
+      credential: "I.C.W.A (Inter), M.Phil., UGC-NET",
+      photoUrl: facPadmaMishra
     },
     {
       id: 6,
-      name: "Prof. Vikas Gupta",
-      designation: "Assistant Professor - Corporate Finance",
-      department: "Department of Commerce",
-      credential: "CFA, M.Com • Financial Modeling",
-      photoUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=500&q=80"
+      name: "Dr. Umang Gupta",
+      designation: "Faculty in General Management",
+      department: "Department of Management",
+      credential: "Ph.D. (IIT Roorkee), MBA, UGC-NET JRF",
+      photoUrl: facUmangGupta
     },
     {
       id: 7,
-      name: "Dr. Neha Kapoor",
-      designation: "Associate Professor - Corporate Law",
-      department: "Department of Commerce",
-      credential: "Ph.D. (Law), LL.M • Legal Studies",
-      photoUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80"
-    },
-    {
-      id: 8,
-      name: "Prof. Rajesh Mehra",
-      designation: "Professor of Practice - Banking Operations",
-      department: "Department of Management Studies",
-      credential: "30+ Yrs Banking Ex-SBI • Treasury",
-      photoUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=500&q=80"
+      name: "Mr. Goutham Sandilya",
+      designation: "Faculty in Finance & Valuation",
+      department: "Department of Management",
+      credential: "Fellow (IIT Roorkee Scholar), PGDM",
+      photoUrl: facGouthamSandilya
     }
   ];
 
@@ -98,7 +99,7 @@ export default function FacultySection() {
   }, [isPaused]);
 
   return (
-    <section className="section faculty-auto-slider-section" id="faculty" style={{ background: 'var(--bg-beige, #f7f3ec)' }}>
+    <section className="section faculty-auto-slider-section" id="faculty" style={{ background: '#C1E1C1' }}>
       <div className="container">
         {/* Top Header Row matching UI: Left Title with Serif + Accent, Right 'View All' Pill */}
         <div className="faculty-slider-header-row">
