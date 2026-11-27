@@ -1,21 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import Navbar from '../components/public/Navbar';
 import MarqueeAlert from '../components/public/MarqueeAlert';
 import Footer from '../components/public/Footer';
 import NoticeBoard from '../components/public/NoticeBoard';
-import EventsSection from '../components/public/EventsSection';
-import { Calendar, Users, Tv, Bell, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { Calendar, Users, Tv, Bell, ChevronRight, CheckCircle2, X, Image } from 'lucide-react';
 
 import {
   imgChConference, imgPgStudentFest, imgPgMediaBriefing,
   imgPgVietnamPresident, imgPgAcademicMOU,
+  imgPgCulturalEvents, imgPgGraduates, imgChStudents, 
+  imgChClassroom, imgChSeminar, imgPgCounseling, imgCh1,
   media1, media2, media3, media4, media5, media7
 } from '../assets/assetImages';
 
 export default function LatestUpdatesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentTab = searchParams.get('tab') || 'conference-2022';
+  const [selectedActivityPhoto, setSelectedActivityPhoto] = useState(null);
+
+  // Close photo lightbox on Escape
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setSelectedActivityPhoto(null);
+    };
+    if (selectedActivityPhoto) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedActivityPhoto]);
 
   const setTab = (tabKey) => {
     setSearchParams({ tab: tabKey });
@@ -23,7 +40,7 @@ export default function LatestUpdatesPage() {
   };
 
   const tabs = [
-    { key: 'conference', label: 'Conference', icon: <Calendar size={17} /> },
+    { key: 'conference-2022', label: 'Conference', icon: <Calendar size={17} /> },
     { key: 'student-activities', label: 'Student Activities', icon: <Users size={17} /> },
     { key: 'media-presence', label: 'Media Presence', icon: <Tv size={17} /> },
     { key: 'news-notifications', label: 'News & Notifications', icon: <Bell size={17} /> }
@@ -122,15 +139,154 @@ export default function LatestUpdatesPage() {
 
             {/* 2. Student Activities */}
             {currentTab === 'student-activities' && (
-              <div>
-                <div className="tab-lead-photo-banner">
-                  <img src={imgPgStudentFest} alt="Student Activities and Annual Fest" />
-                  <div className="tab-lead-photo-caption">
-                    <Users size={16} />
-                    <span>Vibrant Campus Life — Cultural Fests, Debates &amp; Inter-Collegiate Competitions</span>
-                  </div>
+              <div className="tab-content-card">
+                <div className="content-badge">CAMPUS VITALITY &amp; YOUTH LIFE</div>
+                <h2 className="content-heading">Student Activities &amp; Campus Events</h2>
+
+                <p className="tab-lead-desc" style={{ color: '#000000', fontWeight: 700, marginBottom: '2rem' }}>
+                  A visual showcase of student development, cultural celebrations, academic symposia, and vibrant campus life at IIF CCMS:
+                </p>
+
+                {/* Grid of Student Activities Photos */}
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))',
+                  gap: '1.5rem',
+                  marginBottom: '2rem'
+                }}>
+                  {[
+                    {
+                      id: 1,
+                      title: "Annual Cultural Fest & Talent Showcase",
+                      category: "CULTURAL CELEBRATION",
+                      badgeBg: "#fef3c7",
+                      badgeColor: "#92400e",
+                      desc: "Vibrant musical performances, dramatic enactments, and inter-collegiate dance competitions organized by the Student Council.",
+                      image: imgPgStudentFest
+                    },
+                    {
+                      id: 2,
+                      title: "Inter-Collegiate Cultural Stage Festivities",
+                      category: "STUDENT LIFE",
+                      badgeBg: "#e0f2fe",
+                      badgeColor: "#0369a1",
+                      desc: "Students showcasing creative arts, theater, and literary eloquence in our Greater Noida campus amphitheater.",
+                      image: imgPgCulturalEvents
+                    },
+                    {
+                      id: 3,
+                      title: "Group Discussions & Case Study Deliberations",
+                      category: "ACADEMIC CLUBS",
+                      badgeBg: "#dcfce7",
+                      badgeColor: "#166534",
+                      desc: "BBA and B.Com student teams debating live market case studies, business strategy, and corporate finance simulations.",
+                      image: imgChStudents
+                    },
+                    {
+                      id: 4,
+                      title: "Interactive Business Quiz & Presentation Rounds",
+                      category: "MANAGEMENT WORKSHOP",
+                      badgeBg: "#f3e8ff",
+                      badgeColor: "#7e22ce",
+                      desc: "Scholars presenting strategic business plans, financial projections, and economic models before faculty evaluators.",
+                      image: imgChClassroom
+                    },
+                    {
+                      id: 5,
+                      title: "Student Symposia & Research Forum",
+                      category: "SEMINARS & CONCLAVES",
+                      badgeBg: "#fee2e2",
+                      badgeColor: "#991b1b",
+                      desc: "Undergraduate researchers presenting empirical term papers and banking policy analyses during campus academic symposia.",
+                      image: imgChSeminar
+                    },
+                    {
+                      id: 6,
+                      title: "Annual Convocation & Student Honors",
+                      category: "CONVOCATION",
+                      badgeBg: "#fef3c7",
+                      badgeColor: "#92400e",
+                      desc: "Celebrating academic excellence and conferring degrees upon graduating batches with university distinction medals.",
+                      image: imgPgGraduates
+                    },
+                    {
+                      id: 7,
+                      title: "Student Orientation & Career Mentorship",
+                      category: "INDUCTION PROGRAMME",
+                      badgeBg: "#e0f2fe",
+                      badgeColor: "#0369a1",
+                      desc: "Senior faculty orienting fresh undergraduate entrants on academic rigor, library research, and corporate grooming.",
+                      image: imgPgCounseling
+                    },
+                    {
+                      id: 8,
+                      title: "Campus Community & Peer Interactions",
+                      category: "CAMPUS ENVIRONMENT",
+                      badgeBg: "#dcfce7",
+                      badgeColor: "#166534",
+                      desc: "Vibrant peer interactions, study circles, and collaborative learning across open courtyards and academic infrastructure.",
+                      image: imgCh1
+                    }
+                  ].map((act) => (
+                    <div 
+                      key={act.id}
+                      onClick={() => setSelectedActivityPhoto(act)}
+                      style={{
+                        background: '#ffffff',
+                        border: '1.5px solid #cbd5e1',
+                        borderRadius: '10px',
+                        overflow: 'hidden',
+                        cursor: 'pointer',
+                        boxShadow: '0 4px 14px rgba(0,0,0,0.06)',
+                        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                        display: 'flex',
+                        flexDirection: 'column'
+                      }}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.transform = 'translateY(-3px)';
+                        e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.12)';
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.transform = 'translateY(0)';
+                        e.currentTarget.style.boxShadow = '0 4px 14px rgba(0,0,0,0.06)';
+                      }}
+                    >
+                      <div style={{ position: 'relative', height: '220px', background: '#062a36', overflow: 'hidden' }}>
+                        <img 
+                          src={act.image} 
+                          alt={act.title}
+                          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        />
+                        <span style={{
+                          position: 'absolute',
+                          top: '0.75rem',
+                          left: '0.75rem',
+                          background: act.badgeBg,
+                          color: act.badgeColor,
+                          fontSize: '0.72rem',
+                          fontWeight: 800,
+                          padding: '0.2rem 0.6rem',
+                          borderRadius: '4px',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.04em',
+                          boxShadow: '0 2px 6px rgba(0,0,0,0.2)'
+                        }}>
+                          {act.category}
+                        </span>
+                      </div>
+                      <div style={{ padding: '1.25rem', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                        <div>
+                          <h4 style={{ fontSize: '1.1rem', fontWeight: 900, color: '#000000', margin: '0 0 0.45rem' }}>
+                            {act.title}
+                          </h4>
+                          <p style={{ fontSize: '0.9rem', color: '#000000', fontWeight: 700, margin: 0, lineHeight: 1.55 }}>
+                            {act.desc}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <EventsSection />
               </div>
             )}
 
@@ -202,20 +358,114 @@ export default function LatestUpdatesPage() {
 
             {/* 4. News and Notification */}
             {currentTab === 'news-notifications' && (
-              <div>
-                <div className="tab-lead-photo-banner">
-                  <img src={imgPgAcademicMOU} alt="Official Academic Circulars" />
-                  <div className="tab-lead-photo-caption">
-                    <Bell size={16} />
-                    <span>Administrative Notices, Examination Rosters &amp; University Circulars</span>
-                  </div>
-                </div>
+              <div className="tab-content-card">
+                <div className="content-badge">OFFICIAL CIRCULARS &amp; NOTICES</div>
+                <h2 className="content-heading">News &amp; Notifications</h2>
+
+                <p className="tab-lead-desc" style={{ color: '#000000', fontWeight: 700, marginBottom: '1.5rem' }}>
+                  Official administrative circulars, semester examination datesheets, admission notices, and government scholarship notifications issued by IIF CCMS and Chaudhary Charan Singh University (CCSU).
+                </p>
+
                 <NoticeBoard />
               </div>
             )}
           </main>
         </div>
       </div>
+
+      {/* Lightbox Modal for Student Activity Photo */}
+      {selectedActivityPhoto && (
+        <div 
+          onClick={() => setSelectedActivityPhoto(null)}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            width: '100vw',
+            height: '100vh',
+            background: 'rgba(0, 0, 0, 0.9)',
+            zIndex: 999999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '1.5rem',
+            cursor: 'pointer'
+          }}
+        >
+          {/* Top-Right Close Button */}
+          <button 
+            type="button" 
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedActivityPhoto(null);
+            }}
+            style={{
+              position: 'fixed',
+              top: '1.5rem',
+              right: '1.5rem',
+              background: 'rgba(255, 255, 255, 0.25)',
+              border: 'none',
+              color: '#ffffff',
+              cursor: 'pointer',
+              borderRadius: '50%',
+              width: '46px',
+              height: '46px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 1000000,
+              transition: 'all 0.2s ease',
+              boxShadow: '0 4px 14px rgba(0,0,0,0.4)'
+            }}
+            onMouseEnter={e => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.45)'}
+            onMouseLeave={e => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.25)'}
+            aria-label="Close photo"
+          >
+            <X size={28} strokeWidth={2.5} />
+          </button>
+
+          {/* Simple Image Popup Container - No background color */}
+          <div 
+            onClick={e => e.stopPropagation()}
+            style={{
+              position: 'relative',
+              maxWidth: '92vw',
+              maxHeight: '92vh',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'default',
+              background: 'transparent'
+            }}
+          >
+            <img 
+              src={selectedActivityPhoto.image} 
+              alt={selectedActivityPhoto.title} 
+              style={{
+                maxWidth: '100%',
+                maxHeight: '82vh',
+                objectFit: 'contain',
+                borderRadius: '8px',
+                boxShadow: '0 12px 40px rgba(0, 0, 0, 0.8)',
+                display: 'block'
+              }}
+            />
+
+            {/* Photo Title & Caption */}
+            <div style={{ marginTop: '0.85rem', textAlign: 'center', color: '#ffffff', maxWidth: '800px', textShadow: '0 2px 6px rgba(0,0,0,0.9)' }}>
+              <div style={{ fontSize: '1.2rem', fontWeight: 800, color: '#ffffff' }}>
+                {selectedActivityPhoto.title}
+              </div>
+              <div style={{ fontSize: '0.95rem', color: '#ffffff', marginTop: '0.35rem', fontWeight: 600 }}>
+                {selectedActivityPhoto.desc}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </div>

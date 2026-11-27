@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { 
-  Camera, Image, Sparkles, ZoomIn, X, ChevronRight, 
+  Camera, Image, Sparkles, X, ChevronRight, 
   Building2, Users, Award, BookOpen, Layers 
 } from 'lucide-react';
 
@@ -358,29 +358,9 @@ export default function GallerySection() {
               onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.06)'}
               onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
             />
-            {/* Top Right Zoom Indicator */}
-            <div style={{
-              position: 'absolute',
-              top: '0.75rem',
-              right: '0.75rem',
-              background: 'rgba(6, 42, 54, 0.75)',
-              color: '#ffffff',
-              borderRadius: '999px',
-              padding: '0.25rem 0.55rem',
-              fontSize: '0.7rem',
-              fontWeight: '700',
-              backdropFilter: 'blur(4px)',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.25rem',
-              border: '1px solid rgba(255, 255, 255, 0.15)'
-            }}>
-              <ZoomIn size={12} color="#dfb235" />
-              <span>Inspect</span>
-            </div>
 
             {/* Bottom Caption Overlay */}
-            <div style={{
+            <div className="gallery-photo-caption-overlay" style={{
               position: 'absolute',
               bottom: 0,
               left: 0,
@@ -397,30 +377,33 @@ export default function GallerySection() {
                 padding: '0.15rem 0.5rem',
                 borderRadius: '4px',
                 textTransform: 'uppercase',
-                letterSpacing: '0.04em'
+                letterSpacing: '0.04em',
+                display: 'inline-block',
+                marginBottom: '0.35rem'
               }}>
                 {photo.category}
               </span>
-              <h4 style={{
+              <h4 className="gallery-photo-title" style={{
                 color: '#ffffff',
-                fontSize: '0.92rem',
-                fontWeight: '700',
-                marginTop: '0.35rem',
-                marginBottom: '0.2rem',
-                lineHeight: 1.3,
+                fontSize: '0.94rem',
+                fontWeight: '800',
+                marginTop: '0.2rem',
+                marginBottom: '0.25rem',
+                lineHeight: 1.35,
                 textOverflow: 'ellipsis',
                 overflow: 'hidden',
                 whiteSpace: 'nowrap'
               }}>
                 {photo.title}
               </h4>
-              <p style={{
-                fontSize: '0.75rem',
-                color: '#cbd5e1',
+              <p className="gallery-photo-caption" style={{
+                fontSize: '0.82rem',
+                color: '#ffffff',
                 margin: 0,
-                lineHeight: 1.4,
+                lineHeight: 1.45,
+                fontWeight: '600',
                 display: '-webkit-box',
-                WebkitLineClamp: 1,
+                WebkitLineClamp: 2,
                 WebkitBoxOrient: 'vertical',
                 overflow: 'hidden'
               }}>
@@ -431,48 +414,97 @@ export default function GallerySection() {
         ))}
       </div>
 
-      {/* Lightbox Modal */}
+      {/* Lightbox Modal (Clean, No colored background box, Full-size Photo, Click outside or X to close) */}
       {selectedImage && (
         <div 
-          className="modal-overlay" 
           onClick={() => setSelectedImage(null)}
-          style={{ background: 'rgba(6, 42, 54, 0.94)', zIndex: 99999 }}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            width: '100vw',
+            height: '100vh',
+            background: 'rgba(0, 0, 0, 0.9)',
+            zIndex: 999999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '1.5rem',
+            cursor: 'pointer'
+          }}
         >
-          <div 
-            className="modal-dialog" 
-            onClick={e => e.stopPropagation()}
-            style={{ maxWidth: '900px', width: '92%', padding: '1.25rem', background: '#062a36', border: '1.5px solid #c59b27', borderRadius: '14px' }}
+          {/* Top-Right Close Button */}
+          <button 
+            type="button" 
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedImage(null);
+            }}
+            style={{
+              position: 'fixed',
+              top: '1.5rem',
+              right: '1.5rem',
+              background: 'rgba(255, 255, 255, 0.25)',
+              border: 'none',
+              color: '#ffffff',
+              cursor: 'pointer',
+              borderRadius: '50%',
+              width: '46px',
+              height: '46px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 1000000,
+              transition: 'all 0.2s ease',
+              boxShadow: '0 4px 14px rgba(0,0,0,0.4)'
+            }}
+            onMouseEnter={e => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.45)'}
+            onMouseLeave={e => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.25)'}
+            aria-label="Close photo"
           >
-            {/* Modal Header */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.85rem', paddingBottom: '0.65rem', borderBottom: '1px solid rgba(255,255,255,0.12)' }}>
-              <div>
-                <span style={{ fontSize: '0.75rem', color: '#dfb235', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                  {selectedImage.category}
-                </span>
-                <h3 style={{ margin: '0.25rem 0 0.2rem', color: '#ffffff', fontSize: '1.25rem', fontWeight: '800' }}>
-                  {selectedImage.title}
-                </h3>
-                <p style={{ margin: 0, color: '#cbd5e1', fontSize: '0.82rem', lineHeight: 1.45 }}>
-                  {selectedImage.caption}
-                </p>
-              </div>
-              <button 
-                type="button" 
-                onClick={() => setSelectedImage(null)}
-                style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', color: '#ffffff', fontSize: '1.4rem', cursor: 'pointer', borderRadius: '50%', width: '34px', height: '34px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                aria-label="Close Lightbox"
-              >
-                &times;
-              </button>
-            </div>
+            <X size={28} strokeWidth={2.5} />
+          </button>
 
-            {/* Modal Image Box */}
-            <div style={{ maxHeight: '72vh', overflow: 'hidden', borderRadius: '8px', background: '#021820', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <img 
-                src={selectedImage.imageUrl} 
-                alt={selectedImage.title} 
-                style={{ maxWidth: '100%', maxHeight: '70vh', objectFit: 'contain', borderRadius: '6px' }}
-              />
+          {/* Simple Image Popup Container - No background color */}
+          <div 
+            onClick={e => e.stopPropagation()}
+            style={{
+              position: 'relative',
+              maxWidth: '92vw',
+              maxHeight: '92vh',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'default',
+              background: 'transparent'
+            }}
+          >
+            <img 
+              src={selectedImage.imageUrl} 
+              alt={selectedImage.title} 
+              style={{
+                maxWidth: '100%',
+                maxHeight: '82vh',
+                objectFit: 'contain',
+                borderRadius: '8px',
+                boxShadow: '0 12px 40px rgba(0, 0, 0, 0.8)',
+                display: 'block'
+              }}
+            />
+
+            {/* Photo Title & Caption */}
+            <div className="gallery-modal-text" style={{ marginTop: '0.85rem', textAlign: 'center', color: '#ffffff', maxWidth: '850px', textShadow: '0 2px 6px rgba(0,0,0,0.9)' }}>
+              <div className="gallery-photo-title" style={{ fontSize: '1.25rem', fontWeight: 800, color: '#ffffff' }}>
+                {selectedImage.title}
+              </div>
+              {selectedImage.caption && (
+                <div className="gallery-photo-caption" style={{ fontSize: '1rem', color: '#ffffff', marginTop: '0.4rem', fontWeight: 600, lineHeight: 1.5 }}>
+                  {selectedImage.caption}
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -104,9 +104,7 @@ export default function Navbar() {
       label: "PLACEMENTS",
       path: "/placements",
       items: [
-        { label: "Placement Highlights", tab: "highlights" },
-        { label: "Our Recruiters", tab: "recruiters" },
-        { label: "Training & Grooming", tab: "training" }
+        { label: "Placement Highlights", tab: "highlights" }
       ]
     },
     {
@@ -202,17 +200,19 @@ export default function Navbar() {
           </Link>
 
           <div className="glb-header-right-badges">
-            <div className="glb-badge-item" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-              <img 
-                src={ccsuLogo} 
-                alt="Chaudhary Charan Singh University Meerut Official Logo" 
-                style={{
-                  width: '46px',
-                  height: '46px',
-                  objectFit: 'contain',
-                  filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.15))'
-                }} 
-              />
+            <div className="glb-badge-item">
+              <div className="badge-icon-box">
+                <img 
+                  src={ccsuLogo} 
+                  alt="Chaudhary Charan Singh University Meerut Official Logo" 
+                  style={{
+                    width: '38px',
+                    height: '38px',
+                    objectFit: 'contain',
+                    display: 'block'
+                  }} 
+                />
+              </div>
               <div className="badge-text">
                 <span className="sup">Govt. University Degree</span>
                 <span className="main">CCSU MEERUT • NAAC A++</span>

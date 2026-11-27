@@ -26,7 +26,7 @@ const COURSES_DATA = [
     description: "An intensive, industry-centric undergraduate degree designed to develop managerial acumen, strategic decision-making, and entrepreneurial leadership. Equipped with modern case studies, financial analysis, marketing simulations, and guest sessions by corporate veterans.",
     duration: "3 Years (6 Semesters)",
     annualFee: 80000,
-    eligibility: "10+2 with min 45% (40% for SC/ST)",
+    eligibility: "10+2 with min 50% (45% for SC/ST/OBC). Final year students can apply.",
     university: "Ch. Charan Singh University (CCSU Meerut)",
     subjects: [
       "Principles of Management",
@@ -59,8 +59,8 @@ const COURSES_DATA = [
     acClassroom: "100% AC Classrooms",
     description: "The B.Com curriculum blends core accounting principles, GST and corporate taxation laws, auditing standards, and modern banking methodologies. Designed for students aspiring for CA, CS, Banking, and Corporate Financial Secretariat careers.",
     duration: "3 Years (6 Semesters)",
-    annualFee: 45000,
-    eligibility: "10+2 with min 40% aggregate (Commerce / Arts / Science)",
+    annualFee: 50000,
+    eligibility: "10+2 with min 50% (45% for SC/ST/OBC). Final year students can apply.",
     university: "Ch. Charan Singh University (CCSU Meerut)",
     subjects: [
       "Financial Accounting & Tally",

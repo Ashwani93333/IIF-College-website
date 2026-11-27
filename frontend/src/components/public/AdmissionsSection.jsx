@@ -32,7 +32,7 @@ export default function AdmissionsSection({ prefillData }) {
     twelfthStream: "Commerce",
     scholarshipTier: "Standard",
     scholarshipPercent: 0,
-    calculatedFee: 65000
+    calculatedFee: 80000
   });
 
   // Handle pre-fill from fee calculator or course card

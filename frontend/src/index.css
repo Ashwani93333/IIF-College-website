@@ -1568,6 +1568,27 @@ h2.content-heading {
   gap: 0.5rem;
 }
 
+/* ==========================================================================
+   Gallery Photo Card & Lightbox Overlay Typography (Must always be White)
+   ========================================================================== */
+.gallery-photo-caption-overlay,
+.gallery-photo-caption-overlay h4,
+.gallery-photo-caption-overlay p,
+.gallery-photo-title,
+.gallery-photo-caption,
+.gallery-modal-text,
+.gallery-modal-text div,
+.gallery-modal-text p {
+  color: #ffffff !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85) !important;
+}
+
+.gallery-photo-caption-overlay p {
+  font-size: 0.85rem !important;
+  line-height: 1.45 !important;
+  font-weight: 600 !important;
+}
+
 
 /* ==========================================================================
    Global Toast Notification
@@ -3957,46 +3978,61 @@ h2.content-heading {
 .glb-header-right-badges {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .glb-badge-item {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.4rem 0.85rem;
+  gap: 0.75rem;
+  width: 240px;
+  min-width: 240px;
+  max-width: 240px;
+  height: 56px;
+  min-height: 56px;
+  max-height: 56px;
+  box-sizing: border-box;
+  padding: 0.45rem 0.85rem;
   background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  border: 1.5px solid #e2e8f0;
   border-radius: var(--radius-md);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s ease;
 }
 
-.glb-badge-item .badge-icon {
-  width: 34px;
-  height: 34px;
-  border-radius: var(--radius-sm);
-  background: #0d5c75;
-  color: #dfb235;
+.glb-badge-item .badge-icon-box {
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .glb-badge-item .badge-text {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  min-width: 0;
 }
 
 .glb-badge-item .badge-text .sup {
-  font-size: 0.65rem;
+  font-size: 0.66rem;
   color: #64748b;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .glb-badge-item .badge-text .main {
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 800;
   color: #0d5c75;
+  letter-spacing: 0.3px;
+  line-height: 1.25;
+  white-space: nowrap;
 }
 
 /* 3. GLB Main Navigation Bar */
@@ -8174,40 +8210,45 @@ h2.content-heading {
 
 .mode-header {
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  align-items: flex-start;
+  gap: 0.75rem;
   margin-bottom: 0.85rem;
 }
 
 .mode-num {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: #0d5c75;
-  color: #ffffff;
-  font-weight: 900;
-  display: flex;
-  align-items: center;
-  justifyContent: center;
-  font-size: 1.1rem;
+  background: none !important;
+  color: #062a36 !important;
+  font-weight: 900 !important;
+  font-size: 1.65rem !important;
+  line-height: 1.25 !important;
+  width: auto !important;
+  height: auto !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
   flex-shrink: 0;
+  margin-top: 0;
 }
 
 .app-mode-online .mode-num {
-  background: #16a34a;
+  background: none !important;
+  color: #15803d !important;
 }
 
 .mode-header h3 {
-  font-size: 1.2rem;
-  color: #062a36;
-  font-weight: 800;
-  margin-bottom: 0.2rem;
+  font-size: 1.35rem !important;
+  color: #000000 !important;
+  font-weight: 900 !important;
+  margin: 0 0 0.35rem 0;
+  line-height: 1.3 !important;
 }
 
+.mode-header .mode-subtitle,
 .mode-header p {
-  font-size: 0.8rem;
-  color: #64748b;
+  font-size: 1rem !important;
+  color: #334155 !important;
+  font-weight: 600 !important;
   margin: 0;
+  line-height: 1.4 !important;
 }
 
 .mode-body p {
@@ -9852,8 +9893,15 @@ h2.content-heading {
 .glb-admission-highlight-badge {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-  padding: 0.45rem 0.95rem;
+  gap: 0.75rem;
+  width: 240px;
+  min-width: 240px;
+  max-width: 240px;
+  height: 56px;
+  min-height: 56px;
+  max-height: 56px;
+  box-sizing: border-box;
+  padding: 0.45rem 0.85rem;
   background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
   border: 1.5px solid #dfb235;
   border-radius: var(--radius-md);
@@ -9862,6 +9910,7 @@ h2.content-heading {
   transition: all 0.25s ease;
   position: relative;
   text-align: left;
+  text-decoration: none;
 }
 
 .glb-admission-highlight-badge:hover {
@@ -9890,8 +9939,8 @@ h2.content-heading {
 }
 
 .admission-badge-icon {
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
   border-radius: var(--radius-sm);
   background: linear-gradient(135deg, #dfb235 0%, #b45309 100%);
   color: #ffffff;
@@ -9901,20 +9950,31 @@ h2.content-heading {
   flex-shrink: 0;
 }
 
+.glb-admission-highlight-badge .badge-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
 .glb-admission-highlight-badge .sup-highlight {
-  font-size: 0.65rem;
+  font-size: 0.66rem;
   color: #92400e;
   text-transform: uppercase;
   font-weight: 700;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  white-space: nowrap;
   display: block;
 }
 
 .glb-admission-highlight-badge .main-highlight {
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   font-weight: 800;
   color: #b45309;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.3px;
+  line-height: 1.25;
+  white-space: nowrap;
   display: block;
 }
 
@@ -11371,6 +11431,45 @@ h2.content-heading {
     page-break-before: always !important;
     break-before: page !important;
   }
+}
+
+/* ==========================================================================
+   OFFICIAL APPLICATION FORM PRINT TEMPLATE & WATERMARK STYLES
+   ========================================================================== */
+.print-root {
+  width: 210mm;
+  background: #ffffff;
+  color: #000000;
+  font-family: inherit;
+}
+
+.print-page {
+  width: 194mm;
+  min-height: 277mm;
+  border: 1.5px solid #000000;
+  padding: 7mm 8mm;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.print-page-break {
+  page-break-before: always !important;
+  break-before: page !important;
+}
+
+.draft-watermark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-30deg);
+  font-size: 92px;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  color: #000000;
+  opacity: 0.07;
+  pointer-events: none;
 }
 
 @media screen {
@@ -13104,5 +13203,26 @@ h2.content-heading {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+/* ==========================================================================
+   Gallery Photo Card & Lightbox Overlay Typography (Must always be White)
+   ========================================================================== */
+.gallery-photo-caption-overlay,
+.gallery-photo-caption-overlay h4,
+.gallery-photo-caption-overlay p,
+.gallery-photo-title,
+.gallery-photo-caption,
+.gallery-modal-text,
+.gallery-modal-text div,
+.gallery-modal-text p {
+  color: #ffffff !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85) !important;
+}
+
+.gallery-photo-caption-overlay p {
+  font-size: 0.85rem !important;
+  line-height: 1.45 !important;
+  font-weight: 600 !important;
 }
 

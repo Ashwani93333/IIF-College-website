@@ -219,7 +219,7 @@ export default function Footer() {
               <li>
                 <Link to="/admissions?tab=fee-payment">
                   <ChevronRight size={13} className="footer-link-arrow" />
-                  <span>Online Fee Payment (SBI / Paytm)</span>
+                  <span>Online Fee Payment (SBI / UPI)</span>
                 </Link>
               </li>
               <li>

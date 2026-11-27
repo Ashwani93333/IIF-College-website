@@ -13,7 +13,6 @@ export default function HeroSlider() {
   const { settings } = useApp();
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const touchStartX = useRef(null);
 
   const slides = [
@@ -49,14 +48,13 @@ export default function HeroSlider() {
     }
   ];
 
-  // Auto-scroll slides every 5 seconds
+  // Auto-scroll slides every 2 seconds continuously (even when mouse cursor is on photos)
   useEffect(() => {
-    if (isPaused) return;
     const interval = setInterval(() => {
       setCurrentSlide(prev => (prev + 1) % slides.length);
-    }, 5000);
+    }, 2000);
     return () => clearInterval(interval);
-  }, [isPaused, slides.length]);
+  }, [slides.length]);
 
   const handlePrev = () => {
     setCurrentSlide(prev => (prev - 1 + slides.length) % slides.length);
@@ -84,8 +82,6 @@ export default function HeroSlider() {
   return (
     <div 
       className="hero-fullscreen-slider clear-view"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       id="hero"
