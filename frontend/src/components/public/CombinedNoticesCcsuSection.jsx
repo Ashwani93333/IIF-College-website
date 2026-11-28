@@ -348,11 +348,14 @@ export default function CombinedNoticesCcsuSection() {
       <div id="ccsu-weblinks" style={{ position: 'relative', top: '-80px' }} />
 
       <div className="container">
-        {/* Centered Main Section Title */}
-        <div className="section-header" style={{ textAlign: 'center', margin: '0 auto 2.5rem' }}>
-          <h2 className="content-heading" style={{ textAlign: 'center', margin: 0 }}>
-            Official Notices &amp; University Portals
-          </h2>
+        {/* Centered Main Section Title (Centered Flanked Design matching benchmark) */}
+        <div className="landing-section-header">
+          <div className="landing-section-title-wrap">
+            <h2 className="landing-section-title">Official Notices &amp; University Portals</h2>
+          </div>
+          <p className="landing-section-subtitle">
+            Stay updated with statutory CCSU circulars, examination advisories, and administrative releases
+          </p>
         </div>
 
         <div className="combined-two-col-grid">

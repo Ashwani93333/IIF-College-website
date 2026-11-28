@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { 
-  student1, student3, student5, student7, 
-  student10, student12, student15, student20 
+import {
+  student1, student3, student5, student7,
+  student10, student12, student15, student20
 } from '../../assets/assetImages';
 
 export default function TestimonialsSection() {
@@ -99,19 +99,20 @@ export default function TestimonialsSection() {
   }, [isPaused]);
 
   return (
-    <section className="section testimonials-auto-slider-section" id="testimonials" style={{ background: '#edffc8' }}>
+    <section className="section testimonials-auto-slider-section" id="testimonials" style={{ background: '#C1E1C1' }}>
       <div className="container">
-        {/* Section Heading matching Faculty styling */}
-        <div className="testimonials-slider-header-row">
-          <div className="testimonials-header-title-block">
-            <h2 className="testimonials-main-heading">
-              Testimonials
-            </h2>
+        {/* Section Heading (Centered Flanked Design matching benchmark) */}
+        <div className="landing-section-header">
+          <div className="landing-section-title-wrap">
+            <h2 className="landing-section-title">Testimonials &amp; Student Voices</h2>
           </div>
+          <p className="landing-section-subtitle">
+            Inspiring journeys and authentic experiences from our scholars and alumni
+          </p>
         </div>
 
         {/* Auto-sliding Carousel Viewport */}
-        <div 
+        <div
           className="testimonials-carousel-viewport"
           ref={scrollRef}
           onMouseEnter={() => setIsPaused(true)}
@@ -122,18 +123,18 @@ export default function TestimonialsSection() {
           <div className="testimonials-cards-sliding-track">
             {/* Duplicated list for infinite seamless right-to-left scrolling */}
             {[...testimonials, ...testimonials].map((item, idx) => (
-              <div 
+              <div
                 key={`${item.id}-${idx}`}
                 className="testimonial-auto-card"
                 title={`${item.name} - ${item.designation}`}
               >
                 {/* Photo Container with Backdrop matching Faculty Card Design */}
                 <div className="testimonial-card-photo-box">
-                  <img 
-                    src={item.photo} 
-                    alt={item.name} 
+                  <img
+                    src={item.photo}
+                    alt={item.name}
                     className="testimonial-card-photo-img"
-                    loading="lazy" 
+                    loading="lazy"
                   />
                 </div>
 

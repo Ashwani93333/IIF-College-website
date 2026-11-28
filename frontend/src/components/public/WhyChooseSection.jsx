@@ -4,9 +4,9 @@ import {
   GraduationCap, Users, ShieldCheck, Sparkles, Compass 
 } from 'lucide-react';
 
-import campusPhoto1 from '../../assets/front-banners/IIF1.jpeg';
-import campusPhoto2 from '../../assets/front-banners/IIF2.jpg';
-import campusPhoto3 from '../../assets/front-banners/IIF3.jpg';
+import campusPhotoBanner from '../../assets/front-banners/IIF1.jpeg';
+import photoClassroom from '../../assets/web photographs/Campus highlights/Infrastructure/Classrooms.jfif';
+import photoComputerCentre from '../../assets/web photographs/Campus highlights/Infrastructure/ComputerCentre.jfif';
 
 export default function WhyChooseSection() {
   const whyPoints = [
@@ -17,67 +17,50 @@ export default function WhyChooseSection() {
     {
       title: "Prestigious University Affiliation (CCSU Meerut - NAAC A++)",
       desc: "All degree programs (B.Com, BBA, B.A.) are formally affiliated with Chaudhary Charan Singh University, Meerut (College Code: 472), ensuring recognized university degrees with NEP 2020 multidisciplinary curriculum."
-    },
-    {
-      title: "Prime Knowledge Park III, Greater Noida Location",
-      desc: "Strategically located at Plot No. 45A in the premier educational and corporate hub of Greater Noida, with seamless Metro and highway connectivity across Delhi, Noida, and NCR."
-    },
-    {
-      title: "World-Class Air-Conditioned Academic Infrastructure",
-      desc: "Featuring 100% AC smart lecture theatres with interactive audio-visual systems, dedicated financial modeling and computing laboratories, and a central library housing over 55,000 reference volumes."
-    },
-    {
-      title: "Industry-Experienced Faculty & Personal Mentorship",
-      desc: "Mentored by accomplished academicians, chartered accountants, economists, and corporate executives fostering individual student growth, practical case-study learning, and real-world problem-solving."
-    },
-    {
-      title: "Holistic Student Development & Active Campus Life",
-      desc: "Vibrant collegiate environment with commerce and management conclaves, FinTech societies, National Service Scheme (NSS), cultural fests, sports arena, and corporate networking forums."
     }
   ];
 
   return (
     <section className="section why-iifccms-unified-section" id="why-iifccms" style={{ background: '#edffc8' }}>
       <div className="container">
-        {/* Top Header */}
-        <div className="possibilities-header-row">
-          <div className="header-left-brand">
-            <div className="brand-accent-line"></div>
-            <div className="brand-titles">
-              <span className="brand-sub-label">Distinctive Edge &amp; Excellence</span>
-              <h2 className="brand-main-headline">WHY IIFCCMS ?</h2>
-            </div>
+        {/* Top Header (Centered Flanked Design matching benchmark) */}
+        <div className="landing-section-header">
+          <div className="landing-section-title-wrap">
+            <h2 className="landing-section-title">WHY IIFCCMS ?</h2>
           </div>
+          <p className="landing-section-subtitle">
+            Distinctive Edge &amp; Excellence &bull; Foundation of Leadership &amp; Commerce Excellence
+          </p>
         </div>
 
-        {/* 2-Column Split: Left 3 Pure Photo Cards | Right Formatted Description Points */}
+        {/* 2-Column Split: Left 3 Photos (1 Banner + 2 Square Cards) | Right Formatted Description Points */}
         <div className="why-iifccms-split-grid">
-          {/* Left Column: 3 Clean, Proper Photos Only (No Text Overlay) */}
+          {/* Left Column: 1 Banner Photo + 2 Square Cards */}
           <div className="why-photos-pure-stack">
-            {/* Photo 1: Main Campus Architecture */}
-            <div className="pure-photo-card photo-card-main">
+            {/* Photo 1: Banner Type Photo */}
+            <div className="why-photo-banner-card">
               <img 
-                src={campusPhoto1} 
+                src={campusPhotoBanner} 
                 alt="IIFCCMS Greater Noida Campus Infrastructure" 
                 className="pure-photo-element"
                 loading="lazy"
               />
             </div>
 
-            {/* Sub-row with Photo 2 & Photo 3 */}
-            <div className="pure-photos-sub-row">
-              <div className="pure-photo-card photo-card-sub">
+            {/* Sub-row: 2 Square Card Photos */}
+            <div className="why-photos-square-grid">
+              <div className="why-photo-square-card">
                 <img 
-                  src={campusPhoto2} 
-                  alt="IIFCCMS Academic Block & Campus Grounds" 
+                  src={photoClassroom} 
+                  alt="Smart Air-Conditioned Lecture Theatres" 
                   className="pure-photo-element"
                   loading="lazy"
                 />
               </div>
-              <div className="pure-photo-card photo-card-sub">
+              <div className="why-photo-square-card">
                 <img 
-                  src={campusPhoto3} 
-                  alt="IIFCCMS Student Conclave & Auditorium Facilities" 
+                  src={photoComputerCentre} 
+                  alt="High-Tech Financial Modeling &amp; Computing Laboratories" 
                   className="pure-photo-element"
                   loading="lazy"
                 />

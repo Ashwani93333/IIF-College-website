@@ -11,12 +11,13 @@ export default function CampusLocationSection() {
   return (
     <section className="section campus-location-unified-section" id="location" style={{ background: '#edffc8' }}>
       <div className="container">
-        {/* Section Header */}
-        <div className="location-section-header">
-          <span className="location-pre-tag">Campus Location</span>
-          <h2 className="location-main-title">Visit Our Greater Noida Campus</h2>
-          <p className="location-sub-text">
-            Conveniently situated in the educational hub of Knowledge Park III
+        {/* Section Header (Centered Flanked Design matching benchmark) */}
+        <div className="landing-section-header">
+          <div className="landing-section-title-wrap">
+            <h2 className="landing-section-title">Visit Our Greater Noida Campus</h2>
+          </div>
+          <p className="landing-section-subtitle">
+            Conveniently situated in the educational hub of Knowledge Park III, Greater Noida
           </p>
         </div>
 

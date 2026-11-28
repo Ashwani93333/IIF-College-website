@@ -114,13 +114,12 @@ export default function HighlightsSection() {
   return (
     <section className="section section-bg-light highlights-section" id="highlights">
       <div className="container">
-        {/* Section Header */}
-        <div className="section-header" style={{ marginBottom: '2.5rem' }}>
-          <span className="section-tag">CAMPUS HIGHLIGHTS</span>
-          <h2 style={{ fontSize: '2.3rem', color: 'var(--primary-navy-dark)' }}>
-            CAMPUS HIGHLIGHTS
-          </h2>
-          <p style={{ maxWidth: '800px', margin: '0 auto', color: 'var(--text-muted)' }}>
+        {/* Section Header (Centered Flanked Design matching benchmark) */}
+        <div className="landing-section-header">
+          <div className="landing-section-title-wrap">
+            <h2 className="landing-section-title">CAMPUS HIGHLIGHTS</h2>
+          </div>
+          <p className="landing-section-subtitle">
             Glimpses of vibrant life across Students Activity, Seminars, Infrastructure, Library, Foreign Dignitaries, Official Dignitaries, and MoU Signing.
           </p>
         </div>

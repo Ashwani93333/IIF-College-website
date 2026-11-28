@@ -23,7 +23,7 @@ const STEPS = [
 
 export const INITIAL_FORM_DATA = {
   academicSession: '2026 – 2027',
-  programme: 'BBA', // 'BBA' | 'B.Com'
+  programme: 'BBA', // 'BBA' | 'B.Com' | 'B.A.'
   writtenExam: 'DIRECT', // 'AIMA (UGAT)' | 'AIMS (UGAT)' | 'DIRECT'
   examRollNo: '',
   examScore: '',
@@ -310,7 +310,7 @@ export default function ApplicationWizard({ onFinalSubmit }) {
     const newErrors = {};
 
     if (stepNumber === 1) {
-      if (!formData.programme) newErrors.programme = 'Please select a programme (BBA or B.Com).';
+      if (!formData.programme) newErrors.programme = 'Please select a programme (BBA, B.Com, or B.A.).';
     }
 
     if (stepNumber === 2) {
@@ -648,7 +648,7 @@ export default function ApplicationWizard({ onFinalSubmit }) {
             Online Application &amp; Registration Portal
           </div>
           <div style={{ fontSize: '0.82rem', color: '#475569', marginTop: '0.2rem' }}>
-            BBA (Code 454) &bull; B.Com (Code 472) &bull; Affiliated to CCS University Meerut
+            BBA (Code 454) &bull; B.Com (Code 472) &bull; B.A. (NEP 2020) &bull; Affiliated to CCS University Meerut
           </div>
         </div>
 
@@ -968,13 +968,12 @@ export default function ApplicationWizard({ onFinalSubmit }) {
                 <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 800, color: 'var(--primary-navy-dark, #062a36)', marginBottom: '0.4rem' }}>
                   Regular UG Programme <span style={{ color: 'var(--danger-red, #ef4444)' }}>*</span>
                 </label>
-                <div style={{ display: 'flex', gap: '1rem', marginTop: '0.5rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '0.75rem', marginTop: '0.5rem' }}>
                   <label style={{
-                    flex: 1,
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.6rem',
-                    padding: '0.75rem 1rem',
+                    padding: '0.75rem 0.85rem',
                     border: formData.programme === 'BBA' ? '2px solid var(--primary-navy, #0d5c75)' : '1px solid #cbd5e1',
                     borderRadius: '8px',
                     background: formData.programme === 'BBA' ? '#f0fdf4' : '#f8fafc',
@@ -989,31 +988,53 @@ export default function ApplicationWizard({ onFinalSubmit }) {
                     />
                     <div>
                       <strong style={{ fontSize: '0.95rem', color: 'var(--primary-navy-dark, #062a36)' }}>BBA</strong>
-                      <div style={{ fontSize: '0.75rem', color: '#64748b' }}>College Code: 454</div>
+                      <div style={{ fontSize: '0.75rem', color: '#64748b' }}>Code: 454</div>
                     </div>
                   </label>
 
                   <label style={{
-                    flex: 1,
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.6rem',
-                    padding: '0.75rem 1rem',
-                    border: formData.programme === 'B.Com' ? '2px solid var(--primary-navy, #0d5c75)' : '1px solid #cbd5e1',
+                    padding: '0.75rem 0.85rem',
+                    border: (formData.programme === 'B.Com' || formData.programme === 'BCom') ? '2px solid var(--primary-navy, #0d5c75)' : '1px solid #cbd5e1',
                     borderRadius: '8px',
-                    background: formData.programme === 'B.Com' ? '#f0fdf4' : '#f8fafc',
+                    background: (formData.programme === 'B.Com' || formData.programme === 'BCom') ? '#f0fdf4' : '#f8fafc',
                     cursor: 'pointer'
                   }}>
                     <input
                       type="radio"
                       name="programme"
                       value="B.Com"
-                      checked={formData.programme === 'B.Com'}
+                      checked={formData.programme === 'B.Com' || formData.programme === 'BCom'}
                       onChange={handleInputChange}
                     />
                     <div>
                       <strong style={{ fontSize: '0.95rem', color: 'var(--primary-navy-dark, #062a36)' }}>B.Com</strong>
-                      <div style={{ fontSize: '0.75rem', color: '#64748b' }}>College Code: 472</div>
+                      <div style={{ fontSize: '0.75rem', color: '#64748b' }}>Code: 472</div>
+                    </div>
+                  </label>
+
+                  <label style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.6rem',
+                    padding: '0.75rem 0.85rem',
+                    border: (formData.programme === 'B.A.' || formData.programme === 'BA') ? '2px solid var(--primary-navy, #0d5c75)' : '1px solid #cbd5e1',
+                    borderRadius: '8px',
+                    background: (formData.programme === 'B.A.' || formData.programme === 'BA') ? '#f0fdf4' : '#f8fafc',
+                    cursor: 'pointer'
+                  }}>
+                    <input
+                      type="radio"
+                      name="programme"
+                      value="B.A."
+                      checked={formData.programme === 'B.A.' || formData.programme === 'BA'}
+                      onChange={handleInputChange}
+                    />
+                    <div>
+                      <strong style={{ fontSize: '0.95rem', color: 'var(--primary-navy-dark, #062a36)' }}>B.A.</strong>
+                      <div style={{ fontSize: '0.75rem', color: '#64748b' }}>Bachelor of Arts</div>
                     </div>
                   </label>
                 </div>
@@ -2215,7 +2236,7 @@ export default function ApplicationWizard({ onFinalSubmit }) {
                   </button>
                 </div>
                 <div style={{ fontSize: '0.85rem', color: '#334155' }}>
-                  <div>Programme: <strong>{formData.programme} (Code {formData.programme === 'BBA' ? '454' : '472'})</strong></div>
+                  <div>Programme: <strong>{formData.programme} {formData.programme === 'BBA' ? '(Code 454)' : formData.programme === 'B.Com' ? '(Code 472)' : '(NEP 2020)'}</strong></div>
                   <div>Session: {formData.academicSession} &bull; Pathway: {formData.writtenExam}</div>
                 </div>
               </div>

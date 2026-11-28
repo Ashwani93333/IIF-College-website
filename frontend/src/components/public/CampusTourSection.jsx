@@ -23,15 +23,13 @@ export default function CampusTourSection() {
   return (
     <section className="section campus-tour-section" id="facilities" style={{ background: '#edffc8' }}>
       <div className="container">
-        {/* Section Header */}
-        <div className="section-header" style={{ marginBottom: '2.5rem' }}>
-          <span className="section-tag">INFRASTRUCTURE &amp; FACILITIES</span>
-          <h2 style={{ fontSize: '2.3rem', color: 'var(--primary-navy-dark)' }}>
-            Campus Tour &amp; World-Class Infrastructure
-          </h2>
-          <p style={{ maxWidth: '800px', margin: '0 auto', color: 'var(--text-muted)' }}>
-            Explore our sprawling 6.47-acre campus situated in the premier institutional hub of 
-            Knowledge Park III, Greater Noida, meticulously engineered for academic eminence and student well-being.
+        {/* Section Header (Centered Flanked Design matching benchmark) */}
+        <div className="landing-section-header">
+          <div className="landing-section-title-wrap">
+            <h2 className="landing-section-title">Campus Tour &amp; World-Class Infrastructure</h2>
+          </div>
+          <p className="landing-section-subtitle">
+            Explore our sprawling 6.47-acre campus situated in the premier institutional hub of Knowledge Park III, Greater Noida, meticulously engineered for academic eminence and student well-being.
           </p>
         </div>
 

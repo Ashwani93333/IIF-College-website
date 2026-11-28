@@ -126,12 +126,14 @@ export default function CoursesSection() {
   return (
     <section className="section course-split-section" id="programs">
       <div className="container">
-        {/* Section Header */}
-        <div className="section-header course-section-header">
-          <h2 className="course-section-main-heading">Undergraduate Degree Programs (NEP 2020)</h2>
-          <p className="course-section-sub-heading">
+        {/* Section Header (Centered Flanked Design matching benchmark) */}
+        <div className="landing-section-header">
+          <div className="landing-section-title-wrap">
+            <h2 className="landing-section-title">Undergraduate Degree Programs (NEP 2020)</h2>
+          </div>
+          <p className="landing-section-subtitle">
             <span className="affiliation-highlight-badge">
-              Affiliated to Chaudhary Charan Singh University, Meerut (UGC Category-1 NACC A++)
+              Affiliated to Chaudhary Charan Singh University, Meerut (UGC Category-1 NAAC A++)
             </span>
           </p>
         </div>

@@ -101,20 +101,17 @@ export default function FacultySection() {
   return (
     <section className="section faculty-auto-slider-section" id="faculty" style={{ background: '#edffc8' }}>
       <div className="container">
-        {/* Top Header Row matching UI: Left Title with Serif + Accent, Right 'View All' Pill */}
-        <div className="faculty-slider-header-row">
-          <div className="faculty-header-title-block">
-            <h2 className="faculty-main-heading">
-              Faculty
-            </h2>
+        {/* Top Header (Centered Flanked Design matching benchmark) */}
+        <div className="landing-section-header">
+          <div className="landing-section-title-wrap">
+            <h2 className="landing-section-title">Faculty Mentorship &amp; Leadership</h2>
           </div>
-
-          <Link to="/faculty" className="faculty-view-all-pill" title="View Full Faculty Directory">
-            <span className="view-all-text">View All</span>
-            <span className="view-all-circle-arrow">
-              <ArrowUpRight size={15} />
-            </span>
-          </Link>
+          <p className="landing-section-subtitle">
+            Distinguished academicians and industry veterans shaping future leaders &bull;{' '}
+            <Link to="/faculty" style={{ color: 'var(--primary-navy-dark)', textDecoration: 'underline', fontWeight: 700 }}>
+              View All Faculty Directory &rarr;
+            </Link>
+          </p>
         </div>
 
         {/* Auto-sliding Track Container */}

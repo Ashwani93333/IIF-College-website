@@ -221,8 +221,12 @@ export default function ApplicationPrint({ data = null, isDraft = false }) {
                 [{data?.programme === 'BBA' ? '✓' : ' '}] 1. Bachelor of Business Administration (BBA) (Code 454)
               </span>
               &nbsp;&nbsp;&nbsp;&nbsp;
-              <span style={{ fontWeight: data?.programme === 'B.Com' ? 800 : 400 }}>
-                [{data?.programme === 'B.Com' ? '✓' : ' '}] 2. Bachelor of Commerce (B.Com) (Code 472)
+              <span style={{ fontWeight: (data?.programme === 'B.Com' || data?.programme === 'BCom') ? 800 : 400 }}>
+                [{data?.programme === 'B.Com' || data?.programme === 'BCom' ? '✓' : ' '}] 2. Bachelor of Commerce (B.Com) (Code 472)
+              </span>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <span style={{ fontWeight: (data?.programme === 'B.A.' || data?.programme === 'BA') ? 800 : 400 }}>
+                [{data?.programme === 'B.A.' || data?.programme === 'BA' ? '✓' : ' '}] 3. Bachelor of Arts (B.A.)
               </span>
             </div>
           </div>
