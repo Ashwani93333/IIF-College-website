@@ -1,27 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import { Camera, Sparkles, Layers, Award, X, ZoomIn } from 'lucide-react';
 
-// Import all 20 authentic campus highlights photos from assets/campus-highlights
-import img01 from '../../assets/campus-highlights/10497848_10153201089727160_4160586009382009716_o.jpg';
-import img02 from '../../assets/campus-highlights/10559703_1461113560822892_2612771016800970954_n.jpg';
-import img03 from '../../assets/campus-highlights/10609637_1461114300822818_5962398583195555547_n.jpg';
-import img04 from '../../assets/campus-highlights/11.jpg';
-import img05 from '../../assets/campus-highlights/11998836_1013005795396509_4569425140603221888_n.jpg';
-import img06 from '../../assets/campus-highlights/12-r.JPG';
-import img07 from '../../assets/campus-highlights/12.jpg';
-import img08 from '../../assets/campus-highlights/15-r.JPG';
-import img09 from '../../assets/campus-highlights/15.jpg';
-import img10 from '../../assets/campus-highlights/1525323_1461114877489427_1394504976652724377_n.jpg';
-import img11 from '../../assets/campus-highlights/2002 March 25th IIF 0012.jpg';
-import img12 from '../../assets/campus-highlights/20070223-AA02-ASM Seminar.JPG';
-import img13 from '../../assets/campus-highlights/2015-03-13 17.59.31.jpg';
-import img14 from '../../assets/campus-highlights/2015-05-03 15.59.03.jpg';
-import img15 from '../../assets/campus-highlights/2015-05-03 18.40.37.jpg';
-import img16 from '../../assets/campus-highlights/2015-05-04 13.24.08.jpg';
-import img17 from '../../assets/campus-highlights/2015-05-10 20.50.13.jpg';
-import img18 from '../../assets/campus-highlights/21st March 2002 IIF 0010.jpg';
-import img19 from '../../assets/campus-highlights/21st March 2002 IIF 0011.jpg';
-import img20 from '../../assets/campus-highlights/21st March 2002 IIF 0016.jpg';
+// Authentic Campus Highlights Photos by Folder from web photographs/Campus highlights
+// 1. Students Activity
+import sa1 from '../../assets/web photographs/Campus highlights/Students Activity/10559703_1461113560822892_2612771016800970954_n.jpg';
+import sa2 from '../../assets/web photographs/Campus highlights/Students Activity/10609637_1461114300822818_5962398583195555547_n.jpg';
+import sa3 from '../../assets/web photographs/Campus highlights/Students Activity/15-r.JPG';
+import sa4 from '../../assets/web photographs/Campus highlights/Students Activity/PLANTATION.jfif';
+
+// 2. Seminars
+import sem1 from '../../assets/web photographs/Campus highlights/Seminars/11.jpg';
+import sem2 from '../../assets/web photographs/Campus highlights/Seminars/12.jpg';
+import sem3 from '../../assets/web photographs/Campus highlights/Seminars/20070223-AA02-ASM Seminar.JPG';
+import sem4 from '../../assets/web photographs/Campus highlights/Seminars/Army Institute Seminar -_DSC0066.JPG';
+
+// 3. Infrastructure
+import infra1 from '../../assets/web photographs/Campus highlights/Infrastructure/Institute MAIN BUILDING.jfif';
+import infra2 from '../../assets/web photographs/Campus highlights/Infrastructure/Classrooms.jfif';
+import infra3 from '../../assets/web photographs/Campus highlights/Infrastructure/ComputerCentre.jfif';
+import infra4 from '../../assets/web photographs/Campus highlights/Infrastructure/Institute1.jfif';
+
+// 4. Library
+import lib1 from '../../assets/web photographs/Campus highlights/Library/Library1.jfif';
+import lib2 from '../../assets/web photographs/Campus highlights/Library/Library2.jfif';
+import lib3 from '../../assets/web photographs/Campus highlights/Library/Library3.jfif';
+
+// 5. Foreign Dignitary
+import fd1 from '../../assets/web photographs/Campus highlights/Foregin dignitary/2015-05-03 15.59.03.jpg';
+import fd2 from '../../assets/web photographs/Campus highlights/Foregin dignitary/2015-05-03 18.40.37.jpg';
+import fd3 from '../../assets/web photographs/Campus highlights/Foregin dignitary/2015-05-10 20.50.13.jpg';
+import fd4 from '../../assets/web photographs/Campus highlights/Foregin dignitary/20070506-AA12-KayoK.JPG';
+
+// 6. Official Dignitary
+import od1 from '../../assets/web photographs/Campus highlights/official Dignitary/2015-03-13 17.59.31.jpg';
+import od2 from '../../assets/web photographs/Campus highlights/official Dignitary/21st March 2002 IIF 0010.jpg';
+import od3 from '../../assets/web photographs/Campus highlights/official Dignitary/21st March 2002 IIF 0011.jpg';
+import od4 from '../../assets/web photographs/Campus highlights/official Dignitary/21st March 2002 IIF 0016.jpg';
+
+// 7. MoU Signing
+import mou1 from '../../assets/web photographs/Campus highlights/Mou signing/Baku, Azerbaijan on 4th May, 2015 IIF 00035.jpg';
+import mou2 from '../../assets/web photographs/Campus highlights/Mou signing/Baku, Azerbaijan on 5th May, 2015 IIF 00024.jpg';
 
 export default function HighlightsSection() {
   // Auto-rotating indices for sliding cells
@@ -31,41 +49,45 @@ export default function HighlightsSection() {
   const [slideIdx8, setSlideIdx8] = useState(0);
   const [activeLightboxImg, setActiveLightboxImg] = useState(null);
 
-  // Grouped sets utilizing authentic campus highlight assets
+  // Grouped sets utilizing authentic folder-based campus highlight assets
+  // Cell 1: Students Activity (Sliding)
   const cell1Images = [
-    { url: img01, label: "Annual Convocation & Degree Ceremony", category: "Academic Honors" },
-    { url: img11, label: "Academic Eminence & Dignitary Honors", category: "Academic Honors" },
-    { url: img18, label: "Institutional Foundation Felicitations", category: "Institutional Legacy" },
-    { url: img06, label: "Distinguished Academic Assemblies", category: "Academic Honors" }
+    { url: sa1, label: "Students Activity", category: "Campus Highlights", badge: "Students Activity" },
+    { url: sa2, label: "Students Activity", category: "Campus Highlights", badge: "Students Activity" },
+    { url: sa3, label: "Students Activity", category: "Campus Highlights", badge: "Students Activity" },
+    { url: sa4, label: "Students Activity", category: "Campus Highlights", badge: "Students Activity" }
   ];
 
+  // Cell 3: Official Dignitary (Sliding)
   const cell3Images = [
-    { url: img02, label: "Corporate Leadership Conclave", category: "Innovation & Industry" },
-    { url: img03, label: "Finance & Commerce Roundtables", category: "Academic Symposia" },
-    { url: img19, label: "Executive Management Symposium", category: "Leadership Conclave" },
-    { url: img08, label: "Corporate Strategy Discussions", category: "Executive Dialogue" }
+    { url: od1, label: "Official Dignitary", category: "Campus Highlights", badge: "Official Dignitary" },
+    { url: od2, label: "Official Dignitary", category: "Campus Highlights", badge: "Official Dignitary" },
+    { url: od3, label: "Official Dignitary", category: "Campus Highlights", badge: "Official Dignitary" },
+    { url: od4, label: "Official Dignitary", category: "Campus Highlights", badge: "Official Dignitary" }
   ];
 
+  // Cell 5: Foreign Dignitary (Sliding)
   const cell5Images = [
-    { url: img05, label: "Industry Mentorship & Student Dialogue", category: "Industry Mentorship" },
-    { url: img10, label: "Corporate CXO Masterclass Series", category: "Leadership Series" },
-    { url: img20, label: "Distinguished Faculty & Scholars Meet", category: "Academic Pedigree" },
-    { url: img09, label: "Student Career Mentorship Sessions", category: "Student Growth" }
+    { url: fd1, label: "Foreign Dignitary", category: "Campus Highlights", badge: "Foreign Dignitary" },
+    { url: fd2, label: "Foreign Dignitary", category: "Campus Highlights", badge: "Foreign Dignitary" },
+    { url: fd3, label: "Foreign Dignitary", category: "Campus Highlights", badge: "Foreign Dignitary" },
+    { url: fd4, label: "Foreign Dignitary", category: "Campus Highlights", badge: "Foreign Dignitary" }
   ];
 
+  // Cell 8: Seminars (Sliding)
   const cell8Images = [
-    { url: img14, label: "Campus Greenery & Open-Air Amphitheatre", category: "Campus Environment" },
-    { url: img15, label: "Evening Campus Activities & Gatherings", category: "Campus Life" },
-    { url: img16, label: "Student Personality Development Forum", category: "Personality Growth" },
-    { url: img17, label: "Knowledge Park III Campus Infrastructure", category: "Campus Grounds" }
+    { url: sem1, label: "Seminars", category: "Campus Highlights", badge: "Seminars" },
+    { url: sem2, label: "Seminars", category: "Campus Highlights", badge: "Seminars" },
+    { url: sem4, label: "Seminars", category: "Campus Highlights", badge: "Seminars" },
+    { url: sem3, label: "Seminars", category: "Campus Highlights", badge: "Seminars" }
   ];
 
-  // Static cells definitions
-  const cell2Data = { url: img12, label: "National Management & Finance Seminar", category: "Academic Forum", badge: "Seminars" };
-  const cell4Data = { url: img04, label: "Smart Lecture Theatre & Modern Campus", category: "Campus Life", badge: "Infrastructure" };
-  const cell6Data = { url: img07, label: "Greater Noida Knowledge Park III Campus", category: "Campus Grounds", badge: "Academic Block" };
-  const cell7Data = { url: img13, label: "Student Commerce & Management Workshop", category: "Workshops", badge: "Student Activity" };
-  const cell9Data = { url: img17, label: "State-of-the-Art Greater Noida Campus", category: "Campus Grounds", badge: "Campus View" };
+  // Static cells definitions based on folder naming
+  const cell2Data = { url: sem3, label: "Seminars", category: "Campus Highlights", badge: "Seminars" };
+  const cell4Data = { url: infra2, label: "Infrastructure", category: "Campus Highlights", badge: "Infrastructure" };
+  const cell6Data = { url: lib1, label: "Library", category: "Campus Highlights", badge: "Library" };
+  const cell7Data = { url: mou1, label: "MoU Signing", category: "Campus Highlights", badge: "MoU Signing" };
+  const cell9Data = { url: infra3, label: "Infrastructure", category: "Campus Highlights", badge: "Infrastructure" };
 
   useEffect(() => {
     const timer1 = setInterval(() => {
@@ -94,13 +116,12 @@ export default function HighlightsSection() {
       <div className="container">
         {/* Section Header */}
         <div className="section-header" style={{ marginBottom: '2.5rem' }}>
-          <span className="section-tag">CAMPUS LIFE &amp; CHRONICLES</span>
+          <span className="section-tag">CAMPUS HIGHLIGHTS</span>
           <h2 style={{ fontSize: '2.3rem', color: 'var(--primary-navy-dark)' }}>
             CAMPUS HIGHLIGHTS
           </h2>
           <p style={{ maxWidth: '800px', margin: '0 auto', color: 'var(--text-muted)' }}>
-            A vibrant tapestry of academic symposiums, corporate leadership conclaves, 
-            convocations, and collegiate life unfolding across our Greater Noida campus.
+            Glimpses of vibrant life across Students Activity, Seminars, Infrastructure, Library, Foreign Dignitaries, Official Dignitaries, and MoU Signing.
           </p>
         </div>
 
@@ -124,7 +145,7 @@ export default function HighlightsSection() {
               ))}
               <div className="cell-overlay"></div>
               <div className="cell-badge sliding-badge">
-                <span className="dot-pulse"></span> Auto-Sliding
+                <span className="dot-pulse"></span> {cell1Images[slideIdx1].badge}
               </div>
               <div className="cell-caption">
                 <span className="cell-cat">{cell1Images[slideIdx1].category}</span>
@@ -173,7 +194,7 @@ export default function HighlightsSection() {
               ))}
               <div className="cell-overlay"></div>
               <div className="cell-badge sliding-badge">
-                <span className="dot-pulse"></span> Auto-Sliding
+                <span className="dot-pulse"></span> {cell3Images[slideIdx3].badge}
               </div>
               <div className="cell-caption">
                 <span className="cell-cat">{cell3Images[slideIdx3].category}</span>
@@ -222,7 +243,7 @@ export default function HighlightsSection() {
               ))}
               <div className="cell-overlay"></div>
               <div className="cell-badge sliding-badge">
-                <span className="dot-pulse"></span> Auto-Sliding
+                <span className="dot-pulse"></span> {cell5Images[slideIdx5].badge}
               </div>
               <div className="cell-caption">
                 <span className="cell-cat">{cell5Images[slideIdx5].category}</span>
@@ -293,7 +314,7 @@ export default function HighlightsSection() {
               ))}
               <div className="cell-overlay"></div>
               <div className="cell-badge sliding-badge">
-                <span className="dot-pulse"></span> Auto-Sliding
+                <span className="dot-pulse"></span> {cell8Images[slideIdx8].badge}
               </div>
               <div className="cell-caption">
                 <span className="cell-cat">{cell8Images[slideIdx8].category}</span>

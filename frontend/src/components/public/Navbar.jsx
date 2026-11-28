@@ -148,34 +148,6 @@ export default function Navbar() {
           </div>
 
           <div className="glb-top-right">
-            {/* Accessibility Font Resizer Controls in Top Utility Bar */}
-            <div className="glb-top-font-resizer" aria-label="Font size accessibility">
-              <button
-                type="button"
-                onClick={increaseFontSize}
-                className={`top-font-btn ${fontSizeIndex > 2 ? 'active' : ''}`}
-                title="Increase text font size (A+)"
-              >
-                A+
-              </button>
-              <button
-                type="button"
-                onClick={resetFontSize}
-                className={`top-font-btn ${fontSizeIndex === 2 ? 'active' : ''}`}
-                title="Reset text font size to normal (A)"
-              >
-                A
-              </button>
-              <button
-                type="button"
-                onClick={decreaseFontSize}
-                className={`top-font-btn ${fontSizeIndex < 2 ? 'active' : ''}`}
-                title="Decrease text font size (A-)"
-              >
-                A-
-              </button>
-            </div>
-
             {/* Highlighted Yellow/Amber Helpline Box */}
             <div className="glb-helpline-box">
               <span className="helpline-label">HELPLINE NO.</span>
@@ -205,14 +177,11 @@ export default function Navbar() {
               alt="IIFCCMS Official College Logo"
               className="brand-crest-img"
               style={{
-                width: '68px',
-                height: '68px',
+                height: '75px',
+                width: 'auto',
+                maxWidth: '85px',
                 objectFit: 'contain',
-                borderRadius: '50%',
-                background: '#ffffff',
-                padding: '2px',
-                border: '2.5px solid #dfb235',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                display: 'block',
                 flexShrink: 0
               }}
             />
@@ -234,8 +203,8 @@ export default function Navbar() {
                   src={ccsuLogo}
                   alt="Chaudhary Charan Singh University Meerut Official Logo"
                   style={{
-                    width: '38px',
-                    height: '38px',
+                    height: '42px',
+                    width: 'auto',
                     objectFit: 'contain',
                     display: 'block'
                   }}

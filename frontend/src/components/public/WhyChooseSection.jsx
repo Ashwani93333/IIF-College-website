@@ -37,7 +37,7 @@ export default function WhyChooseSection() {
   ];
 
   return (
-    <section className="section why-iifccms-unified-section" id="why-iifccms" style={{ background: '#C1E1C1' }}>
+    <section className="section why-iifccms-unified-section" id="why-iifccms" style={{ background: '#edffc8' }}>
       <div className="container">
         {/* Top Header */}
         <div className="possibilities-header-row">

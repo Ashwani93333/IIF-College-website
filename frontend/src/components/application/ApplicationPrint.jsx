@@ -109,19 +109,25 @@ export default function ApplicationPrint({ data = null, isDraft = false }) {
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}>
               <img
                 src={iifccmsLogo}
-                alt="IIFCCMS College Crest"
+                alt="IIFCCMS College Logo"
                 style={{
-                  width: '52px',
-                  height: '52px',
+                  height: '56px',
+                  width: 'auto',
+                  maxWidth: '65px',
                   objectFit: 'contain',
-                  borderRadius: '50%',
-                  border: '1px solid #000000'
+                  display: 'block'
                 }}
               />
               <img
                 src={ccsuLogo}
                 alt="CCS University Logo"
-                style={{ width: '46px', height: '46px', objectFit: 'contain' }}
+                style={{
+                  height: '48px',
+                  width: 'auto',
+                  maxWidth: '55px',
+                  objectFit: 'contain',
+                  display: 'block'
+                }}
               />
             </div>
 

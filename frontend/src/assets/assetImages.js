@@ -92,12 +92,18 @@ import library1 from './web photographs/Campus highlights/Infrastructure/Library
 import library2 from './web photographs/Campus highlights/Infrastructure/Library2.jfif';
 import library3 from './web photographs/Campus highlights/Infrastructure/Library3.jfif';
 
-// Main Banner / Hero Slider
-import bannerBuilding from './web photographs/main banner/COLLEGE BUILDING.jfif';
-import bannerMainBuilding from './web photographs/main banner/Institute MAIN BUILDING.jfif';
-import bannerInst1 from './web photographs/main banner/Institute1.jfif';
-import bannerInst2 from './web photographs/main banner/Institute2.jfif';
-import bannerBldg1 from './web photographs/main banner/IIF Bldg-1.jpg';
+// Main Banner / Hero Slider (Authentic Web Photographs)
+import banner1 from './web photographs/main banner/main-banner1.jfif';
+import banner2 from './web photographs/main banner/main-banner2.jfif';
+import banner3 from './web photographs/main banner/main-bannner3.jfif';
+import banner4 from './web photographs/main banner/main-bannner4.jpg';
+import bannerPresidentVisit from './web photographs/main banner/With President of India1- China Visit.JPG';
+
+const bannerBuilding = banner1;
+const bannerMainBuilding = banner2;
+const bannerInst1 = banner3;
+const bannerInst2 = banner4;
+const bannerBldg1 = bannerPresidentVisit;
 
 // Students & Testimonial Profiles
 import student1 from './web photographs/STUDENTS/1.jpg';
@@ -134,6 +140,7 @@ export {
   postCardBa, postCardBba, postCardBcom,
   infraClassroom, infraComputerCentre, infraMainBuilding, infraBuilding1, infraBuilding2,
   library1, library2, library3,
+  banner1, banner2, banner3, banner4, bannerPresidentVisit,
   bannerBuilding, bannerMainBuilding, bannerInst1, bannerInst2, bannerBldg1,
   student1, student3, student5, student7, student10, student12, student15, student20, student25, student28
 };

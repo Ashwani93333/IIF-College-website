@@ -99,7 +99,7 @@ export default function FacultySection() {
   }, [isPaused]);
 
   return (
-    <section className="section faculty-auto-slider-section" id="faculty" style={{ background: '#C1E1C1' }}>
+    <section className="section faculty-auto-slider-section" id="faculty" style={{ background: '#edffc8' }}>
       <div className="container">
         {/* Top Header Row matching UI: Left Title with Serif + Accent, Right 'View All' Pill */}
         <div className="faculty-slider-header-row">

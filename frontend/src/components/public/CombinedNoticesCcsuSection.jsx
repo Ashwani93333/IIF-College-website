@@ -343,7 +343,7 @@ export default function CombinedNoticesCcsuSection() {
   });
 
   return (
-    <section className="section combined-notices-ccsu-section" id="notices" style={{ background: '#C1E1C1' }}>
+    <section className="section combined-notices-ccsu-section" id="notices" style={{ background: '#edffc8' }}>
       {/* Anchor for CCSU weblinks navigation */}
       <div id="ccsu-weblinks" style={{ position: 'relative', top: '-80px' }} />
 

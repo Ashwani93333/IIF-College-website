@@ -222,22 +222,8 @@ export default function CoursesSection() {
             </div>
           </div>
 
-          {/* Right Column: Why Study at IIFCCMS */}
+          {/* Right Column: Only Course Postcard Photo */}
           <div className="course-showcase-right">
-            <h4 className="why-study-heading">
-              Why Study {currentCourse.shortName} at IIFCCMS?
-            </h4>
-
-            <ul className="why-study-list">
-              {currentCourse.whyPoints.map((pt, i) => (
-                <li key={i}>
-                  <CheckCircle2 size={18} className="why-check-ico" />
-                  <span>{pt}</span>
-                </li>
-              ))}
-            </ul>
-
-            {/* Course Template Full-Stretch Photo */}
             <div className="course-template-photo-wrapper">
               <img 
                 src={COURSE_PHOTOS[currentCourse.key]} 

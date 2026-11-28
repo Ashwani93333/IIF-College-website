@@ -21,7 +21,7 @@ export default function CampusTourSection() {
   ];
 
   return (
-    <section className="section campus-tour-section" id="facilities" style={{ background: '#C1E1C1' }}>
+    <section className="section campus-tour-section" id="facilities" style={{ background: '#edffc8' }}>
       <div className="container">
         {/* Section Header */}
         <div className="section-header" style={{ marginBottom: '2.5rem' }}>

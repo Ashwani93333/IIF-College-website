@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 
 import { 
-  bannerBuilding, bannerMainBuilding, bannerInst1, bannerInst2, bannerBldg1 
+  banner1, banner2, banner3, banner4, bannerPresidentVisit 
 } from '../../assets/assetImages';
 
 export default function HeroSlider() {
@@ -18,33 +18,33 @@ export default function HeroSlider() {
   const slides = [
     {
       id: 1,
-      bgImage: bannerBuilding,
+      bgImage: banner1,
       tag: "CAMPUS OVERVIEW",
       caption: "IIFCCMS • Greater Noida (College Code: 472)"
     },
     {
       id: 2,
-      bgImage: bannerMainBuilding,
+      bgImage: banner2,
       tag: "SMART INFRASTRUCTURE",
       caption: "Expansive 6.47-Acre Lush Green Campus & Modern Academic Blocks"
     },
     {
       id: 3,
-      bgImage: bannerInst1,
+      bgImage: banner3,
       tag: "ACADEMIC OFFERINGS",
       caption: "Undergraduate Degree Programs • B.Com | B.B.A | B.A (NEP 2020)"
     },
     {
       id: 4,
-      bgImage: bannerInst2,
+      bgImage: banner4,
       tag: "CAREER LAUNCHPAD",
       caption: "Corporate Resource Centre & Marquee Industry Recruitment Partnerships"
     },
     {
       id: 5,
-      bgImage: bannerBldg1,
-      tag: "INSTITUTIONAL PEDIGREE",
-      caption: "Over 35+ Years Legacy of Academic Excellence & Corporate Governance"
+      bgImage: bannerPresidentVisit,
+      tag: "GLOBAL ENGAGEMENT",
+      caption: "Distinguished Academic Leadership with President of India – China Visit"
     }
   ];
 

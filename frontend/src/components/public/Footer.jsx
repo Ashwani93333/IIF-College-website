@@ -35,25 +35,24 @@ export default function Footer() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', marginBottom: '1rem' }}>
               <img
                 src={iifccmsLogo}
-                alt="IIFCCMS Official Emblem"
+                alt="IIFCCMS Official College Logo"
                 style={{
-                  width: '48px',
-                  height: '48px',
+                  height: '56px',
+                  width: 'auto',
+                  maxWidth: '65px',
                   objectFit: 'contain',
-                  borderRadius: '50%',
-                  background: '#ffffff',
-                  padding: '2px',
-                  border: '1.5px solid #dfb235'
+                  display: 'block'
                 }}
               />
               <img
                 src={ccsuLogo}
                 alt="CCS University Official Logo"
                 style={{
-                  width: '42px',
-                  height: '42px',
+                  height: '48px',
+                  width: 'auto',
+                  maxWidth: '55px',
                   objectFit: 'contain',
-                  filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))'
+                  display: 'block'
                 }}
               />
               <div>
