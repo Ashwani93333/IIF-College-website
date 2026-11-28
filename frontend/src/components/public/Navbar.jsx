@@ -32,55 +32,127 @@ export default function Navbar() {
     {
       label: "ABOUT US",
       path: "/about",
-      items: [
-        { label: "History", tab: "history" },
-        { label: "Vision & Mission", tab: "vision-mission" },
-        { label: "Chairman & Founder", tab: "chairman" },
-        { label: "Board of Governors", tab: "board-of-governors" },
-        { label: "Managing Committee", tab: "managing-committee" },
-        { label: "Advisory Council", tab: "advisory-council" },
-        { label: "Principal", tab: "principal" },
-        { label: "Approvals & Affiliations", tab: "approvals-affiliations" },
-        { label: "Public Disclosure", tab: "public-disclosure" },
-        { label: "Social Initiatives", tab: "social-initiatives" },
-        { label: "Councils & Committees", tab: "committees" },
-        { label: "Contact Us", tab: "contact" }
+      isMega: true,
+      columns: [
+        {
+          title: "THE INSTITUTE",
+          items: [
+            { label: "Institutional History", tab: "history" },
+            { label: "Vision & Mission", tab: "vision-mission" },
+            { label: "Approvals & Affiliations", tab: "approvals-affiliations" },
+            { label: "Why IIFCCMS", path: "/#why-iifccms" },
+            { label: "Accreditations & Pedigree", tab: "history" }
+          ]
+        },
+        {
+          title: "GOVERNANCE & STATUTORY",
+          items: [
+            { label: "Board of Governors", tab: "board-of-governors" },
+            { label: "Advisory Council", tab: "advisory-council" },
+            { label: "Councils & Committees", tab: "committees" },
+            { label: "Public Disclosure", tab: "public-disclosure" },
+            { label: "Social Initiatives", tab: "social-initiatives" }
+          ]
+        },
+        {
+          title: "MESSAGES",
+          isHighlighted: true,
+          items: [
+            { label: "Chairman & Founder", tab: "chairman" },
+            { label: "Principal's Desk", tab: "principal" },
+            { label: "Managing Committee", tab: "managing-committee" },
+            { label: "Contact Us", tab: "contact" }
+          ]
+        }
       ]
     },
     {
       label: "COURSES",
       path: "/courses",
-      items: [
-        { label: "B.Com.", tab: "bcom" },
-        { label: "B.B.A.", tab: "bba" },
-        { label: "B.A.", tab: "ba" }
+      isMega: true,
+      columns: [
+        {
+          title: "DEGREE PROGRAMS (NEP 2020)",
+          items: [
+            { label: "B.Com (Bachelor of Commerce)", tab: "bcom" },
+            { label: "B.B.A. (Bachelor of Business Administration)", tab: "bba" },
+            { label: "B.A. (Bachelor of Arts)", tab: "ba" }
+          ]
+        },
+        {
+          title: "CURRICULUM HIGHLIGHTS",
+          items: [
+            { label: "NEP 2020 Multidisciplinary Structure", path: "/courses" },
+            { label: "Corporate Internships & Viva", path: "/courses" },
+            { label: "CCSU Meerut Affiliated Syllabi", path: "/courses" }
+          ]
+        },
+        {
+          title: "ADMISSIONS & ENROLLMENT",
+          isHighlighted: true,
+          items: [
+            { label: "Apply Online (Application Form)", path: "/application-form" },
+            { label: "Fee Structure Details", path: "/admissions?tab=fees" },
+            { label: "Institutional Scholarships", path: "/admissions" }
+          ]
+        }
       ]
     },
     {
       label: "ADMISSIONS",
       path: "/admissions",
-      items: [
-        { label: "Registration Process", tab: "registration" },
-        { label: "Admission Notice", tab: "notice" },
-        { label: "Information Brochure", tab: "brochure" },
-        { label: "IIFCCMS Presentation", tab: "presentation" },
-        { label: "Apply Online (Application Form)", path: "/application-form" },
-        { label: "Fees", tab: "fees" },
-        { label: "How to pay fee ?", tab: "fee-payment" },
-        { label: "Document Required", tab: "documents" },
-        { label: "Student Speak", tab: "student-speak" }
+      isMega: true,
+      columns: [
+        {
+          title: "PROCEDURE & GUIDELINES",
+          items: [
+            { label: "Registration Process", tab: "registration" },
+            { label: "Admission Notice", tab: "notice" },
+            { label: "Information Brochure", tab: "brochure" },
+            { label: "Documents Required", tab: "documents" }
+          ]
+        },
+        {
+          title: "FEES & REVIEWS",
+          items: [
+            { label: "Course Fees", tab: "fees" },
+            { label: "How to pay fee ?", tab: "fee-payment" },
+            { label: "IIFCCMS Presentation", tab: "presentation" },
+            { label: "Student Testimonials", tab: "student-speak" }
+          ]
+        },
+        {
+          title: "ONLINE REGISTRATION",
+          isHighlighted: true,
+          items: [
+            { label: "Online Admission Form", path: "/application-form" },
+            { label: "Download Blank Form (PDF)", path: "/application-form" },
+            { label: "Direct Helpline: +91 98119 71002", path: "/about?tab=contact" }
+          ]
+        }
       ]
     },
     {
-      label: "INFRASTRUCTURE & FACILITIES",
+      label: "CAMPUS FACILITIES",
       path: "/facilities",
-      items: [
-        { label: "Campus Tour (YouTube)", tab: "campus-tour" },
-        { label: "Classrooms", tab: "classrooms" },
-        { label: "Library", tab: "library" },
-        { label: "Computer Centre", tab: "computer-centre" },
-        { label: "Facilities", tab: "facilities" },
-        { label: "Photo Gallery", tab: "photo-gallery" }
+      isMega: true,
+      columns: [
+        {
+          title: "CAMPUS SPACES",
+          items: [
+            { label: "Campus Tour (YouTube)", tab: "campus-tour" },
+            { label: "Air-Conditioned Smart Classrooms", tab: "classrooms" },
+            { label: "Central Library (55,000+ Books)", tab: "library" }
+          ]
+        },
+        {
+          title: "CENTRES & AMENITIES",
+          items: [
+            { label: "Computer Centre & Financial Lab", tab: "computer-centre" },
+            { label: "Campus Infrastructure Details", tab: "facilities" },
+            { label: "Photo Gallery & Conclaves", tab: "photo-gallery" }
+          ]
+        }
       ]
     },
     {
@@ -97,7 +169,7 @@ export default function Navbar() {
       path: "/ccsu-weblinks",
       items: [
         { label: "About CCS University", tab: "about-ccsu" },
-        { label: "Web Links", tab: "weblinks" }
+        { label: "University Web Links & Portals", tab: "weblinks" }
       ]
     },
     {
@@ -114,7 +186,7 @@ export default function Navbar() {
         { label: "Conference 2022", tab: "conference-2022" },
         { label: "Student Activities", tab: "student-activities" },
         { label: "Media Presence", tab: "media-presence" },
-        { label: "News and Notification", tab: "news-notifications" }
+        { label: "News and Notifications", tab: "news-notifications" }
       ]
     }
   ];
@@ -124,7 +196,13 @@ export default function Navbar() {
     if (mobileMenuOpen || window.innerWidth <= 1024) {
       setActiveDropdown(prev => prev === item.label ? null : item.label);
     } else {
-      navigateTo(item.path, item.items[0]?.tab);
+      const defaultTab = item.isMega 
+        ? item.columns?.[0]?.items?.[0]?.tab 
+        : item.items?.[0]?.tab;
+      const defaultPath = item.isMega 
+        ? (item.columns?.[0]?.items?.[0]?.path || item.path) 
+        : (item.items?.[0]?.path || item.path);
+      navigateTo(defaultPath, defaultTab);
     }
   };
 
@@ -260,9 +338,13 @@ export default function Navbar() {
             {menuConfig.map((item, idx) => (
               <li
                 key={idx}
-                className="nav-item-has-dropdown"
-                onMouseEnter={() => setActiveDropdown(item.label)}
-                onMouseLeave={() => setActiveDropdown(null)}
+                className={`nav-item-has-dropdown ${item.isMega ? 'has-mega-menu' : ''}`}
+                onMouseEnter={() => {
+                  if (window.innerWidth > 1024) setActiveDropdown(item.label);
+                }}
+                onMouseLeave={() => {
+                  if (window.innerWidth > 1024) setActiveDropdown(null);
+                }}
               >
                 <div
                   className="glb-nav-link dropdown-parent"
@@ -272,53 +354,100 @@ export default function Navbar() {
                   <ChevronDown size={14} className="dropdown-caret" />
                 </div>
 
-                {/* Dropdown Menu Overlay */}
-                <ul className={`nav-dropdown-menu ${activeDropdown === item.label ? 'show' : ''}`}>
-                  {item.items.map((sub, sIdx) => (
-                    <li key={sIdx} className="nav-dropdown-item">
-                      {sub.externalUrl ? (
-                        <a
-                          href={sub.externalUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={() => {
-                            setMobileMenuOpen(false);
-                            setActiveDropdown(null);
-                          }}
-                          className="dropdown-link-btn"
-                          style={{ textDecoration: 'none' }}
-                        >
-                          <span className="sub-label">{sub.label}</span>
-                          <ExternalLink size={13} className="sub-arrow" />
-                        </a>
-                      ) : sub.path ? (
-                        <Link
-                          to={sub.path}
-                          onClick={() => {
-                            setMobileMenuOpen(false);
-                            setActiveDropdown(null);
-                          }}
-                          className="dropdown-link-btn"
-                          style={{ textDecoration: 'none' }}
-                        >
-                          <span className="sub-label">{sub.label}</span>
-                          <ChevronRight size={13} className="sub-arrow" />
-                        </Link>
-                      ) : (
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            navigateTo(item.path, sub.tab);
-                          }}
-                          className="dropdown-link-btn"
-                        >
-                          <span className="sub-label">{sub.label}</span>
-                          <ChevronRight size={13} className="sub-arrow" />
-                        </button>
-                      )}
-                    </li>
-                  ))}
-                </ul>
+                {/* Dropdown Menu Overlay: Multi-column Mega Menu or Standard Menu */}
+                {item.isMega ? (
+                  <div className={`nav-dropdown-menu nav-mega-dropdown ${activeDropdown === item.label ? 'show' : ''}`}>
+                    <div className="mega-dropdown-grid">
+                      {item.columns.map((col, cIdx) => (
+                        <div key={cIdx} className="mega-col">
+                          {col.title && (
+                            <div className={`mega-col-title ${col.isHighlighted ? 'highlighted-title' : ''}`}>
+                              {col.title}
+                            </div>
+                          )}
+                          <ul className="mega-col-list">
+                            {col.items.map((sub, sIdx) => (
+                              <li key={sIdx} className="nav-dropdown-item">
+                                {sub.path ? (
+                                  <Link
+                                    to={sub.path}
+                                    onClick={() => {
+                                      setMobileMenuOpen(false);
+                                      setActiveDropdown(null);
+                                    }}
+                                    className="dropdown-link-btn"
+                                    style={{ textDecoration: 'none' }}
+                                  >
+                                    <span className="sub-label">{sub.label}</span>
+                                    <ChevronRight size={14} className="sub-arrow" />
+                                  </Link>
+                                ) : (
+                                  <button
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      navigateTo(item.path, sub.tab);
+                                    }}
+                                    className="dropdown-link-btn"
+                                  >
+                                    <span className="sub-label">{sub.label}</span>
+                                    <ChevronRight size={14} className="sub-arrow" />
+                                  </button>
+                                )}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <ul className={`nav-dropdown-menu ${activeDropdown === item.label ? 'show' : ''}`}>
+                    {item.items.map((sub, sIdx) => (
+                      <li key={sIdx} className="nav-dropdown-item">
+                        {sub.externalUrl ? (
+                          <a
+                            href={sub.externalUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => {
+                              setMobileMenuOpen(false);
+                              setActiveDropdown(null);
+                            }}
+                            className="dropdown-link-btn"
+                            style={{ textDecoration: 'none' }}
+                          >
+                            <span className="sub-label">{sub.label}</span>
+                            <ExternalLink size={14} className="sub-arrow" />
+                          </a>
+                        ) : sub.path ? (
+                          <Link
+                            to={sub.path}
+                            onClick={() => {
+                              setMobileMenuOpen(false);
+                              setActiveDropdown(null);
+                            }}
+                            className="dropdown-link-btn"
+                            style={{ textDecoration: 'none' }}
+                          >
+                            <span className="sub-label">{sub.label}</span>
+                            <ChevronRight size={14} className="sub-arrow" />
+                          </Link>
+                        ) : (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              navigateTo(item.path, sub.tab);
+                            }}
+                            className="dropdown-link-btn"
+                          >
+                            <span className="sub-label">{sub.label}</span>
+                            <ChevronRight size={14} className="sub-arrow" />
+                          </button>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))}
           </ul>
