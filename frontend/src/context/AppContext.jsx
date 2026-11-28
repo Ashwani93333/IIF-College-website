@@ -54,6 +54,18 @@ export function AppProvider({ children }) {
     return saved ? JSON.parse(saved) : INITIAL_INQUIRIES;
   });
 
+  // 8. Accessibility Font Size Scaling System (A+, A, A-)
+  const [fontSizeIndex, setFontSizeIndex] = useState(() => {
+    const saved = localStorage.getItem('iifccms_font_level');
+    if (saved !== null) {
+      const idx = parseInt(saved, 10);
+      if (!isNaN(idx) && idx >= 0 && idx <= 5) {
+        return idx;
+      }
+    }
+    return 2; // Default 14.5px (level 0: 100%)
+  });
+
   // Global Toast / Flash Alert
   const [toastMessage, setToastMessage] = useState(null);
 
@@ -61,8 +73,49 @@ export function AppProvider({ children }) {
     setToastMessage({ message, type });
     setTimeout(() => {
       setToastMessage(null);
-    }, 4000);
+    }, 3000);
   };
+
+  const FONT_SCALING_LEVELS = [
+    { level: -2, size: 12.5, label: "86%" },
+    { level: -1, size: 13.5, label: "93%" },
+    { level: 0, size: 14.5, label: "100% Normal" },
+    { level: 1, size: 16.0, label: "110%" },
+    { level: 2, size: 17.5, label: "120%" },
+    { level: 3, size: 19.0, label: "131%" }
+  ];
+
+  const increaseFontSize = () => {
+    setFontSizeIndex(prev => {
+      const next = Math.min(prev + 1, FONT_SCALING_LEVELS.length - 1);
+      if (next !== prev) {
+        showToast(`Font Size: ${FONT_SCALING_LEVELS[next].label}`, "info");
+      }
+      return next;
+    });
+  };
+
+  const resetFontSize = () => {
+    setFontSizeIndex(2);
+    showToast("Font Size: Standard (100%)", "info");
+  };
+
+  const decreaseFontSize = () => {
+    setFontSizeIndex(prev => {
+      const next = Math.max(prev - 1, 0);
+      if (next !== prev) {
+        showToast(`Font Size: ${FONT_SCALING_LEVELS[next].label}`, "info");
+      }
+      return next;
+    });
+  };
+
+  // Sync font size to document root across every page
+  useEffect(() => {
+    const current = FONT_SCALING_LEVELS[fontSizeIndex] || FONT_SCALING_LEVELS[2];
+    document.documentElement.style.fontSize = `${current.size}px`;
+    localStorage.setItem('iifccms_font_level', fontSizeIndex.toString());
+  }, [fontSizeIndex]);
 
   // Sync to localStorage
   useEffect(() => {
@@ -262,7 +315,11 @@ export function AppProvider({ children }) {
       submitInquiry,
       updateInquiryStatus,
       updateSettings,
-      resetToFactoryDefaults
+      resetToFactoryDefaults,
+      fontSizeIndex,
+      increaseFontSize,
+      resetFontSize,
+      decreaseFontSize
     }}>
       {children}
       {toastMessage && (

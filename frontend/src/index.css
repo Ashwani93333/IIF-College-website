@@ -3985,12 +3985,11 @@ h2.content-heading {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  width: 240px;
+  width: auto;
   min-width: 240px;
-  max-width: 240px;
-  height: 56px;
+  max-width: 290px;
+  height: auto;
   min-height: 56px;
-  max-height: 56px;
   box-sizing: border-box;
   padding: 0.45rem 0.85rem;
   background: #f8fafc;
@@ -4045,26 +4044,34 @@ h2.content-heading {
   border-top: 2px solid #c59b27;
 }
 
+.glb-mobile-nav-toggle-wrap {
+  display: none;
+}
+
 .glb-nav-inner {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   height: 50px;
   flex-wrap: nowrap;
+  gap: 0.5rem;
 }
 
 .glb-nav-menu {
   display: flex;
   align-items: center;
   list-style: none;
-  gap: 0.25rem;
+  gap: 0.2rem;
   flex-wrap: nowrap;
   white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  margin-left: -0.85rem;
 }
 
 .glb-nav-link {
   color: #f8fafc;
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   font-weight: 700;
   padding: 0.6rem 0.85rem;
   border-radius: var(--radius-sm);
@@ -4094,6 +4101,7 @@ h2.content-heading {
   gap: 0.65rem;
   flex-wrap: nowrap;
   white-space: nowrap;
+  margin-left: auto;
 }
 
 .glb-btn-apply-now {
@@ -4433,10 +4441,117 @@ h2.content-heading {
   font-weight: 600;
 }
 
+/* ==========================================================================
+   Accessibility Floating Font Size Controls (A+, A, A-)
+   Matching Reference Benchmark (media_1795844331637_fd347540.jpg)
+   ========================================================================== */
+.glb-floating-font-resizer {
+  position: fixed;
+  top: 14px;
+  right: 12px;
+  z-index: 10002;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  align-items: center;
+}
+
+.font-size-btn {
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  background: #1e293b;
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  font-size: 0.74rem;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  line-height: 1;
+  padding: 0;
+}
+
+.font-size-btn:hover {
+  background: #062a36;
+  border-color: #dfb235;
+  color: #dfb235;
+  transform: scale(1.1);
+  box-shadow: 0 6px 14px rgba(6, 42, 54, 0.5);
+}
+
+.font-size-btn:active {
+  transform: scale(0.95);
+}
+
+.font-size-btn.active {
+  background: #062a36;
+  border-color: #dfb235;
+  color: #dfb235;
+  box-shadow: 0 0 0 2px rgba(223, 178, 53, 0.45);
+}
+
+/* Inline Top Utility Bar Font Resizer Controls */
+.glb-top-font-resizer {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(6, 42, 54, 0.08);
+  border: 1px solid rgba(6, 42, 54, 0.16);
+  border-radius: 20px;
+  padding: 2px 4px;
+  gap: 3px;
+  margin-right: 0.6rem;
+}
+
+.top-font-btn {
+  background: transparent;
+  border: none;
+  font-family: var(--font-heading);
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #062a36;
+  padding: 2px 7px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  line-height: 1.2;
+}
+
+.top-font-btn:hover {
+  background: #062a36;
+  color: #dfb235;
+}
+
+.top-font-btn.active {
+  background: #062a36;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .glb-floating-font-resizer {
+    top: 10px;
+    right: 8px;
+    gap: 5px;
+  }
+  .font-size-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 0.68rem;
+  }
+  .glb-top-font-resizer {
+    display: none;
+  }
+}
+
 /* 5. Sticky Vertical Right-Side Tab (Institutional Accent Tab) */
 .sticky-vertical-enquiry-tab {
   position: fixed;
-  top: 35%;
+  top: 142px;
   right: 0;
   z-index: 9999;
   background: #ea580c;
@@ -4557,6 +4672,8 @@ h2.content-heading {
   .slider-dots-vertical { display: none; }
   .glb-top-utility-bar { display: none; }
   .glb-header-right-badges { display: none; }
+  .glb-mobile-nav-toggle-wrap { display: flex; align-items: center; gap: 0.75rem; }
+  .glb-nav-inner { justify-content: space-between; }
   .mobile-menu-toggle { display: inline-flex; }
   .glb-mobile-admission-pill { display: inline-flex; }
   .glb-nav-actions { display: none; }
@@ -4566,6 +4683,7 @@ h2.content-heading {
     top: 50px;
     left: 0;
     right: 0;
+    margin-left: 0;
     background: #062a36;
     flex-direction: column;
     padding: 0.75rem 1rem 1.5rem;
@@ -4616,6 +4734,22 @@ h2.content-heading {
     padding: 0.55rem 0.85rem;
     font-size: 0.85rem;
     color: #f1f5f9;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1320px) {
+  .glb-nav-link {
+    font-size: 0.76rem;
+    padding: 0.55rem 0.55rem;
+    letter-spacing: 0.2px;
+  }
+  .glb-nav-menu {
+    margin-left: -0.55rem;
+    gap: 0.1rem;
+  }
+  .glb-btn-apply-now {
+    font-size: 0.76rem;
+    padding: 0.4rem 0.75rem;
   }
 }
 
@@ -9894,12 +10028,11 @@ h2.content-heading {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  width: 240px;
+  width: auto;
   min-width: 240px;
-  max-width: 240px;
-  height: 56px;
+  max-width: 290px;
+  height: auto;
   min-height: 56px;
-  max-height: 56px;
   box-sizing: border-box;
   padding: 0.45rem 0.85rem;
   background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);

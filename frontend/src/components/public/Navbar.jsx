@@ -12,7 +12,7 @@ import { iifccmsLogo, ccsuLogo } from '../../assets/assetImages';
 export const GOOGLE_REGISTRATION_FORM_URL = "/application-form";
 
 export default function Navbar() {
-  const { settings } = useApp();
+  const { settings, fontSizeIndex, increaseFontSize, resetFontSize, decreaseFontSize } = useApp();
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -148,6 +148,34 @@ export default function Navbar() {
           </div>
 
           <div className="glb-top-right">
+            {/* Accessibility Font Resizer Controls in Top Utility Bar */}
+            <div className="glb-top-font-resizer" aria-label="Font size accessibility">
+              <button
+                type="button"
+                onClick={increaseFontSize}
+                className={`top-font-btn ${fontSizeIndex > 2 ? 'active' : ''}`}
+                title="Increase text font size (A+)"
+              >
+                A+
+              </button>
+              <button
+                type="button"
+                onClick={resetFontSize}
+                className={`top-font-btn ${fontSizeIndex === 2 ? 'active' : ''}`}
+                title="Reset text font size to normal (A)"
+              >
+                A
+              </button>
+              <button
+                type="button"
+                onClick={decreaseFontSize}
+                className={`top-font-btn ${fontSizeIndex < 2 ? 'active' : ''}`}
+                title="Decrease text font size (A-)"
+              >
+                A-
+              </button>
+            </div>
+
             {/* Highlighted Yellow/Amber Helpline Box */}
             <div className="glb-helpline-box">
               <span className="helpline-label">HELPLINE NO.</span>
@@ -172,9 +200,9 @@ export default function Navbar() {
       <div className="glb-main-brand-header">
         <div className="container glb-brand-container">
           <Link to="/" className="brand-identity">
-            <img 
-              src={iifccmsLogo} 
-              alt="IIFCCMS Official College Logo" 
+            <img
+              src={iifccmsLogo}
+              alt="IIFCCMS Official College Logo"
               className="brand-crest-img"
               style={{
                 width: '68px',
@@ -186,7 +214,7 @@ export default function Navbar() {
                 border: '2.5px solid #dfb235',
                 boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
                 flexShrink: 0
-              }} 
+              }}
             />
             <div className="brand-title-group">
               <h1 className="glb-brand-title">IIF College of Commerce &amp; Management Studies</h1>
@@ -202,15 +230,15 @@ export default function Navbar() {
           <div className="glb-header-right-badges">
             <div className="glb-badge-item">
               <div className="badge-icon-box">
-                <img 
-                  src={ccsuLogo} 
-                  alt="Chaudhary Charan Singh University Meerut Official Logo" 
+                <img
+                  src={ccsuLogo}
+                  alt="Chaudhary Charan Singh University Meerut Official Logo"
                   style={{
                     width: '38px',
                     height: '38px',
                     objectFit: 'contain',
                     display: 'block'
-                  }} 
+                  }}
                 />
               </div>
               <div className="badge-text">
@@ -241,7 +269,7 @@ export default function Navbar() {
       {/* 3. Primary Navigation Bar with Dynamic Hover Dropdowns */}
       <nav className="glb-navbar">
         <div className="container glb-nav-inner">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <div className="glb-mobile-nav-toggle-wrap">
             <button
               className="mobile-menu-toggle"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -338,6 +366,37 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
+
+      {/* Floating Accessibility Font Resizer (A+, A, A-) Matching Reference Benchmark */}
+      <aside className="glb-floating-font-resizer" aria-label="Text Size Controls">
+        <button
+          type="button"
+          onClick={increaseFontSize}
+          className={`font-size-btn btn-a-plus ${fontSizeIndex > 2 ? 'active' : ''}`}
+          title="Increase text font size (A+)"
+          aria-label="Increase text font size (A+)"
+        >
+          A+
+        </button>
+        <button
+          type="button"
+          onClick={resetFontSize}
+          className={`font-size-btn btn-a-normal ${fontSizeIndex === 2 ? 'active' : ''}`}
+          title="Reset text font size to normal (A)"
+          aria-label="Reset text font size to normal (A)"
+        >
+          A
+        </button>
+        <button
+          type="button"
+          onClick={decreaseFontSize}
+          className={`font-size-btn btn-a-minus ${fontSizeIndex < 2 ? 'active' : ''}`}
+          title="Decrease text font size (A-)"
+          aria-label="Decrease text font size (A-)"
+        >
+          A-
+        </button>
+      </aside>
 
       {/* 4. Sticky Vertical Right Side Tab */}
       <Link
