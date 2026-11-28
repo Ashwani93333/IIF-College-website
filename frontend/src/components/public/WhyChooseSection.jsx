@@ -21,7 +21,7 @@ export default function WhyChooseSection() {
   ];
 
   return (
-    <section className="section why-iifccms-unified-section" id="why-iifccms" style={{ background: '#edffc8' }}>
+    <section className="section why-iifccms-unified-section" id="why-iifccms" style={{ background: '#eaffef' }}>
       <div className="container">
         {/* Top Header (Centered Flanked Design matching benchmark) */}
         <div className="landing-section-header">

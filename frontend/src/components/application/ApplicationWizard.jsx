@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
-  CheckCircle2, ArrowLeft, ArrowRight, Save, RotateCcw, 
+  CheckCircle2, ArrowLeft, ArrowRight, 
   Download, Upload, AlertCircle, FileText, 
   Trash2, Plus, Check, User, 
   GraduationCap, Mail, CreditCard, Award
@@ -9,7 +9,7 @@ import SignaturePad from './SignaturePad';
 import ApplicationPrint, { WEIGHTAGE_OPTIONS } from './ApplicationPrint';
 import { downloadPdf, generatePdfBlob } from '../../utils/pdfGenerator';
 
-const DRAFT_STORAGE_KEY = 'iif_application_draft';
+
 
 const STEPS = [
   { id: 1, title: 'Programme & Session', short: 'Programme', icon: GraduationCap },
@@ -100,53 +100,22 @@ export default function ApplicationWizard({ onFinalSubmit }) {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
   const [errors, setErrors] = useState({});
-  const [draftSavedAt, setDraftSavedAt] = useState(null);
-  const [savedDraftFound, setSavedDraftFound] = useState(() => {
-    try {
-      const raw = localStorage.getItem(DRAFT_STORAGE_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        if (parsed && parsed.data) {
-          return parsed;
-        }
-      }
-    } catch {
-      // ignore
-    }
-    return null;
-  });
   const [isDownloadingPdf, setIsDownloadingPdf] = useState(false);
   const [downloadProgressText, setDownloadProgressText] = useState('');
   const [printData, setPrintData] = useState(null);
   const [isPrintDraft, setIsPrintDraft] = useState(false);
 
   const offscreenPrintRef = useRef(null);
-  const autoSaveTimerRef = useRef(null);
   const photoInputRef = useRef(null);
-  const jsonFileInputRef = useRef(null);
 
-  // Auto-save to localStorage debounced ~1s
+  // Ensure no stored draft persists; every session and refresh starts fresh
   useEffect(() => {
-    if (autoSaveTimerRef.current) {
-      clearTimeout(autoSaveTimerRef.current);
+    try {
+      localStorage.removeItem('iif_application_draft');
+    } catch {
+      // ignore
     }
-    autoSaveTimerRef.current = setTimeout(() => {
-      try {
-        const payload = {
-          data: formData,
-          savedAt: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
-        };
-        localStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify(payload));
-        setDraftSavedAt(payload.savedAt);
-      } catch (err) {
-        console.warn('LocalStorage draft save error (storage limit possibly reached):', err);
-      }
-    }, 1000);
-
-    return () => {
-      if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current);
-    };
-  }, [formData]);
+  }, []);
 
   // Helper: Calculate age from DOB string
   const calculateAge = (dobString) => {
@@ -409,55 +378,7 @@ export default function ApplicationWizard({ onFinalSubmit }) {
     setCurrentStep(stepId);
   };
 
-  // Draft Actions
-  const handleRestoreDraft = () => {
-    if (savedDraftFound && savedDraftFound.data) {
-      setFormData(savedDraftFound.data);
-      setSavedDraftFound(null);
-    }
-  };
 
-  const handleDismissDraft = () => {
-    setSavedDraftFound(null);
-  };
-
-  const handleClearDraft = () => {
-    if (window.confirm('Are you sure you want to clear your saved draft and reset the form?')) {
-      localStorage.removeItem(DRAFT_STORAGE_KEY);
-      setFormData(INITIAL_FORM_DATA);
-      setDraftSavedAt(null);
-      setCurrentStep(1);
-      alert('Draft cleared successfully.');
-    }
-  };
-
-  // Export draft as JSON
-  const handleExportJson = () => {
-    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(formData, null, 2));
-    const dlAnchorElem = document.createElement('a');
-    dlAnchorElem.setAttribute("href", dataStr);
-    dlAnchorElem.setAttribute("download", `IIF_Application_Draft_${formData.fullName || 'Applicant'}.json`);
-    dlAnchorElem.click();
-  };
-
-  // Import draft from JSON
-  const handleImportJson = (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      try {
-        const parsed = JSON.parse(event.target.result);
-        if (parsed && typeof parsed === 'object') {
-          setFormData(prev => ({ ...prev, ...parsed }));
-          alert('Draft imported successfully!');
-        }
-      } catch (err) {
-        alert('Invalid JSON file format.');
-      }
-    };
-    reader.readAsText(file);
-  };
 
   // PDF Download Handlers
   const handleDownloadBlankPdf = async () => {
@@ -674,91 +595,10 @@ export default function ApplicationWizard({ onFinalSubmit }) {
           >
             <Download size={16} /> Download Blank Form (PDF)
           </button>
-
-          <button
-            type="button"
-            onClick={handleDownloadDraftPdf}
-            title="Download your current entries as a draft PDF with watermark"
-            style={{
-              background: '#ffffff',
-              border: '1px solid #cbd5e1',
-              color: '#334155',
-              borderRadius: '8px',
-              padding: '0.55rem 0.9rem',
-              fontWeight: 700,
-              fontSize: '0.82rem',
-              cursor: 'pointer',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.4rem'
-            }}
-          >
-            <FileText size={15} /> Draft PDF
-          </button>
         </div>
       </div>
 
-      {/* Saved Draft Notification Toast / Alert */}
-      {savedDraftFound && (
-        <div style={{
-          background: 'linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)',
-          border: '1.5px solid #f59e0b',
-          borderRadius: '12px',
-          padding: '1rem 1.25rem',
-          marginBottom: '1.5rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          gap: '1rem'
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <AlertCircle size={24} color="#b45309" style={{ flexShrink: 0 }} />
-            <div>
-              <strong style={{ color: '#92400e', fontSize: '0.92rem' }}>
-                We found a saved application draft
-              </strong>
-              <div style={{ fontSize: '0.82rem', color: '#78350f', marginTop: '0.15rem' }}>
-                Last saved at {savedDraftFound.savedAt || 'earlier session'}. Would you like to resume your saved draft?
-              </div>
-            </div>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-            <button
-              type="button"
-              onClick={handleRestoreDraft}
-              style={{
-                background: '#b45309',
-                color: '#ffffff',
-                border: 'none',
-                borderRadius: '6px',
-                padding: '0.45rem 0.95rem',
-                fontSize: '0.82rem',
-                fontWeight: 800,
-                cursor: 'pointer'
-              }}
-            >
-              Resume Draft
-            </button>
-            <button
-              type="button"
-              onClick={handleDismissDraft}
-              style={{
-                background: '#ffffff',
-                color: '#78350f',
-                border: '1px solid #d97706',
-                borderRadius: '6px',
-                padding: '0.45rem 0.85rem',
-                fontSize: '0.82rem',
-                fontWeight: 700,
-                cursor: 'pointer'
-              }}
-            >
-              Start Fresh
-            </button>
-          </div>
-        </div>
-      )}
+
 
       {/* Stepper Progress Bar & Navigation Header */}
       <div style={{
@@ -794,38 +634,7 @@ export default function ApplicationWizard({ onFinalSubmit }) {
             </span>
           </div>
 
-          {/* Draft Auto-save Indicator & Actions */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-            {draftSavedAt && (
-              <span style={{
-                fontSize: '0.78rem',
-                color: '#15803d',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.35rem',
-                fontWeight: 600
-              }}>
-                <Check size={14} /> Draft saved at {draftSavedAt}
-              </span>
-            )}
-            <button
-              type="button"
-              onClick={handleClearDraft}
-              title="Clear all saved inputs and start over"
-              style={{
-                background: 'transparent',
-                border: 'none',
-                color: '#94a3b8',
-                fontSize: '0.75rem',
-                cursor: 'pointer',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.25rem'
-              }}
-            >
-              <RotateCcw size={12} /> Clear draft
-            </button>
-          </div>
+
         </div>
 
         {/* Stepper Dots / Tabs */}
@@ -2398,7 +2207,7 @@ export default function ApplicationWizard({ onFinalSubmit }) {
               color: '#64748b',
               lineHeight: 1.45
             }}>
-              <strong>Data Privacy &amp; Institutional Governance:</strong> All collected applicant data is maintained securely in compliance with institutional guidelines and Chaudhary Charan Singh University regulatory protocols. Draft data resides strictly within this browser session on your local device.
+              <strong>Data Privacy &amp; Institutional Governance:</strong> All collected applicant data is maintained securely in compliance with institutional guidelines and Chaudhary Charan Singh University regulatory protocols. Application entries are securely submitted upon final declaration.
             </div>
 
             {/* Download Buttons Bar */}
@@ -2428,7 +2237,7 @@ export default function ApplicationWizard({ onFinalSubmit }) {
                   gap: '0.45rem'
                 }}
               >
-                <Download size={16} /> Download Draft PDF (Watermarked)
+                <Download size={16} /> Download Application (Preview)
               </button>
 
               <button
@@ -2479,7 +2288,7 @@ export default function ApplicationWizard({ onFinalSubmit }) {
           </div>
         )}
 
-        {/* Stepper Bottom Navigation (Back / Save / Next) */}
+        {/* Stepper Bottom Navigation (Previous / Next) */}
         {currentStep < 7 && (
           <div style={{
             display: 'flex',
@@ -2518,38 +2327,6 @@ export default function ApplicationWizard({ onFinalSubmit }) {
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
               <button
                 type="button"
-                onClick={() => {
-                  try {
-                    const payload = {
-                      data: formData,
-                      savedAt: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
-                    };
-                    localStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify(payload));
-                    setDraftSavedAt(payload.savedAt);
-                    alert(`Draft successfully saved at ${payload.savedAt}.`);
-                  } catch (e) {
-                    alert('Draft saved in browser memory.');
-                  }
-                }}
-                style={{
-                  background: '#f8fafc',
-                  border: '1px solid #cbd5e1',
-                  color: '#475569',
-                  borderRadius: '8px',
-                  padding: '0.65rem 1rem',
-                  fontWeight: 700,
-                  fontSize: '0.85rem',
-                  cursor: 'pointer',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.35rem'
-                }}
-              >
-                <Save size={15} /> Save Draft
-              </button>
-
-              <button
-                type="button"
                 onClick={handleNext}
                 style={{
                   background: 'var(--primary-navy, #0d5c75)',
@@ -2571,66 +2348,6 @@ export default function ApplicationWizard({ onFinalSubmit }) {
             </div>
           </div>
         )}
-      </div>
-
-      {/* JSON Draft Portability (Export & Import) */}
-      <div style={{
-        background: '#ffffff',
-        border: '1px solid #e2e8f0',
-        borderRadius: '12px',
-        padding: '1rem 1.25rem',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        flexWrap: 'wrap',
-        gap: '0.75rem',
-        fontSize: '0.82rem',
-        color: '#64748b'
-      }}>
-        <div>
-          <strong>Draft Portability:</strong> Need to switch devices? Export your draft as a JSON file and import it anytime.
-        </div>
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
-          <button
-            type="button"
-            onClick={handleExportJson}
-            style={{
-              background: '#f1f5f9',
-              border: '1px solid #cbd5e1',
-              borderRadius: '6px',
-              padding: '0.35rem 0.65rem',
-              fontWeight: 700,
-              fontSize: '0.75rem',
-              cursor: 'pointer',
-              color: '#334155'
-            }}
-          >
-            Export Draft (.json)
-          </button>
-          <button
-            type="button"
-            onClick={() => jsonFileInputRef.current?.click()}
-            style={{
-              background: '#f1f5f9',
-              border: '1px solid #cbd5e1',
-              borderRadius: '6px',
-              padding: '0.35rem 0.65rem',
-              fontWeight: 700,
-              fontSize: '0.75rem',
-              cursor: 'pointer',
-              color: '#334155'
-            }}
-          >
-            Import Draft (.json)
-          </button>
-          <input
-            ref={jsonFileInputRef}
-            type="file"
-            accept=".json"
-            onChange={handleImportJson}
-            style={{ display: 'none' }}
-          />
-        </div>
       </div>
     </div>
   );

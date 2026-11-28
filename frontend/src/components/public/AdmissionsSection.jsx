@@ -91,7 +91,7 @@ export default function AdmissionsSection({ prefillData }) {
   };
 
   return (
-    <section className="section" id="admissions" style={{ background: '#edffc8' }}>
+    <section className="section" id="admissions" style={{ background: '#eaffef' }}>
       <div className="container">
         <div className="section-header">
           <span className="section-tag">Admissions Desk</span>

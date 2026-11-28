@@ -4,10 +4,11 @@ import HeroSlider from '../components/public/HeroSlider';
 import CoursesSection from '../components/public/CoursesSection';
 import WhyChooseSection from '../components/public/WhyChooseSection';
 import FacultySection from '../components/public/FacultySection';
-import TestimonialsSection from '../components/public/TestimonialsSection';
 import CampusTourSection from '../components/public/CampusTourSection';
 import HighlightsSection from '../components/public/HighlightsSection';
 import CombinedNoticesCcsuSection from '../components/public/CombinedNoticesCcsuSection';
+import TestimonialsSection from '../components/public/TestimonialsSection';
+import LandingPlacementSection from '../components/public/LandingPlacementSection';
 import CampusLocationSection from '../components/public/CampusLocationSection';
 import Footer from '../components/public/Footer';
 
@@ -29,22 +30,25 @@ export default function HomePage() {
       {/* 5. FACULTY MENTORSHIP & LEADERSHIP (Positioned Directly Below Why IIFCCMS) */}
       <FacultySection />
 
-      {/* 6. TESTIMONIALS (Positioned Directly Below Faculty Section) */}
-      <TestimonialsSection />
-
-      {/* 7. Campus Tour & World-Class Infrastructure (Horizontally Aligned Walkthrough & Highlights) */}
+      {/* 6. Campus Tour & World-Class Infrastructure (Horizontally Aligned Walkthrough & Highlights) */}
       <CampusTourSection />
 
-      {/* 8. Campus Highlights (Continuous Photo Slider Matrix) */}
+      {/* 7. Campus Highlights (Continuous Photo Slider Matrix) */}
       <HighlightsSection />
 
-      {/* 9. Official Notice Board & CCSU Weblinks (Horizontally Aligned Columns) */}
+      {/* 8. Official Notice Board & CCSU Weblinks (Notification Section) */}
       <CombinedNoticesCcsuSection />
 
-      {/* 10. Campus Location (Visit Our Greater Noida Campus) */}
+      {/* 9. TESTIMONIALS (Positioned Just After Notification Section) */}
+      <TestimonialsSection />
+
+      {/* 10. PLACEMENTS (Minimal Career Assistance & Placement Highlights) */}
+      <LandingPlacementSection />
+
+      {/* 11. Campus Location (Visit Our Greater Noida Campus) */}
       <CampusLocationSection />
 
-      {/* 11. Clean Footer */}
+      {/* 12. Clean Footer */}
       <Footer />
     </div>
   );

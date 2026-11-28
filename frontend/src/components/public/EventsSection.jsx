@@ -82,7 +82,7 @@ export default function EventsSection() {
   const filteredEvents = activeTab === "all" ? events : events.filter(e => e.category.toLowerCase() === activeTab.toLowerCase());
 
   return (
-    <section className="section" id="events" style={{ background: '#edffc8' }}>
+    <section className="section" id="events" style={{ background: '#eaffef' }}>
       <div className="container">
         <div className="section-header">
           <span className="section-tag">Campus Vitality</span>

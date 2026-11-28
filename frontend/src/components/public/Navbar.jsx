@@ -35,32 +35,26 @@ export default function Navbar() {
       isMega: true,
       columns: [
         {
-          title: "THE INSTITUTE",
           items: [
-            { label: "Institutional History", tab: "history" },
+            { label: "History", tab: "history" },
             { label: "Vision & Mission", tab: "vision-mission" },
-            { label: "Approvals & Affiliations", tab: "approvals-affiliations" },
-            { label: "Why IIFCCMS", path: "/#why-iifccms" },
-            { label: "Accreditations & Pedigree", tab: "history" }
-          ]
-        },
-        {
-          title: "GOVERNANCE & STATUTORY",
-          items: [
-            { label: "Board of Governors", tab: "board-of-governors" },
-            { label: "Advisory Council", tab: "advisory-council" },
-            { label: "Councils & Committees", tab: "committees" },
-            { label: "Public Disclosure", tab: "public-disclosure" },
-            { label: "Social Initiatives", tab: "social-initiatives" }
-          ]
-        },
-        {
-          title: "MESSAGES",
-          isHighlighted: true,
-          items: [
             { label: "Chairman & Founder", tab: "chairman" },
-            { label: "Principal's Desk", tab: "principal" },
+            { label: "Board of Governors", tab: "board-of-governors" }
+          ]
+        },
+        {
+          items: [
             { label: "Managing Committee", tab: "managing-committee" },
+            { label: "Advisory Council", tab: "advisory-council" },
+            { label: "Principal", tab: "principal" },
+            { label: "Approvals & Affiliations", tab: "approvals-affiliations" }
+          ]
+        },
+        {
+          items: [
+            { label: "Public Disclosure", tab: "public-disclosure" },
+            { label: "Social Initiatives", tab: "social-initiatives" },
+            { label: "Councils & Committees", tab: "committees" },
             { label: "Contact Us", tab: "contact" }
           ]
         }
@@ -69,90 +63,37 @@ export default function Navbar() {
     {
       label: "COURSES",
       path: "/courses",
-      isMega: true,
-      columns: [
-        {
-          title: "DEGREE PROGRAMS (NEP 2020)",
-          items: [
-            { label: "B.Com (Bachelor of Commerce)", tab: "bcom" },
-            { label: "B.B.A. (Bachelor of Business Administration)", tab: "bba" },
-            { label: "B.A. (Bachelor of Arts)", tab: "ba" }
-          ]
-        },
-        {
-          title: "CURRICULUM HIGHLIGHTS",
-          items: [
-            { label: "NEP 2020 Multidisciplinary Structure", path: "/courses" },
-            { label: "Corporate Internships & Viva", path: "/courses" },
-            { label: "CCSU Meerut Affiliated Syllabi", path: "/courses" }
-          ]
-        },
-        {
-          title: "ADMISSIONS & ENROLLMENT",
-          isHighlighted: true,
-          items: [
-            { label: "Apply Online (Application Form)", path: "/application-form" },
-            { label: "Fee Structure Details", path: "/admissions?tab=fees" },
-            { label: "Institutional Scholarships", path: "/admissions" }
-          ]
-        }
+      items: [
+        { label: "B.Com.", tab: "bcom" },
+        { label: "B.B.A.", tab: "bba" },
+        { label: "B.A.", tab: "ba" }
       ]
     },
     {
       label: "ADMISSIONS",
       path: "/admissions",
-      isMega: true,
-      columns: [
-        {
-          title: "PROCEDURE & GUIDELINES",
-          items: [
-            { label: "Registration Process", tab: "registration" },
-            { label: "Admission Notice", tab: "notice" },
-            { label: "Information Brochure", tab: "brochure" },
-            { label: "Documents Required", tab: "documents" }
-          ]
-        },
-        {
-          title: "FEES & REVIEWS",
-          items: [
-            { label: "Course Fees", tab: "fees" },
-            { label: "How to pay fee ?", tab: "fee-payment" },
-            { label: "IIFCCMS Presentation", tab: "presentation" },
-            { label: "Student Testimonials", tab: "student-speak" }
-          ]
-        },
-        {
-          title: "ONLINE REGISTRATION",
-          isHighlighted: true,
-          items: [
-            { label: "Online Admission Form", path: "/application-form" },
-            { label: "Download Blank Form (PDF)", path: "/application-form" },
-            { label: "Direct Helpline: +91 98119 71002", path: "/about?tab=contact" }
-          ]
-        }
+      items: [
+        { label: "Registration Process", tab: "registration" },
+        { label: "Admission Notice", tab: "notice" },
+        { label: "Information Brochure", tab: "brochure" },
+        { label: "IIFCCMS Presentation", tab: "presentation" },
+        { label: "Apply Online (Application Form)", path: "/application-form" },
+        { label: "Fees", tab: "fees" },
+        { label: "How to pay fee ?", tab: "fee-payment" },
+        { label: "Document Required", tab: "documents" },
+        { label: "Student Speak", tab: "student-speak" }
       ]
     },
     {
-      label: "CAMPUS FACILITIES",
+      label: "INFRASTRUCTURE & FACILITIES",
       path: "/facilities",
-      isMega: true,
-      columns: [
-        {
-          title: "CAMPUS SPACES",
-          items: [
-            { label: "Campus Tour (YouTube)", tab: "campus-tour" },
-            { label: "Air-Conditioned Smart Classrooms", tab: "classrooms" },
-            { label: "Central Library (55,000+ Books)", tab: "library" }
-          ]
-        },
-        {
-          title: "CENTRES & AMENITIES",
-          items: [
-            { label: "Computer Centre & Financial Lab", tab: "computer-centre" },
-            { label: "Campus Infrastructure Details", tab: "facilities" },
-            { label: "Photo Gallery & Conclaves", tab: "photo-gallery" }
-          ]
-        }
+      items: [
+        { label: "Campus Tour (YouTube)", tab: "campus-tour" },
+        { label: "Classrooms", tab: "classrooms" },
+        { label: "Library", tab: "library" },
+        { label: "Computer Centre", tab: "computer-centre" },
+        { label: "Facilities", tab: "facilities" },
+        { label: "Photo Gallery", tab: "photo-gallery" }
       ]
     },
     {
@@ -196,11 +137,11 @@ export default function Navbar() {
     if (mobileMenuOpen || window.innerWidth <= 1024) {
       setActiveDropdown(prev => prev === item.label ? null : item.label);
     } else {
-      const defaultTab = item.isMega 
-        ? item.columns?.[0]?.items?.[0]?.tab 
+      const defaultTab = item.isMega
+        ? item.columns?.[0]?.items?.[0]?.tab
         : item.items?.[0]?.tab;
-      const defaultPath = item.isMega 
-        ? (item.columns?.[0]?.items?.[0]?.path || item.path) 
+      const defaultPath = item.isMega
+        ? (item.columns?.[0]?.items?.[0]?.path || item.path)
         : (item.items?.[0]?.path || item.path);
       navigateTo(defaultPath, defaultTab);
     }
@@ -305,7 +246,7 @@ export default function Navbar() {
                 <Sparkles size={18} />
               </div>
               <div className="badge-text">
-                <span className="sup-highlight">APPLY ONLINE</span>
+                <span className="sup-highlight">CURRENT SESSION</span>
                 <span className="main-highlight">ADMISSION OPEN</span>
               </div>
             </Link>

@@ -99,7 +99,7 @@ export default function FacultySection() {
   }, [isPaused]);
 
   return (
-    <section className="section faculty-auto-slider-section" id="faculty" style={{ background: '#edffc8' }}>
+    <section className="section faculty-auto-slider-section" id="faculty" style={{ background: '#eaffef' }}>
       <div className="container">
         {/* Top Header (Centered Flanked Design matching benchmark) */}
         <div className="landing-section-header">

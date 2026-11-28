@@ -99,7 +99,7 @@ export default function TestimonialsSection() {
   }, [isPaused]);
 
   return (
-    <section className="section testimonials-auto-slider-section" id="testimonials" style={{ background: '#C1E1C1' }}>
+    <section className="section testimonials-auto-slider-section" id="testimonials" style={{ background: '#eaffef' }}>
       <div className="container">
         {/* Section Heading (Centered Flanked Design matching benchmark) */}
         <div className="landing-section-header">

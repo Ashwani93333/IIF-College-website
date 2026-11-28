@@ -54,7 +54,7 @@ export default function RankingsAwardsSection() {
   ];
 
   return (
-    <section className="section" id="rankings" style={{ background: '#edffc8' }}>
+    <section className="section" id="rankings" style={{ background: '#eaffef' }}>
       <div className="container">
         <div className="section-header">
           <span className="section-tag">Institutional Pedigree</span>

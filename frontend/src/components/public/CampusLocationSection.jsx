@@ -9,7 +9,7 @@ export default function CampusLocationSection() {
   const googleDirectionsUrl = "https://www.google.com/maps/dir/?api=1&destination=Indian+Institute+of+Finance+45A+Knowledge+Park+III+Greater+Noida";
 
   return (
-    <section className="section campus-location-unified-section" id="location" style={{ background: '#edffc8' }}>
+    <section className="section campus-location-unified-section" id="location" style={{ background: '#eaffef' }}>
       <div className="container">
         {/* Section Header (Centered Flanked Design matching benchmark) */}
         <div className="landing-section-header">

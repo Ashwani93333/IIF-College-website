@@ -21,7 +21,7 @@ export default function CampusTourSection() {
   ];
 
   return (
-    <section className="section campus-tour-section" id="facilities" style={{ background: '#edffc8' }}>
+    <section className="section campus-tour-section" id="facilities" style={{ background: '#eaffef' }}>
       <div className="container">
         {/* Section Header (Centered Flanked Design matching benchmark) */}
         <div className="landing-section-header">

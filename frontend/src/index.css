@@ -12,12 +12,12 @@
   --text-dark: #000000;
   --text-muted: #1e293b;
   --text-light: #f8fafc;
-  --bg-light: #edffc8;
-  --bg-white: #edffc8;
-  --bg-beige: #edffc8;
-  --bg-beige-card: #edffc8;
-  --bg-beige-warm: #edffc8;
-  --bg-site: #edffc8;
+  --bg-light: #eaffef;
+  --bg-white: #eaffef;
+  --bg-beige: #eaffef;
+  --bg-beige-card: #eaffef;
+  --bg-beige-warm: #eaffef;
+  --bg-site: #eaffef;
   --border-light: #e6dfd3;
   --border-subtle: #d8cebf;
   --success-green: #10b981;
@@ -50,13 +50,13 @@ html {
   scroll-behavior: smooth;
   font-family: var(--font-body);
   color: var(--text-dark);
-  background-color: #edffc8 !important;
+  background-color: #eaffef !important;
 }
 
 body {
   overflow-x: hidden;
   line-height: 1.6;
-  background-color: #edffc8 !important;
+  background-color: #eaffef !important;
   color: #000000;
 }
 
@@ -905,29 +905,30 @@ button {
   width: max-content;
 }
 
-/* Individual Faculty Card */
+/* Individual Faculty Card (Photo Fit to Card) */
 .faculty-auto-card {
-  width: 245px;
-  min-width: 245px;
-  max-width: 245px;
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 14px;
-  padding: 0.9rem;
+  padding: 0 !important;
+  overflow: hidden !important;
   cursor: pointer;
   transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
   user-select: none;
   outline: none;
 }
 
-/* Card Hover Color Change (Matching Testimonial Section Behavior) */
+/* Card Hover Color Change */
 .faculty-auto-card:hover {
   background: #062a36 !important;
-  border-color: #c59b27 !important;
-  box-shadow: 0 16px 36px rgba(6, 42, 54, 0.35) !important;
+  border-color: #dfb235 !important;
+  box-shadow: 0 18px 40px rgba(6, 42, 54, 0.32) !important;
   transform: translateY(-5px);
 }
 
@@ -940,7 +941,7 @@ button {
 }
 
 .faculty-auto-card:hover .faculty-card-badge-row {
-  border-top-color: rgba(255, 255, 255, 0.15);
+  border-top-color: rgba(255, 255, 255, 0.15) !important;
 }
 
 .faculty-auto-card:hover .faculty-card-cred-badge {
@@ -949,34 +950,36 @@ button {
   border-color: rgba(223, 178, 53, 0.4) !important;
 }
 
-/* Photo Box */
+/* Photo Box - Fits to Top of Card */
 .faculty-card-photo-box {
-  width: 100%;
-  height: 200px;
-  border-radius: 10px;
-  background: linear-gradient(180deg, #163647 0%, #1f556d 100%);
+  width: 100% !important;
+  height: 220px !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: linear-gradient(180deg, #112936 0%, #1a4358 100%);
   position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  overflow: hidden !important;
+  display: block;
 }
 
 .faculty-card-photo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  transition: transform 0.3s ease;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 12% !important;
+  display: block !important;
+  transition: transform 0.35s ease;
 }
 
 .faculty-auto-card:hover .faculty-card-photo-img {
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
 /* Info Box */
 .faculty-card-info {
-  margin-top: 0.85rem;
+  padding: 1rem 1.15rem 0.4rem !important;
+  margin-top: 0 !important;
   flex-grow: 1;
 }
 
@@ -996,7 +999,7 @@ button {
 .faculty-card-role {
   font-size: 0.8rem;
   color: #64748b;
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 0.65rem 0;
   line-height: 1.35;
   transition: color 0.2s ease;
 }
@@ -1008,12 +1011,12 @@ button {
 /* Credential Badge at Card Bottom */
 .faculty-card-badge-row {
   margin-top: auto;
-  padding-top: 0.65rem;
+  padding: 0.65rem 1.15rem 1.15rem !important;
   border-top: 1px dashed #e2e8f0;
 }
 
 .faculty-auto-card:hover .faculty-card-badge-row {
-  border-top-color: rgba(255, 255, 255, 0.15);
+  border-top-color: rgba(255, 255, 255, 0.15) !important;
 }
 
 .faculty-card-cred-badge {
@@ -1074,12 +1077,7 @@ button {
   .faculty-main-heading {
     font-size: 1.55rem;
   }
-  .faculty-auto-card {
-    width: 215px;
-    min-width: 215px;
-    max-width: 215px;
-    padding: 0.75rem;
-  }
+  .faculty-auto-card { width: 220px !important; min-width: 220px !important; max-width: 220px !important; padding: 0 !important; }
   .faculty-card-photo-box {
     height: 180px;
   }
@@ -1157,28 +1155,29 @@ button {
   width: max-content;
 }
 
-/* Individual Testimonial Card (Matches Faculty Card Geometry) */
+/* Individual Testimonial Card (Photo Fit to Card) */
 .testimonial-auto-card {
-  width: 250px;
-  min-width: 250px;
-  max-width: 250px;
+  width: 255px;
+  min-width: 255px;
+  max-width: 255px;
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 14px;
-  padding: 0.9rem;
+  padding: 0 !important;
+  overflow: hidden !important;
   transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
   user-select: none;
   cursor: default;
 }
 
-/* Hover Color Transformation (Purely on Hover - Not on Click) */
+/* Hover Color Transformation */
 .testimonial-auto-card:hover {
   background: #062a36 !important;
-  border-color: #c59b27 !important;
-  box-shadow: 0 16px 36px rgba(6, 42, 54, 0.35) !important;
+  border-color: #dfb235 !important;
+  box-shadow: 0 18px 40px rgba(6, 42, 54, 0.32) !important;
   transform: translateY(-5px);
 }
 
@@ -1205,33 +1204,35 @@ button {
 }
 
 .testimonial-auto-card:hover .testimonial-card-photo-img {
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
-/* Photo Box */
+/* Photo Box - Fits to Top of Card */
 .testimonial-card-photo-box {
-  width: 100%;
-  height: 200px;
-  border-radius: 10px;
-  background: linear-gradient(180deg, #163647 0%, #1f556d 100%);
+  width: 100% !important;
+  height: 200px !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: linear-gradient(180deg, #112936 0%, #1a4358 100%);
   position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  overflow: hidden !important;
+  display: block;
 }
 
 .testimonial-card-photo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  transition: transform 0.3s ease;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 15% !important;
+  display: block !important;
+  transition: transform 0.35s ease;
 }
 
 /* Info Box */
 .testimonial-card-info {
-  margin-top: 0.85rem;
+  padding: 1rem 1.15rem 0.35rem !important;
+  margin-top: 0 !important;
 }
 
 .testimonial-card-name {
@@ -1253,6 +1254,7 @@ button {
 
 /* Quote Snippet */
 .testimonial-card-quote-box {
+  padding: 0 1.15rem !important;
   margin-bottom: 0.75rem;
   flex-grow: 1;
 }
@@ -1273,7 +1275,7 @@ button {
 /* Credential Badge at Card Bottom */
 .testimonial-card-badge-row {
   margin-top: auto;
-  padding-top: 0.65rem;
+  padding: 0.65rem 1.15rem 1.15rem !important;
   border-top: 1px dashed #e2e8f0;
   transition: border-color 0.2s ease;
 }
@@ -1299,22 +1301,17 @@ button {
   .testimonials-main-heading {
     font-size: 1.55rem;
   }
-  .testimonial-auto-card {
-    width: 220px;
-    min-width: 220px;
-    max-width: 220px;
-    padding: 0.75rem;
-  }
+  .testimonial-auto-card { width: 225px !important; min-width: 225px !important; max-width: 225px !important; padding: 0 !important; }
   .testimonial-card-photo-box {
     height: 180px;
   }
 }
 
 /* ==========================================================================
-   MASTER UNIFORMITY OVERRIDES (Principal's Desk Reference & #edffc8 Canvas)
+   MASTER UNIFORMITY OVERRIDES (Principal's Desk Reference & #eaffef Canvas)
    ========================================================================== */
 
-/* 1. Page Background: #edffc8 (VERY LIGHT GREEN) Across Landing Page & All Pages */
+/* 1. Page Background: #eaffef (VERY LIGHT GREEN) Across Landing Page & All Pages */
 html,
 body,
 .public-portal-root,
@@ -1334,8 +1331,8 @@ body,
 .header-master-wrapper,
 .glb-top-utility-bar,
 .glb-main-brand-header {
-  background-color: #edffc8 !important;
-  background: #edffc8 !important;
+  background-color: #eaffef !important;
+  background: #eaffef !important;
 }
 
 /* 2. Bolted Section Titles & Highlighted Headings (Principal's Desk Benchmark) */
@@ -3450,31 +3447,51 @@ h2.content-heading {
 }
 
 /* ==========================================================================
-   Footer
+   Footer (Enhanced White-Text High-Legibility Typography)
    ========================================================================== */
 .main-footer {
   background: #062a36;
-  color: #e2e8f0;
-  padding: 4.5rem 0 2rem;
+  color: #ffffff !important;
+  padding: 4.5rem 0 2.5rem;
   border-top: 4px solid var(--accent-gold, #dfb235);
-  font-family: var(--font-sans, system-ui, sans-serif);
+  font-family: var(--font-body, system-ui, sans-serif);
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.main-footer .container {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
 }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1.05fr 1.05fr 1.3fr;
-  gap: 2.5rem;
-  margin-bottom: 3rem;
+  grid-template-columns: 1.35fr 1fr 1fr 1.25fr;
+  gap: 2.75rem;
+  margin-bottom: 3.5rem;
+  align-items: start;
+  width: 100%;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 }
 
 .footer-col h4 {
-  color: #ffffff;
-  font-size: 1.12rem;
-  font-weight: 700;
-  margin-bottom: 1.25rem;
+  color: #ffffff !important;
+  font-size: 1.25rem !important;
+  font-weight: 800 !important;
+  margin-bottom: 1.35rem;
   position: relative;
-  padding-bottom: 0.55rem;
-  letter-spacing: 0.3px;
+  padding-bottom: 0.65rem;
+  letter-spacing: 0.4px;
+  font-family: var(--font-heading);
+  text-align: left;
 }
 
 .footer-col h4::after {
@@ -3482,7 +3499,7 @@ h2.content-heading {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 36px;
+  width: 44px;
   height: 3px;
   border-radius: 2px;
   background: var(--accent-gold, #dfb235);
@@ -3491,21 +3508,37 @@ h2.content-heading {
 .footer-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  background: rgba(13, 92, 117, 0.45);
-  border: 1px solid rgba(223, 178, 53, 0.35);
-  padding: 0.32rem 0.7rem;
+  gap: 0.45rem;
+  background: rgba(13, 92, 117, 0.5);
+  border: 1.5px solid rgba(223, 178, 53, 0.5);
+  padding: 0.38rem 0.8rem;
   border-radius: 6px;
-  font-size: 0.76rem;
-  font-weight: 600;
-  color: #fde047;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffffff !important;
   letter-spacing: 0.3px;
+}
+
+.footer-brand-desc,
+.footer-col-brand p {
+  font-family: var(--font-body) !important;
+  font-size: 1.12rem !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  line-height: 1.75 !important;
+  margin-bottom: 1.25rem;
+  text-align: left;
+}
+
+.footer-col-brand strong {
+  color: #ffffff !important;
+  font-weight: 800 !important;
 }
 
 .footer-social-bar {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.65rem;
   flex-wrap: wrap;
 }
 
@@ -3513,12 +3546,12 @@ h2.content-heading {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
   transition: all 0.22s ease;
   text-decoration: none;
 }
@@ -3535,33 +3568,35 @@ h2.content-heading {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: 0.7rem;
   padding: 0;
   margin: 0;
+  text-align: left;
 }
 
 .footer-links a,
 .footer-links button {
-  color: #cbd5e1;
+  color: #ffffff !important;
   text-decoration: none;
   background: none;
   border: none;
   padding: 0;
   margin: 0;
-  font-family: inherit;
-  font-size: 0.88rem;
-  line-height: 1.45;
+  font-family: var(--font-body) !important;
+  font-size: 1.08rem !important;
+  font-weight: 600 !important;
+  line-height: 1.6 !important;
   text-align: left;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.45rem;
   transition: all 0.2s ease;
 }
 
 .footer-links a:hover,
 .footer-links button:hover {
-  color: #fde047;
+  color: #dfb235 !important;
   transform: translateX(4px);
 }
 
@@ -3579,58 +3614,75 @@ h2.content-heading {
 .footer-contact-block {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
-  font-size: 0.86rem;
-  line-height: 1.55;
-  color: #cbd5e1;
+  gap: 1.15rem;
+  font-family: var(--font-body) !important;
+  font-size: 1.08rem !important;
+  font-weight: 600 !important;
+  line-height: 1.7 !important;
+  color: #ffffff !important;
+  text-align: left;
 }
 
 .footer-contact-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.65rem;
+  gap: 0.75rem;
+  color: #ffffff !important;
+  text-align: left;
+}
+
+.footer-contact-item strong {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  font-size: 1.12rem !important;
+}
+
+.footer-contact-item div {
+  color: #ffffff !important;
 }
 
 .footer-contact-icon {
   color: var(--accent-gold, #dfb235);
   flex-shrink: 0;
-  margin-top: 0.18rem;
+  margin-top: 0.25rem;
 }
 
 .footer-contact-link {
-  color: #ffffff;
+  color: #ffffff !important;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700 !important;
   transition: color 0.2s ease;
 }
 
 .footer-contact-link:hover {
-  color: #fde047;
+  color: #dfb235 !important;
   text-decoration: underline;
 }
 
 .footer-external-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 0.82rem;
-  color: #cbd5e1;
+  gap: 0.5rem;
+  font-size: 1.02rem !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .footer-external-link:hover {
-  color: #fde047;
+  color: #dfb235 !important;
   text-decoration: underline;
+  transform: translateX(3px);
 }
 
 .footer-staff-login {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  color: #fde047;
-  font-weight: 700;
-  font-size: 0.82rem;
+  gap: 0.5rem;
+  color: #dfb235 !important;
+  font-weight: 700 !important;
+  font-size: 1.02rem !important;
   text-decoration: underline;
   transition: opacity 0.2s ease;
 }
@@ -3695,19 +3747,20 @@ h2.content-heading {
 }
 
 .footer-admin-card-title {
-  color: #ffffff;
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin: 0 0 0.3rem 0;
+  color: #ffffff !important;
+  font-size: 1.3rem !important;
+  font-weight: 800 !important;
+  margin: 0 0 0.35rem 0;
   letter-spacing: 0.2px;
 }
 
 .footer-admin-card-desc {
-  color: #cbd5e1;
-  font-size: 0.82rem;
-  line-height: 1.5;
+  color: #ffffff !important;
+  font-size: 1.08rem !important;
+  font-weight: 600 !important;
+  line-height: 1.65 !important;
   margin: 0;
-  max-width: 650px;
+  max-width: 680px;
 }
 
 .footer-admin-card-btn-wrap {
@@ -3754,15 +3807,18 @@ h2.content-heading {
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding-top: 1.75rem;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.18);
+  padding-top: 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-  font-size: 0.85rem;
-  color: #cbd5e1;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #ffffff !important;
+  text-align: center;
+  width: 100%;
 }
 
 .footer-bottom-links {
@@ -3774,40 +3830,46 @@ h2.content-heading {
 
 .footer-bottom-links a,
 .footer-bottom-btn {
-  color: #cbd5e1;
+  color: #ffffff !important;
   text-decoration: none;
   background: none;
   border: none;
   padding: 0;
   font: inherit;
-  font-size: 0.84rem;
+  font-size: 0.95rem;
+  font-weight: 600;
   cursor: pointer;
   transition: color 0.2s ease;
 }
 
 .footer-bottom-links a:hover,
 .footer-bottom-btn:hover {
-  color: #fde047;
+  color: #dfb235 !important;
   text-decoration: underline;
 }
 
 .footer-divider {
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.35);
   font-size: 0.75rem;
 }
 
 .footer-bottom-copy {
-  text-align: right;
-  color: #cbd5e1;
-  font-size: 0.84rem;
-  line-height: 1.45;
+  text-align: center;
+  color: #ffffff !important;
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  line-height: 1.6 !important;
+}
+
+.footer-bottom-copy div {
+  color: #ffffff !important;
 }
 
 /* Responsive Media Queries */
 @media (max-width: 1024px) {
   .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .calc-wrapper { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.75rem; }
 }
 
 @media (max-width: 768px) {
@@ -3828,7 +3890,15 @@ h2.content-heading {
   .hero-content h2 { font-size: 2.1rem; }
   .hero-stats-row { grid-template-columns: 1fr 1fr; }
   .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2.25rem; }
+  .footer-brand-desc,
+  .footer-col-brand p,
+  .footer-links a,
+  .footer-links button,
+  .footer-contact-block,
+  .footer-bottom-copy {
+    font-size: 1.02rem !important;
+  }
   .footer-bottom { flex-direction: column; text-align: center; gap: 1rem; }
   .footer-bottom-links { justify-content: center; }
   .footer-bottom-copy { text-align: center; }
@@ -3843,11 +3913,11 @@ h2.content-heading {
 
 /* 1. GLB Top Utility Bar */
 .header-master-wrapper {
-  background: #edffc8;
+  background: #eaffef;
 }
 
 .glb-top-utility-bar {
-  background: #edffc8;
+  background: #eaffef;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   font-size: 0.8rem;
   color: #062a36;
@@ -3945,7 +4015,7 @@ h2.content-heading {
 
 /* 2. GLB Main Brand Header */
 .glb-main-brand-header {
-  background: #edffc8;
+  background: #eaffef;
   padding: 0.85rem 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
@@ -4118,12 +4188,12 @@ h2.content-heading {
 
 .glb-nav-link {
   color: #ffffff;
-  font-size: 0.92rem;
+  font-size: 0.98rem;
   font-weight: 800;
   text-transform: uppercase;
-  padding: 0.75rem 0.85rem;
+  padding: 0.82rem 0.95rem;
   border-radius: var(--radius-sm);
-  letter-spacing: 0.4px;
+  letter-spacing: 0.45px;
   transition: all 0.2s ease;
   background: none;
   border: none;
@@ -4131,7 +4201,7 @@ h2.content-heading {
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.4rem;
 }
 
 .dropdown-parent {
@@ -6575,7 +6645,9 @@ h2.content-heading {
   top: 100%;
   left: 0;
   background: #ffffff;
-  min-width: 290px;
+  min-width: 320px;
+  max-height: calc(90vh - 70px);
+  overflow-y: auto;
   border-radius: 0 0 10px 10px;
   box-shadow: 0 20px 45px rgba(6, 42, 54, 0.2);
   border-top: 3.5px solid #dfb235;
@@ -6637,9 +6709,11 @@ h2.content-heading {
 
   .mega-dropdown-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2.5rem;
+    grid-template-columns: repeat(3, minmax(240px, 1fr));
+    gap: 3.5rem;
     align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   .mega-col {
@@ -6648,19 +6722,19 @@ h2.content-heading {
   }
 
   .mega-col-title {
-    font-size: 1.05rem;
+    font-size: 1.12rem;
     font-weight: 800;
     text-transform: uppercase;
     color: #062a36;
     letter-spacing: 0.5px;
-    padding-bottom: 0.65rem;
-    margin-bottom: 1.15rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.95rem;
     border-bottom: 2px solid #e2e8f0;
     font-family: var(--font-heading);
   }
 
   .mega-col-title.highlighted-title {
-    color: #b45309;
+    color: #854d0e;
     font-weight: 900;
     border-bottom: 2px solid #dfb235;
   }
@@ -6671,38 +6745,37 @@ h2.content-heading {
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
+    gap: 0.25rem;
   }
 
   .nav-mega-dropdown .dropdown-link-btn {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    padding: 0.65rem 0.85rem;
+    padding: 0.42rem 0.65rem;
     background: transparent;
     border: none;
     text-align: left;
     color: #1e293b;
-    font-size: 0.98rem;
+    font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     border-radius: 4px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    border-bottom: none;
     transition: all 0.2s ease;
     font-family: var(--font-body);
   }
 
   .nav-mega-dropdown .dropdown-link-btn .sub-arrow {
-    color: #94a3b8;
-    transition: all 0.2s ease;
+    display: none;
   }
 
   .nav-mega-dropdown .dropdown-link-btn:hover {
-    background: rgba(223, 178, 53, 0.14);
+    background: rgba(223, 178, 53, 0.12);
     color: #062a36;
     font-weight: 700;
-    padding-left: 1.15rem;
+    padding-left: 0.95rem;
   }
 
   .nav-mega-dropdown .dropdown-link-btn:hover .sub-arrow {
@@ -7122,7 +7195,7 @@ h2.content-heading {
 }
 
 /* ==========================================================================
-   Uniform Page Background #edffc8 (VERY LIGHT GREEN) Across Every Single Page
+   Uniform Page Background #eaffef (VERY LIGHT GREEN) Across Every Single Page
    ========================================================================== */
 .public-portal-root,
 .inner-page-root,
@@ -7138,7 +7211,7 @@ h2.content-heading {
 .recent-placements-unified-section,
 .section-bg-light,
 .section-bg-white {
-  background: #edffc8 !important;
+  background: #eaffef !important;
 }
 
 /* Photo Layout & Visual Showcases (Matching User Reference Screenshot) */
@@ -10407,10 +10480,10 @@ h2.content-heading {
 }
 
 .glb-admission-highlight-badge .sup-highlight {
-  font-size: 0.66rem;
+  font-size: 0.68rem;
   color: #92400e;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.5px;
   line-height: 1.2;
   white-space: nowrap;
@@ -13002,29 +13075,30 @@ h2.content-heading {
   width: max-content;
 }
 
-/* Individual Faculty Card */
+/* Individual Faculty Card (Photo Fit to Card) */
 .faculty-auto-card {
-  width: 245px;
-  min-width: 245px;
-  max-width: 245px;
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 14px;
-  padding: 0.9rem;
+  padding: 0 !important;
+  overflow: hidden !important;
   cursor: pointer;
   transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
   user-select: none;
   outline: none;
 }
 
-/* Card Hover Color Change (Matching Testimonial Section Behavior) */
+/* Card Hover Color Change */
 .faculty-auto-card:hover {
   background: #062a36 !important;
-  border-color: #c59b27 !important;
-  box-shadow: 0 16px 36px rgba(6, 42, 54, 0.35) !important;
+  border-color: #dfb235 !important;
+  box-shadow: 0 18px 40px rgba(6, 42, 54, 0.32) !important;
   transform: translateY(-5px);
 }
 
@@ -13037,7 +13111,7 @@ h2.content-heading {
 }
 
 .faculty-auto-card:hover .faculty-card-badge-row {
-  border-top-color: rgba(255, 255, 255, 0.15);
+  border-top-color: rgba(255, 255, 255, 0.15) !important;
 }
 
 .faculty-auto-card:hover .faculty-card-cred-badge {
@@ -13046,34 +13120,36 @@ h2.content-heading {
   border-color: rgba(223, 178, 53, 0.4) !important;
 }
 
-/* Photo Box */
+/* Photo Box - Fits to Top of Card */
 .faculty-card-photo-box {
-  width: 100%;
-  height: 200px;
-  border-radius: 10px;
-  background: linear-gradient(180deg, #163647 0%, #1f556d 100%);
+  width: 100% !important;
+  height: 220px !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: linear-gradient(180deg, #112936 0%, #1a4358 100%);
   position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  overflow: hidden !important;
+  display: block;
 }
 
 .faculty-card-photo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  transition: transform 0.3s ease;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 12% !important;
+  display: block !important;
+  transition: transform 0.35s ease;
 }
 
 .faculty-auto-card:hover .faculty-card-photo-img {
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
 /* Info Box */
 .faculty-card-info {
-  margin-top: 0.85rem;
+  padding: 1rem 1.15rem 0.4rem !important;
+  margin-top: 0 !important;
   flex-grow: 1;
 }
 
@@ -13093,7 +13169,7 @@ h2.content-heading {
 .faculty-card-role {
   font-size: 0.8rem;
   color: #64748b;
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 0.65rem 0;
   line-height: 1.35;
   transition: color 0.2s ease;
 }
@@ -13105,12 +13181,12 @@ h2.content-heading {
 /* Credential Badge at Card Bottom */
 .faculty-card-badge-row {
   margin-top: auto;
-  padding-top: 0.65rem;
+  padding: 0.65rem 1.15rem 1.15rem !important;
   border-top: 1px dashed #e2e8f0;
 }
 
 .faculty-auto-card:hover .faculty-card-badge-row {
-  border-top-color: rgba(255, 255, 255, 0.15);
+  border-top-color: rgba(255, 255, 255, 0.15) !important;
 }
 
 .faculty-card-cred-badge {
@@ -13171,12 +13247,7 @@ h2.content-heading {
   .faculty-main-heading {
     font-size: 1.55rem;
   }
-  .faculty-auto-card {
-    width: 215px;
-    min-width: 215px;
-    max-width: 215px;
-    padding: 0.75rem;
-  }
+  .faculty-auto-card { width: 220px !important; min-width: 220px !important; max-width: 220px !important; padding: 0 !important; }
   .faculty-card-photo-box {
     height: 180px;
   }
@@ -13254,28 +13325,29 @@ h2.content-heading {
   width: max-content;
 }
 
-/* Individual Testimonial Card (Matches Faculty Card Geometry) */
+/* Individual Testimonial Card (Photo Fit to Card) */
 .testimonial-auto-card {
-  width: 250px;
-  min-width: 250px;
-  max-width: 250px;
+  width: 255px;
+  min-width: 255px;
+  max-width: 255px;
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 14px;
-  padding: 0.9rem;
+  padding: 0 !important;
+  overflow: hidden !important;
   transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
   user-select: none;
   cursor: default;
 }
 
-/* Hover Color Transformation (Purely on Hover - Not on Click) */
+/* Hover Color Transformation */
 .testimonial-auto-card:hover {
   background: #062a36 !important;
-  border-color: #c59b27 !important;
-  box-shadow: 0 16px 36px rgba(6, 42, 54, 0.35) !important;
+  border-color: #dfb235 !important;
+  box-shadow: 0 18px 40px rgba(6, 42, 54, 0.32) !important;
   transform: translateY(-5px);
 }
 
@@ -13302,33 +13374,35 @@ h2.content-heading {
 }
 
 .testimonial-auto-card:hover .testimonial-card-photo-img {
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
-/* Photo Box */
+/* Photo Box - Fits to Top of Card */
 .testimonial-card-photo-box {
-  width: 100%;
-  height: 200px;
-  border-radius: 10px;
-  background: linear-gradient(180deg, #163647 0%, #1f556d 100%);
+  width: 100% !important;
+  height: 200px !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: linear-gradient(180deg, #112936 0%, #1a4358 100%);
   position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  overflow: hidden !important;
+  display: block;
 }
 
 .testimonial-card-photo-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  transition: transform 0.3s ease;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 15% !important;
+  display: block !important;
+  transition: transform 0.35s ease;
 }
 
 /* Info Box */
 .testimonial-card-info {
-  margin-top: 0.85rem;
+  padding: 1rem 1.15rem 0.35rem !important;
+  margin-top: 0 !important;
 }
 
 .testimonial-card-name {
@@ -13350,6 +13424,7 @@ h2.content-heading {
 
 /* Quote Snippet */
 .testimonial-card-quote-box {
+  padding: 0 1.15rem !important;
   margin-bottom: 0.75rem;
   flex-grow: 1;
 }
@@ -13370,7 +13445,7 @@ h2.content-heading {
 /* Credential Badge at Card Bottom */
 .testimonial-card-badge-row {
   margin-top: auto;
-  padding-top: 0.65rem;
+  padding: 0.65rem 1.15rem 1.15rem !important;
   border-top: 1px dashed #e2e8f0;
   transition: border-color 0.2s ease;
 }
@@ -13396,22 +13471,17 @@ h2.content-heading {
   .testimonials-main-heading {
     font-size: 1.55rem;
   }
-  .testimonial-auto-card {
-    width: 220px;
-    min-width: 220px;
-    max-width: 220px;
-    padding: 0.75rem;
-  }
+  .testimonial-auto-card { width: 225px !important; min-width: 225px !important; max-width: 225px !important; padding: 0 !important; }
   .testimonial-card-photo-box {
     height: 180px;
   }
 }
 
 /* ==========================================================================
-   MASTER UNIFORMITY OVERRIDES (Principal's Desk Reference & #edffc8 Canvas)
+   MASTER UNIFORMITY OVERRIDES (Principal's Desk Reference & #eaffef Canvas)
    ========================================================================== */
 
-/* 1. Page Background: #edffc8 (VERY LIGHT GREEN) Across Landing Page & All Pages */
+/* 1. Page Background: #eaffef (VERY LIGHT GREEN) Across Landing Page & All Pages */
 html,
 body,
 .public-portal-root,
@@ -13431,8 +13501,8 @@ body,
 .header-master-wrapper,
 .glb-top-utility-bar,
 .glb-main-brand-header {
-  background-color: #edffc8 !important;
-  background: #edffc8 !important;
+  background-color: #eaffef !important;
+  background: #eaffef !important;
 }
 
 /* 2. Bolted Section Titles & Highlighted Headings (Principal's Desk Benchmark) */

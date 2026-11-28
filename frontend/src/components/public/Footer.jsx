@@ -56,35 +56,35 @@ export default function Footer() {
                 }}
               />
               <div>
-                <h4 style={{ margin: 0, padding: 0, fontSize: '1.05rem', color: '#ffffff', letterSpacing: '0.3px' }}>
+                <h4 style={{ margin: 0, padding: 0, fontSize: '1.2rem', color: '#ffffff', letterSpacing: '0.3px', fontWeight: 800 }}>
                   IIFCCMS Greater Noida
                 </h4>
-                <span style={{ fontSize: '0.72rem', color: '#dfb235', fontWeight: '700', letterSpacing: '0.5px' }}>
+                <span style={{ fontSize: '0.88rem', color: '#dfb235', fontWeight: '700', letterSpacing: '0.5px' }}>
                   COLLEGE CODE - 472 • AFFILIATED TO CCSU
                 </span>
               </div>
             </div>
 
-            <p style={{ fontSize: '0.86rem', lineHeight: '1.65', color: '#cbd5e1', marginBottom: '1rem' }}>
-              <strong>IIF College of Commerce and Management Studies</strong> is affiliated to{' '}
+            <p className="footer-brand-desc" style={{ fontSize: '1.12rem', lineHeight: '1.75', color: '#ffffff', fontWeight: 600, marginBottom: '1.25rem' }}>
+              <strong style={{ color: '#ffffff' }}>IIF College of Commerce and Management Studies</strong> is affiliated to{' '}
               <strong style={{ color: '#ffffff' }}>Chaudhary Charan Singh University, Meerut (NAAC A++ Accredited)</strong>.
               Carrying forward the 35+ years academic pedigree of the Indian Institute of Finance (Estd. 1987).
             </p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.25rem' }}>
               <span className="footer-badge">
-                <Award size={13} color="#fde047" />
-                <span>CCSU College Code: 472</span>
+                <Award size={14} color="#fde047" />
+                <span style={{ color: '#ffffff' }}>CCSU College Code: 472</span>
               </span>
               <span className="footer-badge">
-                <ShieldCheck size={13} color="#fde047" />
-                <span>NAAC A++ Affiliated</span>
+                <ShieldCheck size={14} color="#fde047" />
+                <span style={{ color: '#ffffff' }}>NAAC A++ Affiliated</span>
               </span>
             </div>
 
             {/* Social Media Connect Row */}
             <div>
-              <div style={{ fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#94a3b8', fontWeight: '700', marginBottom: '0.5rem' }}>
+              <div style={{ fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: '#ffffff', fontWeight: '800', marginBottom: '0.65rem' }}>
                 Connect With Us
               </div>
               <div className="footer-social-bar">
@@ -305,7 +305,7 @@ export default function Footer() {
                   {' | '}
                   <a href="tel:+919811537057" className="footer-contact-link">+91 98115 37057</a>
                   <br />
-                  <span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>EPABX: 0120-2323683, 2323687</span>
+                  <span style={{ fontSize: '0.98rem', color: '#ffffff', fontWeight: 600 }}>EPABX: 0120-2323683, 2323687</span>
                 </div>
               </div>
 
@@ -361,10 +361,10 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="footer-bottom" style={{ justifyContent: 'center', textAlign: 'center' }}>
-          <div className="footer-bottom-copy" style={{ textAlign: 'center' }}>
-            <div>© 2026 IIFCCMS Greater Noida. All Rights Reserved.</div>
-            <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '0.25rem' }}>
+        <div className="footer-bottom">
+          <div className="footer-bottom-copy">
+            <div>&copy; 2026 IIFCCMS Greater Noida. All Rights Reserved.</div>
+            <div style={{ fontSize: '0.98rem', color: '#ffffff', marginTop: '0.35rem', fontWeight: 600 }}>
               Affiliated to CCS University, Meerut (College Code: 472)
             </div>
           </div>

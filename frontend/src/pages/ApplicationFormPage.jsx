@@ -65,7 +65,7 @@ export default function ApplicationFormPage() {
   };
 
   return (
-    <div className="inner-page-root" style={{ background: 'var(--bg-light, #edffc8)', minHeight: '100vh' }}>
+    <div className="inner-page-root" style={{ background: 'var(--bg-light, #eaffef)', minHeight: '100vh' }}>
       <Navbar />
       <MarqueeAlert />
 
