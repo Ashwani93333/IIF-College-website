@@ -10,12 +10,12 @@ import {
 } from '../../assets/assetImages';
 
 export default function HeroSlider() {
-  const { settings } = useApp();
+  const { settings, heroSlides } = useApp();
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const touchStartX = useRef(null);
 
-  const slides = [
+  const defaultSlides = [
     {
       id: 1,
       bgImage: banner1,
@@ -47,6 +47,10 @@ export default function HeroSlider() {
       caption: "Distinguished Academic Leadership with President of India – China Visit"
     }
   ];
+
+  const slides = (heroSlides && heroSlides.filter(s => s.isActive !== false).length > 0)
+    ? heroSlides.filter(s => s.isActive !== false)
+    : defaultSlides;
 
   // Auto-scroll slides every 2 seconds continuously (even when mouse cursor is on photos)
   useEffect(() => {

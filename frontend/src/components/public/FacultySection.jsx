@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useApp } from '../../context/AppContext';
 import { ArrowUpRight, Award, GraduationCap } from 'lucide-react';
 import {
   facChairman,
@@ -12,11 +13,12 @@ import {
 } from '../../assets/assetImages';
 
 export default function FacultySection() {
+  const { faculty: appFaculty } = useApp();
   const scrollRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
 
   // Core Faculty Members with authentic photos from web photographs
-  const facultyList = [
+  const defaultFacultyList = [
     {
       id: 1,
       name: "Dr. J. D. Agarwal",
@@ -74,6 +76,10 @@ export default function FacultySection() {
       photoUrl: facGouthamSandilya
     }
   ];
+
+  const facultyList = (appFaculty && appFaculty.length > 0)
+    ? appFaculty
+    : defaultFacultyList;
 
   // Seamless continuous auto-scroll from right to left
   useEffect(() => {

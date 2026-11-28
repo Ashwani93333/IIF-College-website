@@ -5,12 +5,38 @@ import {
   facDeepakBansal,
   facManjuAgarwal,
   facPadmaMishra,
+  facUmangGupta,
+  facGouthamSandilya,
   infraMainBuilding,
   library1,
   infraClassroom,
   infraComputerCentre,
   imgPgCulturalEvents,
-  imgPgGraduates
+  imgPgGraduates,
+  banner1,
+  banner2,
+  banner3,
+  banner4,
+  bannerPresidentVisit,
+  student1,
+  student3,
+  student5,
+  student7,
+  student10,
+  student12,
+  student15,
+  student20,
+  mcPhoto,
+  imgPgDignitaryMeeting,
+  imgPgFacultyCouncil,
+  imgPgAcademicMOU,
+  imgPgConclaveStage,
+  media1,
+  media2,
+  media3,
+  media4,
+  media5,
+  media7
 } from '../assets/assetImages';
 
 export const INITIAL_SETTINGS = {
@@ -451,5 +477,462 @@ export const INITIAL_INQUIRIES = [
     message: "I scored 87% in Class 12 CBSE Commerce. Am I eligible for 25% tuition fee waiver in all 3 years?",
     status: "CONTACTED",
     submittedAt: "2026-11-20 15:40"
+  }
+];
+
+
+// 8. Hero Landing Banner Slides (Admin Point 1)
+export const INITIAL_HERO_SLIDES = [
+  {
+    id: 1,
+    bgImage: banner1,
+    tag: "CAMPUS OVERVIEW",
+    caption: "IIFCCMS • Greater Noida (College Code: 472)",
+    order: 1,
+    isActive: true
+  },
+  {
+    id: 2,
+    bgImage: banner2,
+    tag: "SMART INFRASTRUCTURE",
+    caption: "Expansive 6.47-Acre Lush Green Campus & Modern Academic Blocks",
+    order: 2,
+    isActive: true
+  },
+  {
+    id: 3,
+    bgImage: banner3,
+    tag: "ACADEMIC OFFERINGS",
+    caption: "Undergraduate Degree Programs • B.Com | B.B.A | B.A (NEP 2020)",
+    order: 3,
+    isActive: true
+  },
+  {
+    id: 4,
+    bgImage: banner4,
+    tag: "CAREER LAUNCHPAD",
+    caption: "Corporate Resource Centre & Marquee Industry Recruitment Partnerships",
+    order: 4,
+    isActive: true
+  },
+  {
+    id: 5,
+    bgImage: bannerPresidentVisit,
+    tag: "GLOBAL ENGAGEMENT",
+    caption: "Distinguished Academic Leadership with President of India – China Visit",
+    order: 5,
+    isActive: true
+  }
+];
+
+// 9. Campus Highlights by Category (Admin Point 4)
+export const INITIAL_HIGHLIGHTS = [
+  {
+    id: 1,
+    category: "Students Activity",
+    title: "Annual Sports & Plantation Drive",
+    badge: "Students Activity",
+    photoUrl: media1,
+    description: "Annual intra-collegiate athletics, badminton tournaments, and student green campus tree plantation."
+  },
+  {
+    id: 2,
+    category: "Seminars",
+    title: "National Economic & Finance Conclave",
+    badge: "Seminars",
+    photoUrl: media2,
+    description: "Distinguished academic symposium addressing GST, capital markets, and corporate governance."
+  },
+  {
+    id: 3,
+    category: "Infrastructure",
+    title: "6.47-Acre Modern Greater Noida Campus",
+    badge: "Infrastructure",
+    photoUrl: infraMainBuilding,
+    description: "Strategically located campus in Knowledge Park III featuring smart lecture halls and student centres."
+  },
+  {
+    id: 4,
+    category: "Library",
+    title: "Central Knowledge Resource Centre",
+    badge: "Library",
+    photoUrl: library1,
+    description: "Rich institutional repository housing over 55,000 reference volumes, DELNET and EBSCO research access."
+  },
+  {
+    id: 5,
+    category: "Foreign Dignitary",
+    title: "International Bilateral Academic Delegations",
+    badge: "Foreign Dignitary",
+    photoUrl: media3,
+    description: "Global academic exchanges with visiting professors, international scholars, and economic leaders."
+  },
+  {
+    id: 6,
+    category: "Official Dignitary",
+    title: "Union Ministers & Regulatory Board Leaders",
+    badge: "Official Dignitary",
+    photoUrl: media4,
+    description: "Keynote addresses and convocations presided by central government officials and university mentors."
+  },
+  {
+    id: 7,
+    category: "MoU Signing",
+    title: "Industry & Academic Collaboration MoUs",
+    badge: "MoU Signing",
+    photoUrl: media5,
+    description: "Bilateral agreements signed with financial institutions and corporate partners for live training."
+  }
+];
+
+// 10. Testimonials & Student Voices (Admin Point 6)
+export const INITIAL_TESTIMONIALS = [
+  {
+    id: 1,
+    category: "Student",
+    name: "Yashi",
+    designation: "B.Com Honors Scholar",
+    tag: "Student • Academic Excellence",
+    photo: student1,
+    quote: "The personalized mentorship, smart finance labs, and dedicated faculty have exceeded all my academic expectations."
+  },
+  {
+    id: 2,
+    category: "Alumni",
+    name: "Hemant Katyal",
+    designation: "Founder Dhangaurd, Dubai",
+    tag: "Alumni • FinTech Entrepreneur",
+    photo: student3,
+    quote: "IIFCCMS provides an exceptional learning ecosystem that instills corporate leadership and global financial acumen."
+  },
+  {
+    id: 3,
+    category: "Dignitary",
+    name: "D. Sankaran",
+    designation: "Head HR – Grindwell Norton (Saint-Gobain)",
+    tag: "Corporate Recruiter Partner",
+    photo: student5,
+    quote: "We deeply appreciate the high caliber, disciplined professional conduct, and analytical rigor of IIFCCMS scholars."
+  },
+  {
+    id: 4,
+    category: "Employer",
+    name: "Reshmi Menon",
+    designation: "Early Talent Lead – Palo Alto",
+    tag: "Corporate Talent Lead",
+    photo: student7,
+    quote: "Students are trained in the latest accounting and management methodologies, making them immediate industry contributors."
+  },
+  {
+    id: 5,
+    category: "Alumni",
+    name: "Nitin Sharma",
+    designation: "Sr. Director & Solutions Architect, USA",
+    tag: "Alumni • Tech & Strategy",
+    photo: student10,
+    quote: "I attribute much of my international career trajectory to the sound fundamentals and research-oriented pedagogy here."
+  },
+  {
+    id: 6,
+    category: "Student",
+    name: "Rohan Varma",
+    designation: "BBA Final Year Scholar",
+    tag: "Student • Corporate Internship Track",
+    photo: student12,
+    quote: "The real-world case discussions and regular corporate speaker sessions helped me secure my pre-placement offer."
+  }
+];
+
+// 11. Board of Governors (Admin Point 7)
+export const INITIAL_GOVERNORS = [
+  {
+    id: 1,
+    name: "Prof. (Dr.) J. D. Agarwal",
+    designation: "Founder Chairman & Chief Mentor",
+    photo: facChairman,
+    description: "Eminent Economist, Senior Professor of Finance, and author of over 18 academic books and 200+ research papers."
+  },
+  {
+    id: 2,
+    name: "Prof. (Dr.) Manju Agarwal",
+    designation: "Senior Governor & Executive Mentor",
+    photo: facManjuAgarwal,
+    description: "Ph.D. from Delhi School of Economics, ITP London Business School, specialist in Monetary Economics & Banking."
+  },
+  {
+    id: 3,
+    name: "Prof. (Dr.) Sudhir K. Jain",
+    designation: "Senior Academic Governor",
+    photo: facUmangGupta,
+    description: "Former Professor & Head, Department of Management Studies, IIT Delhi; eminent authority on managerial economics."
+  },
+  {
+    id: 4,
+    name: "Shri Ashok Kumar",
+    designation: "Member, Board of Governors",
+    photo: facPadmaMishra,
+    description: "Senior Legal and Corporate Affairs Consultant guiding statutory governance and regulatory compliance."
+  },
+  {
+    id: 5,
+    name: "Prof. (Dr.) Aman Agarwal",
+    designation: "Professor & Strategic Advisor",
+    photo: facGouthamSandilya,
+    description: "Senior Professor of Finance, distinguished economic researcher, and advisor to international trade organizations."
+  }
+];
+
+// 12. Managing Committee (Admin Point 8)
+export const INITIAL_MANAGING_COMMITTEE = [
+  {
+    id: 1,
+    name: "Prof. (Dr.) J. D. Agarwal",
+    designation: "President & Founder Chairman",
+    photo: facChairman,
+    description: "President of the Society & College Governing Secretariat providing institutional leadership and academic vision."
+  },
+  {
+    id: 2,
+    name: "Prof. (Dr.) Manju Agarwal",
+    designation: "Vice President & Dean of Academics",
+    photo: facManjuAgarwal,
+    description: "Oversees multidisciplinary pedagogy, academic curriculum compliance, and student mentorship committees."
+  },
+  {
+    id: 3,
+    name: "Prof. R. K. Agarwal",
+    designation: "Secretary & Financial Comptroller",
+    photo: facRkAgarwal,
+    description: "Fellow Chartered Accountant (FCA), FCS, overseeing institutional finances, audit standards, and statutory filings."
+  },
+  {
+    id: 4,
+    name: "Mr. Sunil Goel",
+    designation: "Joint Secretary & Corporate Liaison",
+    photo: facGouthamSandilya,
+    description: "Managing Director of Global Hunt, driving corporate relations, campus internship opportunities, and industry MoUs."
+  },
+  {
+    id: 5,
+    name: "Prof. Deepak Bansal",
+    designation: "Member Secretariat & IT Head",
+    photo: facDeepakBansal,
+    description: "Overseeing digital infrastructure, online portal integration, and computer lab modernizations."
+  }
+];
+
+// 13. Advisory Council (Admin Point 9)
+export const INITIAL_ADVISORY_COUNCIL = [
+  {
+    id: 1,
+    name: "Dr. B. L. Maheshwari",
+    designation: "Senior Academic Counselor",
+    photo: facChairman,
+    description: "Eminent management scholar and former Director of Center for Organization Development, Hyderabad."
+  },
+  {
+    id: 2,
+    name: "Shri T. N. Pandey",
+    designation: "Former Chairman, CBDT",
+    photo: facRkAgarwal,
+    description: "Former Chairman of Central Board of Direct Taxes, providing expert guidance on fiscal law and taxation curricula."
+  },
+  {
+    id: 3,
+    name: "Prof. M. Rammohan Rao",
+    designation: "Distinguished Academic Advisor",
+    photo: facUmangGupta,
+    description: "Former Director of IIM Bangalore and Dean Emeritus of Indian School of Business (ISB), Hyderabad."
+  },
+  {
+    id: 4,
+    name: "Dr. D. V. Kapoor",
+    designation: "Corporate Strategy Advisor",
+    photo: facPadmaMishra,
+    description: "Founding Chairman of NTPC, leading industrialist advising campus innovation and corporate linkages."
+  }
+];
+
+// 14. Approvals & Affiliations (Admin Point 10)
+export const INITIAL_APPROVALS = [
+  {
+    id: 1,
+    title: "CCSU Meerut College Affiliation Letter (College Code: 472)",
+    category: "University Affiliation",
+    fileUrl: "#",
+    refCode: "CCSU/AFFIL/472",
+    date: "2024-06-15"
+  },
+  {
+    id: 2,
+    title: "NCTE Regulatory Recognition & Approval Dossier",
+    category: "Statutory Approvals",
+    fileUrl: "#",
+    refCode: "NCTE/NRC/RECOG/2024",
+    date: "2024-05-10"
+  },
+  {
+    id: 3,
+    title: "UGC Section 2(f) Institutional Pedigree Certificate",
+    category: "UGC Recognition",
+    fileUrl: "#",
+    refCode: "UGC/2F/IIFCCMS/2023",
+    date: "2023-11-28"
+  },
+  {
+    id: 4,
+    title: "Govt. of Uttar Pradesh NOC for Higher Education Programs",
+    category: "State Government NOC",
+    fileUrl: "#",
+    refCode: "UP-GOVT/HE/NOC/472",
+    date: "2023-08-19"
+  }
+];
+
+// 15. Public Disclosures (Admin Point 11)
+export const INITIAL_PUBLIC_DISCLOSURES = [
+  {
+    id: 1,
+    title: "Mandatory Public Disclosure (Affidavit & Compliance Form)",
+    fileUrl: "#",
+    refCode: "DOC-DISC-01",
+    date: "2024-07-01"
+  },
+  {
+    id: 2,
+    title: "Land Title & 6.47-Acre Greater Noida Campus Certificate",
+    fileUrl: "#",
+    refCode: "DOC-LAND-02",
+    date: "2024-06-20"
+  },
+  {
+    id: 3,
+    title: "Building Safety & Structural Engineering Fitness Certificate",
+    fileUrl: "#",
+    refCode: "DOC-SAFE-03",
+    date: "2024-06-18"
+  },
+  {
+    id: 4,
+    title: "Fire Safety & Emergency Exit Compliance Certificate",
+    fileUrl: "#",
+    refCode: "DOC-FIRE-04",
+    date: "2024-05-25"
+  },
+  {
+    id: 5,
+    title: "Clean Water & Environmental Sanitization Certificate",
+    fileUrl: "#",
+    refCode: "DOC-SANI-05",
+    date: "2024-05-20"
+  },
+  {
+    id: 6,
+    title: "Institutional Fee Structure & Regulatory Fee Committee Clearance",
+    fileUrl: "#",
+    refCode: "DOC-FEES-06",
+    date: "2024-04-12"
+  }
+];
+
+// 16. Social Initiatives (Admin Point 12)
+export const INITIAL_SOCIAL_INITIATIVES = [
+  {
+    id: 1,
+    title: "Knowledge Park III Green Campus & Tree Plantation Drive",
+    date: "2024-08-15",
+    photoUrl: media1,
+    description: "Scholars and faculty planted over 350 saplings across the 6.47-acre campus in Greater Noida promoting environmental stewardship."
+  },
+  {
+    id: 2,
+    title: "Annual Community Blood Donation & Health Checkup Camp",
+    date: "2024-04-07",
+    photoUrl: media2,
+    description: "Organized in association with Rotary Blood Bank, collecting over 210 blood units with active participation of scholars and faculty."
+  },
+  {
+    id: 3,
+    title: "Financial Literacy & Digital Banking Workshop for Rural Youth",
+    date: "2024-02-20",
+    photoUrl: media3,
+    description: "Faculty and student volunteers conducted free workshops on UPI security, savings bank accounts, and micro-investment awareness."
+  },
+  {
+    id: 4,
+    title: "Swachh Bharat Cleanliness & Waste Segregation Drive",
+    date: "2023-10-02",
+    photoUrl: media4,
+    description: "Institutional awareness drive encouraging single-use plastic reduction and campus composting programs."
+  }
+];
+
+// 17. Official Downloadable Assets (Admin Points 14, 15, 16)
+export const INITIAL_DOWNLOAD_ASSETS = {
+  brochure: {
+    title: "Official Information Brochure 2026–2027",
+    fileUrl: "#",
+    fileName: "IIFCCMS_Information_Brochure_2026_2027.pdf",
+    fileSize: "4.8 MB",
+    lastUpdated: "2026-11-20"
+  },
+  presentation: {
+    title: "IIFCCMS Institutional Video Tour & Academic Presentation",
+    fileUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    fileName: "IIFCCMS_Institutional_Presentation.mp4",
+    fileSize: "18.4 MB",
+    type: "Video / Audio-Visual Deck",
+    lastUpdated: "2026-11-20"
+  },
+  applicationForm: {
+    title: "Official Blank Offline Admission Application Form (2-Page A4)",
+    fileUrl: "#",
+    fileName: "IIFCCMS_Blank_Application_Form_Offline.pdf",
+    fileSize: "1.2 MB",
+    lastUpdated: "2026-11-20"
+  }
+};
+
+// 18. Scholarship Schemes (Admin Point 18)
+export const INITIAL_SCHOLARSHIPS = [
+  {
+    id: 1,
+    schemeName: "Merit Tier 1 (90%+ in 12th Board)",
+    percentage: 25,
+    eligibility: "Aggregate 90.0% and above in Class 12 CBSE / ICSE / Recognized State Board.",
+    description: "25% tuition fee waiver applicable in the academic year. Renewable based on minimum 75% semester attendance and first division.",
+    isActive: true
+  },
+  {
+    id: 2,
+    schemeName: "Merit Tier 2 (80% – 89.9% in 12th Board)",
+    percentage: 15,
+    eligibility: "Aggregate 80.0% to 89.9% in Class 12th qualifying examination.",
+    description: "15% tuition fee waiver for academic high achievers pursuing BBA, B.Com, or B.A.",
+    isActive: true
+  },
+  {
+    id: 3,
+    schemeName: "Merit Tier 3 (70% – 79.9% in 12th Board)",
+    percentage: 10,
+    eligibility: "Aggregate 70.0% to 79.9% in Class 12th qualifying examination.",
+    description: "10% tuition fee waiver encouraging academic diligence and consistent performance.",
+    isActive: true
+  },
+  {
+    id: 4,
+    schemeName: "Special Wards of Defense & Police Personnel",
+    percentage: 10,
+    eligibility: "Valid identity proof / service book certificate of defense, paramilitary, or police parent.",
+    description: "Special honorarium grant of 10% fee concession honoring service to the nation.",
+    isActive: true
+  },
+  {
+    id: 5,
+    schemeName: "Beti Padhao - Single Girl Child / Sister Concession",
+    percentage: 10,
+    eligibility: "Single girl child or female siblings enrolling together at IIFCCMS.",
+    description: "Institutional grant to empower female commerce and leadership education.",
+    isActive: true
   }
 ];

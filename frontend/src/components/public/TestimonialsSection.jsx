@@ -1,15 +1,17 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { useApp } from '../../context/AppContext';
 import {
   student1, student3, student5, student7,
   student10, student12, student15, student20
 } from '../../assets/assetImages';
 
 export default function TestimonialsSection() {
+  const { testimonials: appTestimonials } = useApp();
   const scrollRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
 
   // 7 Authentic Testimonials with IIFCCMS Branding & Student Photographs
-  const testimonials = [
+  const defaultTestimonials = [
     {
       id: 1,
       category: "Student",
@@ -74,6 +76,10 @@ export default function TestimonialsSection() {
       quote: "Recruiting from IIFCCMS has always been rewarding due to their solid domain knowledge, integrity, and disciplined conduct."
     }
   ];
+
+  const testimonials = (appTestimonials && appTestimonials.length > 0)
+    ? appTestimonials
+    : defaultTestimonials;
 
   // Seamless continuous auto-scroll moving right to left (matching Faculty Section)
   useEffect(() => {
